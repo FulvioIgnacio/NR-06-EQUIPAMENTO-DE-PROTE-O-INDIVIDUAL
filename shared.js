@@ -88,8 +88,9 @@ function nr11GlobalSlide() {
     const offset = NR11_MODULE_OFFSETS[(window.MODULE_NAV && window.MODULE_NAV.id) || 'index'] || 0;
     return offset + currentSlide + 1;
 }
-const QUIZ_AUDIO_HELPER_PAGES = [12, 22, 34, 46];
+const QUIZ_AUDIO_HELPER_PAGES = [5, 12, 22, 34, 46];
 const QUIZ_AUDIO_HELPER_PANELS = {
+    's-m1-g01': 'mito-question-panel',
     's-m1-quiz': 'q1-question-panel',
     's-m2-quiz': 'q2-question-panel',
     's-m3-game': 'q3-question-panel',
@@ -307,6 +308,56 @@ function applyDemoModeUI() {
     });
 })();
 
+/* Mobile: 5 toques na logo (em ~2.5s) liga/desliga Modo Simulação */
+(function initLogoTapDemoShortcut() {
+    var taps = 0;
+    var resetTimer = null;
+    var lastTouchAt = 0;
+    var WINDOW_MS = 2500;
+    var NEED = 5;
+
+    function onLogoActivate() {
+        taps += 1;
+        if (resetTimer) clearTimeout(resetTimer);
+        resetTimer = setTimeout(function () {
+            taps = 0;
+            resetTimer = null;
+        }, WINDOW_MS);
+        if (taps < NEED) return;
+        taps = 0;
+        if (resetTimer) {
+            clearTimeout(resetTimer);
+            resetTimer = null;
+        }
+        toggleDemoMode();
+        try { playBeep && playBeep('click'); } catch (err) { }
+    }
+
+    function bind() {
+        var logo = document.getElementById('logo');
+        if (!logo || logo._nr06LogoTapBound) return;
+        logo._nr06LogoTapBound = true;
+        logo.style.cursor = 'pointer';
+        logo.setAttribute('role', 'button');
+        logo.setAttribute('aria-label', 'Logo');
+        logo.addEventListener('touchend', function () {
+            lastTouchAt = Date.now();
+            onLogoActivate();
+        }, { passive: true });
+        logo.addEventListener('click', function () {
+            /* Ignora o click fantasma depois do touchend no mobile */
+            if (Date.now() - lastTouchAt < 500) return;
+            onLogoActivate();
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bind);
+    } else {
+        bind();
+    }
+})();
+
 /* Atalho oculto: digite go + número da página (ex.: go22) para ir direto. */
 (function initGoPageShortcut() {
     var buf = '';
@@ -450,7 +501,7 @@ function isSlideCompleted(idx) {
         const status = resultPanel.querySelector('.r-status');
         if (status && status.classList.contains('ref')) return false;
     }
-    const reqs = slide.querySelectorAll('.req-item');
+    const reqs = slide.querySelectorAll('.req-item, .tf-flip, .flip-card, .reveal-card, .myth-card, .pair-row, .kit-col, .sector-col');
     if (slideHasVimeoVideo(slide) && !reqs.length) return false;
     for (let i = 0; i < reqs.length; i++) {
         if (!reqs[i].classList.contains('req-done')) return false;
@@ -1004,6 +1055,22 @@ function markCompareRead(el) {
 }
 window.markCompareRead = markCompareRead;
 
+function flipTfCard(el) {
+    if (!el) return;
+    el.classList.add('flipped', 'is-selected', 'req-item', 'req-done');
+    try { playBeep('flip'); } catch (e) { }
+    try { updateNextButton(); } catch (e) { }
+}
+window.flipTfCard = flipTfCard;
+
+function flipExploreCard(el) {
+    if (!el) return;
+    el.classList.add('flipped', 'is-selected', 'req-item', 'req-done');
+    try { playBeep('flip'); } catch (e) { }
+    try { updateNextButton(); } catch (e) { }
+}
+window.flipExploreCard = flipExploreCard;
+
 /* ════════════════════════════════════════
    ════════════════════════════════════════ */
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -1474,10 +1541,11 @@ function createQuizEngine(prefix, questions, numDots, engineOpts) {
         const btn = document.getElementById('btn-next-' + prefix);
         if (btn) {
             btn.className = 'btn-next-q';
-            if (format === 'gate') btn.textContent = 'Próxima Missão ▶';
-            else if (format === 'permit') btn.textContent = 'Próxima Ação ▶';
-            else if (format === 'tf') btn.textContent = 'Continuar →';
-            else btn.textContent = 'Próximo Cenário ▶';
+            btn.classList.remove('show');
+            btn.style.display = 'none';
+            btn.disabled = false;
+            btn.style.pointerEvents = '';
+            btn.textContent = 'Continuar →';
         }
         if (qPanel) {
             qPanel.scrollTop = 0;
@@ -1550,22 +1618,31 @@ function createQuizEngine(prefix, questions, numDots, engineOpts) {
         }
         const btn = document.getElementById('btn-next-' + prefix);
         if (btn) {
+            const isLast = idx >= questions.length - 1;
+            btn.textContent = isLast ? 'Ver resultado →' : 'Continuar →';
+            btn.disabled = true;
+            btn.style.pointerEvents = 'none';
             btn.className = 'btn-next-q show';
-            if (format === 'gate') btn.textContent = 'Próxima Missão ▶';
-            else if (format === 'permit') btn.textContent = 'Próxima Ação ▶';
-            else if (format === 'tf') btn.textContent = 'Continuar →';
-            else btn.textContent = 'Próximo Cenário ▶';
+            btn.style.display = 'inline-flex';
+            btn.style.visibility = 'visible';
+            btn.style.opacity = '1';
+            /* Evita que o mesmo toque do Confirmar dispare o Continuar */
+            setTimeout(function () {
+                btn.disabled = false;
+                btn.style.pointerEvents = 'auto';
+            }, 450);
+            setTimeout(function () {
+                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 200);
         }
-
-        setTimeout(function () {
-            if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 200);
 
         try { _saveState(); } catch (e) { }
         try { if (typeof window.notifyNarrationChange === 'function') window.notifyNarrationChange('quiz-feedback'); } catch (e) { }
     }
 
     function next() {
+        /* Só avança quando o usuário clica em Continuar — nunca automático após confirmar */
+        if (!answered) return;
         idx++;
         if (idx < questions.length) { render(); _saveState(); }
         else { showResult(); }
@@ -2021,6 +2098,7 @@ styleHUD.textContent = `
           gap: 10px;
           text-transform: uppercase;
           letter-spacing: 1px;
+          margin-top: 4px;
         }
         .btn-tf-verify:hover {
           transform: translateY(-2px);
@@ -2174,6 +2252,7 @@ function sq2Load(idx) {
         if (text) text.textContent = q.q;
         if (fb) { fb.className = 'q-feedback'; fb.innerHTML = ''; }
         if (nextBtn) nextBtn.className = 'btn-next-q';
+        if (nextBtn) { nextBtn.style.display = 'none'; nextBtn.disabled = false; }
         const audioCounter = document.getElementById('sq2-counter');
         const audioText = document.getElementById('sq2-text');
         if (audioCounter) audioCounter.textContent = 'Pergunta ' + (idx + 1) + ' de ' + q2Data.length;
@@ -2196,7 +2275,11 @@ function sq2Load(idx) {
     const nextBtnDesktop = document.getElementById('btn-next-sq2-desktop');
     if (btnTrue) { btnTrue.className = 'cctv-btn safe'; btnTrue.style.pointerEvents = ''; }
     if (btnFalse) { btnFalse.className = 'cctv-btn danger'; btnFalse.style.pointerEvents = ''; }
-    if (nextBtnDesktop) nextBtnDesktop.className = 'btn-next-q';
+    if (nextBtnDesktop) {
+        nextBtnDesktop.className = 'btn-next-q';
+        nextBtnDesktop.style.display = 'none';
+        nextBtnDesktop.disabled = false;
+    }
     document.querySelectorAll('.sq2-cctv-desktop .cctv-dot').forEach(function (d, i) {
         d.className = 'cctv-dot' + (i < idx ? ' done' : '') + (i === idx ? ' active' : '');
     });
@@ -2232,14 +2315,20 @@ function sq2Answer(answer) {
             try { playBeep('nok'); } catch (e) { }
         }
         if (nextBtn) {
-            nextBtn.textContent = 'PRÓXIMA ANÁLISE →';
+            const isLast = currentQ2 >= q2Data.length - 1;
+            nextBtn.textContent = isLast ? 'Ver resultado →' : 'Continuar →';
+            nextBtn.disabled = true;
+            nextBtn.style.pointerEvents = 'none';
             nextBtn.className = 'btn-next-q show';
+            nextBtn.style.display = 'inline-flex';
+            setTimeout(function () {
+                nextBtn.disabled = false;
+                nextBtn.style.pointerEvents = 'auto';
+            }, 450);
+            setTimeout(function () {
+                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 200);
         }
-        setTimeout(function () {
-            if (nextBtn) {
-                nextBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }, 300);
         return;
     }
 
@@ -2263,14 +2352,20 @@ function sq2Answer(answer) {
         try { playBeep('nok'); } catch (e) { }
     }
     if (nextBtnDesktop) {
-        nextBtnDesktop.textContent = 'PRÓXIMA ANÁLISE →';
+        const isLast = currentQ2 >= q2Data.length - 1;
+        nextBtnDesktop.textContent = isLast ? 'Ver resultado →' : 'Continuar →';
+        nextBtnDesktop.disabled = true;
+        nextBtnDesktop.style.pointerEvents = 'none';
         nextBtnDesktop.className = 'btn-next-q show';
+        nextBtnDesktop.style.display = 'inline-flex';
+        setTimeout(function () {
+            nextBtnDesktop.disabled = false;
+            nextBtnDesktop.style.pointerEvents = 'auto';
+        }, 450);
+        setTimeout(function () {
+            nextBtnDesktop.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 200);
     }
-    setTimeout(function () {
-        if (nextBtnDesktop) {
-            nextBtnDesktop.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }, 300);
 }
 
 function sq2NextQuestion() {
@@ -2306,148 +2401,242 @@ function sq2Retry() {
 }
 
 /* ════════════════════════════════════════
-   ENGINE: CONDUÇÃO SEGURA (1 A 1)
+   ENGINE: MITO × VERDADE (página 5) — modelo NR-11 condução (p.19)
    ════════════════════════════════════════ */
-const conducaoData = [
-    { text: "Usar celular durante operação", isAllowed: false, explanation: "O uso de celular reduz a atenção do operador e aumenta o risco de acidentes." },
-    { text: "Reduzir velocidade em curvas", isAllowed: true, explanation: "Reduzir a velocidade aumenta a estabilidade e evita tombamentos." },
-    { text: "Transportar pessoas no equipamento", isAllowed: false, explanation: "O equipamento não foi projetado para transportar passageiros." },
-    { text: "Utilizar buzina em cruzamentos", isAllowed: true, explanation: "A buzina ajuda a alertar pedestres e outros operadores." },
-    { text: "Circular com carga elevada", isAllowed: false, explanation: "Circular com a carga elevada reduz a estabilidade do equipamento." },
-    { text: "Olhar sempre na direção do movimento", isAllowed: true, explanation: "Manter atenção na direção do deslocamento evita colisões." }
+const mitoData = [
+    {
+        text: '“Segurança é assunto do time de SSO, não meu.”',
+        isVerdade: false,
+        explanation: 'A NR-06 divide o papel de cada um: a liderança fornece e fiscaliza, o SSO orienta e o colaborador usa e conserva. Sem os três, a barreira falha.'
+    },
+    {
+        text: '“A empresa é obrigada a fornecer o EPI de graça.”',
+        isVerdade: true,
+        explanation: 'O art. 166 da CLT e a NR-06 exigem EPI gratuito, adequado ao risco da função e em perfeito estado de conservação.'
+    },
+    {
+        text: '“Tenho experiência, faço rápido e sem o EPI dá certo.”',
+        isVerdade: false,
+        explanation: 'Nenhum tempo de casa substitui a barreira física. O acidente acontece exatamente no segundo em que o EPI não está no corpo.'
+    },
+    {
+        text: '“Recusar o uso do EPI tem consequência.”',
+        isVerdade: true,
+        explanation: 'O uso é obrigatório. A recusa injustificada é considerada ato faltoso pela CLT e pode gerar medida disciplinar.'
+    }
 ];
-let currentConducao = 0;
-let conducaoAnswered = false;
+let currentMito = 0;
+let mitoAnswered = false;
+let mitoLastCorrect = false;
+let selectedMitoAns = null;
 
-function resetConducaoBtnClasses() {
-    resetTfButtons(
-        document.getElementById('btn-conducao-true'),
-        document.getElementById('btn-conducao-false')
-    );
+function renderMitoDots() {
+    for (let i = 0; i < mitoData.length; i++) {
+        const d = document.getElementById('mito-dot' + i);
+        if (!d) continue;
+        d.className = 'qdot2';
+        if (i < currentMito) d.classList.add('done');
+        if (i === currentMito) d.classList.add('cur');
+    }
 }
 
-function loadConducao(idx) {
-    if (idx >= conducaoData.length) return;
-    conducaoAnswered = false;
+function hideMitoVerify() {
+    const vContainer = document.getElementById('mito-verify-container');
+    if (!vContainer) return;
+    vContainer.style.display = 'none';
+    vContainer.style.opacity = '0';
+    vContainer.style.visibility = 'hidden';
+}
 
-    const counter = document.getElementById('conducao-counter');
-    if (counter) counter.textContent = 'Ação ' + (idx + 1) + ' de ' + conducaoData.length;
+function showMitoVerify() {
+    const vContainer = document.getElementById('mito-verify-container');
+    if (!vContainer) return;
+    vContainer.style.display = 'block';
+    setTimeout(function () {
+        vContainer.style.opacity = '1';
+        vContainer.style.visibility = 'visible';
+    }, 50);
+}
 
-    const textElement = document.getElementById('conducao-text');
-    if (textElement) textElement.textContent = conducaoData[idx].text;
+function loadMito(idx) {
+    if (idx >= mitoData.length) return;
+    if (!document.getElementById('mito-question-panel')) return;
 
-    resetConducaoBtnClasses();
-    const btnTrue = document.getElementById('btn-conducao-true');
-    const btnFalse = document.getElementById('btn-conducao-false');
-    if (btnTrue) btnTrue.disabled = false;
-    if (btnFalse) btnFalse.disabled = false;
+    mitoAnswered = false;
+    mitoLastCorrect = false;
+    selectedMitoAns = null;
+    currentMito = idx;
 
-    const fb = document.getElementById('conducao-feedback');
-    if (fb) {
-        fb.className = 'tf-feedback';
-        fb.style.display = 'none';
-        fb.style.opacity = '';
+    const counter = document.getElementById('mito-counter');
+    if (counter) counter.textContent = 'Afirmação ' + (idx + 1) + ' de ' + mitoData.length;
+
+    const textElement = document.getElementById('mito-text');
+    if (textElement) textElement.textContent = mitoData[idx].text;
+
+    const opts = document.getElementById('mito-options');
+    if (opts) {
+        opts.innerHTML = '';
+        [
+            { label: 'Verdade', value: true, letter: 'A' },
+            { label: 'Mito', value: false, letter: 'B' }
+        ].forEach(function (opt) {
+            const el = document.createElement('div');
+            el.className = 'q-opt';
+            el.innerHTML = '<div class="opt-l">' + opt.letter + '</div><span>' + opt.label + '</span>';
+            el.onclick = function () { answerMito(opt.value, el); };
+            opts.appendChild(el);
+        });
     }
-    const fbTitle = document.getElementById('conducao-fb-title');
-    const fbText = document.getElementById('conducao-fb-text');
-    if (fbTitle) fbTitle.textContent = '';
-    if (fbText) fbText.innerHTML = '';
+
+    const fb = document.getElementById('mito-feedback');
+    if (fb) { fb.className = 'q-feedback'; fb.textContent = ''; }
+
+    hideMitoVerify();
+
+    const btnNext = document.getElementById('btn-next-mito');
+    if (btnNext) {
+        btnNext.className = 'btn-next-q';
+        btnNext.style.display = 'none';
+        btnNext.disabled = false;
+        btnNext.textContent = 'Continuar →';
+    }
+
+    renderMitoDots();
     try { window.updateQuizAudioHelper(); } catch (e) { }
+    try { if (typeof window.notifyNarrationChange === 'function') window.notifyNarrationChange('mito-question'); } catch (e) { }
 }
 
-// ============================================
-// CORREÇÃO DE ÁUDIO - MÓDULO 3 CONDUÇÃO
-// Utilizando o mesmo sistema sintetizado (playHUDBeep) do módulo 2
-// para garantir consistência e zero delay
-// ============================================
+window.answerMito = function (isVerdadeBtn, el) {
+    if (mitoAnswered) return;
 
-window.answerConducao = function (isAllowBtn) {
-    if (conducaoAnswered) return;
-    conducaoAnswered = true;
+    try { playBeep('click'); } catch (e) { }
+    selectedMitoAns = isVerdadeBtn;
 
-    playHUDBeep('click');
-
-    const data = conducaoData[currentConducao];
-    const isCorrect = (data.isAllowed === isAllowBtn);
-
-    const btnTrue = document.getElementById('btn-conducao-true');
-    const btnFalse = document.getElementById('btn-conducao-false');
-    resetConducaoBtnClasses();
-    if (btnTrue) { btnTrue.disabled = true; btnTrue.blur(); }
-    if (btnFalse) { btnFalse.disabled = true; btnFalse.blur(); }
-
-    const selectedBtn = isAllowBtn ? btnTrue : btnFalse;
-
-    const fb = document.getElementById('conducao-feedback');
-    const fbTitle = document.getElementById('conducao-fb-title');
-    const fbText = document.getElementById('conducao-fb-text');
-
-    if (isCorrect) {
-        if (selectedBtn) selectedBtn.classList.add('selected-true');
-
-        // Timeout para garantir que a animação CSS não trave o áudio sintetizado
-        setTimeout(() => { playHUDBeep('correct'); }, 50);
-
-        if (fb && fbTitle && fbText) {
-            fb.style.display = 'block';
-            fb.style.opacity = '1';
-            fb.className = 'tf-feedback show success visible';
-            fbTitle.textContent = 'Correto!';
-            fbText.innerHTML = data.explanation;
+    const allOpts = document.querySelectorAll('#mito-options .q-opt');
+    allOpts.forEach(function (o) {
+        try { clearAnswerState(o); } catch (e) {
+            o.classList.remove('selected', 'correct', 'wrong', 'muted', 'answered');
         }
+    });
+    if (el) el.classList.add('selected');
 
-        setTimeout(() => {
-            currentConducao++;
-            if (currentConducao < conducaoData.length) {
-                loadConducao(currentConducao);
-            } else {
-                const qPanel = document.getElementById('conducao-question-panel');
-                const rPanel = document.getElementById('conducao-result-panel');
-                if (qPanel) qPanel.style.display = 'none';
-                if (rPanel) rPanel.style.display = 'block';
-
-                const container = document.getElementById('conducao-container');
-                if (container) {
-                    container.classList.add('req-done');
-                    updateNextButton();
-                }
-                playHUDBeep('conclusion');
-            }
-            try { window.updateQuizAudioHelper(); } catch (e) { }
-        }, 3500);
-
-    } else {
-        if (selectedBtn) selectedBtn.classList.add('selected-false');
-
-        setTimeout(() => { playHUDBeep('incorrect'); }, 50);
-
-        if (fb && fbTitle && fbText) {
-            fb.style.display = 'block';
-            fb.style.opacity = '1';
-            fb.className = 'tf-feedback show error visible';
-            fbTitle.textContent = 'Incorreto';
-            fbText.innerHTML = data.explanation + '<br><br><strong>Tente novamente.</strong>';
-        }
-
-        if (selectedBtn) {
-            selectedBtn.style.animation = 'none';
-            void selectedBtn.offsetWidth;
-            selectedBtn.style.animation = 'shake 0.5s ease-in-out';
-        }
-
-        setTimeout(() => {
-            conducaoAnswered = false;
-            resetConducaoBtnClasses();
-            if (btnTrue) btnTrue.disabled = false;
-            if (btnFalse) btnFalse.disabled = false;
-            if (fb) fb.className = 'tf-feedback';
-        }, 2500);
-    }
+    showMitoVerify();
 };
 
-// Initialize on load
-window.addEventListener('DOMContentLoaded', () => {
-    loadConducao(0);
+window.verifyMito = function () {
+    if (mitoAnswered || selectedMitoAns === null) return;
+    mitoAnswered = true;
+
+    const data = mitoData[currentMito];
+    const isCorrect = (data.isVerdade === selectedMitoAns);
+    mitoLastCorrect = isCorrect;
+    const isLast = currentMito === mitoData.length - 1;
+
+    hideMitoVerify();
+
+    const allOpts = document.querySelectorAll('#mito-options .q-opt');
+    allOpts.forEach(function (o) {
+        try { clearAnswerState(o); } catch (e) {
+            o.classList.remove('selected', 'correct', 'wrong', 'muted');
+        }
+        o.style.pointerEvents = 'none';
+        o.classList.add('answered');
+    });
+
+    function setOptIcon(optEl, icon) {
+        if (!optEl) return;
+        const letter = optEl.querySelector('.opt-l');
+        if (letter) letter.textContent = icon;
+    }
+
+    const selectedIdx = selectedMitoAns ? 0 : 1;
+    const correctIdx = data.isVerdade ? 0 : 1;
+
+    if (isCorrect) {
+        if (allOpts[selectedIdx]) {
+            allOpts[selectedIdx].classList.add('correct');
+            setOptIcon(allOpts[selectedIdx], '✓');
+        }
+        try { playBeep('ok'); } catch (e) { }
+    } else {
+        if (allOpts[selectedIdx]) {
+            allOpts[selectedIdx].classList.add('wrong');
+            setOptIcon(allOpts[selectedIdx], '✕');
+        }
+        if (allOpts[correctIdx]) {
+            allOpts[correctIdx].classList.add('correct');
+            setOptIcon(allOpts[correctIdx], '✓');
+        }
+        try { playBeep('nok'); } catch (e) { }
+    }
+
+    allOpts.forEach(function (o) {
+        if (!o.classList.contains('correct') && !o.classList.contains('wrong')) {
+            o.classList.add('muted');
+        }
+    });
+
+    const fb = document.getElementById('mito-feedback');
+    if (fb) {
+        fb.textContent = data.explanation;
+        fb.className = 'q-feedback ' + (isCorrect ? 'ok' : 'nok');
+    }
+
+    const btnNext = document.getElementById('btn-next-mito');
+    if (btnNext) {
+        if (isLast && isCorrect) {
+            btnNext.className = 'btn-next-q';
+            btnNext.style.display = 'none';
+            const panel = document.getElementById('mito-question-panel');
+            if (panel) panel.classList.add('req-done');
+            try { updateNextButton(); } catch (e) { }
+            try { playHUDBeep('conclusion'); } catch (e) { try { playBeep('end'); } catch (e2) { } }
+        } else {
+            btnNext.textContent = isCorrect ? 'Continuar →' : 'Tentar novamente →';
+            btnNext.disabled = true;
+            btnNext.style.pointerEvents = 'none';
+            btnNext.className = 'btn-next-q show';
+            btnNext.style.display = 'inline-flex';
+            setTimeout(function () {
+                btnNext.disabled = false;
+                btnNext.style.pointerEvents = 'auto';
+            }, 450);
+        }
+    }
+
+    try { if (typeof window.notifyNarrationChange === 'function') window.notifyNarrationChange('mito-feedback'); } catch (e) { }
+};
+
+window.nextMito = function () {
+    if (!mitoAnswered) return;
+
+    if (!mitoLastCorrect) {
+        loadMito(currentMito);
+        return;
+    }
+
+    if (currentMito >= mitoData.length - 1) {
+        const btnNext = document.getElementById('btn-next-mito');
+        if (btnNext) {
+            btnNext.className = 'btn-next-q';
+            btnNext.style.display = 'none';
+        }
+        const panel = document.getElementById('mito-question-panel');
+        if (panel) panel.classList.add('req-done');
+        try { updateNextButton(); } catch (e) { }
+        return;
+    }
+
+    try { playBeep('click'); } catch (e) { }
+    currentMito++;
+    loadMito(currentMito);
+};
+
+window.addEventListener('DOMContentLoaded', function () {
+    const qPanel = document.getElementById('mito-question-panel');
+    if (!qPanel) return;
+    qPanel.style.display = 'block';
+    loadMito(0);
 });
 
 // Initialize on load
@@ -2786,10 +2975,22 @@ function createQuiz6Engine(questions) {
             playQuiz6Audio('incorrect');
         }
         const btn = document.getElementById('btn-next-q6');
-        if (btn) btn.className = 'btn-next-q visible';
+        if (btn) {
+            const isLast = idx >= questions.length - 1;
+            btn.textContent = isLast ? 'Ver resultado →' : 'Continuar →';
+            btn.disabled = true;
+            btn.style.pointerEvents = 'none';
+            btn.className = 'btn-next-q show';
+            btn.style.display = 'inline-flex';
+            setTimeout(function () {
+                btn.disabled = false;
+                btn.style.pointerEvents = 'auto';
+            }, 450);
+        }
     }
 
     function next() {
+        if (!answered) return;
         idx++;
         if (idx < questions.length) {
             playQuiz6Audio('transition');
@@ -4141,6 +4342,51 @@ window.q6Select = function(i, el) {
         ]
     };
 
+    function ensureDecideContinueBtn(board) {
+        var card = board.querySelector('.mg-decide-card');
+        if (!card) return null;
+        var wrap = card.querySelector('.mg-decide-continue');
+        if (!wrap) {
+            wrap = document.createElement('div');
+            wrap.className = 'mg-decide-continue';
+            wrap.style.display = 'none';
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn-next-q show mg-decide-continue-btn';
+            btn.textContent = 'Continuar →';
+            btn.setAttribute('onclick', 'mgDecideContinue(this)');
+            wrap.appendChild(btn);
+            card.appendChild(wrap);
+        }
+        return wrap;
+    }
+
+    function hideDecideContinue(board) {
+        var wrap = board.querySelector('.mg-decide-continue');
+        if (!wrap) return;
+        wrap.style.display = 'none';
+    }
+
+    function showDecideContinue(board, isLast) {
+        var wrap = ensureDecideContinueBtn(board);
+        if (!wrap) return;
+        var btn = wrap.querySelector('button');
+        if (btn) {
+            btn.textContent = isLast ? 'Ver resultado →' : 'Continuar →';
+            btn.disabled = true;
+            btn.style.pointerEvents = 'none';
+            btn.className = 'btn-next-q show mg-decide-continue-btn';
+            btn.style.display = 'inline-flex';
+            setTimeout(function () {
+                btn.disabled = false;
+                btn.style.pointerEvents = 'auto';
+            }, 450);
+        }
+        wrap.style.display = 'flex';
+        wrap.style.justifyContent = 'center';
+        wrap.style.marginTop = '12px';
+    }
+
     function ensureDecideVerifyBtn(board) {
         var card = board.querySelector('.mg-decide-card');
         if (!card) return null;
@@ -4188,6 +4434,7 @@ window.q6Select = function(i, el) {
         st.pending = null;
         st.locking = false;
         hideMgResult(board);
+        hideDecideContinue(board);
         if (st.idx >= list.length) {
             showMgResult(board, {
                 score: st.score || 0,
@@ -4245,6 +4492,7 @@ window.q6Select = function(i, el) {
         btn.classList.add('is-selected');
         st.pending = choice === true || choice === 'true' || choice === 1;
         try { playBeep('click'); } catch (e) { }
+        hideDecideContinue(board);
         showDecideVerify(board);
         setStatus(board, 'Confirme sua resposta para continuar.', '');
     };
@@ -4273,22 +4521,30 @@ window.q6Select = function(i, el) {
                 selected.classList.add('is-correct');
             }
             beep(true);
-            setStatus(board, '✓ Correto! (' + st.score + '/' + (st.idx + 1) + ')', 'ok');
+            setStatus(board, '✓ Correto! Clique em Continuar. (' + st.score + '/' + (st.idx + 1) + ')', 'ok');
         } else {
             if (selected) {
                 selected.classList.remove('is-selected');
                 selected.classList.add('is-wrong');
             }
             beep(false);
-            setStatus(board, '✗ Errado. Seguindo para a próxima (' + st.score + '/' + (st.idx + 1) + ')', 'bad');
+            setStatus(board, '✗ Errado. Clique em Continuar. (' + st.score + '/' + (st.idx + 1) + ')', 'bad');
         }
 
-        setTimeout(function () {
-            st.idx++;
-            st.pending = null;
-            st.locking = false;
-            decideRender(boardId);
-        }, 650);
+        showDecideContinue(board, st.idx >= list.length - 1);
+    };
+
+    window.mgDecideContinue = function (btn) {
+        var board = btn.closest('.mg-board');
+        if (!board) return;
+        var boardId = board.id;
+        var st = decideState[boardId];
+        if (!st || !st.locking) return;
+        st.idx++;
+        st.pending = null;
+        st.locking = false;
+        hideDecideContinue(board);
+        decideRender(boardId);
     };
 
     document.querySelectorAll('.mg-board[data-mg="decide"]').forEach(function (board) {
@@ -4304,4 +4560,276 @@ window.q6Select = function(i, el) {
         var board = grid.closest('.mg-board');
         if (board) resetMatchScore(board.id);
     });
+})();
+
+/* Carrossel de conteúdo + placeholders de foto */
+(function () {
+    function fillPhotoSlot(slot) {
+        if (!slot) return;
+        var img = slot.querySelector('.photo-slot-img');
+        if (!img) return;
+        var src = (img.getAttribute('data-src') || '').trim();
+        if (!src) {
+            img.hidden = true;
+            img.removeAttribute('src');
+            slot.classList.remove('has-image');
+            return;
+        }
+        img.src = src;
+        img.hidden = false;
+        slot.classList.add('has-image');
+    }
+
+    function showCard(root, index) {
+        var cards = root.querySelectorAll('.cc-card');
+        if (!cards.length) return;
+        var i = ((index % cards.length) + cards.length) % cards.length;
+        cards.forEach(function (c, n) { c.classList.toggle('is-active', n === i); });
+        root._ccIndex = i;
+        root._ccSeen = root._ccSeen || {};
+        root._ccSeen[i] = true;
+        var cur = root.querySelector('.cc-cur');
+        var total = root.querySelector('.cc-total');
+        if (cur) cur.textContent = String(i + 1);
+        if (total) total.textContent = String(cards.length);
+        var seen = Object.keys(root._ccSeen).length;
+        if (seen >= cards.length) {
+            root.classList.add('req-item', 'req-done');
+            try { updateNextButton(); } catch (e) { }
+        }
+    }
+
+    function initCarousel(root) {
+        if (!root || root._ccReady) return;
+        root._ccReady = true;
+        root.classList.add('req-item');
+        root._ccIndex = 0;
+        root._ccSeen = { 0: true };
+        var prev = root.querySelector('.cc-prev');
+        var next = root.querySelector('.cc-next');
+        if (prev) prev.addEventListener('click', function () { showCard(root, (root._ccIndex || 0) - 1); });
+        if (next) next.addEventListener('click', function () { showCard(root, (root._ccIndex || 0) + 1); });
+        showCard(root, 0);
+    }
+
+    function initAll() {
+        document.querySelectorAll('.photo-slot').forEach(fillPhotoSlot);
+        document.querySelectorAll('[data-content-carousel]').forEach(initCarousel);
+        try { updateNextButton(); } catch (e) { }
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll);
+    else initAll();
+})();
+
+/* Step carousel — estilo NR-11 p.26 (PASSO + número) */
+(function () {
+    function parseCards(root) {
+        var dataEl = root.querySelector('.step-car-data');
+        if (!dataEl) return [];
+        try {
+            var data = JSON.parse(dataEl.textContent || '[]');
+            return Array.isArray(data) ? data : [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function initStepCarousel(root) {
+        if (!root || root._stepCarReady) return;
+        var cards = parseCards(root);
+        if (!cards.length) return;
+        root._stepCarReady = true;
+
+        var labelText = (root.getAttribute('data-label') || 'PASSO').toUpperCase();
+        var idx = 0;
+        var viewed = { 0: true };
+
+        var labelEl = root.querySelector('.step-car-label');
+        var numEl = root.querySelector('.step-car-num');
+        var titleEl = root.querySelector('.step-car-title');
+        var descEl = root.querySelector('.step-car-desc');
+        var counterEl = root.querySelector('.step-car-counter');
+        var progressEl = root.querySelector('.step-car-progress');
+        var trackerEl = root.querySelector('.step-car-tracker');
+        var prevBtn = root.querySelector('.step-car-prev');
+        var nextBtn = root.querySelector('.step-car-next');
+        var cardEl = root.querySelector('.step-car-card');
+
+        if (labelEl) labelEl.textContent = labelText;
+
+        if (progressEl) {
+            progressEl.innerHTML = '';
+            cards.forEach(function (_, i) {
+                var dot = document.createElement('span');
+                dot.className = 'step-car-dot' + (i === 0 ? ' is-active' : '');
+                progressEl.appendChild(dot);
+            });
+        }
+
+        function updateDots() {
+            if (!progressEl) return;
+            progressEl.querySelectorAll('.step-car-dot').forEach(function (dot, i) {
+                dot.classList.toggle('is-active', i === idx);
+                dot.classList.toggle('is-done', !!viewed[i] && i !== idx);
+            });
+        }
+
+        function markDone() {
+            viewed[idx] = true;
+            var seen = Object.keys(viewed).length;
+            if (seen >= cards.length && trackerEl && !trackerEl.classList.contains('req-done')) {
+                trackerEl.classList.add('req-item', 'req-done');
+                try { if (typeof playBeep === 'function') playBeep('flip'); } catch (e) { }
+                try { if (typeof updateNextButton === 'function') updateNextButton(); } catch (e) { }
+            }
+        }
+
+        function render() {
+            var c = cards[idx] || {};
+            if (numEl) {
+                if (c.icon) {
+                    numEl.textContent = c.icon;
+                    numEl.classList.add('has-icon');
+                } else {
+                    numEl.textContent = String(c.step != null ? c.step : (idx + 1));
+                    numEl.classList.remove('has-icon');
+                }
+            }
+            if (titleEl) titleEl.textContent = c.title || '';
+            if (descEl) descEl.textContent = c.desc || '';
+            if (counterEl) counterEl.textContent = (idx + 1) + '/' + cards.length;
+            if (cardEl) cardEl.classList.add('is-active');
+            updateDots();
+            markDone();
+            if (prevBtn) prevBtn.disabled = idx === 0;
+            if (nextBtn) nextBtn.disabled = idx >= cards.length - 1;
+        }
+
+        function go(dir) {
+            var next = idx + dir;
+            if (next < 0 || next >= cards.length) return;
+            idx = next;
+            try { if (typeof playBeep === 'function') playBeep('click'); } catch (e) { }
+            render();
+            try { if (typeof window.notifyNarrationChange === 'function') window.notifyNarrationChange('carousel'); } catch (e) { }
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', function () { go(-1); });
+        if (nextBtn) nextBtn.addEventListener('click', function () { go(1); });
+
+        if (trackerEl) trackerEl.classList.add('req-item');
+        render();
+    }
+
+    function initAll() {
+        document.querySelectorAll('[data-step-carousel]').forEach(initStepCarousel);
+        try { updateNextButton(); } catch (e) { }
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll);
+    else initAll();
+})();
+
+/* Photo carousel — estilo NR-11 s10 (foto + ícone + título + nav) */
+(function () {
+    function parseCards(root) {
+        var dataEl = root.querySelector('.pic-car-data');
+        if (!dataEl) return [];
+        try {
+            var data = JSON.parse(dataEl.textContent || '[]');
+            return Array.isArray(data) ? data : [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function initPicCarousel(root) {
+        if (!root || root._picCarReady) return;
+        var cards = parseCards(root);
+        if (!cards.length) return;
+        root._picCarReady = true;
+
+        var idx = 0;
+        var viewed = { 0: true };
+
+        var cardEl = root.querySelector('.pic-car-card');
+        var photoEl = root.querySelector('.pic-car-photo');
+        var expandBtn = root.querySelector('.pic-car-expand');
+        var iconEl = root.querySelector('.pic-car-icon');
+        var titleEl = root.querySelector('.pic-car-title');
+        var descEl = root.querySelector('.pic-car-desc');
+        var counterEl = root.querySelector('.pic-car-counter');
+        var trackerEl = root.querySelector('.pic-car-tracker');
+        var prevBtn = root.querySelector('.pic-car-prev');
+        var nextBtn = root.querySelector('.pic-car-next');
+
+        function markDone() {
+            viewed[idx] = true;
+            if (Object.keys(viewed).length >= cards.length && trackerEl && !trackerEl.classList.contains('req-done')) {
+                trackerEl.classList.add('req-done');
+                try { if (typeof playBeep === 'function') playBeep('click'); } catch (e) { }
+                try { updateNextButton(); } catch (e) { }
+            }
+        }
+
+        function render() {
+            var c = cards[idx] || {};
+            if (iconEl) iconEl.textContent = c.icon || '';
+            if (titleEl) titleEl.textContent = c.title || '';
+            if (descEl) descEl.textContent = c.desc || '';
+            if (counterEl) counterEl.textContent = (idx + 1) + '/' + cards.length;
+            if (cardEl) cardEl.classList.add('is-active');
+
+            if (photoEl) {
+                var existing = photoEl.querySelector('img');
+                if (existing) existing.remove();
+                var photo = (c.photo || '').trim();
+                if (photo) {
+                    photoEl.classList.add('has-image');
+                    var img = document.createElement('img');
+                    img.src = photo;
+                    img.alt = c.title || '';
+                    img.referrerPolicy = 'no-referrer';
+                    photoEl.insertBefore(img, expandBtn || null);
+                    if (expandBtn) {
+                        expandBtn.onclick = function (e) {
+                            e.stopPropagation();
+                            if (typeof openImageModal === 'function') openImageModal(photo);
+                        };
+                    }
+                } else {
+                    photoEl.classList.remove('has-image');
+                    if (expandBtn) expandBtn.onclick = null;
+                }
+            }
+
+            markDone();
+            if (prevBtn) prevBtn.disabled = idx === 0;
+            if (nextBtn) nextBtn.disabled = idx >= cards.length - 1;
+        }
+
+        function go(dir) {
+            var next = idx + dir;
+            if (next < 0 || next >= cards.length) return;
+            idx = next;
+            try { if (typeof playBeep === 'function') playBeep('click'); } catch (e) { }
+            render();
+            try { if (typeof window.notifyNarrationChange === 'function') window.notifyNarrationChange('carousel'); } catch (e) { }
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', function () { go(-1); });
+        if (nextBtn) nextBtn.addEventListener('click', function () { go(1); });
+
+        if (trackerEl) trackerEl.classList.add('req-item');
+        render();
+    }
+
+    function initAll() {
+        document.querySelectorAll('[data-pic-carousel]').forEach(initPicCarousel);
+        try { updateNextButton(); } catch (e) { }
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll);
+    else initAll();
 })();

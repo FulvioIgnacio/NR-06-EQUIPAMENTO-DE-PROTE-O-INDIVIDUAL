@@ -71,7 +71,7 @@ img {
     content-visibility: auto;
 }
 
-/* ── PORTRAIT MOBILE: Full responsive layout ── */
+/* ?? PORTRAIT MOBILE: Full responsive layout ?? */
 @media screen and (max-width: 768px) and (orientation: portrait) {
     #rotate-msg {
         display: none;
@@ -174,8 +174,9 @@ img {
     li,
     .sum-text,
     .check-item span {
-        font-size: 17px !important;
-        line-height: 1.5 !important;
+        font-size: 18px !important;
+        line-height: 1.45 !important;
+        font-weight: 700 !important;
     }
 
     h1,
@@ -438,13 +439,13 @@ img {
     }
 
     .q-feedback {
-        margin-top: 12px !important;
+        margin-top: 18px !important;
         padding: 10px 14px !important;
         font-size: 22px !important;
     }
 
     .btn-next-q {
-        margin-top: 12px !important;
+        margin-top: 20px !important;
         padding: 12px 28px !important;
         font-size: 20px !important;
     }
@@ -487,7 +488,7 @@ img {
     }
 }
 
-/* ── APP SHELL ── */
+/* ?? APP SHELL ?? */
 #app {
     width: 100%;
     height: 100%;
@@ -496,7 +497,7 @@ img {
     flex-direction: column;
 }
 
-/* ── PROGRESS BAR ── */
+/* ?? PROGRESS BAR ?? */
 #pbar-wrap {
     position: fixed;
     top: 0;
@@ -515,8 +516,8 @@ img {
     border-radius: 0 4px 4px 0;
 }
 
-/* ── LOGO ── */
-/* Logo branca do NR-06: SEM caixa branca (senão some). Caixa branca só serve com logo colorida (NR-11). */
+/* ?? LOGO ?? */
+/* Logo branca do NR-06: SEM caixa branca (sen?o some). Caixa branca s? serve com logo colorida (NR-11). */
 #logo {
     position: fixed;
     top: 14px;
@@ -540,7 +541,7 @@ img {
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 10px rgba(246, 213, 12, 0.25));
 }
 
-/* Degradê lateral: só sobre a imagem de fundo, NUNCA sobre logo/botões */
+/* Degrad? lateral: s? sobre a imagem de fundo, NUNCA sobre logo/bot?es */
 .slide-right-gradient {
     position: absolute;
     top: 0;
@@ -588,7 +589,7 @@ img {
     z-index: 2;
 }
 
-/* Controles fixos acima do conteúdo (ordem NR-11) */
+/* Controles fixos acima do conte?do (ordem NR-11) */
 #pbar-wrap,
 #btn-demo,
 #demo-indicator { z-index: 9999 !important; }
@@ -616,7 +617,7 @@ img {
     margin-top: 2px;
 }
 
-/* ── SLIDE COUNTER ── */
+/* ?? SLIDE COUNTER ?? */
 #slide-counter {
     position: fixed;
     top: 16px;
@@ -634,7 +635,7 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ── SLIDES CONTAINER ── */
+/* ?? SLIDES CONTAINER ?? */
 #slides {
     flex: 1;
     position: relative;
@@ -672,7 +673,7 @@ img {
     transform: translateX(-40px);
 }
 
-/* ── BOTTOM NAV ── */
+/* ?? BOTTOM NAV ?? */
 #nav {
     position: fixed;
     bottom: 0;
@@ -767,7 +768,7 @@ img {
     box-shadow: none;
 }
 
-/* ── WAVE DECORATION ── */
+/* ?? WAVE DECORATION ?? */
 .wave {
     position: absolute;
     bottom: 0;
@@ -782,7 +783,7 @@ img {
     height: 100%;
 }
 
-/* ── SECTION HEADER AREA ── */
+/* ?? SECTION HEADER AREA ?? */
 .top-bar {
     padding: 22px 120px 0 28px;
     display: flex;
@@ -827,7 +828,7 @@ img {
     font-weight: 600;
 }
 
-/* ── CONTENT AREA ── */
+/* ?? CONTENT AREA ?? */
 .content-area {
     flex: 1;
     padding: 10px 28px 80px;
@@ -849,7 +850,7 @@ img {
     border-radius: 4px;
 }
 
-/* ── MOBILE LANDSCAPE OPTIMIZATION ── */
+/* ?? MOBILE LANDSCAPE OPTIMIZATION ?? */
 @media screen and (max-height: 480px) {
     #logo {
         top: 5px;
@@ -908,7 +909,8 @@ img {
     p,
     li,
     .check-item span {
-        font-size: 17px !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
     }
 
     h1 {
@@ -925,7 +927,7 @@ img {
     }
 }
 
-/* ── CARDS ── */
+/* ?? CARDS ?? */
 .card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
@@ -1293,11 +1295,11 @@ img {
 .check-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 10px;
-    padding: 11px 14px;
+    border-radius: 12px;
+    padding: 14px 16px;
     transition: all 0.2s;
     box-shadow: var(--card-shadow);
 }
@@ -1307,22 +1309,22 @@ img {
 }
 
 .check-dot {
-    width: 26px;
-    height: 26px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     flex-shrink: 0;
     background: var(--btn-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--antique-white);
 }
 
 .check-item span {
-    font-size: 23px;
-    font-weight: 500;
+    font-size: clamp(16px, 2.2vh, 20px);
+    font-weight: 700;
     color: var(--antique-white);
     line-height: 1.4;
 }
@@ -1413,7 +1415,7 @@ img {
     line-height: 1.4;
 }
 
-/* ── VIDEO CONTAINER ── */
+/* ?? VIDEO CONTAINER ?? */
 .video-wrap {
     width: 100%;
     max-width: 1000px;
@@ -1471,7 +1473,7 @@ img {
     background: var(--red-lt);
 }
 
-/* ── ANIMATIONS FOR SLIDE 1 ── */
+/* ?? ANIMATIONS FOR SLIDE 1 ?? */
 @keyframes btn-pulse-s1 {
     0% {
         box-shadow: 0 6px 24px rgba(246, 213, 12, 0.4), 0 0 0 0 rgba(246, 213, 12, 0.2);
@@ -1510,7 +1512,7 @@ img {
     }
 }
 
-/* ── SLIDE 1 — CAPA ── */
+/* ?? SLIDE 1 ? CAPA ?? */
 #s1 {
     min-height: 100vh;
     position: relative;
@@ -1810,7 +1812,7 @@ img {
     color: var(--gold);
 }
 
-/* ── QUIZ STYLES ── */
+/* ?? QUIZ STYLES ?? */
 .quiz-wrap {
     width: 100%;
     max-width: 760px;
@@ -1880,6 +1882,18 @@ img {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+/* Espa?o entre op??es e bot?o Confirmar / Continuar */
+[id$="-verify-container"],
+.mg-decide-verify {
+    margin-top: 22px !important;
+    text-align: center;
+}
+
+.q-feedback.ok,
+.q-feedback.nok {
+    margin-top: 18px;
 }
 
 .q-opt {
@@ -2116,7 +2130,9 @@ img {
 }
 
 .btn-next-q.show {
-    display: inline-block;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-next-q:hover {
@@ -2197,7 +2213,7 @@ img {
     color: var(--black);
 }
 
-/* ── SLIDE 32 — CONCLUSÃO ── */
+/* ?? SLIDE 32 ? CONCLUS?O ?? */
 #s32 {
     text-align: center;
     background: var(--black);
@@ -2284,7 +2300,7 @@ img {
     color: var(--gold-dk);
 }
 
-/* ── REQ-ITEM INTERACTIONS ── */
+/* ?? REQ-ITEM INTERACTIONS ?? */
 .req-item {
     position: relative;
     cursor: pointer !important;
@@ -2308,12 +2324,15 @@ img {
 
 .flip-card.req-done .flip-front,
 .flip-card.req-done .flip-back {
-    background: linear-gradient(180deg, rgba(16, 42, 28, 0.95), rgba(42, 32, 88, 0.98)) !important;
-    border-color: rgba(246, 213, 12, 0.5) !important;
-    box-shadow: 0 8px 32px rgba(246, 213, 12, 0.15) !important;
+    border-color: rgba(246, 213, 12, 0.75) !important;
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.45),
+        0 16px 36px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(246, 213, 12, 0.28) !important;
 }
 
-/* ── VIDEO WARNING ── */
+/* ?? VIDEO WARNING ?? */
 .video-warn {
     position: absolute;
     top: 15px;
@@ -2338,7 +2357,7 @@ img {
 }
 
 
-/* ── MODULE INTRO SLIDE ── */
+/* ?? MODULE INTRO SLIDE ?? */
 .mod-intro {
     flex: 1;
     display: flex;
@@ -2384,7 +2403,7 @@ img {
     line-height: 1.4;
 }
 
-/* ── CINEMATIC ANIMATIONS (TITLES E MÓDULOS) ── */
+/* ?? CINEMATIC ANIMATIONS (TITLES E M?DULOS) ?? */
 .slide.active .mod-intro-pill {
     animation: cinematic-pill-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
@@ -2493,7 +2512,7 @@ img {
     }
 }
 
-/* ── RESPONSIVE TWEAKS ── */
+/* ?? RESPONSIVE TWEAKS ?? */
 @media (max-width:700px) and (orientation:landscape) {
 
     .two-col,
@@ -2529,7 +2548,7 @@ img {
     }
 }
 
-/* ── 3D REALISTIC BADGE ── */
+/* ?? 3D REALISTIC BADGE ?? */
 .badge-scene {
     perspective: 1200px;
     display: flex;
@@ -2637,7 +2656,7 @@ img {
 
 @media (max-width: 900px) {
 
-    /* Espaçamentos verticais maiores nas páginas de vídeo mobile */
+    /* Espa?amentos verticais maiores nas p?ginas de v?deo mobile */
     #s1b .section-tag,
     #s4 .section-tag,
     #s-video-riscos .section-tag {
@@ -2679,38 +2698,38 @@ img {
     }
 }
 
-/* ── FLIP CARDS ── */
+/* ?? FLIP CARDS ?? */
 .flip-card {
-    width: 240px;
-    height: 260px;
+    width: 100%;
+    max-width: none;
+    height: clamp(200px, 28vh, 250px);
     cursor: pointer;
     perspective: 1200px;
     transform-style: preserve-3d;
     position: relative;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: box-shadow 0.35s ease;
     will-change: transform;
 }
 
 .flip-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28), 0 0 28px rgba(246, 213, 12, 0.2);
+}
+
+.flip-card.req-done .flip-front,
+.flip-card.req-done .flip-back,
+.flip-card.flipped .flip-front,
+.flip-card.flipped .flip-back {
+    border-color: rgba(246, 213, 12, 0.7);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.45),
+        0 16px 36px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(246, 213, 12, 0.28);
 }
 
 .flip-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    background: linear-gradient(135deg, rgba(60,10,5,0.95), rgba(100,20,10,0.85));
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease, transform 0.35s ease;
-    transform: scale(0.96);
-}
-
-.flip-card:hover::before {
-    opacity: 1;
-    transform: scale(1);
+    content: none !important;
+    display: none !important;
 }
 
 .flip-card .flip-inner {
@@ -2753,17 +2772,31 @@ img {
     transform: rotateY(0deg);
     text-align: center;
     gap: 18px;
-    background: linear-gradient(180deg, rgba(58, 45, 115, 0.92), rgba(42, 32, 88, 0.95));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 42%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 14px 32px rgba(0, 0, 0, 0.45),
+        0 0 22px rgba(246, 213, 12, 0.18);
 }
 
 .flip-back {
     z-index: 1;
     transform: rotateY(180deg);
-    background: linear-gradient(180deg, rgba(36, 28, 74, 0.96), rgba(42, 32, 88, 0.98));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
+        linear-gradient(145deg, #241c50 0%, #161030 55%, #100c24 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 14px 32px rgba(0, 0, 0, 0.45),
+        0 0 22px rgba(246, 213, 12, 0.16);
 }
 
 .flip-card.flipped .flip-front {
@@ -2808,19 +2841,20 @@ img {
 }
 
 .flip-row {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
     justify-content: center;
     align-items: stretch;
     width: 100%;
-    max-width: 1100px;
+    max-width: 720px;
     margin: 0 auto;
 }
 
 @media screen and (max-width: 900px) {
     .flip-row {
         gap: 14px;
+        max-width: 560px;
     }
 }
 
@@ -2829,9 +2863,13 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+    .flip-row {
+        max-width: 420px;
+        gap: 12px;
+    }
+
     .flip-card {
-        width: 180px;
-        height: 220px;
+        height: clamp(180px, 26vh, 220px);
     }
 }
 
@@ -3008,7 +3046,7 @@ img {
     }
 }
 
-/* CONDUÇÃO SEGURA */
+/* CONDU??O SEGURA */
 .rules-container {
     display: flex;
     gap: 30px;
@@ -3119,9 +3157,11 @@ img {
 .compare-card {
     flex: 1;
     min-width: 320px;
-    background: var(--card-bg);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--card-border);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
     border-radius: 16px;
     padding: 30px;
     text-align: center;
@@ -3129,7 +3169,11 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: var(--card-shadow);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 16px -6px rgba(246, 213, 12, 0.35),
+        0 12px 28px rgba(0, 0, 0, 0.4),
+        0 0 18px rgba(246, 213, 12, 0.16);
 }
 
 .compare-card.wrong {
@@ -3423,7 +3467,7 @@ img {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
-/* Wrong 1: No chão */
+/* Wrong 1: No ch?o */
 .v-item.floor .v-title {
     top: 50px;
 }
@@ -3709,7 +3753,7 @@ img {
     }
 }
 
-/* MODULO 4 INSPECÃO INICIAL */
+/* MODULO 4 INSPEC?O INICIAL */
 .m4-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -3913,7 +3957,7 @@ img {
     }
 }
 
-/* Página 22 — Quiz Módulo 3: alinhar texto da pergunta ao centro do card */
+/* P?gina 22 ? Quiz M?dulo 3: alinhar texto da pergunta ao centro do card */
 #s21 #q3-text .question-title,
 #s21 #q3-text .quiz-question-title,
 #s21 #q3-text .question-text,
@@ -3924,7 +3968,7 @@ img {
     margin-right: auto;
 }
 
-/* Página 22 — Quiz Módulo 3: alinhar pergunta secundária ao eixo da situação */
+/* P?gina 22 ? Quiz M?dulo 3: alinhar pergunta secund?ria ao eixo da situa??o */
 #s21 #q3-text .question-subtitle,
 #s21 #q3-text .quiz-subtitle,
 #s21 #q3-text .question-helper,
@@ -3935,7 +3979,7 @@ img {
     margin-right: auto;
 }
 
-/* Otimizações visuais e estruturais do Quiz 5 (Sem alterar HTML/JS) */
+/* Otimiza??es visuais e estruturais do Quiz 5 (Sem alterar HTML/JS) */
 /* 1 e 2. CARD SUPERIOR e BANNER HORIZONTAL */
 #s35 .q-text {
     width: 104% !important;
@@ -3970,14 +4014,14 @@ img {
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
 }
 
-/* 3. TÍTULO DA PÁGINA (Top bar) */
+/* 3. T?TULO DA P?GINA (Top bar) */
 #s35 .top-bar {
     padding-top: 10px !important;
     margin-bottom: 5px !important;
 }
 
 #s35 .slide-title {
-    /* Tamanho e sombra removidos para usar o padrão inline (clamp(28px...)) de todas as páginas */
+    /* Tamanho e sombra removidos para usar o padr?o inline (clamp(28px...)) de todas as p?ginas */
     margin-top: 0 !important;
 }
 
@@ -3990,7 +4034,7 @@ img {
     margin-top: 0 !important;
     /* Mais perto da imagem */
     margin-bottom: 2px !important;
-    /* Mais perto da descrição */
+    /* Mais perto da descri??o */
     text-align: center !important;
     color: var(--gold) !important;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
@@ -4001,7 +4045,7 @@ img {
     font-size: 13.5px !important;
     line-height: 1.35 !important;
     margin-bottom: 5px !important;
-    /* Menor espaço para a pergunta */
+    /* Menor espa?o para a pergunta */
     padding: 0 20px !important;
     opacity: 0.9 !important;
     color: #ffffff !important;
@@ -4014,7 +4058,7 @@ img {
     font-weight: 600 !important;
     margin-top: 2px !important;
     margin-bottom: 5px !important;
-    /* Menor espaço inferior */
+    /* Menor espa?o inferior */
     padding: 0 20px !important;
     text-align: center !important;
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.3) !important;
@@ -4028,7 +4072,7 @@ img {
     display: flex !important;
     flex-direction: column !important;
     gap: 5px !important;
-    /* Reduzir ainda mais os espaços vazios */
+    /* Reduzir ainda mais os espa?os vazios */
 }
 
 #s35 .q-opt {
@@ -4086,7 +4130,7 @@ img {
     color: #ffffff !important;
 }
 
-/* 6. FEEDBACK e BOTÃO PRÓXIMO */
+/* 6. FEEDBACK e BOT?O PR?XIMO */
 #s35 .q-feedback {
     min-height: 24px !important;
     /* Altura muito menor */
@@ -4099,9 +4143,9 @@ img {
 
 #s35 .btn-next-q {
     margin-top: 5px !important;
-    /* Subir botão */
+    /* Subir bot?o */
     padding: 8px 25px !important;
-    /* Compactar botão */
+    /* Compactar bot?o */
     font-size: 14px !important;
 }
 
@@ -4114,7 +4158,7 @@ img {
     font-size: 14px !important;
 }
 
-/* ESPAÇAMENTO GERAL e BACKGROUND */
+/* ESPA?AMENTO GERAL e BACKGROUND */
 #s35 .content-area {
     padding-top: 0 !important;
     padding-bottom: 20px !important;
@@ -4127,7 +4171,7 @@ img {
     position: relative;
 }
 
-/* Glow verde suave de fundo da tela inteira (atrás de tudo) */
+/* Glow verde suave de fundo da tela inteira (atr?s de tudo) */
 #s35 .quiz-wrap::before {
     content: '';
     position: absolute;
@@ -4142,9 +4186,9 @@ img {
 }
 
 
-/* ════════════════════════════════════════
-   MOBILE / iOS FIXES (refactor split — v2)
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   MOBILE / iOS FIXES (refactor split ? v2)
+   ???????????????????????????????????????? */
 
 /* Base viewport sizing for all sizes */
 html,
@@ -4178,7 +4222,7 @@ body {
     opacity: 1 !important;
 }
 
-/* Ativo (clicado): destaque amarelo — posição definida pelo JS (à esquerda do a11y/logo) */
+/* Ativo (clicado): destaque amarelo ? posi??o definida pelo JS (? esquerda do a11y/logo) */
 #btn-demo.is-demo-on {
     opacity: 1 !important;
 }
@@ -4216,7 +4260,7 @@ body {
         display: flex !important;
     }
 
-    /* ─── CONTENT AREA: scrollable, gives room for nav + counter ─── */
+    /* ??? CONTENT AREA: scrollable, gives room for nav + counter ??? */
     .content-area {
         flex: 1 1 auto;
         min-height: 0;
@@ -4227,7 +4271,7 @@ body {
         padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
-    /* ─── TOP BAR: abaixo do contador 7/19 e da logo ─── */
+    /* ??? TOP BAR: abaixo do contador 7/19 e da logo ??? */
     .top-bar {
         padding: calc(68px + env(safe-area-inset-top, 0px)) 16px 0 14px !important;
     }
@@ -4243,7 +4287,7 @@ body {
         margin-top: 0 !important;
     }
 
-    /* ─── SLIDE COUNTER: centralizado e single-line ─── */
+    /* ??? SLIDE COUNTER: centralizado e single-line ??? */
     #slide-counter {
         top: calc(10px + env(safe-area-inset-top, 0px)) !important;
         left: 50% !important;
@@ -4259,7 +4303,7 @@ body {
         z-index: 5000 !important;
     }
 
-    /* ─── LOGO: menor e canto, sem cobrir o título ─── */
+    /* ??? LOGO: menor e canto, sem cobrir o t?tulo ??? */
     #logo {
         top: calc(8px + env(safe-area-inset-top, 0px)) !important;
         right: 8px !important;
@@ -4277,7 +4321,7 @@ body {
         z-index: 1 !important;
     }
 
-    /* ─── BOTÃO SIMULAÇÃO: top-left no mobile (igual NR-11) ─── */
+    /* ??? BOT?O SIMULA??O: top-left no mobile (igual NR-11) ??? */
     #btn-demo {
         bottom: auto !important;
         top: calc(8px + env(safe-area-inset-top, 0px)) !important;
@@ -4340,7 +4384,7 @@ body {
         z-index: 960 !important;
     }
 
-    /* ─── NAV BOTTOM: bem separados, sem colar ─── */
+    /* ??? NAV BOTTOM: bem separados, sem colar ??? */
     #nav {
         position: fixed !important;
         bottom: 0;
@@ -4358,7 +4402,7 @@ body {
         box-sizing: border-box !important;
     }
 
-    /* ─── BOTÕES NAV: compactos, com espaço claro entre eles ─── */
+    /* ??? BOT?ES NAV: compactos, com espa?o claro entre eles ??? */
     .nav-btn {
         pointer-events: auto;
         z-index: 951;
@@ -4382,7 +4426,7 @@ body {
         flex-shrink: 0;
     }
 
-    /* "PRÓXIMO MÓDULO" cabe em uma linha só, com fonte levemente menor */
+    /* "PR?XIMO M?DULO" cabe em uma linha s?, com fonte levemente menor */
     .nav-btn.btn-next-module .fwd-label {
         font-size: 11px;
         letter-spacing: 0.02em;
@@ -4394,14 +4438,14 @@ body {
         opacity: 0.5;
     }
 
-    /* Título/tag longe do topo (contador + logo + acessibilidade) */
+    /* T?tulo/tag longe do topo (contador + logo + acessibilidade) */
     .top-bar {
         padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
         padding-left: 14px !important;
         padding-right: 16px !important;
     }
 
-    /* ─── CAPA (S1): conteúdo abaixo da logo + acessibilidade ─── */
+    /* ??? CAPA (S1): conte?do abaixo da logo + acessibilidade ??? */
     #s1 .s1-inner {
         padding: 118px 18px calc(28px + env(safe-area-inset-bottom, 0px)) !important;
         align-items: center !important;
@@ -4472,7 +4516,7 @@ body {
         z-index: 3 !important;
     }
 
-    /* ─── CARDS: espaço extra no bottom pra não cortar ─── */
+    /* ??? CARDS: espa?o extra no bottom pra n?o cortar ??? */
     .flip-card,
     .icon-card,
     .card,
@@ -4488,12 +4532,12 @@ body {
         margin-bottom: 12px;
     }
 
-    /* Garante que o último card de qualquer grid tenha espaço extra */
+    /* Garante que o ?ltimo card de qualquer grid tenha espa?o extra */
     .content-area>*:last-child {
         margin-bottom: 20px !important;
     }
 
-    /* Cards de flip do módulo 1 (s7) - tamanho aumentado pra não cortar texto */
+    /* Cards de flip do m?dulo 1 (s7) - tamanho aumentado pra n?o cortar texto */
     #s8 .flip-card {
         width: 100% !important;
         max-width: 320px !important;
@@ -4548,9 +4592,9 @@ body {
     }
 }
 
-/* ════════════════════════════════════════
+/* ????????????????????????????????????????
    IMAGE MODAL (shared across all modules)
-   ════════════════════════════════════════ */
+   ???????????????????????????????????????? */
 .img-modal-overlay {
     position: fixed;
     top: 0;
@@ -4596,7 +4640,7 @@ body {
     display: block;
 }
 
-/* ── TUTORIAL MODAL ── */
+/* ?? TUTORIAL MODAL ?? */
 .tutorial-overlay {
     position: fixed !important;
     inset: 0 !important;
@@ -4725,8 +4769,8 @@ body {
     color: var(--gold);
 }
 
-/* Largura derivada da altura disponível: a moldura fica exatamente 16:9,
-   então o player preenche tudo sem faixas pretas nas laterais. */
+/* Largura derivada da altura dispon?vel: a moldura fica exatamente 16:9,
+   ent?o o player preenche tudo sem faixas pretas nas laterais. */
 .tutorial-video {
     position: relative;
     width: min(100%, calc(min(50vh, 460px) * 16 / 9));
@@ -4880,9 +4924,9 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   MOBILE: feedback inline (não absolute) na atividade s-conducao
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   MOBILE: feedback inline (n?o absolute) na atividade s-conducao
+   ???????????????????????????????????????? */
 @media screen and (max-width: 768px) {
     #conducao-question-panel {
         position: relative;
@@ -4938,9 +4982,9 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   FIX BATCH (mobile correções múltiplas)
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   FIX BATCH (mobile corre??es m?ltiplas)
+   ???????????????????????????????????????? */
 
 /* Cover-only: hide nav completely (overrides mobile !important rules) */
 #nav.nav-hidden-cover {
@@ -4950,14 +4994,14 @@ body {
 
 @media screen and (max-width: 768px) {
 
-    /* ─── MÓD 2 pág 3 (s10): desativar transforms que dificultam scroll ─── */
+    /* ??? M?D 2 p?g 3 (s10): desativar transforms que dificultam scroll ??? */
     #s12 .hub-spoke:hover,
     #s12 .hub-spoke.active {
         transform: scale(1.02) !important;
         box-shadow: 0 8px 20px rgba(246, 213, 12, 0.2) !important;
     }
 
-    /* Ao tocar, não amplifica box-shadow exagerado que cria glow gigante */
+    /* Ao tocar, n?o amplifica box-shadow exagerado que cria glow gigante */
     #s12 .hub-spoke::before {
         box-shadow: none !important;
     }
@@ -4971,7 +5015,7 @@ body {
         background-blend-mode: normal !important;
     }
 
-    /* ─── MÓD 4 pág 4 (s-mod4-video-finalizacao): card expandido deve mostrar todo texto ─── */
+    /* ??? M?D 4 p?g 4 (s-mod4-video-finalizacao): card expandido deve mostrar todo texto ??? */
     #s25 .passo-card {
         padding: 18px !important;
         overflow: hidden;
@@ -5003,7 +5047,7 @@ body {
 
 
 
-    /* ─── MÓD 6 pág 3 (s-mod6-compromissos): garantir cards uniformes ─── */
+    /* ??? M?D 6 p?g 3 (s-mod6-compromissos): garantir cards uniformes ??? */
     #s38 .hud-panel-grid {
         grid-template-columns: 1fr !important;
         gap: 14px !important;
@@ -5018,7 +5062,7 @@ body {
         min-height: auto !important;
     }
 
-    /* ─── MÓD 5 pág 3 (s-mod5-comp1 / página 30): scroll mobile igual página 40 ─── */
+    /* ??? M?D 5 p?g 3 (s-mod5-comp1 / p?gina 30): scroll mobile igual p?gina 40 ??? */
     #s29 {
         overflow: hidden;
     }
@@ -5043,7 +5087,7 @@ body {
         gap: 24px !important;
     }
 
-    /* ─── MÓD 2 s14b: área interna com scroll próprio (nav fixa) ─── */
+    /* ??? M?D 2 s14b: ?rea interna com scroll pr?prio (nav fixa) ??? */
     #s14b {
         overflow: hidden !important;
     }
@@ -5091,7 +5135,7 @@ body {
         align-items: center;
     }
 
-    /* ─── MÓD 6 pág 4 (s-mod6-comp-preventiva): espaço entre cards ─── */
+    /* ??? M?D 6 p?g 4 (s-mod6-comp-preventiva): espa?o entre cards ??? */
     #s39 .compare-container,
     #s39 .content-area>div[style*="grid"],
     #s39 .content-area>div[style*="flex"] {
@@ -5106,7 +5150,7 @@ body {
         max-width: 100% !important;
     }
 
-    /* Copiado de #s29 (página 30) — aplicar também em s-mod6-comp-preventiva (página 40) */
+    /* Copiado de #s29 (p?gina 30) ? aplicar tamb?m em s-mod6-comp-preventiva (p?gina 40) */
     #s39 .comp-cards-grid {
         display: flex;
         flex-direction: column;
@@ -5189,7 +5233,7 @@ body {
         }
     }
 
-    /* ─── MÓD 6 pág 5 (s-mod6-mensagem-final): centralizar + blur ─── */
+    /* ??? M?D 6 p?g 5 (s-mod6-mensagem-final): centralizar + blur ??? */
     #s40 {
         align-items: center !important;
         justify-content: center !important;
@@ -5209,7 +5253,7 @@ body {
         text-align: center !important;
     }
 
-    /* ─── MÓD 6 pág 8 (s-quiz6): botão mute reposicionado ─── */
+    /* ??? M?D 6 p?g 8 (s-quiz6): bot?o mute reposicionado ??? */
     #s43 #q6-btn-music-toggle {
         top: 6px !important;
         right: 6px !important;
@@ -5224,8 +5268,8 @@ body {
         padding-right: 12px !important;
     }
 
-    /* Conclusão (s44): estilo próprio no bloco <style> de modulo-4.html,
-       igual à referência NR-11. */
+    /* Conclus?o (s44): estilo pr?prio no bloco <style> de modulo-4.html,
+       igual ? refer?ncia NR-11. */
     #s44 .glow-overlay,
     #s44 #c-particles,
     #s44 #c-confetti {
@@ -5249,13 +5293,13 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   FIX BATCH v3 — mobile refinements
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   FIX BATCH v3 ? mobile refinements
+   ???????????????????????????????????????? */
 
 @media screen and (max-width: 768px) {
 
-    /* ─── CAPA: textos no topo (abaixo da logo/a11y), CTAs no rodapé ─── */
+    /* ??? CAPA: textos no topo (abaixo da logo/a11y), CTAs no rodap? ??? */
     #s1 .s1-inner {
         padding: 126px 18px calc(24px + env(safe-area-inset-bottom, 0px)) !important;
         transform: none !important;
@@ -5312,7 +5356,7 @@ body {
         display: none;
     }
 
-    /* ─── GLOBAL: desativa hover/transform agressivo nos cards ─── */
+    /* ??? GLOBAL: desativa hover/transform agressivo nos cards ??? */
     /* Em mobile com touch, hover fica preso. Desativar transforms evita "travadas". */
     .icon-card:hover,
     .card:hover,
@@ -5337,7 +5381,7 @@ body {
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* ─── MÓD 3 pág 3 (s-conducao): mais espaço pro feedback ─── */
+    /* ??? M?D 3 p?g 3 (s-conducao): mais espa?o pro feedback ??? */
     #s18 .content-area {
         padding-bottom: calc(160px + env(safe-area-inset-bottom, 0px)) !important;
     }
@@ -5354,7 +5398,7 @@ body {
 
 
 
-    /* ─── MÓD 6 pág 3 (s-mod6-compromissos): ícones uniformes e centralizados ─── */
+    /* ??? M?D 6 p?g 3 (s-mod6-compromissos): ?cones uniformes e centralizados ??? */
     #s38 .hud-panel-icon {
         font-size: 28px !important;
         width: 48px !important;
@@ -5380,7 +5424,7 @@ body {
         margin-top: 6px !important;
     }
 
-    /* ─── MÓD 6 pág 4 (s-mod6-comp-preventiva): card vira verde ao clicar (one-time) ─── */
+    /* ??? M?D 6 p?g 4 (s-mod6-comp-preventiva): card vira verde ao clicar (one-time) ??? */
     #s39 .comp-card-modern.req-done {
         border-color: var(--green) !important;
         box-shadow: 0 0 24px rgba(246, 213, 12, 0.35), inset 0 0 12px rgba(246, 213, 12, 0.1) !important;
@@ -5388,7 +5432,7 @@ body {
     }
 
     #s39 .comp-card-modern.req-done::after {
-        content: '✓';
+        content: '?';
         position: absolute;
         top: 10px;
         right: 12px;
@@ -5399,7 +5443,7 @@ body {
         z-index: 5;
     }
 
-    /* ─── MÓD 6 pág 5 (s-mod6-mensagem-final): centralizar mais embaixo + blur menor ─── */
+    /* ??? M?D 6 p?g 5 (s-mod6-mensagem-final): centralizar mais embaixo + blur menor ??? */
     #s40 {
         align-items: center !important;
         justify-content: center !important;
@@ -5414,14 +5458,14 @@ body {
         margin-top: 60px !important;
     }
 
-    /* Especificamente: o título central */
+    /* Especificamente: o t?tulo central */
     #s40 h1,
     #s40 h2 {
         margin-top: 8vh !important;
         text-align: center !important;
     }
 
-    /* ─── MÓD 6 pág 8 (s-quiz6): subir mais o botão música ─── */
+    /* ??? M?D 6 p?g 8 (s-quiz6): subir mais o bot?o m?sica ??? */
     #s43 #q6-btn-music-toggle {
         top: -6px !important;
         right: 6px !important;
@@ -5435,7 +5479,7 @@ body {
         margin-top: 48px !important;
     }
 
-    /* Conclusão (s44): ver bloco <style> de modulo-4.html */
+    /* Conclus?o (s44): ver bloco <style> de modulo-4.html */
     #s44 .glow-overlay,
     #s44 #c-particles,
     #s44 #c-confetti {
@@ -5450,12 +5494,12 @@ body {
 }
 
 
-/* ════════════════════════════════════════
-   ACESSIBILIDADE — Toolbar dobrável (Ouvir)
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   ACESSIBILIDADE ? Toolbar dobr?vel (Ouvir)
+   ???????????????????????????????????????? */
 #a11y-bar {
     position: fixed;
-    /* posição é definida via JS para alinhar à esquerda do logo */
+    /* posi??o ? definida via JS para alinhar ? esquerda do logo */
     top: 24px;
     right: 130px;
     z-index: 902;
@@ -5466,7 +5510,7 @@ body {
     pointer-events: none;
 }
 
-/* Launcher (botão único circular com ícone de acessibilidade) */
+/* Launcher (bot?o ?nico circular com ?cone de acessibilidade) */
 #a11y-launcher {
     pointer-events: auto;
     width: 36px;
@@ -5621,7 +5665,7 @@ body {
     border-color: var(--red);
 }
 
-/* Mobile portrait — acessibilidade abaixo da logo */
+/* Mobile portrait ? acessibilidade abaixo da logo */
 @media screen and (max-width: 768px) and (orientation: portrait) {
     #a11y-bar {
         top: 52px;
@@ -5678,9 +5722,9 @@ body {
     }
 }
 
-/* ════════════════════════════════════════
-   SLIDE COUNTER — sempre visível, no topo
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   SLIDE COUNTER ? sempre vis?vel, no topo
+   ???????????????????????????????????????? */
 #slide-counter {
     visibility: visible !important;
     display: block !important;
@@ -5721,7 +5765,7 @@ body {
     .slide-title { font-size:22px !important; line-height:1.2 !important; }
 }
 
-/* ── NR-06: slides de vídeo — encaixe igual NR-11 (cores ouro/roxo) ── */
+/* ?? NR-06: slides de v?deo ? encaixe igual NR-11 (cores ouro/roxo) ?? */
 .slide.slide-video {
     display: flex !important;
     flex-direction: column !important;
@@ -5758,7 +5802,7 @@ body {
     background-size: 60px 60px !important;
 }
 
-/* Header compacto — deixa espaço pro vídeo */
+/* Header compacto ? deixa espa?o pro v?deo */
 .slide.slide-video .top-bar {
     flex: 0 0 auto !important;
     padding: 16px 130px 0 28px !important;
@@ -5777,7 +5821,7 @@ body {
     text-shadow: none !important;
 }
 
-/* Área do player: centralizado na tela (entre título e nav) */
+/* ?rea do player: centralizado na tela (entre t?tulo e nav) */
 .slide.slide-video .content-area {
     flex: 1 1 auto !important;
     display: flex !important;
@@ -5943,7 +5987,7 @@ body {
     opacity: 0.85;
 }
 
-/* ── NR-06: vídeo placeholder + cards interativos ── */
+/* ?? NR-06: v?deo placeholder + cards interativos ?? */
 .video-placeholder.req-done {
     border-color: rgba(46, 204, 113, 0.55) !important;
     box-shadow: 0 0 28px rgba(46, 204, 113, 0.22) !important;
@@ -5961,7 +6005,7 @@ body {
     transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, background 0.25s;
 }
 
-/* Destaca levemente os quadros já confirmados */
+/* Destaca levemente os quadros j? confirmados */
 .icon-card.req-item.req-done,
 .check-item.req-item.req-done,
 .epi-card.req-item.req-done,
@@ -5980,7 +6024,7 @@ body {
 .epi-card.req-item.req-done::after,
 .m3-rule-card.req-item.req-done::after {
     display: flex !important;
-    content: "✓";
+    content: "?";
     position: absolute;
     top: 8px;
     right: 8px;
@@ -6011,9 +6055,9 @@ body {
     border-color: transparent !important;
 }
 
-/* ════════════════════════════════════════
-   NR-06 — encaixe geral (sem vazamento)
-   ════════════════════════════════════════ */
+/* ????????????????????????????????????????
+   NR-06 ? encaixe geral (sem vazamento)
+   ???????????????????????????????????????? */
 .slide {
     box-sizing: border-box;
 }
@@ -6103,9 +6147,9 @@ body {
         padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
     }
 }
-/* ════════════════════════════════════════
+/* ????????????????????????????????????????
    NR-06 MINIGAMES
-   ════════════════════════════════════════ */
+   ???????????????????????????????????????? */
 .mg-hint {
     text-align: center;
     width: 100%;
@@ -6363,11 +6407,11 @@ body {
 }
 .mg-chip.is-wrong { /* already defined */ }
 
-/* ═══════════════════════════════════════════════════════════════
-   NR-06 — Alinhamento de layout ao NR-11 Patolada (tema roxo/amarelo)
-   ═══════════════════════════════════════════════════════════════ */
+/* ???????????????????????????????????????????????????????????????
+   NR-06 ? Alinhamento de layout ao NR-11 Patolada (tema roxo/amarelo)
+   ??????????????????????????????????????????????????????????????? */
 
-/* ── Shell fixo (logo, contador, nav, a11y) ── */
+/* ?? Shell fixo (logo, contador, nav, a11y) ?? */
 #pbar-wrap { z-index: 9999; }
 #pbar {
     background: linear-gradient(90deg, var(--black-xs), var(--gold)) !important;
@@ -6410,7 +6454,7 @@ body {
     z-index: 9999 !important;
 }
 
-/* ── Tipografia de slide (igual NR-11, cores NR-06) ── */
+/* ?? Tipografia de slide (igual NR-11, cores NR-06) ?? */
 .section-tag {
     background: linear-gradient(135deg, var(--red), var(--red-dk)) !important;
     color: var(--black) !important;
@@ -6437,7 +6481,7 @@ body {
     z-index: 2;
 }
 
-/* ── Botões de navegação ── */
+/* ?? Bot?es de navega??o ?? */
 .nav-btn {
     background: var(--gold) !important;
     color: var(--black) !important;
@@ -6446,7 +6490,7 @@ body {
         0 0 28px rgba(246, 213, 12, 0.28) !important;
 }
 
-/* Texto do fim do módulo ("PRÓXIMO MÓDULO") */
+/* Texto do fim do m?dulo ("PR?XIMO M?DULO") */
 .nav-btn.btn-next-module {
     padding-left: 20px !important;
     padding-right: 20px !important;
@@ -6475,7 +6519,7 @@ body {
     }
 }
 
-/* ── Capa #s1 — layout NR-11 com hero à direita ── */
+/* ?? Capa #s1 ? layout NR-11 com hero ? direita ?? */
 #s1 {
     background-color: var(--black) !important;
     background-image: radial-gradient(ellipse at 30% 60%, rgba(246, 213, 12, 0.16) 0%, transparent 60%) !important;
@@ -6608,7 +6652,7 @@ body {
     box-shadow: 0 8px 28px rgba(246, 213, 12, 0.4) !important;
 }
 
-/* ── Sumário ── */
+/* ?? Sum?rio ?? */
 .sum-item {
     border-left: 6px solid var(--gold) !important;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, var(--black-s) 40%, rgba(246, 213, 12, 0.06) 100%) !important;
@@ -6619,7 +6663,7 @@ body {
     color: var(--black) !important;
 }
 
-/* ── Intro de módulo ── */
+/* ?? Intro de m?dulo ?? */
 .mod-intro-pill {
     background: var(--red) !important;
     color: var(--black) !important;
@@ -6636,7 +6680,7 @@ body {
     color: var(--cream) !important;
 }
 
-/* ── Vídeos — espaçamento NR-11 ── */
+/* ?? V?deos ? espa?amento NR-11 ?? */
 .slide .content-area > .video-wrap {
     max-width: 1000px !important;
     aspect-ratio: 16 / 9 !important;
@@ -6649,19 +6693,19 @@ body {
         0 0 28px rgba(246, 213, 12, 0.18) !important;
 }
 
-/* Mesma respiração da referência entre o título e o player */
+/* Mesma respira??o da refer?ncia entre o t?tulo e o player */
 .slide:not(.slide-video) .content-area > .video-wrap {
     margin-top: 56px !important;
 }
 
-/* Atividades/minigames — encaixe centralizado como NR-11 */
+/* Atividades/minigames ? encaixe centralizado como NR-11 */
 .slide:not(.slide-video):not(#s1):not(#s44) .content-area {
     justify-content: center !important;
     padding-top: 8px !important;
     padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
-/* Minigames / quiz — tipografia alinhada */
+/* Minigames / quiz ? tipografia alinhada */
 .slide:not(.slide-video):not(#s44) .content-area {
     padding: 10px 28px 80px !important;
 }
@@ -6679,7 +6723,7 @@ body {
     text-shadow: 0 0 12px rgba(246, 213, 12, 0.2);
 }
 
-/* ── A11y bar — estilo NR-11 ── */
+/* ?? A11y bar ? estilo NR-11 ?? */
 #a11y-launcher {
     background: #ffffff !important;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
@@ -6702,7 +6746,7 @@ body {
     border-color: var(--gold) !important;
 }
 
-/* ── Mobile (espelha NR-11) ── */
+/* ?? Mobile (espelha NR-11) ?? */
 @media screen and (max-width: 768px) {
     #logo {
         top: calc(8px + env(safe-area-inset-top, 0px)) !important;
@@ -6800,10 +6844,10 @@ body {
     }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   FIX FINAL — logo branca NÃO pode ter caixa branca
-   + reforço de degradês (estilo NR-11, cores NR-06)
-   ═══════════════════════════════════════════════════════════════ */
+/* ???????????????????????????????????????????????????????????????
+   FIX FINAL ? logo branca N?O pode ter caixa branca
+   + refor?o de degrad?s (estilo NR-11, cores NR-06)
+   ??????????????????????????????????????????????????????????????? */
 #logo,
 #logo.logo,
 div#logo {
@@ -6820,7 +6864,7 @@ div#logo {
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 12px rgba(246, 213, 12, 0.3)) !important;
 }
 
-/* ── BOTÃO SIMULAÇÃO desktop — à esquerda do a11y/logo (igual NR-11) ── */
+/* ?? BOT?O SIMULA??O desktop ? ? esquerda do a11y/logo (igual NR-11) ?? */
 @media (min-width: 769px) {
     #btn-demo {
         position: fixed !important;
@@ -6911,10 +6955,10 @@ div#logo {
     z-index: 2;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   QUIZ INTRO + MÓDULO INTRO — layout NR-11 (tag esq. + card centro)
-   Tag/título ancorados no canto; card no centro absoluto da tela.
-   ═══════════════════════════════════════════════════════════════ */
+/* ???????????????????????????????????????????????????????????????
+   QUIZ INTRO + M?DULO INTRO ? layout NR-11 (tag esq. + card centro)
+   Tag/t?tulo ancorados no canto; card no centro absoluto da tela.
+   ??????????????????????????????????????????????????????????????? */
 
 .slide[id$="-quiz"],
 .slide[id$="-game"],
@@ -6923,7 +6967,7 @@ div#logo {
     flex-direction: column !important;
 }
 
-/* Tag + título: canto superior ESQUERDO (não ocupa espaço do centro) */
+/* Tag + t?tulo: canto superior ESQUERDO (n?o ocupa espa?o do centro) */
 .slide[id$="-quiz"] > .top-bar,
 .slide[id$="-game"] > .top-bar,
 .slide[id$="-intro"] > .top-bar {
@@ -6972,7 +7016,7 @@ div#logo {
     display: inline-block !important;
 }
 
-/* Área do meio: preenche a tela inteira e centraliza o card */
+/* ?rea do meio: preenche a tela inteira e centraliza o card */
 .slide[id$="-quiz"] > .content-area,
 .slide[id$="-game"] > .content-area,
 .slide[id$="-intro"] > .content-area {
@@ -7007,7 +7051,7 @@ div#logo {
     min-height: 0 !important;
 }
 
-/* Perguntas/resultado ativos: esconde título da intro e centraliza o quiz */
+/* Perguntas/resultado ativos: esconde t?tulo da intro e centraliza o quiz */
 .slide[id$="-quiz"].quiz-playing > .top-bar,
 .slide[id$="-game"].quiz-playing > .top-bar {
     display: none !important;
@@ -7057,7 +7101,7 @@ div#logo {
     text-align: center !important;
 }
 
-/* JS seta display:none — precisa vencer o flex acima */
+/* JS seta display:none ? precisa vencer o flex acima */
 .quiz-intro-panel[hidden],
 .quiz-intro-panel.is-hidden,
 .quiz-intro-panel[style*="display: none"],
@@ -7177,7 +7221,7 @@ div#logo {
     transform: scale(0.98);
 }
 
-/* Card de abertura de módulo (mesmo estilo do desafio) */
+/* Card de abertura de m?dulo (mesmo estilo do desafio) */
 .mod-intro-card {
     width: 100%;
     max-width: 520px !important;
@@ -7273,9 +7317,9 @@ div#logo {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   FORMATOS DE DESAFIO — variedade NR-11 (cenário / V/F / permitido / liberar)
-   ═══════════════════════════════════════════════════════════════ */
+/* ???????????????????????????????????????????????????????????????
+   FORMATOS DE DESAFIO ? variedade NR-11 (cen?rio / V/F / permitido / liberar)
+   ??????????????????????????????????????????????????????????????? */
 
 .q-scene-theme,
 .q-gate-theme,
@@ -7429,9 +7473,9 @@ div#logo {
     }
 }
 
-/* ═══════════════════════════════════════════════════════════════
+/* ???????????????????????????????????????????????????????????????
    MINIGAME CERTO/ERRADO + CARD DE RESULTADO (estilo NR-11)
-   ═══════════════════════════════════════════════════════════════ */
+   ??????????????????????????????????????????????????????????????? */
 
 .mg-decide-card {
     width: 100%;
@@ -7523,7 +7567,7 @@ div#logo {
 .mg-decide-verify {
     display: none;
     justify-content: center;
-    margin-top: 14px;
+    margin-top: 22px;
     transition: opacity 0.25s ease;
 }
 
@@ -7743,12 +7787,12 @@ div#logo {
     .quiz-result-btn { width: 100%; max-width: 320px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   CAPA #s1 — posicionamento idêntico à referência NR-11
-   Coluna única à esquerda (tag, título, texto, botões) e imagem
-   ancorada à direita, centralizada na vertical.
+/* ???????????????????????????????????????????????????????????????
+   CAPA #s1 ? posicionamento id?ntico ? refer?ncia NR-11
+   Coluna ?nica ? esquerda (tag, t?tulo, texto, bot?es) e imagem
+   ancorada ? direita, centralizada na vertical.
    Cores da marca NR-06 (amarelo/roxo) preservadas.
-   ═══════════════════════════════════════════════════════════════ */
+   ??????????????????????????????????????????????????????????????? */
 
 #s1 {
     overflow: hidden !important;
@@ -7787,10 +7831,10 @@ div#logo {
     white-space: nowrap !important;
 }
 
-/* O título da NR-06 tem uma palavra a mais e uma linha extra em relação ao
-   da NR-11, então a fonte é um pouco menor para a linha mais larga não
+/* O t?tulo da NR-06 tem uma palavra a mais e uma linha extra em rela??o ao
+   da NR-11, ent?o a fonte ? um pouco menor para a linha mais larga n?o
    passar por baixo da imagem e para as 4 linhas ocuparem a mesma altura
-   que as 3 linhas da referência. */
+   que as 3 linhas da refer?ncia. */
 #s1 .s1-inner h1 {
     font-size: clamp(28px, 3.7vw, 48px) !important;
     line-height: 1.02 !important;
@@ -7884,8 +7928,8 @@ div#logo {
     align-self: flex-start !important;
 }
 
-/* Imagem ancorada à direita — um pouco abaixo do centro para
-   não colidir com a logo TecnoCursos no canto superior direito */
+/* Imagem ancorada ? direita ? um pouco abaixo do centro para
+   n?o colidir com a logo TecnoCursos no canto superior direito */
 #s1 .s1-hero-img {
     display: block !important;
     position: absolute !important;
@@ -7940,8 +7984,8 @@ div#logo {
     visibility: visible !important;
     opacity: 1 !important;
     width: 100% !important;
-    /* A capa da NR-06 é mais "quadrada" que a da NR-11. Fixando a proporção
-       da referência, a moldura fica exatamente do mesmo tamanho e no mesmo
+    /* A capa da NR-06 ? mais "quadrada" que a da NR-11. Fixando a propor??o
+       da refer?ncia, a moldura fica exatamente do mesmo tamanho e no mesmo
        lugar; o cover recorta um pouco em vez de distorcer. */
     aspect-ratio: 3 / 2 !important;
     height: auto !important;
@@ -7962,9 +8006,9 @@ div#logo {
     z-index: 1 !important;
 }
 
-/* Janela baixa no desktop: a coluna do NR-06 tem uma linha de título a mais
-   que a da referência, então nessa faixa ela encolhe o suficiente para o
-   "Ver tutorial" não ficar fora da tela. */
+/* Janela baixa no desktop: a coluna do NR-06 tem uma linha de t?tulo a mais
+   que a da refer?ncia, ent?o nessa faixa ela encolhe o suficiente para o
+   "Ver tutorial" n?o ficar fora da tela. */
 @media screen and (min-width: 901px) and (max-height: 700px) {
     #s1 .s1-tag {
         margin-bottom: 8px !important;
@@ -8001,8 +8045,8 @@ div#logo {
     }
 }
 
-/* ≤900px (igual à referência): a imagem sai do absoluto e entra no fluxo,
-   entre o parágrafo e o botão. O texto segue alinhado à esquerda. */
+/* ?900px (igual ? refer?ncia): a imagem sai do absoluto e entra no fluxo,
+   entre o par?grafo e o bot?o. O texto segue alinhado ? esquerda. */
 @media screen and (max-width: 900px) {
     #s1 > .s1-inner {
         padding: calc(86px + env(safe-area-inset-top, 0px)) 20px 24px 20px !important;
@@ -8039,7 +8083,7 @@ div#logo {
     }
 }
 
-/* ≤768px (igual à referência): capa centralizada */
+/* ?768px (igual ? refer?ncia): capa centralizada */
 @media screen and (max-width: 768px) {
     #s1 > .s1-inner {
         padding: calc(92px + env(safe-area-inset-top, 0px)) 18px calc(80px + env(safe-area-inset-bottom, 0px)) !important;
@@ -8057,8 +8101,8 @@ div#logo {
     }
 
     #s1 .s1-inner h1 {
-        /* 32px é o valor da referência; abaixo de ~420px de largura a linha
-           "Proteção Individual" não cabe, então acompanha a viewport. */
+        /* 32px ? o valor da refer?ncia; abaixo de ~420px de largura a linha
+           "Prote??o Individual" n?o cabe, ent?o acompanha a viewport. */
         font-size: clamp(24px, 7.6vw, 32px) !important;
         text-align: center !important;
         margin-bottom: 6px !important;
@@ -8105,14 +8149,14 @@ div#logo {
 }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   PARIDADE FINAL COM A REFERÊNCIA NR-11
-   Mesma geometria de botões/cards e mesmos estados de resposta.
+/* ???????????????????????????????????????????????????????????????
+   PARIDADE FINAL COM A REFER?NCIA NR-11
+   Mesma geometria de bot?es/cards e mesmos estados de resposta.
    Cores da marca NR-06 (amarelo/roxo) preservadas.
-   ═══════════════════════════════════════════════════════════════ */
+   ??????????????????????????????????????????????????????????????? */
 
-/* Verde/vermelho aqui não são cores de marca: sinalizam acerto e erro,
-   exatamente como na referência. */
+/* Verde/vermelho aqui n?o s?o cores de marca: sinalizam acerto e erro,
+   exatamente como na refer?ncia. */
 :root {
     --fb-ok: #2ECC71;
     --fb-ok-dk: #27AE60;
@@ -8121,7 +8165,7 @@ div#logo {
     --fb-no-lt: #FF7085;
 }
 
-/* ── Modo Simulação: oculto por padrão; atalho qa1010 revela ── */
+/* ?? Modo Simula??o: oculto por padr?o; atalho qa1010 revela ?? */
 html body #btn-demo,
 html body #demo-indicator {
     display: none !important;
@@ -8143,7 +8187,7 @@ html body #demo-indicator.demo-shortcut-visible {
     opacity: 1 !important;
 }
 
-/* ── Alternativas de múltipla escolha: geometria da referência ── */
+/* ?? Alternativas de m?ltipla escolha: geometria da refer?ncia ?? */
 .q-options:not(.q-options-binary) > .q-opt {
     gap: 16px !important;
     padding: 12px 16px !important;
@@ -8165,7 +8209,7 @@ html body #demo-indicator.demo-shortcut-visible {
     transform: translateY(-2px) !important;
 }
 
-/* ── Estados de resposta: selecionado em amarelo, acerto verde, erro vermelho ── */
+/* ?? Estados de resposta: selecionado em amarelo, acerto verde, erro vermelho ?? */
 .q-opt.selected:not(.opt-approve):not(.opt-reject) {
     border-color: rgba(246, 213, 12, 0.8) !important;
     background: rgba(246, 213, 12, 0.2) !important;
@@ -8207,7 +8251,7 @@ html body #demo-indicator.demo-shortcut-visible {
     text-shadow: none !important;
 }
 
-/* ── Verdadeiro / Falso: verde e vermelho como na referência ── */
+/* ?? Verdadeiro / Falso: verde e vermelho como na refer?ncia ?? */
 .q-text:has(.tf-question-box) {
     padding: 0 !important;
     margin-bottom: 8px !important;
@@ -8290,11 +8334,28 @@ html body #demo-indicator.demo-shortcut-visible {
     color: var(--fb-no-lt) !important;
 }
 
-/* ── Botão "Continuar" do quiz: pílula sólida como na referência ── */
+/* ?? Bot?o "Continuar" do quiz: p?lula s?lida e sempre vis?vel ap?s confirmar ?? */
 .btn-next-q {
     background: var(--gold) !important;
     color: var(--black) !important;
     box-shadow: 0 4px 16px rgba(246, 213, 12, 0.35) !important;
+}
+
+.btn-next-q.show {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-top: 22px !important;
+    margin-bottom: 8px !important;
+    min-height: 48px !important;
+    padding: 12px 28px !important;
+    font-size: clamp(16px, 2.2vh, 19px) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+    width: auto !important;
+    max-width: 100% !important;
 }
 
 .btn-next-q:hover {
@@ -8303,7 +8364,7 @@ html body #demo-indicator.demo-shortcut-visible {
     box-shadow: 0 6px 20px rgba(246, 213, 12, 0.45) !important;
 }
 
-/* ── Resultado: aprovado em verde, reprovado em vermelho ── */
+/* ?? Resultado: aprovado em verde, reprovado em vermelho ?? */
 .result-pct.green {
     color: var(--fb-ok-lt) !important;
     text-shadow: 0 0 30px rgba(46, 204, 113, 0.3) !important;
@@ -8322,12 +8383,12 @@ html body #demo-indicator.demo-shortcut-visible {
     color: var(--fb-no-lt) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   TELAS BAIXAS — mesma compactação da referência NR-11
-   A NR-11 encolhe cabeçalho, área de conteúdo e player abaixo de
+/* ???????????????????????????????????????????????????????????????
+   TELAS BAIXAS ? mesma compacta??o da refer?ncia NR-11
+   A NR-11 encolhe cabe?alho, ?rea de conte?do e player abaixo de
    800px de altura. No NR-06 as regras equivalentes precisam de
-   !important porque os blocos acima usam seletores mais específicos.
-   ═══════════════════════════════════════════════════════════════ */
+   !important porque os blocos acima usam seletores mais espec?ficos.
+   ??????????????????????????????????????????????????????????????? */
 @media screen and (max-height: 800px) {
     .slide > .top-bar {
         padding: 10px 120px 0 20px !important;
@@ -8352,8 +8413,8 @@ html body #demo-indicator.demo-shortcut-visible {
         padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
-    /* Teto de 65vh da referência: é ele que mantém o player proporcional
-       à tela em vez de esticar até os 1000px de largura. */
+    /* Teto de 65vh da refer?ncia: ? ele que mant?m o player proporcional
+       ? tela em vez de esticar at? os 1000px de largura. */
     .video-wrap,
     .slide .content-area > .video-wrap,
     .slide.slide-video .video-wrap,
@@ -8367,10 +8428,10 @@ html body #demo-indicator.demo-shortcut-visible {
     }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   PÁGINAS ILUSTRATIVAS EXTRAS — Mito × Verdade, passo a passo,
-   números da norma e hierarquia de controle
-   ═══════════════════════════════════════════════════════════════ */
+/* ???????????????????????????????????????????????????????????????
+   P?GINAS ILUSTRATIVAS EXTRAS ? Mito ? Verdade, passo a passo,
+   n?meros da norma e hierarquia de controle
+   ??????????????????????????????????????????????????????????????? */
 .info-wrap {
     width: 100%;
     max-width: 1000px;
@@ -8393,7 +8454,7 @@ html body #demo-indicator.demo-shortcut-visible {
     color: var(--gold-lt);
 }
 
-/* ── Mito × Verdade ── */
+/* ?? Mito ? Verdade ?? */
 .myth-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -8403,11 +8464,17 @@ html body #demo-indicator.demo-shortcut-visible {
 .myth-card {
     position: relative;
     overflow: hidden;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
     border-radius: 14px;
     padding: clamp(12px, 2vh, 18px) clamp(14px, 2vw, 20px);
-    box-shadow: var(--card-shadow);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 16px -6px rgba(246, 213, 12, 0.35),
+        0 12px 28px rgba(0, 0, 0, 0.4),
+        0 0 18px rgba(246, 213, 12, 0.16);
     cursor: pointer;
     transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
@@ -8500,7 +8567,7 @@ html body #demo-indicator.demo-shortcut-visible {
     opacity: 1;
 }
 
-/* ── Passo a passo clicável ── */
+/* ?? Passo a passo clic?vel ?? */
 .step-flow {
     display: flex;
     flex-direction: column;
@@ -8581,7 +8648,7 @@ html body #demo-indicator.demo-shortcut-visible {
     display: none;
 }
 
-/* ── Hierarquia de controle (funil) ── */
+/* ?? Hierarquia de controle (funil) ?? */
 .hier-list {
     display: flex;
     flex-direction: column;
@@ -8659,9 +8726,9 @@ html body #demo-indicator.demo-shortcut-visible {
     }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   REVEAL CARDS — toque para descobrir (estilo NR-11)
-   ═══════════════════════════════════════════════════════════════ */
+/* ???????????????????????????????????????????????????????????????
+   REVEAL CARDS ? toque para descobrir (estilo NR-11)
+   ??????????????????????????????????????????????????????????????? */
 .reveal-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -8676,16 +8743,26 @@ html body #demo-indicator.demo-shortcut-visible {
     min-height: clamp(140px, 22vh, 190px);
     border-radius: 16px;
     overflow: hidden;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: var(--card-shadow);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 16px -6px rgba(246, 213, 12, 0.35),
+        0 14px 32px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(246, 213, 12, 0.16);
     cursor: pointer;
     transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
 
 .reveal-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(246, 213, 12, 0.4);
+    border-color: rgba(246, 213, 12, 0.75);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        0 16px 36px rgba(0, 0, 0, 0.5),
+        0 0 28px rgba(246, 213, 12, 0.28);
 }
 
 .reveal-cover {
@@ -8785,7 +8862,7 @@ html body #demo-indicator.demo-shortcut-visible {
     transform: scale(1);
 }
 
-/* Compare cards — toque para confirmar leitura */
+/* Compare cards ? toque para confirmar leitura */
 .compare-container .compare-card.req-item {
     cursor: pointer;
 }
@@ -8819,4 +8896,1382 @@ html body #demo-indicator.demo-shortcut-visible {
         width: 100%;
         padding: 20px 16px;
     }
+}
+
+/* ??? Layouts variados: foto, pares, kit, setores, V/F, carrossel ??? */
+.photo-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(180px, 38vh, 420px);
+    border-radius: 18px;
+    border: 2px dashed rgba(246, 213, 12, 0.45);
+    background:
+        linear-gradient(145deg, rgba(246, 213, 12, 0.06), rgba(21, 15, 54, 0.35)),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(246, 213, 12, 0.03) 10px, rgba(246, 213, 12, 0.03) 20px);
+    overflow: hidden;
+}
+.photo-slot--compact { min-height: clamp(100px, 18vh, 160px); }
+.photo-slot.has-image { border-style: solid; border-color: rgba(246, 213, 12, 0.35); background: #0f0a28; }
+.photo-slot-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-slot-ph {
+    font-size: clamp(13px, 1.8vh, 15px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 241, 224, 0.45);
+    text-align: center;
+    padding: 16px;
+}
+.photo-slot.has-image .photo-slot-ph { display: none; }
+
+.compare-card .photo-slot--card {
+    width: 100%;
+    min-height: clamp(140px, 22vh, 200px);
+    height: clamp(140px, 22vh, 200px);
+    margin-bottom: 18px;
+    border-radius: 14px;
+    flex-shrink: 0;
+}
+.compare-card.wrong .photo-slot--card {
+    border-color: rgba(231, 76, 60, 0.45);
+}
+.compare-card.right .photo-slot--card {
+    border-color: rgba(46, 204, 113, 0.45);
+}
+.compare-card .photo-slot--card.has-image {
+    border-style: solid;
+}
+.compare-card .photo-slot-ph small {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85em;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+}
+
+.legal-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+    gap: clamp(16px, 2.5vw, 28px);
+    align-items: stretch;
+    width: min(1100px, 96%);
+    margin: 0 auto;
+}
+.legal-main { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.legal-lead { margin: 0; font-size: clamp(13px, 1.85vh, 15.5px); line-height: 1.45; color: var(--cream-dk); }
+
+.mix-side {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 18px;
+    width: min(1100px, 96%);
+    margin: 0 auto;
+}
+.mix-banner {
+    display: grid;
+    grid-template-columns: minmax(140px, 0.7fr) minmax(0, 1.3fr);
+    gap: 14px;
+    align-items: center;
+    width: min(1000px, 96%);
+    margin: 0 auto 14px;
+}
+.mix-banner--bottom { grid-template-columns: 1fr; margin-top: 14px; margin-bottom: 0; }
+
+.pair-list { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.pair-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 45%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow:
+        inset 3px 0 0 0 #F6D50C,
+        inset 6px 0 14px -6px rgba(246, 213, 12, 0.3),
+        0 8px 20px rgba(0, 0, 0, 0.35),
+        0 0 14px rgba(246, 213, 12, 0.14);
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+.pair-row.req-done {
+    border-color: rgba(246, 213, 12, 0.8);
+    box-shadow:
+        inset 3px 0 0 0 #F6D50C,
+        0 8px 22px rgba(0, 0, 0, 0.4),
+        0 0 22px rgba(246, 213, 12, 0.28);
+}
+.pair-a, .pair-b { font-size: clamp(13px, 1.8vh, 15px); color: var(--cream); }
+.pair-b { color: var(--cream-dk); }
+.pair-arrow { color: #F6D50C; font-weight: 700; }
+
+.kit-layout { display: flex; flex-direction: column; gap: 14px; width: min(1000px, 96%); margin: 0 auto; }
+.kit-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.kit-col {
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 45%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    box-shadow:
+        inset 3px 0 0 0 #F6D50C,
+        inset 6px 0 14px -6px rgba(246, 213, 12, 0.3),
+        0 10px 24px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(246, 213, 12, 0.14);
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+.kit-col h3 { margin: 0 0 10px; font-size: clamp(14px, 2vh, 17px); color: var(--cream); }
+.kit-col ul { margin: 0; padding-left: 18px; color: var(--cream-dk); font-size: clamp(13px, 1.8vh, 15px); line-height: 1.55; }
+.kit-in { border-color: rgba(46, 204, 113, 0.4); }
+.kit-out { border-color: rgba(231, 76, 60, 0.4); }
+.kit-col.req-done {
+    border-color: rgba(246, 213, 12, 0.8);
+    box-shadow:
+        inset 3px 0 0 0 #F6D50C,
+        0 10px 26px rgba(0, 0, 0, 0.4),
+        0 0 24px rgba(246, 213, 12, 0.3);
+}
+
+.sector-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    width: min(1000px, 96%);
+    margin: 0 auto;
+}
+.sector-col {
+    padding: 16px 18px;
+    border-radius: 14px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 45%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow:
+        inset 3px 0 0 0 #F6D50C,
+        inset 6px 0 14px -6px rgba(246, 213, 12, 0.3),
+        0 10px 24px rgba(0, 0, 0, 0.35),
+        0 0 16px rgba(246, 213, 12, 0.14);
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+.sector-col h3 { margin: 0 0 10px; font-size: clamp(15px, 2.1vh, 18px); color: var(--cream); }
+.sector-col ul { margin: 0; padding-left: 18px; color: var(--cream-dk); font-size: clamp(13px, 1.8vh, 15px); line-height: 1.55; }
+.sector-both { border-color: rgba(46, 204, 113, 0.45); }
+.sector-col.req-done {
+    border-color: rgba(246, 213, 12, 0.8);
+    box-shadow:
+        inset 3px 0 0 0 #F6D50C,
+        0 10px 26px rgba(0, 0, 0, 0.4),
+        0 0 24px rgba(246, 213, 12, 0.3);
+}
+
+/* V/F flip est?vel */
+.tf-flip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: min(720px, 96%);
+    margin: 0 auto;
+}
+.tf-flip { position: relative; height: clamp(170px, 28vh, 230px); cursor: pointer; border-radius: 16px; }
+.tf-flip-inner { position: relative; width: 100%; height: 100%; border-radius: 16px; }
+.tf-flip-front, .tf-flip-back {
+    position: absolute; inset: 0; border-radius: 16px;
+    display: flex; flex-direction: column; justify-content: center; gap: 10px;
+    padding: 16px 18px;
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 40%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 16px -6px rgba(246, 213, 12, 0.35),
+        0 12px 28px rgba(0, 0, 0, 0.4),
+        0 0 18px rgba(246, 213, 12, 0.16);
+    overflow: hidden;
+    transition: transform 0.45s ease, opacity 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.tf-flip:hover .tf-flip-front,
+.tf-flip:hover .tf-flip-back {
+    border-color: rgba(246, 213, 12, 0.75);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        0 14px 32px rgba(0, 0, 0, 0.45),
+        0 0 26px rgba(246, 213, 12, 0.26);
+}
+.tf-flip-front { z-index: 2; transform: rotateY(0deg); opacity: 1; }
+.tf-flip-back { z-index: 1; transform: rotateY(180deg); opacity: 0; pointer-events: none; }
+.tf-flip.flipped .tf-flip-front { transform: rotateY(-180deg); opacity: 0; pointer-events: none; z-index: 1; }
+.tf-flip.flipped .tf-flip-back { transform: rotateY(0deg); opacity: 1; pointer-events: auto; z-index: 2; }
+.tf-flip-hint { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #F6D50C; }
+.tf-flip-q { margin: 0; font-size: clamp(13.5px, 1.95vh, 16px); line-height: 1.4; color: var(--cream); font-weight: 600; }
+.tf-flip-result { align-self: flex-start; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 900; letter-spacing: 0.08em; }
+.tf-flip-back.is-true { border-color: rgba(46, 204, 113, 0.55); background: linear-gradient(160deg, rgba(20, 60, 40, 0.95), rgba(21, 15, 54, 0.92)); }
+.tf-flip-back.is-true .tf-flip-result { background: rgba(46, 204, 113, 0.95); color: #0b2416; }
+.tf-flip-back.is-false { border-color: rgba(231, 76, 60, 0.55); background: linear-gradient(160deg, rgba(55, 28, 48, 0.96), rgba(21, 15, 54, 0.96)); }
+.tf-flip-back.is-false .tf-flip-result { background: rgba(231, 76, 60, 0.95); color: #fff; }
+.tf-flip-explain { margin: 0; font-size: clamp(12.5px, 1.7vh, 14.5px); line-height: 1.45; color: var(--cream-dk); }
+.tf-flip-selected {
+    display: none; position: absolute; top: 10px; right: 12px;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+    color: #F6D50C; background: rgba(246, 213, 12, 0.15); border: 1px solid rgba(246, 213, 12, 0.45);
+    padding: 3px 8px; border-radius: 999px;
+}
+.tf-flip.is-selected .tf-flip-selected { display: inline-flex; }
+.tf-flip.is-selected { outline: 2px solid rgba(246, 213, 12, 0.75); outline-offset: 3px; }
+.tf-flip.is-selected[data-answer="true"] { outline-color: rgba(46, 204, 113, 0.8); }
+.tf-flip.is-selected[data-answer="false"] { outline-color: rgba(231, 76, 60, 0.8); }
+
+/* Carrossel de conte?do */
+.content-carousel { display: flex; flex-direction: column; gap: 12px; flex: 1; min-height: 0; }
+.cc-viewport { position: relative; flex: 1; min-height: clamp(160px, 28vh, 280px); }
+.cc-card {
+    display: none; flex-direction: column; gap: 10px; height: 100%;
+    padding: clamp(18px, 2.4vh, 26px); border-radius: 16px;
+    background: rgba(21, 15, 54, 0.72); border: 1px solid rgba(246, 213, 12, 0.28);
+}
+.cc-card.is-active { display: flex; animation: ccIn 0.28s ease; }
+@keyframes ccIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.cc-badge {
+    align-self: flex-start; display: inline-flex; padding: 4px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #150F36; background: #F6D50C;
+}
+.cc-title { margin: 0; font-size: clamp(17px, 2.4vh, 22px); color: var(--cream); }
+.cc-body { margin: 0; font-size: clamp(13.5px, 1.95vh, 16px); line-height: 1.5; color: var(--cream-dk); }
+.cc-nav { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.cc-btn {
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 1px solid rgba(246, 213, 12, 0.45); background: rgba(246, 213, 12, 0.12);
+    color: #F6D50C; font-size: 26px; line-height: 1; cursor: pointer;
+}
+.cc-counter { min-width: 64px; text-align: center; font-size: 13px; font-weight: 600; color: var(--cream-dk); }
+
+@media (max-width: 820px) {
+    .legal-layout, .mix-side, .mix-banner { grid-template-columns: 1fr; width: min(640px, 96%); }
+    .kit-cols, .sector-grid { grid-template-columns: 1fr; }
+    .pair-row { grid-template-columns: 1fr; text-align: center; }
+    .pair-arrow { display: none; }
+    .tf-flip-grid { width: min(96%, 420px); }
+}
+
+/* Tipografia maior/bolder em conte?dos de leitura (checklist, steps, etc.) */
+.check-item span {
+    font-size: clamp(17px, 2.35vh, 21px) !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+}
+
+.info-lead {
+    font-size: clamp(16px, 2.25vh, 20px) !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
+    color: var(--cream) !important;
+}
+
+.info-lead strong {
+    font-weight: 800 !important;
+}
+
+.mg-hint {
+    font-size: clamp(15px, 2.1vh, 18px) !important;
+    font-weight: 800 !important;
+}
+
+.myth-quote {
+    font-size: clamp(16px, 2.3vh, 20px) !important;
+    font-weight: 800 !important;
+}
+
+.myth-answer {
+    font-size: clamp(15px, 2.1vh, 18px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.step-body h4 {
+    font-size: clamp(16px, 2.3vh, 20px) !important;
+    font-weight: 800 !important;
+}
+
+.step-body p {
+    font-size: clamp(15px, 2.1vh, 18px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.compare-card-title {
+    font-size: clamp(18px, 2.5vh, 22px) !important;
+    font-weight: 800 !important;
+}
+
+.compare-card-text {
+    font-size: clamp(15px, 2.15vh, 19px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+    opacity: 1 !important;
+}
+
+.stat-pill .stat-label {
+    font-size: clamp(15px, 2.1vh, 18px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.hier-txt h4 {
+    font-size: clamp(16px, 2.3vh, 20px) !important;
+    font-weight: 800 !important;
+}
+
+.hier-txt p {
+    font-size: clamp(14px, 2vh, 17px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.pair-a,
+.pair-b {
+    font-size: clamp(15px, 2.15vh, 18px) !important;
+    font-weight: 700 !important;
+}
+
+.kit-col h3,
+.sector-col h3 {
+    font-size: clamp(16px, 2.3vh, 20px) !important;
+    font-weight: 800 !important;
+}
+
+.kit-col ul,
+.sector-col ul {
+    font-size: clamp(15px, 2.1vh, 18px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.tf-flip-q {
+    font-size: clamp(15px, 2.2vh, 19px) !important;
+    font-weight: 700 !important;
+}
+
+.tf-flip-explain {
+    font-size: clamp(14px, 2vh, 17px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.cc-title {
+    font-size: clamp(18px, 2.5vh, 23px) !important;
+    font-weight: 800 !important;
+}
+
+.cc-body {
+    font-size: clamp(15px, 2.15vh, 19px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.legal-lead {
+    font-size: clamp(15px, 2.15vh, 19px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.flip-card h4 {
+    font-size: clamp(16px, 2.3vh, 20px) !important;
+    font-weight: 800 !important;
+}
+
+.flip-card p {
+    font-size: clamp(14px, 2vh, 17px) !important;
+    font-weight: 600 !important;
+    color: var(--cream) !important;
+}
+
+.reveal-body h4 {
+    font-size: clamp(16px, 2.3vh, 20px) !important;
+    font-weight: 800 !important;
+}
+
+.reveal-body p {
+    font-size: clamp(14px, 2vh, 17px) !important;
+    font-weight: 600 !important;
+}
+
+/* Pagina 5 ? Mito x Verdade (modelo NR-11 p.19) */
+#s-m1-g01 .content-area {
+    justify-content: center !important;
+    align-items: center !important;
+    overflow-y: auto !important;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+#s-m1-g01 .quiz-wrap {
+    width: min(820px, 100%) !important;
+    margin: 0 auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+#s-m1-g01 #mito-question-panel {
+    width: min(820px, 100%) !important;
+    margin: 0 auto !important;
+    padding: 22px 28px 26px !important;
+    border: 1px solid rgba(246, 213, 12, 0.22) !important;
+    border-radius: 24px !important;
+    background: linear-gradient(155deg, #1a1640 0%, #0e0a24 100%) !important;
+    box-shadow:
+        0 24px 55px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-meta {
+    align-items: center !important;
+    margin-bottom: 12px !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-dots {
+    gap: 9px !important;
+}
+
+#s-m1-g01 #mito-question-panel .qdot2 {
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    background: #5a5478 !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: none !important;
+}
+
+#s-m1-g01 #mito-question-panel .qdot2.cur {
+    background: var(--gold) !important;
+    border-color: var(--gold-lt, #ffe566) !important;
+    box-shadow: 0 0 14px rgba(246, 213, 12, 0.75) !important;
+}
+
+#s-m1-g01 #mito-question-panel .qdot2.done {
+    background: #c9a800 !important;
+    border-color: var(--gold) !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-lbl {
+    font-size: 13px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-text {
+    padding: 28px 20px 20px !important;
+    margin-bottom: 14px !important;
+    font-size: clamp(17px, 2.4vw, 21px) !important;
+    line-height: 1.4 !important;
+    min-height: auto !important;
+    text-align: center !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-text::before {
+    display: none !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-options {
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt {
+    padding: 14px 16px !important;
+    font-size: clamp(16px, 2vw, 19px) !important;
+    font-weight: 700 !important;
+    gap: 12px !important;
+    min-height: auto !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    justify-content: center !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt:nth-child(1) {
+    background: linear-gradient(135deg, #1f9e57, #2ecc71) !important;
+    color: #fff !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt:nth-child(2) {
+    background: linear-gradient(135deg, #cc9410, #f2c42f) !important;
+    color: #17130a !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt:hover:not(.answered) {
+    transform: translateY(-2px) scale(1.01) !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
+    filter: brightness(1.08) !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3) !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt.selected {
+    border-color: #fff !important;
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.22),
+        0 12px 30px rgba(0, 0, 0, 0.35) !important;
+    filter: brightness(1.08) !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt.correct,
+#s-m1-g01 #mito-question-panel .q-opt.correct:nth-child(1),
+#s-m1-g01 #mito-question-panel .q-opt.correct:nth-child(2) {
+    background: linear-gradient(135deg, #1f9e57, #2ecc71) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    color: #fff !important;
+    box-shadow: 0 0 28px rgba(46, 204, 113, 0.55) !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt.wrong,
+#s-m1-g01 #mito-question-panel .q-opt.wrong:nth-child(1),
+#s-m1-g01 #mito-question-panel .q-opt.wrong:nth-child(2) {
+    background: linear-gradient(135deg, #c62828, #e74c3c) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    color: #fff !important;
+    box-shadow: 0 0 28px rgba(231, 76, 60, 0.5) !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt.muted,
+#s-m1-g01 #mito-question-panel .q-opt.muted:nth-child(1),
+#s-m1-g01 #mito-question-panel .q-opt.muted:nth-child(2) {
+    background: #2a2a43 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt .opt-l {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 15px !important;
+    background: rgba(255, 255, 255, 0.18) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+    color: inherit !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt.correct .opt-l,
+#s-m1-g01 #mito-question-panel .q-opt.wrong .opt-l {
+    background: #fff !important;
+    border-color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt.correct .opt-l {
+    color: #1f9e57 !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-opt.wrong .opt-l {
+    color: #e74c3c !important;
+}
+
+#s-m1-g01 #mito-verify-container {
+    margin-top: 22px !important;
+    text-align: center !important;
+}
+
+#s-m1-g01 #mito-question-panel .q-feedback.ok,
+#s-m1-g01 #mito-question-panel .q-feedback.nok {
+    margin-top: 18px !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+}
+
+#s-m1-g01 #mito-question-panel .btn-next-q.show {
+    margin-top: 20px !important;
+}
+
+@media (max-width: 768px) {
+    #s-m1-g01 #mito-question-panel {
+        padding: 16px 14px 20px !important;
+        border-radius: 18px !important;
+    }
+
+    #s-m1-g01 #mito-question-panel .q-text {
+        padding: 20px 14px 14px !important;
+        font-size: 18px !important;
+    }
+
+    #s-m1-g01 #mito-question-panel .q-opt {
+        padding: 12px 14px !important;
+        font-size: 17px !important;
+    }
+}
+
+/* ????????????????????????????????????????
+   STEP CAROUSEL ? estilo NR-11 p.26 (PASSO + n?mero)
+   ???????????????????????????????????????? */
+.slide:has(.step-car) > .content-area {
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 0 !important;
+    padding-top: 12px !important;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+    overflow: hidden !important;
+}
+
+.step-car-layout {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 20px;
+}
+
+.step-car-stage {
+    width: 100%;
+    max-width: 660px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    z-index: 3;
+}
+
+.step-car-card {
+    width: 100%;
+    position: relative;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(246, 213, 12, 0.14), transparent 42%),
+        linear-gradient(145deg, rgba(42, 32, 88, 0.98) 0%, rgba(20, 14, 42, 0.99) 58%, rgba(12, 8, 28, 1) 100%);
+    border: 1px solid rgba(246, 213, 12, 0.32);
+    border-radius: 26px;
+    text-align: center;
+    box-shadow:
+        0 28px 65px rgba(0, 0, 0, 0.52),
+        0 0 42px rgba(246, 213, 12, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+    overflow: hidden;
+}
+
+.step-car-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.28;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, #000, transparent 78%);
+}
+
+.step-car-card::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    z-index: -1;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.045);
+    border-radius: 18px;
+}
+
+.step-car-card.is-active {
+    border-color: rgba(246, 213, 12, 0.55);
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.58),
+        0 0 52px rgba(246, 213, 12, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.step-car-accent {
+    height: 5px;
+    background: linear-gradient(90deg, #c9a800 0%, #F6D50C 35%, #ffe566 70%, #F6D50C 100%);
+    box-shadow: 0 0 22px rgba(246, 213, 12, 0.42);
+}
+
+.step-car-inner {
+    position: relative;
+    padding: 30px 38px 36px;
+}
+
+.step-car-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 5px 13px;
+    font-family: var(--font-h);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ffe566;
+    background: rgba(246, 213, 12, 0.12);
+    border: 1px solid rgba(246, 213, 12, 0.3);
+    border-radius: 999px;
+    margin-bottom: 15px;
+}
+
+.step-car-num {
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 21px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 38% 28%, rgba(255, 255, 255, 0.24), transparent 25%),
+        linear-gradient(145deg, rgba(246, 213, 12, 0.42), rgba(60, 45, 10, 0.92));
+    border: 2px solid rgba(246, 213, 12, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-h);
+    font-size: 34px;
+    font-weight: 900;
+    color: #fff8d6;
+    box-shadow:
+        0 0 34px rgba(246, 213, 12, 0.4),
+        0 0 0 7px rgba(246, 213, 12, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.step-car-title {
+    font-family: var(--font-h);
+    font-size: clamp(22px, 3vw, 29px);
+    font-weight: 900;
+    color: var(--white);
+    margin: 0 0 14px;
+    letter-spacing: -0.025em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.step-car-divider {
+    width: 76px;
+    height: 3px;
+    margin: 0 auto 17px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, #F6D50C, transparent);
+    box-shadow: 0 0 12px rgba(246, 213, 12, 0.4);
+}
+
+.step-car-desc {
+    font-family: var(--font-b);
+    font-size: clamp(15px, 2.2vw, 18px);
+    line-height: 1.55;
+    color: rgba(245, 240, 230, 0.88);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.step-car-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.step-car-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.step-car-dot.is-active {
+    width: 24px;
+    border-radius: 4px;
+    background: rgba(246, 213, 12, 0.8);
+    border-color: rgba(246, 213, 12, 0.95);
+    box-shadow: 0 0 12px rgba(246, 213, 12, 0.5);
+}
+
+.step-car-dot.is-done {
+    background: rgba(246, 213, 12, 0.35);
+    border-color: rgba(246, 213, 12, 0.5);
+}
+
+.step-car-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.step-car-btn {
+    min-width: 52px;
+    min-height: 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.step-car-btn:not(:disabled):hover {
+    background: rgba(246, 213, 12, 0.22);
+    border-color: rgba(246, 213, 12, 0.45);
+    transform: scale(1.05);
+}
+
+.step-car-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.step-car-counter {
+    font-family: var(--font-h);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    min-width: 42px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .slide:has(.step-car) > .content-area {
+        justify-content: flex-start !important;
+        padding-top: 14px !important;
+    }
+    .step-car-layout { gap: 11px; padding: 10px 14px 6px; }
+    .step-car-stage { gap: 11px; }
+    .step-car-card { border-radius: 20px; }
+    .step-car-inner { padding: 20px 18px 22px; }
+    .step-car-num {
+        width: 62px;
+        height: 62px;
+        margin-bottom: 14px;
+        font-size: 27px;
+    }
+    .step-car-title {
+        font-size: clamp(19px, 5.5vw, 23px);
+        margin-bottom: 10px;
+    }
+    .step-car-desc { font-size: 14px; line-height: 1.45; }
+}
+
+.step-car-num.has-icon {
+    font-size: 34px;
+    font-weight: 400;
+    color: #fff;
+}
+
+#s-m1-i01 .mix-side {
+    align-items: stretch;
+}
+
+#s-m1-i01 .step-flow {
+    width: 100%;
+}
+
+/* Glow tap cards ? estilo NR-11 s7 (Toque para ver) */
+#s-m1-i01 .glow-hint {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 16px;
+    color: var(--gold-lt, #ffe566);
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-shadow: 0 0 12px rgba(246, 213, 12, 0.5);
+    animation: pulse 2s infinite;
+}
+
+#s-m1-i01 .glow-cards {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 980px;
+}
+
+#s-m1-i01 .glow-card {
+    width: 220px;
+    height: 260px;
+    isolation: isolate;
+}
+
+#s-m1-i01 .glow-card::after {
+    content: '';
+    position: absolute;
+    inset: -12px -8px;
+    border-radius: 28px;
+    background: radial-gradient(ellipse at 30% 40%,
+            rgba(246, 213, 12, 0.28) 0%,
+            rgba(120, 90, 255, 0.12) 45%,
+            transparent 72%);
+    z-index: -1;
+    opacity: 0.75;
+    pointer-events: none;
+    filter: blur(2px);
+    transition: opacity 0.35s ease;
+}
+
+#s-m1-i01 .glow-card:hover::after { opacity: 1; }
+
+#s-m1-i01 .glow-card .flip-inner {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+}
+
+#s-m1-i01 .glow-card .flip-front,
+#s-m1-i01 .glow-card .flip-back {
+    gap: 10px;
+    padding: 22px 16px 18px;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 42%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        inset 0 -18px 30px -18px rgba(0, 0, 0, 0.65),
+        0 18px 34px rgba(0, 0, 0, 0.5),
+        0 0 22px rgba(246, 213, 12, 0.18);
+}
+
+#s-m1-i01 .glow-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #F6D50C 28%, #ffe566 72%, transparent);
+    opacity: 0.9;
+}
+
+#s-m1-i01 .glow-num {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: var(--font-h);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: rgba(246, 213, 12, 0.9);
+    background: rgba(246, 213, 12, 0.12);
+    border: 1px solid rgba(246, 213, 12, 0.35);
+    border-radius: 99px;
+    padding: 3px 9px;
+}
+
+#s-m1-i01 .glow-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    line-height: 1;
+    margin-top: 8px;
+    background: radial-gradient(circle at 35% 30%, rgba(246, 213, 12, 0.28), rgba(26, 20, 64, 0.9));
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow: 0 0 18px rgba(246, 213, 12, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+#s-m1-i01 .glow-icon-sm {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    margin-top: 4px;
+}
+
+#s-m1-i01 .glow-card:hover .glow-icon {
+    transform: translateY(-3px) scale(1.06);
+    filter: drop-shadow(0 10px 18px rgba(246, 213, 12, 0.35));
+}
+
+#s-m1-i01 .glow-title {
+    font-family: var(--font-h);
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    line-height: 1.25;
+    margin: 2px 0 0;
+}
+
+#s-m1-i01 .glow-tap {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    padding: 5px 12px;
+}
+
+#s-m1-i01 .glow-title-back {
+    font-family: var(--font-h);
+    font-size: 15px;
+    font-weight: 800;
+    color: #F6D50C;
+    margin: 0;
+    text-align: center;
+    line-height: 1.25;
+}
+
+#s-m1-i01 .glow-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.88);
+    text-align: center;
+    margin: 0;
+    max-width: 200px;
+}
+
+#s-m1-i01 .glow-desc strong {
+    color: #ffe566;
+    font-weight: 800;
+}
+
+#s-m1-i01 .glow-card.req-done .flip-front,
+#s-m1-i01 .glow-card.req-done .flip-back {
+    border-color: rgba(246, 213, 12, 0.55) !important;
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.4),
+        0 18px 34px rgba(0, 0, 0, 0.5),
+        0 0 28px rgba(246, 213, 12, 0.22) !important;
+}
+
+@media (max-width: 768px) {
+    #s-m1-i01 .glow-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+    #s-m1-i01 .glow-card {
+        width: 100%;
+        max-width: 320px;
+        height: 250px;
+    }
+}
+
+/* ????????????????????????????????????????
+   PHOTO CAROUSEL (estilo NR-11 s10)
+   ???????????????????????????????????????? */
+.slide:has(.pic-car) > .content-area {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    min-height: 0 !important;
+    padding-top: 8px !important;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+    overflow: hidden !important;
+}
+
+.pic-car-layout {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 8px 20px 12px;
+}
+
+.pic-car-stage {
+    width: 100%;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 3;
+}
+
+.pic-car-card {
+    width: 100%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 42%),
+        linear-gradient(145deg, #2a2058 0%, #1a1440 55%, #120e28 100%);
+    border: 1.5px solid rgba(246, 213, 12, 0.45);
+    border-radius: 18px;
+    padding: 22px 24px 24px;
+    text-align: center;
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        inset 0 -18px 30px -18px rgba(0, 0, 0, 0.55),
+        0 18px 40px rgba(0, 0, 0, 0.5),
+        0 0 28px rgba(246, 213, 12, 0.16);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pic-car-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #F6D50C 28%, #ffe566 72%, transparent);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.pic-car-card::after {
+    content: '';
+    position: absolute;
+    inset: -14px -8px;
+    border-radius: 26px;
+    background: radial-gradient(ellipse at 30% 25%,
+            rgba(246, 213, 12, 0.26) 0%,
+            rgba(120, 90, 255, 0.1) 45%,
+            transparent 72%);
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+.pic-car-card.is-active {
+    border-color: rgba(246, 213, 12, 0.65);
+    box-shadow:
+        inset 4px 0 0 0 #F6D50C,
+        inset 8px 0 18px -6px rgba(246, 213, 12, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 20px 44px rgba(0, 0, 0, 0.55),
+        0 0 36px rgba(246, 213, 12, 0.24);
+}
+
+.pic-car-photo {
+    width: 100%;
+    min-height: 190px;
+    max-height: 230px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background:
+        radial-gradient(circle at 50% 30%, rgba(246, 213, 12, 0.1), transparent 55%),
+        #0f0a28;
+    border: 1.5px dashed rgba(246, 213, 12, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.pic-car-photo.has-image {
+    border-style: solid;
+    border-color: rgba(246, 213, 12, 0.45);
+}
+
+.pic-car-photo img {
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+    max-height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.pic-car-photo-ph {
+    font-size: 32px;
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.pic-car-photo.has-image .pic-car-photo-ph { display: none; }
+
+.pic-car-expand {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 3;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(246, 213, 12, 0.85);
+    background: #F6D50C;
+    box-shadow: 0 4px 14px rgba(246, 213, 12, 0.45);
+    color: #1A1440;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pic-car-photo.has-image .pic-car-expand { display: inline-flex; }
+
+.pic-car-expand:hover {
+    background: #ffe566;
+    box-shadow: 0 6px 18px rgba(246, 213, 12, 0.6);
+    transform: translateY(-1px);
+}
+
+.pic-car-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    line-height: 1;
+    background: radial-gradient(circle at 35% 30%, rgba(246, 213, 12, 0.28), rgba(26, 20, 64, 0.9));
+    border: 1.5px solid rgba(246, 213, 12, 0.55);
+    box-shadow:
+        0 0 16px rgba(246, 213, 12, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.pic-car-title {
+    font-family: var(--font-h);
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+}
+
+.pic-car-desc {
+    font-family: var(--font-b);
+    font-size: clamp(14px, 2.2vw, 17px);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.pic-car-desc::before {
+    content: '';
+    display: block;
+    width: 42px;
+    height: 2px;
+    margin: 0 auto 12px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, rgba(246, 213, 12, 0.75), transparent);
+}
+
+.pic-car-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    position: relative;
+    z-index: 30;
+    pointer-events: auto;
+    padding-bottom: 8px;
+}
+
+.pic-car-counter {
+    font-family: var(--font-h);
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    min-width: 42px;
+    text-align: center;
+}
+
+.pic-car-btn {
+    min-width: 52px;
+    min-height: 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.pic-car-btn.pic-car-next:not(:disabled) {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: linear-gradient(145deg, #ffe566 0%, #F6D50C 45%, #d4b50a 100%);
+    color: #1A1440;
+    box-shadow:
+        0 6px 18px rgba(246, 213, 12, 0.55),
+        0 0 28px rgba(246, 213, 12, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    animation: pic-car-nav-pulse 1.4s ease-in-out infinite;
+}
+
+.pic-car-btn:not(:disabled):active {
+    transform: scale(0.94);
+    animation: none;
+}
+
+.pic-car-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+    animation: none;
+    filter: grayscale(0.4);
+}
+
+@keyframes pic-car-nav-pulse {
+    0%, 100% { box-shadow: 0 6px 18px rgba(246, 213, 12, 0.45), 0 0 22px rgba(246, 213, 12, 0.3); }
+    50% { box-shadow: 0 8px 24px rgba(246, 213, 12, 0.65), 0 0 36px rgba(246, 213, 12, 0.5); }
+}
+
+@media (max-width: 768px) {
+    .pic-car-card { padding: 14px 16px 16px; border-radius: 16px; }
+    .pic-car-photo {
+        min-height: 132px;
+        max-height: 155px;
+        margin-bottom: 12px;
+        border-radius: 12px;
+    }
+    .pic-car-photo img {
+        min-height: 132px;
+        max-height: 155px;
+    }
+    .pic-car-icon { width: 44px; height: 44px; font-size: 22px; margin-bottom: 8px; }
+    .pic-car-title { font-size: 18px; margin-bottom: 6px; }
+    .pic-car-desc { font-size: 13.5px; line-height: 1.4; }
+    .pic-car-desc::before { margin-bottom: 8px; width: 36px; }
 }

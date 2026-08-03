@@ -13,7 +13,7 @@
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=62">
+    <link rel="stylesheet" href="shared.css?v=78">
     <script>
         window.MODULE_NAV = {
             id: "modulo-3",
@@ -80,26 +80,21 @@
             </div>
             <div class="slide" id="s-m3-g07">
                 <div class="top-bar" style="position: relative; z-index: 2;">
-                    <div class="section-tag">🎮 Atividade · Vídeo 7</div>
-                    <h2 class="slide-title">Combine o <span>EPI Certo</span></h2>
+                    <div class="section-tag">🔗 Combine · Vídeo 7</div>
+                    <h2 class="slide-title">EPI e sua <span>Proteção</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Relacione cada EPI à proteção oferecida</div>
-                    <div class="mg-board req-item" id="mg-m3-g07">
-                        <div class="mg-status">Toque em um item de cada coluna para formar o par.</div>
-                        <div class="mg-match-grid">
-                            <div class="mg-match-col">
-                                <button type="button" class="mg-match-item" data-side="a" data-key="cabeca" onclick="mgPickMatch(this)">⛑️ Capacete</button>
-                                <button type="button" class="mg-match-item" data-side="a" data-key="olhos" onclick="mgPickMatch(this)">🥽 Óculos</button>
-                                <button type="button" class="mg-match-item" data-side="a" data-key="face" onclick="mgPickMatch(this)">🛡️ Protetor facial</button>
-                                <button type="button" class="mg-match-item" data-side="a" data-key="ouvidos" onclick="mgPickMatch(this)">🎧 Protetor auricular</button>
-                            </div>
-                            <div class="mg-match-col">
-                                <button type="button" class="mg-match-item" data-side="b" data-key="ouvidos" onclick="mgPickMatch(this)">Proteção auditiva</button>
-                                <button type="button" class="mg-match-item" data-side="b" data-key="cabeca" onclick="mgPickMatch(this)">Impactos na cabeça</button>
-                                <button type="button" class="mg-match-item" data-side="b" data-key="face" onclick="mgPickMatch(this)">Respingos químicos na face</button>
-                                <button type="button" class="mg-match-item" data-side="b" data-key="olhos" onclick="mgPickMatch(this)">Partículas nos olhos</button>
-                            </div>
+
+                    <div class="mix-side">
+                        <div class="photo-slot" data-slot="m3-g07" aria-label="Espaço reservado para imagem">
+                            <img class="photo-slot-img" alt="" data-src="" hidden>
+                            <span class="photo-slot-ph">Espaço para imagem</span>
+                        </div>
+                        <div class="pair-list">
+                            <div class="pair-row req-item" onclick="this.classList.add('req-done');updateNextButton();"><span class="pair-a">⛑️ Capacete</span><span class="pair-arrow">→</span><span class="pair-b">Impactos na cabeça</span></div>
+                            <div class="pair-row req-item" onclick="this.classList.add('req-done');updateNextButton();"><span class="pair-a">🥽 Óculos</span><span class="pair-arrow">→</span><span class="pair-b">Partículas nos olhos</span></div>
+                            <div class="pair-row req-item" onclick="this.classList.add('req-done');updateNextButton();"><span class="pair-a">🛡️ Protetor facial</span><span class="pair-arrow">→</span><span class="pair-b">Respingos químicos na face</span></div>
+                            <div class="pair-row req-item" onclick="this.classList.add('req-done');updateNextButton();"><span class="pair-a">🎧 Protetor auricular</span><span class="pair-arrow">→</span><span class="pair-b">Proteção auditiva</span></div>
                         </div>
                     </div>
                 </div>
@@ -287,7 +282,7 @@
                 <div class="content-area">
                     <div class="mg-hint">👆 Toque nos cards para ver o que cada EPI protege</div>
                     <div class="flip-row">
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🧤</div>
@@ -300,7 +295,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🥾</div>
@@ -313,7 +308,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🧴</div>
@@ -326,7 +321,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">☀️</div>
@@ -368,26 +363,35 @@
             </div>
             <div class="slide" id="s-m3-g10">
                 <div class="top-bar" style="position: relative; z-index: 2;">
-                    <div class="section-tag">🎮 Atividade · Vídeo 10</div>
+                    <div class="section-tag">🧱 Kit · Vídeo 10</div>
                     <h2 class="slide-title">Kit de <span>Trabalho em Altura</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Selecione só o que faz parte da proteção contra quedas</div>
-                    <div class="mg-board req-item" id="mg-m3-g10">
-                        <div class="mg-status">Selecione as opções corretas e toque em Conferir.</div>
-                        <div class="mg-chips">
-                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Cinturão tipo paraquedista</button>
-                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Talabarte</button>
-                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Absorvedor de energia</button>
-                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Trava-quedas</button>
-                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Ancoragem acima da cintura</button>
-                            <button type="button" class="mg-chip" data-ok="0" onclick="mgToggleWord(this)">Protetor solar</button>
-                            <button type="button" class="mg-chip" data-ok="0" onclick="mgToggleWord(this)">Creme hidratante</button>
-                            <button type="button" class="mg-chip" data-ok="0" onclick="mgToggleWord(this)">Apenas boa vontade</button>
+
+                    <div class="kit-layout">
+                        <div class="photo-slot photo-slot--compact" data-slot="m3-g10" aria-label="Espaço reservado para imagem">
+                            <img class="photo-slot-img" alt="" data-src="" hidden>
+                            <span class="photo-slot-ph">Espaço para imagem</span>
                         </div>
-                        <div class="mg-actions">
-                            <button type="button" class="mg-btn ghost" onclick="mgResetWords('mg-m3-g10')">Limpar</button>
-                            <button type="button" class="mg-btn" onclick="mgCheckWords('mg-m3-g10')">Conferir</button>
+                        <div class="kit-cols">
+                            <div class="kit-col kit-in req-item" onclick="this.classList.add('req-done');updateNextButton();">
+                                <h3>Faz parte do kit</h3>
+                                <ul>
+                                    <li>Cinturão tipo paraquedista</li>
+                                    <li>Talabarte</li>
+                                    <li>Absorvedor de energia</li>
+                                    <li>Trava-quedas</li>
+                                    <li>Ancoragem acima da cintura</li>
+                                </ul>
+                            </div>
+                            <div class="kit-col kit-out req-item" onclick="this.classList.add('req-done');updateNextButton();">
+                                <h3>Não substitui o kit</h3>
+                                <ul>
+                                    <li>Protetor solar</li>
+                                    <li>Creme hidratante</li>
+                                    <li>Apenas boa vontade</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -401,41 +405,59 @@
                     <h2 class="slide-title">Altura: Mito × <span>Verdade</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Toque em cada frase para conferir o que é mito e o que é verdade</div>
-                    <div class="info-wrap">
-                        <div class="myth-grid">
-                            <div class="myth-card req-item" data-answer="mito"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">MITO</div>
-                                <div class="myth-quote">“Cinto abdominal serve para trabalho em altura.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">Só o cinto tipo <strong>paraquedista</strong> é aceito. O
-                                    abdominal concentra toda a força na cintura e pode causar lesão grave na retenção.
+
+                    <div class="mg-hint">👆 Toque no card para virar e ver se é mito ou verdade</div>
+                    <div class="tf-flip-grid">
+                        <div class="tf-flip req-item" data-answer="false" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">“Cinto abdominal serve para trabalho em altura.”</p>
+                                </div>
+                                <div class="tf-flip-back is-false">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">MITO</span>
+                                    <p class="tf-flip-explain">Só o cinto tipo paraquedista é aceito.</p>
                                 </div>
                             </div>
-                            <div class="myth-card req-item" data-answer="verdade"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">VERDADE</div>
-                                <div class="myth-quote">“Ancorar acima da cabeça reduz o fator de queda.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">Quanto mais alto o ponto de ancoragem, menor a queda livre — e
-                                    menor a força que o corpo recebe no impacto.</div>
+                        </div>
+                        <div class="tf-flip req-item" data-answer="true" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">“Ancorar acima da cabeça reduz o fator de queda.”</p>
+                                </div>
+                                <div class="tf-flip-back is-true">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">VERDADE</span>
+                                    <p class="tf-flip-explain">Quanto mais alto o ponto, menor a queda livre.</p>
+                                </div>
                             </div>
-                            <div class="myth-card req-item" data-answer="mito"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">MITO</div>
-                                <div class="myth-quote">“Talabarte em Y é só para dar mais conforto.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">Ele existe para garantir <strong>conexão contínua</strong>: um
-                                    gancho permanece preso enquanto o outro é reposicionado.</div>
+                        </div>
+                        <div class="tf-flip req-item" data-answer="false" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">“Talabarte em Y é só para dar mais conforto.”</p>
+                                </div>
+                                <div class="tf-flip-back is-false">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">MITO</span>
+                                    <p class="tf-flip-explain">Ele garante conexão contínua ao reposicionar.</p>
+                                </div>
                             </div>
-                            <div class="myth-card req-item" data-answer="verdade"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">VERDADE</div>
-                                <div class="myth-quote">“Capacete para altura precisa de jugular.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">Sem a jugular o capacete sai da cabeça no início da queda,
-                                    justamente quando ele mais precisa estar no lugar.</div>
+                        </div>
+                        <div class="tf-flip req-item" data-answer="true" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">“Capacete para altura precisa de jugular.”</p>
+                                </div>
+                                <div class="tf-flip-back is-true">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">VERDADE</span>
+                                    <p class="tf-flip-explain">Sem jugular o capacete sai no início da queda.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -521,7 +543,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=63"></script>
+    <script src="shared.js?v=78"></script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=62">
+    <link rel="stylesheet" href="shared.css?v=78">
     <script>
         window.MODULE_NAV = {
             id: "modulo-2",
@@ -87,13 +87,19 @@
                     <div class="mg-hint">👆 Toque nos dois lados para confirmar a leitura</div>
                     <div class="compare-container">
                         <div class="compare-card wrong req-item" onclick="markCompareRead(this)">
-                            <div class="visual-placeholder" aria-hidden="true">❌</div>
+                            <div class="photo-slot photo-slot--card" data-slot="m2-g04-wrong" aria-label="Espaço reservado para imagem">
+                                <img class="photo-slot-img" alt="Exemplo incorreto" data-src="" hidden>
+                                <span class="photo-slot-ph">📷 Adicionar imagem<br><small>Incorreto</small></span>
+                            </div>
                             <div class="compare-card-title">Incorreto</div>
                             <p class="compare-card-text">Usar qualquer equipamento improvisado, cobrado do colaborador
                                 ou sem adequação ao risco — isso não é EPI pela NR-06.</p>
                         </div>
                         <div class="compare-card right req-item" onclick="markCompareRead(this)">
-                            <div class="visual-placeholder" aria-hidden="true">✅</div>
+                            <div class="photo-slot photo-slot--card" data-slot="m2-g04-right" aria-label="Espaço reservado para imagem">
+                                <img class="photo-slot-img" alt="Exemplo correto" data-src="" hidden>
+                                <span class="photo-slot-ph">📷 Adicionar imagem<br><small>Correto</small></span>
+                            </div>
                             <div class="compare-card-title">Correto</div>
                             <p class="compare-card-text">EPI de uso individual, gratuito, aprovado, adequado ao risco da
                                 atividade e em perfeito estado de conservação.</p>
@@ -110,34 +116,34 @@
                     <h2 class="slide-title">A NR-06 em <span>Números</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="info-wrap">
-                        <p class="info-lead">O EPI não é um favor da empresa nem um gasto do colaborador: é uma
-                            <strong>obrigação legal</strong> com regras muito claras.</p>
-                        <div class="stat-grid">
-                            <div class="stat-pill">
-                                <div class="stat-num">NR-06</div>
-                                <div class="stat-label">A norma regulamentadora que define o que é EPI e como ele deve
-                                    ser fornecido no Brasil</div>
-                            </div>
-                            <div class="stat-pill">
-                                <div class="stat-num">Art. 166</div>
-                                <div class="stat-label">Da CLT: obriga a empresa a fornecer o EPI adequado ao risco da
-                                    atividade</div>
-                            </div>
-                            <div class="stat-pill">
-                                <div class="stat-num">C.A.</div>
-                                <div class="stat-label">Certificado de Aprovação: sem ele, o equipamento não pode ser
-                                    comercializado nem usado</div>
-                            </div>
-                            <div class="stat-pill">
-                                <div class="stat-num">R$ 0,00</div>
-                                <div class="stat-label">É o que o EPI custa para você: o fornecimento é sempre gratuito
+                    <div class="pic-car" data-pic-carousel>
+                        <script type="application/json" class="pic-car-data">
+                        [
+                            {"icon":"📋","title":"NR-06","desc":"A norma regulamentadora que define o que é EPI e como ele deve ser fornecido no Brasil.","photo":""},
+                            {"icon":"⚖️","title":"Art. 166","desc":"Da CLT: obriga a empresa a fornecer o EPI adequado ao risco da atividade.","photo":""},
+                            {"icon":"✅","title":"C.A.","desc":"Certificado de Aprovação: sem ele, o equipamento não pode ser comercializado nem usado.","photo":""},
+                            {"icon":"🆓","title":"R$ 0,00","desc":"É o que o EPI custa para você: o fornecimento é sempre gratuito. Adequado ao risco, íntegro e com C.A. válido.","photo":""}
+                        ]
+                        </script>
+                        <div class="pic-car-layout">
+                            <div class="pic-car-stage">
+                                <div class="pic-car-card is-active">
+                                    <div class="pic-car-photo">
+                                        <span class="pic-car-photo-ph" aria-hidden="true">📷</span>
+                                        <button type="button" class="pic-car-expand" aria-label="Ampliar imagem" title="Ampliar imagem">🔍</button>
+                                    </div>
+                                    <div class="pic-car-icon">📋</div>
+                                    <h3 class="pic-car-title">NR-06</h3>
+                                    <p class="pic-car-desc">A norma regulamentadora que define o que é EPI e como ele deve ser fornecido no Brasil.</p>
+                                </div>
+                                <div class="pic-car-nav">
+                                    <button type="button" class="pic-car-btn pic-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="pic-car-counter">1/4</span>
+                                    <button type="button" class="pic-car-btn pic-car-next" aria-label="Próximo">›</button>
                                 </div>
                             </div>
+                            <span class="pic-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
-                        <div class="atencao">O EPI só é considerado válido quando é <strong>adequado ao risco</strong>,
-                            está <strong>em perfeito estado</strong> e possui <strong>C.A. dentro da validade</strong>.
-                            Faltando um desses três, o equipamento não protege — e não pode ser usado.</div>
                     </div>
                 </div>
                 <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -246,7 +252,7 @@
                 <div class="content-area">
                     <div class="mg-hint">👆 Toque nos cards para revisar seus deveres</div>
                     <div class="flip-row">
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🧤</div>
@@ -259,7 +265,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🧼</div>
@@ -272,7 +278,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">📣</div>
@@ -285,7 +291,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🚫</div>
@@ -429,7 +435,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=63"></script>
+    <script src="shared.js?v=78"></script>
 </body>
 
 </html>

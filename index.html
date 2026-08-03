@@ -16,7 +16,7 @@
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=62">
+    <link rel="stylesheet" href="shared.css?v=78">
     <script>
         window.MODULE_NAV = {
             id: "index",
@@ -197,7 +197,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=63"></script>
+    <script src="shared.js?v=78"></script>
     <script>
         (function () {
             var TUTORIAL_SRC = 'https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=58c2b207-5c32-4336-acba-6df97de39825&saveProgress=false';
@@ -285,7 +285,12 @@
             });
             observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
 
-            function start() { openTutorial(); }
+            function start() {
+                /* Popup só na primeira página (capa). Ao voltar do módulo 1
+                   o index abre no sumário (última) — não mostrar o tutorial lá. */
+                if (typeof currentSlide === 'number' && currentSlide !== 0) return;
+                openTutorial();
+            }
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', start);
             } else {

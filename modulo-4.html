@@ -13,7 +13,7 @@
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=62">
+    <link rel="stylesheet" href="shared.css?v=78">
     <script>
         window.MODULE_NAV = {
             id: "modulo-4",
@@ -476,37 +476,29 @@
             </div>
             <div class="slide" id="s-m4-g12">
                 <div class="top-bar" style="position: relative; z-index: 2;">
-                    <div class="section-tag">🎮 Atividade · Vídeo 12</div>
-                    <h2 class="slide-title">Classifique <span>Drive / Madeira</span></h2>
+                    <div class="section-tag">🏬 Setores · Vídeo 12</div>
+                    <h2 class="slide-title">EPI por <span>Setor</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Classifique cada EPI no setor correto</div>
-                    <div class="mg-board req-item" id="mg-m4-g12">
-                        <div class="mg-status">Toque em um item e classifique no destino certo.</div>
-                        <div class="mg-pool">
-                            <button type="button" class="mg-chip" data-bin="drive" onclick="mgPickSort(this)">PFF2</button>
-                            <button type="button" class="mg-chip" data-bin="drive" onclick="mgPickSort(this)">Protetor solar</button>
-                            <button type="button" class="mg-chip" data-bin="drive" onclick="mgPickSort(this)">Creme protetor</button>
-                            <button type="button" class="mg-chip" data-bin="madeira" onclick="mgPickSort(this)">PFF3</button>
-                            <button type="button" class="mg-chip" data-bin="madeira" onclick="mgPickSort(this)">Protetor auricular</button>
-                            <button type="button" class="mg-chip" data-bin="ambos" onclick="mgPickSort(this)">Óculos de proteção</button>
-                            <button type="button" class="mg-chip" data-bin="ambos" onclick="mgPickSort(this)">Calçado de segurança</button>
+
+                    <div class="sector-grid">
+                        <div class="sector-col req-item" onclick="this.classList.add('req-done');updateNextButton();">
+                            <h3>🏬 Drive-in</h3>
+                            <ul><li>PFF2</li><li>Protetor solar</li><li>Creme protetor</li></ul>
                         </div>
-                        <div class="mg-sort-grid mg-sort-3">
-                            <div class="mg-bin" data-bin="drive" onclick="mgDropSort(this)">
-                                <div class="mg-bin-title">🏬 Drive-in</div>
-                                <div class="mg-bin-drop"></div>
-                            </div>
-                            <div class="mg-bin" data-bin="madeira" onclick="mgDropSort(this)">
-                                <div class="mg-bin-title">🪵 Madeira</div>
-                                <div class="mg-bin-drop"></div>
-                            </div>
-                            <div class="mg-bin" data-bin="ambos" onclick="mgDropSort(this)">
-                                <div class="mg-bin-title">✅ Ambos</div>
-                                <div class="mg-bin-drop"></div>
-                            </div>
+                        <div class="sector-col req-item" onclick="this.classList.add('req-done');updateNextButton();">
+                            <h3>🪵 Madeira</h3>
+                            <ul><li>PFF3</li><li>Protetor auricular</li></ul>
+                        </div>
+                        <div class="sector-col sector-both req-item" onclick="this.classList.add('req-done');updateNextButton();">
+                            <h3>✅ Nos dois</h3>
+                            <ul><li>Óculos de proteção</li><li>Calçado de segurança</li></ul>
                         </div>
                     </div>
+                    <div class="mix-banner mix-banner--bottom"><div class="photo-slot photo-slot--compact" data-slot="m4-g12" aria-label="Espaço reservado para imagem">
+                            <img class="photo-slot-img" alt="" data-src="" hidden>
+                            <span class="photo-slot-ph">Espaço para imagem</span>
+                        </div></div>
                 </div>
                 <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
                         <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
@@ -535,63 +527,39 @@
             </div>
             <div class="slide" id="s-m4-g13">
                 <div class="top-bar" style="position: relative; z-index: 2;">
-                    <div class="section-tag">🃏 Explore · Vídeo 13</div>
+                    <div class="section-tag">🃏 Missões · Vídeo 13</div>
                     <h2 class="slide-title">Missão e <span>EPI-Chave</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Toque nos cards para ver o EPI-chave de cada missão</div>
-                    <div class="flip-row">
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
-                            <div class="flip-inner">
-                                <div class="flip-front">
-                                    <div style="font-size:42px">📦</div>
-                                    <h4>Logística</h4>
-                                    <p>Toque para ver</p>
+                    <div class="step-car" data-step-carousel data-label="PASSO">
+                        <script type="application/json" class="step-car-data">
+                        [
+                            {"step":1,"title":"Logística — Luvas + postura","desc":"Luvas e cuidado postural no manuseio e movimentação de cargas."},
+                            {"step":2,"title":"Cores — Luvas nitrílicas + óculos","desc":"Contra respingos de tinta e químicos na Central de Cores."},
+                            {"step":3,"title":"Sacarias — PFF2 + calçado","desc":"Proteção contra poeira e impacto no drive de sacarias."},
+                            {"step":4,"title":"Empilhadeira — Calçado + auricular","desc":"Calçado com biqueira e protetor auricular na operação."}
+                        ]
+                        </script>
+                        <div class="step-car-layout">
+                            <div class="step-car-stage">
+                                <div class="step-car-card is-active">
+                                    <div class="step-car-accent" aria-hidden="true"></div>
+                                    <div class="step-car-inner">
+                                        <span class="step-car-label">PASSO</span>
+                                        <div class="step-car-num">1</div>
+                                        <h3 class="step-car-title">Logística — Luvas + postura</h3>
+                                        <div class="step-car-divider" aria-hidden="true"></div>
+                                        <p class="step-car-desc">Luvas e cuidado postural no manuseio e movimentação de cargas.</p>
+                                    </div>
                                 </div>
-                                <div class="flip-back">
-                                    <h4>Logística</h4>
-                                    <p>Luvas + cuidado postural no manuseio e movimentação de cargas.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
-                            <div class="flip-inner">
-                                <div class="flip-front">
-                                    <div style="font-size:42px">🎨</div>
-                                    <h4>Central de Cores</h4>
-                                    <p>Toque para ver</p>
-                                </div>
-                                <div class="flip-back">
-                                    <h4>Central de Cores</h4>
-                                    <p>Luvas nitrílicas e óculos contra respingos de tinta e químicos.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
-                            <div class="flip-inner">
-                                <div class="flip-front">
-                                    <div style="font-size:42px">🏬</div>
-                                    <h4>Drive sacarias</h4>
-                                    <p>Toque para ver</p>
-                                </div>
-                                <div class="flip-back">
-                                    <h4>Drive sacarias</h4>
-                                    <p>PFF2 + calçado de segurança contra poeira e impacto.</p>
+                                <div class="step-car-progress" aria-hidden="true"></div>
+                                <div class="step-car-nav">
+                                    <button type="button" class="step-car-btn step-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="step-car-counter">1/4</span>
+                                    <button type="button" class="step-car-btn step-car-next" aria-label="Próximo">›</button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
-                            <div class="flip-inner">
-                                <div class="flip-front">
-                                    <div style="font-size:42px">🏗️</div>
-                                    <h4>Empilhadeira</h4>
-                                    <p>Toque para ver</p>
-                                </div>
-                                <div class="flip-back">
-                                    <h4>Empilhadeira</h4>
-                                    <p>Calçado com biqueira e protetor auricular na operação.</p>
-                                </div>
-                            </div>
+                            <span class="step-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
@@ -677,19 +645,76 @@
             </div>
             <div class="slide" id="s-m4-g14">
                 <div class="top-bar" style="position: relative; z-index: 2;">
-                    <div class="section-tag">🎮 Atividade · Vídeo 14</div>
-                    <h2 class="slide-title">Julgue a <span>Mensagem</span></h2>
+                    <div class="section-tag">💬 Mensagens · Vídeo 14</div>
+                    <h2 class="slide-title">Mensagem Final de <span>Prevenção</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Escolha CERTO ou ERRADO e confirme a resposta</div>
-                    <div class="mg-board req-item" id="mg-m4-g14" data-mg="decide">
-                        <div class="mg-status">Toque em CERTO ou ERRADO e confirme.</div>
-                        <div class="mg-decide-card">
-                            <div class="mg-decide-prog">Situação 1 de 5</div>
-                            <div class="mg-decide-text"></div>
-                            <div class="mg-decide-actions">
-                                <button type="button" class="mg-decide-btn ok" onclick="mgDecide(this, true)">✓ CERTO</button>
-                                <button type="button" class="mg-decide-btn bad" onclick="mgDecide(this, false)">✕ ERRADO</button>
+
+                    <div class="mg-hint">👆 Toque no card para virar e ver se a mensagem é verdadeira ou falsa</div>
+                    <div class="tf-flip-grid">
+                        <div class="tf-flip req-item" data-answer="true" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">O melhor EPI do mundo é a prevenção.</p>
+                                </div>
+                                <div class="tf-flip-back is-true">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">VERDADEIRO</span>
+                                    <p class="tf-flip-explain">Prevenção vem antes do equipamento.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tf-flip req-item" data-answer="false" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">Usar EPI só quando for conveniente já garante a segurança.</p>
+                                </div>
+                                <div class="tf-flip-back is-false">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">FALSO</span>
+                                    <p class="tf-flip-explain">O EPI precisa ser usado em toda a exposição ao risco.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tf-flip req-item" data-answer="true" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">Escolher o EPI certo para cada missão reduz acidentes.</p>
+                                </div>
+                                <div class="tf-flip-back is-true">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">VERDADEIRO</span>
+                                    <p class="tf-flip-explain">EPI adequado à missão é barreira efetiva.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tf-flip req-item" data-answer="false" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">Cultura de segurança depende só do SESMT, sem o time da loja.</p>
+                                </div>
+                                <div class="tf-flip-back is-false">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">FALSO</span>
+                                    <p class="tf-flip-explain">O time da loja também fortalece a prevenção.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tf-flip req-item" data-answer="true" onclick="flipTfCard(this)">
+                            <div class="tf-flip-inner">
+                                <div class="tf-flip-front">
+                                    <span class="tf-flip-hint">Toque para revelar</span>
+                                    <p class="tf-flip-q">Cada colaborador fortalece a prevenção no dia a dia.</p>
+                                </div>
+                                <div class="tf-flip-back is-true">
+                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
+                                    <span class="tf-flip-result">VERDADEIRO</span>
+                                    <p class="tf-flip-explain">Cada um conta na cultura de segurança.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1640,7 +1665,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=63"></script>
+    <script src="shared.js?v=78"></script>
 </body>
 
 </html>

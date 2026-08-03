@@ -13,7 +13,7 @@
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=62">
+    <link rel="stylesheet" href="shared.css?v=78">
     <script>
         window.MODULE_NAV = {
             id: "modulo-1",
@@ -80,20 +80,33 @@
             </div>
             <div class="slide" id="s-m1-g01">
                 <div class="top-bar" style="position: relative; z-index: 2;">
-                    <div class="section-tag">🎮 Atividade · Vídeo 1</div>
-                    <h2 class="slide-title">Julgue a <span>Cultura</span></h2>
+                    <div class="section-tag">🎯 Atividade · Módulo 1</div>
+                    <h2 class="slide-title"
+                        style="position: relative; display: inline-block;">
+                        <div style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(246,213,12,0.18) 0%, transparent 70%); z-index: -1; filter: blur(10px);"></div>
+                        Mito × <span>Verdade</span>
+                    </h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Escolha CERTO ou ERRADO e confirme a resposta</div>
-                    <div class="mg-board req-item" id="mg-m1-g01" data-mg="decide">
-                        <div class="mg-status">Toque em CERTO ou ERRADO e confirme.</div>
-                        <div class="mg-decide-card">
-                            <div class="mg-decide-prog">Situação 1 de 5</div>
-                            <div class="mg-decide-text"></div>
-                            <div class="mg-decide-actions">
-                                <button type="button" class="mg-decide-btn ok" onclick="mgDecide(this, true)">✓ CERTO</button>
-                                <button type="button" class="mg-decide-btn bad" onclick="mgDecide(this, false)">✕ ERRADO</button>
+                    <div class="quiz-wrap">
+                        <div id="mito-question-panel" class="req-item" style="transition: opacity 0.5s ease;">
+                            <div class="q-meta">
+                                <div class="q-dots" id="mito-dots">
+                                    <div class="qdot2 cur" id="mito-dot0"></div>
+                                    <div class="qdot2" id="mito-dot1"></div>
+                                    <div class="qdot2" id="mito-dot2"></div>
+                                    <div class="qdot2" id="mito-dot3"></div>
+                                </div>
+                                <div class="q-lbl" id="mito-counter">Afirmação 1 de 4</div>
                             </div>
+                            <div class="q-text" id="mito-text"></div>
+                            <div class="q-options" id="mito-options"></div>
+                            <div id="mito-verify-container"
+                                style="text-align: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; display: none;">
+                                <button type="button" class="btn-tf-verify" id="btn-mito-verify" onclick="verifyMito()">✔ Confirmar Resposta</button>
+                            </div>
+                            <div class="q-feedback" id="mito-feedback"></div>
+                            <button type="button" class="btn-next-q" id="btn-next-mito" onclick="nextMito()">Continuar →</button>
                         </div>
                     </div>
                 </div>
@@ -104,44 +117,81 @@
             <div class="slide" id="s-m1-i01">
                 <div class="top-bar" style="position: relative; z-index: 2;">
                     <div class="section-tag">💡 Saiba Mais · Vídeo 1</div>
-                    <h2 class="slide-title">Mito × <span>Verdade</span></h2>
+                    <h2 class="slide-title">Cultura de <span>Prevenção</span></h2>
                 </div>
-                <div class="content-area">
-                    <div class="mg-hint">👆 Toque em cada frase para descobrir se ela se sustenta</div>
-                    <div class="info-wrap">
-                        <div class="myth-grid">
-                            <div class="myth-card req-item" data-answer="mito"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">MITO</div>
-                                <div class="myth-quote">“Segurança é assunto do time de SSO, não meu.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">A NR-06 divide o papel de cada um: a liderança fornece e
-                                    fiscaliza, o SSO orienta e o colaborador usa e conserva. Sem os três, a barreira
-                                    falha.</div>
+                <div class="content-area" style="justify-content:center;align-items:center;">
+                    <div class="glow-hint">👇 Toque nos cards para avançar</div>
+                    <div class="glow-cards">
+                        <div class="flip-card glow-card req-item"
+                            onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <span class="glow-num">01</span>
+                                    <div class="glow-icon" aria-hidden="true">🛡️</div>
+                                    <div class="glow-title">Prevenir antes de corrigir</div>
+                                    <div class="glow-tap">Toque para ver</div>
+                                </div>
+                                <div class="flip-back">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <div class="glow-icon glow-icon-sm" aria-hidden="true">🛡️</div>
+                                    <h4 class="glow-title-back">Prevenir antes de corrigir</h4>
+                                    <p class="glow-desc">A cultura forte age no risco <strong>antes</strong> do acidente — não só depois da ocorrência.</p>
+                                </div>
                             </div>
-                            <div class="myth-card req-item" data-answer="verdade"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">VERDADE</div>
-                                <div class="myth-quote">“A empresa é obrigada a fornecer o EPI de graça.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">O art. 166 da CLT e a NR-06 exigem EPI gratuito, adequado ao
-                                    risco da função e em perfeito estado de conservação.</div>
+                        </div>
+                        <div class="flip-card glow-card req-item"
+                            onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <span class="glow-num">02</span>
+                                    <div class="glow-icon" aria-hidden="true">⏱️</div>
+                                    <div class="glow-title">Sem atalho sob pressão</div>
+                                    <div class="glow-tap">Toque para ver</div>
+                                </div>
+                                <div class="flip-back">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <div class="glow-icon glow-icon-sm" aria-hidden="true">⏱️</div>
+                                    <h4 class="glow-title-back">Sem atalho sob pressão</h4>
+                                    <p class="glow-desc">Improviso e “só dessa vez” enfraquecem a barreira de <strong>todo o time</strong>.</p>
+                                </div>
                             </div>
-                            <div class="myth-card req-item" data-answer="mito"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">MITO</div>
-                                <div class="myth-quote">“Tenho experiência, faço rápido e sem o EPI dá certo.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">Nenhum tempo de casa substitui a barreira física. O acidente
-                                    acontece exatamente no segundo em que o EPI não está no corpo.</div>
+                        </div>
+                        <div class="flip-card glow-card req-item"
+                            onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <span class="glow-num">03</span>
+                                    <div class="glow-icon" aria-hidden="true">📋</div>
+                                    <div class="glow-title">Norma na prática</div>
+                                    <div class="glow-tap">Toque para ver</div>
+                                </div>
+                                <div class="flip-back">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <div class="glow-icon glow-icon-sm" aria-hidden="true">📋</div>
+                                    <h4 class="glow-title-back">Norma na prática</h4>
+                                    <p class="glow-desc">Seguir a legislação e os procedimentos no chão de loja é parte do <strong>trabalho seguro</strong>.</p>
+                                </div>
                             </div>
-                            <div class="myth-card req-item" data-answer="verdade"
-                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
-                                <div class="myth-badge">VERDADE</div>
-                                <div class="myth-quote">“Recusar o uso do EPI tem consequência.”</div>
-                                <span class="myth-tap">Toque para revelar</span>
-                                <div class="myth-answer">O uso é obrigatório. A recusa injustificada é considerada ato
-                                    faltoso pela CLT e pode gerar medida disciplinar.</div>
+                        </div>
+                        <div class="flip-card glow-card req-item"
+                            onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <span class="glow-num">04</span>
+                                    <div class="glow-icon" aria-hidden="true">⛑️</div>
+                                    <div class="glow-title">EPI só protege em uso</div>
+                                    <div class="glow-tap">Toque para ver</div>
+                                </div>
+                                <div class="flip-back">
+                                    <div class="glow-accent" aria-hidden="true"></div>
+                                    <div class="glow-icon glow-icon-sm" aria-hidden="true">⛑️</div>
+                                    <h4 class="glow-title-back">EPI só protege em uso</h4>
+                                    <p class="glow-desc">É a última barreira: só funciona quando está <strong>no corpo</strong> e em bom estado.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -177,55 +227,35 @@
                     <h2 class="slide-title">Quem <span>Cuida de Quê?</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Toque em cada card para revelar a responsabilidade</div>
-                    <div class="reveal-grid">
-                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
-                            <div class="reveal-cover">
-                                <span class="reveal-num">01</span>
-                                <div class="reveal-cover-title">Alta Administração</div>
-                                <div class="reveal-cover-hint">Toque para revelar</div>
+                    <div class="step-car" data-step-carousel data-label="PAPEL">
+                        <script type="application/json" class="step-car-data">
+                        [
+                            {"step":1,"icon":"🏢","title":"Alta Administração","desc":"Define a política de SSO e garante recursos para a prevenção."},
+                            {"step":2,"icon":"🗂️","title":"Sistema SSO","desc":"Monitora a rotina e elimina perigos antes que virem risco."},
+                            {"step":3,"icon":"👥","title":"Todo o Time","desc":"Reporta riscos do dia a dia e participa dos treinamentos."},
+                            {"step":4,"icon":"🤝","title":"Cultura Compartilhada","desc":"Segurança não é tarefa de um setor — é compromisso de todos."}
+                        ]
+                        </script>
+                        <div class="step-car-layout">
+                            <div class="step-car-stage">
+                                <div class="step-car-card is-active">
+                                    <div class="step-car-accent" aria-hidden="true"></div>
+                                    <div class="step-car-inner">
+                                        <span class="step-car-label">PAPEL</span>
+                                        <div class="step-car-num">🏢</div>
+                                        <h3 class="step-car-title">Alta Administração</h3>
+                                        <div class="step-car-divider" aria-hidden="true"></div>
+                                        <p class="step-car-desc">Define a política de SSO e garante recursos para a prevenção.</p>
+                                    </div>
+                                </div>
+                                <div class="step-car-progress" aria-hidden="true"></div>
+                                <div class="step-car-nav">
+                                    <button type="button" class="step-car-btn step-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="step-car-counter">1/4</span>
+                                    <button type="button" class="step-car-btn step-car-next" aria-label="Próximo">›</button>
+                                </div>
                             </div>
-                            <div class="reveal-body">
-                                <div class="reveal-ico">🏢</div>
-                                <h4>Alta Administração</h4>
-                                <p>Define a política de SSO e garante recursos para a prevenção.</p>
-                            </div>
-                        </div>
-                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
-                            <div class="reveal-cover">
-                                <span class="reveal-num">02</span>
-                                <div class="reveal-cover-title">Sistema SSO</div>
-                                <div class="reveal-cover-hint">Toque para revelar</div>
-                            </div>
-                            <div class="reveal-body">
-                                <div class="reveal-ico">🗂️</div>
-                                <h4>Sistema SSO</h4>
-                                <p>Monitora a rotina e elimina perigos antes que virem risco.</p>
-                            </div>
-                        </div>
-                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
-                            <div class="reveal-cover">
-                                <span class="reveal-num">03</span>
-                                <div class="reveal-cover-title">Todo o Time</div>
-                                <div class="reveal-cover-hint">Toque para revelar</div>
-                            </div>
-                            <div class="reveal-body">
-                                <div class="reveal-ico">👥</div>
-                                <h4>Todo o Time</h4>
-                                <p>Reporta riscos do dia a dia e participa dos treinamentos.</p>
-                            </div>
-                        </div>
-                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
-                            <div class="reveal-cover">
-                                <span class="reveal-num">04</span>
-                                <div class="reveal-cover-title">Cultura Compartilhada</div>
-                                <div class="reveal-cover-hint">Toque para revelar</div>
-                            </div>
-                            <div class="reveal-body">
-                                <div class="reveal-ico">🤝</div>
-                                <h4>Cultura Compartilhada</h4>
-                                <p>Segurança não é tarefa de um setor — é compromisso de todos.</p>
-                            </div>
+                            <span class="step-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
@@ -262,7 +292,7 @@
                 <div class="content-area">
                     <div class="mg-hint">👆 Toque nos cards para descobrir cada pilar</div>
                     <div class="flip-row">
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🏛️</div>
@@ -275,7 +305,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🎓</div>
@@ -288,7 +318,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🗣️</div>
@@ -301,7 +331,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                        <div class="flip-card req-item" onclick="flipExploreCard(this)">
                             <div class="flip-inner">
                                 <div class="flip-front">
                                     <div style="font-size:42px">🔄</div>
@@ -326,61 +356,36 @@
                     <h2 class="slide-title">Como <span>Reportar um Risco</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Toque em cada etapa para ver o detalhe</div>
-                    <div class="info-wrap">
-                        <p class="info-lead">Participação e consulta só funcionam quando o risco chega a quem pode
-                            resolver. Este é o caminho na <strong>Leroy Merlin</strong>.</p>
-                        <div class="step-flow">
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">1</div>
-                                <div class="step-body">
-                                    <h4>Pare a tarefa</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Se o risco é iminente, interrompa. Nenhuma meta de loja vale mais que a sua
-                                        integridade ou a do colega.</p>
+                    <div class="step-car" data-step-carousel data-label="PASSO">
+                        <script type="application/json" class="step-car-data">
+                        [
+                            {"step":1,"title":"Pare a tarefa","desc":"Se o risco é iminente, interrompa. Nenhuma meta de loja vale mais que a sua integridade ou a do colega."},
+                            {"step":2,"title":"Isole e sinalize a área","desc":"Impeça que outra pessoa entre na zona de perigo enquanto o problema não for resolvido."},
+                            {"step":3,"title":"Comunique a liderança","desc":"Avise imediatamente o líder do setor. É ele quem aciona os recursos para eliminar ou controlar o perigo."},
+                            {"step":4,"title":"Registre no canal oficial","desc":"Use o canal de reporte, o SSO ou a CIPAA. O registro transforma o relato em ação e evita a repetição."},
+                            {"step":5,"title":"Acompanhe a solução","desc":"Melhoria contínua é verificar se a correção funcionou — e cobrar quando o risco voltar a aparecer."}
+                        ]
+                        </script>
+                        <div class="step-car-layout">
+                            <div class="step-car-stage">
+                                <div class="step-car-card is-active">
+                                    <div class="step-car-accent" aria-hidden="true"></div>
+                                    <div class="step-car-inner">
+                                        <span class="step-car-label">PASSO</span>
+                                        <div class="step-car-num">1</div>
+                                        <h3 class="step-car-title">Pare a tarefa</h3>
+                                        <div class="step-car-divider" aria-hidden="true"></div>
+                                        <p class="step-car-desc">Se o risco é iminente, interrompa. Nenhuma meta de loja vale mais que a sua integridade ou a do colega.</p>
+                                    </div>
+                                </div>
+                                <div class="step-car-progress" aria-hidden="true"></div>
+                                <div class="step-car-nav">
+                                    <button type="button" class="step-car-btn step-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="step-car-counter">1/5</span>
+                                    <button type="button" class="step-car-btn step-car-next" aria-label="Próximo">›</button>
                                 </div>
                             </div>
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">2</div>
-                                <div class="step-body">
-                                    <h4>Isole e sinalize a área</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Impeça que outra pessoa entre na zona de perigo enquanto o problema não for
-                                        resolvido.</p>
-                                </div>
-                            </div>
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">3</div>
-                                <div class="step-body">
-                                    <h4>Comunique a liderança</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Avise imediatamente o líder do setor. É ele quem aciona os recursos para
-                                        eliminar ou controlar o perigo.</p>
-                                </div>
-                            </div>
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">4</div>
-                                <div class="step-body">
-                                    <h4>Registre no canal oficial</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Use o canal de reporte, o SSO ou a CIPAA. O registro é o que transforma o
-                                        relato em ação e evita a repetição.</p>
-                                </div>
-                            </div>
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">5</div>
-                                <div class="step-body">
-                                    <h4>Acompanhe a solução</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Melhoria contínua é verificar se a correção funcionou — e cobrar quando o
-                                        risco voltar a aparecer.</p>
-                                </div>
-                            </div>
+                            <span class="step-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
@@ -465,7 +470,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=63"></script>
+    <script src="shared.js?v=78"></script>
 </body>
 
 </html>
