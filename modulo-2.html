@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 2 — O Conceito de EPI e as Responsabilidades</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://player.pandavideo.com.br/api.v2.js"></script>
+    <link rel="stylesheet" href="shared.css?v=62">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-2",
+            prev: "modulo-1.html",
+            next: "modulo-3.html",
+            label: "Módulo 2 — O Conceito de EPI e as Responsabilidades"
+        };
+    </script>
+    
+</head>
+<body>
+
+    <button id="btn-demo" onclick="toggleDemoMode()"
+        style="position: fixed; top: 30px; right: 210px; left: auto; bottom: auto; z-index: 9999; background: #3d1a00; color: #ffffff; border: 1.5px solid #a0522d; border-radius: 50px; padding: 7px 16px 7px 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: var(--font-p); letter-spacing: 0.2px; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;"
+        onmouseover="if(!window.demoMode){this.style.background='#6a6a6a'; this.style.borderColor='#9a9a9a';}"
+        onmouseout="if(!window.demoMode){this.style.background='#5a5a5a'; this.style.borderColor='#888888'; this.style.color='#f0f0f0';}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>Modo Simulação</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 8px; right: 16px; z-index: 9999; background: rgba(26,20,64,0.92); color: #FFF1E0; padding: 4px 12px; font-size: 11px; font-weight: 700; font-family: var(--font-h); border-radius: 99px; border: 1px solid rgba(246,213,12,0.45); box-shadow: 0 0 12px rgba(246,213,12,0.25); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-12px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.12%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="assets/NOVA LOGO TECNOCURSOS BRANCO SEM SLOGAN 1.png" alt="Tecno-Cursos" referrerpolicy="no-referrer">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s-m2-intro">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 2</div>
+                    <div class="mod-intro-title">Conceito de EPI e Responsabilidades</div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v04">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 4 · Módulo 2</div>
+                    <h2 class="slide-title">O Conceito de EPI e <span>Fornecimento</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-b9389236-77dd-4228-b594-9416f85b94f6"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=b9389236-77dd-4228-b594-9416f85b94f6"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="O Conceito de EPI e Fornecimento"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m2-g04">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">⚖️ Compare · Vídeo 4</div>
+                    <h2 class="slide-title">EPI: Errado × <span>Certo</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque nos dois lados para confirmar a leitura</div>
+                    <div class="compare-container">
+                        <div class="compare-card wrong req-item" onclick="markCompareRead(this)">
+                            <div class="visual-placeholder" aria-hidden="true">❌</div>
+                            <div class="compare-card-title">Incorreto</div>
+                            <p class="compare-card-text">Usar qualquer equipamento improvisado, cobrado do colaborador
+                                ou sem adequação ao risco — isso não é EPI pela NR-06.</p>
+                        </div>
+                        <div class="compare-card right req-item" onclick="markCompareRead(this)">
+                            <div class="visual-placeholder" aria-hidden="true">✅</div>
+                            <div class="compare-card-title">Correto</div>
+                            <p class="compare-card-text">EPI de uso individual, gratuito, aprovado, adequado ao risco da
+                                atividade e em perfeito estado de conservação.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m2-i03">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">📊 Base Legal · Vídeo 4</div>
+                    <h2 class="slide-title">A NR-06 em <span>Números</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="info-wrap">
+                        <p class="info-lead">O EPI não é um favor da empresa nem um gasto do colaborador: é uma
+                            <strong>obrigação legal</strong> com regras muito claras.</p>
+                        <div class="stat-grid">
+                            <div class="stat-pill">
+                                <div class="stat-num">NR-06</div>
+                                <div class="stat-label">A norma regulamentadora que define o que é EPI e como ele deve
+                                    ser fornecido no Brasil</div>
+                            </div>
+                            <div class="stat-pill">
+                                <div class="stat-num">Art. 166</div>
+                                <div class="stat-label">Da CLT: obriga a empresa a fornecer o EPI adequado ao risco da
+                                    atividade</div>
+                            </div>
+                            <div class="stat-pill">
+                                <div class="stat-num">C.A.</div>
+                                <div class="stat-label">Certificado de Aprovação: sem ele, o equipamento não pode ser
+                                    comercializado nem usado</div>
+                            </div>
+                            <div class="stat-pill">
+                                <div class="stat-num">R$ 0,00</div>
+                                <div class="stat-label">É o que o EPI custa para você: o fornecimento é sempre gratuito
+                                </div>
+                            </div>
+                        </div>
+                        <div class="atencao">O EPI só é considerado válido quando é <strong>adequado ao risco</strong>,
+                            está <strong>em perfeito estado</strong> e possui <strong>C.A. dentro da validade</strong>.
+                            Faltando um desses três, o equipamento não protege — e não pode ser usado.</div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v05">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 5 · Módulo 2</div>
+                    <h2 class="slide-title">Responsabilidades da <span>Organização</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-50fb5353-8fcb-4970-bb68-19c717a4e5d7"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=50fb5353-8fcb-4970-bb68-19c717a4e5d7"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Responsabilidades da Organização"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m2-g05">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🧭 Na Prática · Vídeo 5</div>
+                    <h2 class="slide-title">Deveres da <span>Empresa</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada dever para revisar o detalhe</div>
+                    <div class="info-wrap">
+                        <div class="step-flow">
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">1</div>
+                                <div class="step-body">
+                                    <h4>Adquirir EPI aprovado</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Só equipamentos com aprovação do órgão nacional competente e C.A. válido.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">2</div>
+                                <div class="step-body">
+                                    <h4>Orientar e treinar</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Ensinar o uso, a guarda, a conservação e a higienização do EPI.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">3</div>
+                                <div class="step-body">
+                                    <h4>Registrar entregas</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Documentar cada fornecimento e manter o histórico atualizado.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">4</div>
+                                <div class="step-body">
+                                    <h4>Substituir o danificado</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Trocar imediatamente EPI danificado, extraviado ou fora de uso — sem custo para o colaborador.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v06">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 6 · Módulo 2</div>
+                    <h2 class="slide-title">Responsabilidades do <span>Empregado</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-caa24325-d750-4a22-9c90-72ff95eb0647"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=caa24325-d750-4a22-9c90-72ff95eb0647"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Responsabilidades do Empregado"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m2-g06">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🃏 Explore · Vídeo 6</div>
+                    <h2 class="slide-title">Seus <span>Deveres</span> com o EPI</h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque nos cards para revisar seus deveres</div>
+                    <div class="flip-row">
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🧤</div>
+                                    <h4>Usar o EPI fornecido</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Usar o EPI fornecido</h4>
+                                    <p>Utilize apenas o EPI entregue pela empresa, adequado ao risco da sua função.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🧼</div>
+                                    <h4>Conservar e higienizar</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Conservar e higienizar</h4>
+                                    <p>Guarde, limpe e conserve o EPI conforme as orientações recebidas no treinamento.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">📣</div>
+                                    <h4>Comunicar danos</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Comunicar danos</h4>
+                                    <p>Avise imediatamente se o EPI estiver danificado, extraviado ou inadequado.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🚫</div>
+                                    <h4>Nunca alterar o EPI</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Nunca alterar o EPI</h4>
+                                    <p>Não empreste, não modifique e não use EPI de outro setor sem critério.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m2-i04">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">✅ Checklist · Vídeo 6</div>
+                    <h2 class="slide-title">Recebi meu EPI. <span>E agora?</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada item para confirmar que você assume esse compromisso</div>
+                    <div class="info-wrap">
+                        <div class="check-grid">
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Confiro o C.A. e a validade antes do primeiro uso</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Testo o ajuste: EPI folgado ou apertado não protege</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Assino o registro de entrega do equipamento</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Uso durante toda a exposição ao risco, sem intervalos</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Higienizo e guardo no local indicado ao fim do turno</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Comunico dano, extravio ou desgaste no mesmo dia</span>
+                            </div>
+                        </div>
+                        <p class="info-lead">Cumprir esses seis pontos é exatamente o que a NR-06 chama de
+                            <strong>responsabilidade do empregado</strong>.</p>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m2-quiz">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎯 V / F · Módulo 2</div>
+                    <h2 class="slide-title">
+                        <div style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(246,213,12,0.18) 0%, transparent 70%); z-index: -1; filter: blur(10px);"></div>
+                        Verdadeiro ou <span>Falso</span>
+                    </h2>
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+                        <div id="q2-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Verdadeiro ou Falso — Módulo 2</h3>
+                                <p class="quiz-intro-desc">Avalie <strong>8</strong> afirmações sobre EPI e responsabilidades. Acerte mais da metade para avançar. Ao final, veja sua porcentagem.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz2Intro()">INICIAR DESAFIO</button>
+                            </div>
+                        </div>
+                        <div id="q2-question-panel" style="display:none">
+                            <div class="q-meta">
+                                <div class="q-dots"></div>
+                                <div class="q-lbl" id="q2-counter"></div>
+                            </div>
+                            <div class="q-text" id="q2-text"></div>
+                            <div class="q-options" id="q2-options"></div>
+                            <div id="q2-verify-container" style="display:none;opacity:0;visibility:hidden">
+                                <button class="btn-tf-verify" onclick="verifyAnswer2()">✔ Confirmar Resposta</button>
+                            </div>
+                            <div class="q-feedback" id="q2-feedback"></div>
+                            <button class="btn-next-q" id="btn-next-q2" onclick="nextQuestion2()">Continuar →</button>
+                        </div>
+                        <div id="q2-result-panel" class="quiz-result-panel" style="display:none">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q2-result-icon" aria-hidden="true">🏅</div>
+                                <div class="result-pct" id="q2-pct"></div>
+                                <h3 class="quiz-result-title" id="q2-status">Desafio Concluído!</h3>
+                                <p class="quiz-result-desc" id="q2-sub"></p>
+                                <button type="button" class="quiz-result-btn" onclick="resetQuiz2()">JOGAR NOVAMENTE</button>
+                            </div>
+                            <div class="r-stars" id="q2-stars" style="display:none" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=63"></script>
+</body>
+
+</html>

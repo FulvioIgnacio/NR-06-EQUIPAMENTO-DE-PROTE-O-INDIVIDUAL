@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 1 — Fundamentos e Cultura de Segurança</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://player.pandavideo.com.br/api.v2.js"></script>
+    <link rel="stylesheet" href="shared.css?v=62">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-1",
+            prev: "index.html",
+            next: "modulo-2.html",
+            label: "Módulo 1 — Fundamentos e Cultura de Segurança"
+        };
+    </script>
+    
+</head>
+<body>
+
+    <button id="btn-demo" onclick="toggleDemoMode()"
+        style="position: fixed; top: 30px; right: 210px; left: auto; bottom: auto; z-index: 9999; background: #3d1a00; color: #ffffff; border: 1.5px solid #a0522d; border-radius: 50px; padding: 7px 16px 7px 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: var(--font-p); letter-spacing: 0.2px; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;"
+        onmouseover="if(!window.demoMode){this.style.background='#6a6a6a'; this.style.borderColor='#9a9a9a';}"
+        onmouseout="if(!window.demoMode){this.style.background='#5a5a5a'; this.style.borderColor='#888888'; this.style.color='#f0f0f0';}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>Modo Simulação</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 8px; right: 16px; z-index: 9999; background: rgba(26,20,64,0.92); color: #FFF1E0; padding: 4px 12px; font-size: 11px; font-weight: 700; font-family: var(--font-h); border-radius: 99px; border: 1px solid rgba(246,213,12,0.45); box-shadow: 0 0 12px rgba(246,213,12,0.25); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-12px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.12%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="assets/NOVA LOGO TECNOCURSOS BRANCO SEM SLOGAN 1.png" alt="Tecno-Cursos" referrerpolicy="no-referrer">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s-m1-intro">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 1</div>
+                    <div class="mod-intro-title">Fundamentos e Cultura de Segurança</div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v01">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 1 · Módulo 1</div>
+                    <h2 class="slide-title">Compromisso da Liderança e <span>Legislação</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-0ab4897e-248e-46fe-b0ae-da9f68dad971"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=0ab4897e-248e-46fe-b0ae-da9f68dad971"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Compromisso da Liderança e Legislação"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m1-g01">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎮 Atividade · Vídeo 1</div>
+                    <h2 class="slide-title">Julgue a <span>Cultura</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Escolha CERTO ou ERRADO e confirme a resposta</div>
+                    <div class="mg-board req-item" id="mg-m1-g01" data-mg="decide">
+                        <div class="mg-status">Toque em CERTO ou ERRADO e confirme.</div>
+                        <div class="mg-decide-card">
+                            <div class="mg-decide-prog">Situação 1 de 5</div>
+                            <div class="mg-decide-text"></div>
+                            <div class="mg-decide-actions">
+                                <button type="button" class="mg-decide-btn ok" onclick="mgDecide(this, true)">✓ CERTO</button>
+                                <button type="button" class="mg-decide-btn bad" onclick="mgDecide(this, false)">✕ ERRADO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m1-i01">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">💡 Saiba Mais · Vídeo 1</div>
+                    <h2 class="slide-title">Mito × <span>Verdade</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada frase para descobrir se ela se sustenta</div>
+                    <div class="info-wrap">
+                        <div class="myth-grid">
+                            <div class="myth-card req-item" data-answer="mito"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">MITO</div>
+                                <div class="myth-quote">“Segurança é assunto do time de SSO, não meu.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">A NR-06 divide o papel de cada um: a liderança fornece e
+                                    fiscaliza, o SSO orienta e o colaborador usa e conserva. Sem os três, a barreira
+                                    falha.</div>
+                            </div>
+                            <div class="myth-card req-item" data-answer="verdade"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">VERDADE</div>
+                                <div class="myth-quote">“A empresa é obrigada a fornecer o EPI de graça.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">O art. 166 da CLT e a NR-06 exigem EPI gratuito, adequado ao
+                                    risco da função e em perfeito estado de conservação.</div>
+                            </div>
+                            <div class="myth-card req-item" data-answer="mito"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">MITO</div>
+                                <div class="myth-quote">“Tenho experiência, faço rápido e sem o EPI dá certo.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">Nenhum tempo de casa substitui a barreira física. O acidente
+                                    acontece exatamente no segundo em que o EPI não está no corpo.</div>
+                            </div>
+                            <div class="myth-card req-item" data-answer="verdade"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">VERDADE</div>
+                                <div class="myth-quote">“Recusar o uso do EPI tem consequência.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">O uso é obrigatório. A recusa injustificada é considerada ato
+                                    faltoso pela CLT e pode gerar medida disciplinar.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v02">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 2 · Módulo 1</div>
+                    <h2 class="slide-title">Responsabilidade Individual e <span>Gestão SSO</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-d2144887-7879-4a0d-8c34-033e18a43cda"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=d2144887-7879-4a0d-8c34-033e18a43cda"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Responsabilidade Individual e Gestão SSO"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m1-g02">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🃏 Descubra · Vídeo 2</div>
+                    <h2 class="slide-title">Quem <span>Cuida de Quê?</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada card para revelar a responsabilidade</div>
+                    <div class="reveal-grid">
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">01</span>
+                                <div class="reveal-cover-title">Alta Administração</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">🏢</div>
+                                <h4>Alta Administração</h4>
+                                <p>Define a política de SSO e garante recursos para a prevenção.</p>
+                            </div>
+                        </div>
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">02</span>
+                                <div class="reveal-cover-title">Sistema SSO</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">🗂️</div>
+                                <h4>Sistema SSO</h4>
+                                <p>Monitora a rotina e elimina perigos antes que virem risco.</p>
+                            </div>
+                        </div>
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">03</span>
+                                <div class="reveal-cover-title">Todo o Time</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">👥</div>
+                                <h4>Todo o Time</h4>
+                                <p>Reporta riscos do dia a dia e participa dos treinamentos.</p>
+                            </div>
+                        </div>
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">04</span>
+                                <div class="reveal-cover-title">Cultura Compartilhada</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">🤝</div>
+                                <h4>Cultura Compartilhada</h4>
+                                <p>Segurança não é tarefa de um setor — é compromisso de todos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v03">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 3 · Módulo 1</div>
+                    <h2 class="slide-title">Participação, Consulta e <span>Melhoria Contínua</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-a8f27ce9-7928-4cf2-8d5c-e501749b0eba"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=a8f27ce9-7928-4cf2-8d5c-e501749b0eba"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Participação, Consulta e Melhoria Contínua"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m1-g03">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🃏 Explore · Vídeo 3</div>
+                    <h2 class="slide-title">Pilares da <span>Participação</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque nos cards para descobrir cada pilar</div>
+                    <div class="flip-row">
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🏛️</div>
+                                    <h4>CIPAA</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>CIPAA</h4>
+                                    <p>Comissão interna de prevenção: canal formal para melhorar a segurança no dia a dia.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🎓</div>
+                                    <h4>Treinamentos</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Treinamentos</h4>
+                                    <p>Capacitação contínua para que todos saibam usar o EPI e agir com segurança.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🗣️</div>
+                                    <h4>Consulta ao Time</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Consulta ao Time</h4>
+                                    <p>Ouvir quem opera: quem está na ponta conhece os riscos reais da tarefa.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🔄</div>
+                                    <h4>Melhoria Contínua</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Melhoria Contínua</h4>
+                                    <p>Revisão periódica do SSO para corrigir falhas e fortalecer a prevenção.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m1-i02">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🧭 Na Prática · Vídeo 3</div>
+                    <h2 class="slide-title">Como <span>Reportar um Risco</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada etapa para ver o detalhe</div>
+                    <div class="info-wrap">
+                        <p class="info-lead">Participação e consulta só funcionam quando o risco chega a quem pode
+                            resolver. Este é o caminho na <strong>Leroy Merlin</strong>.</p>
+                        <div class="step-flow">
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">1</div>
+                                <div class="step-body">
+                                    <h4>Pare a tarefa</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Se o risco é iminente, interrompa. Nenhuma meta de loja vale mais que a sua
+                                        integridade ou a do colega.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">2</div>
+                                <div class="step-body">
+                                    <h4>Isole e sinalize a área</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Impeça que outra pessoa entre na zona de perigo enquanto o problema não for
+                                        resolvido.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">3</div>
+                                <div class="step-body">
+                                    <h4>Comunique a liderança</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Avise imediatamente o líder do setor. É ele quem aciona os recursos para
+                                        eliminar ou controlar o perigo.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">4</div>
+                                <div class="step-body">
+                                    <h4>Registre no canal oficial</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Use o canal de reporte, o SSO ou a CIPAA. O registro é o que transforma o
+                                        relato em ação e evita a repetição.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">5</div>
+                                <div class="step-body">
+                                    <h4>Acompanhe a solução</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Melhoria contínua é verificar se a correção funcionou — e cobrar quando o
+                                        risco voltar a aparecer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m1-quiz">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎯 Cenários · Módulo 1</div>
+                    <h2 class="slide-title">
+                        <div style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(246,213,12,0.18) 0%, transparent 70%); z-index: -1; filter: blur(10px);"></div>
+                        Cenários de <span>Campo</span>
+                    </h2>
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+                        <div id="q1-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Cenários de Cultura SSO — Módulo 1</h3>
+                                <p class="quiz-intro-desc">Decida em <strong>5</strong> cenários de campo. Acerte mais da metade para avançar. Ao final, veja sua porcentagem.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz1Intro()">INICIAR DESAFIO</button>
+                            </div>
+                        </div>
+                        <div id="q1-question-panel" style="display:none">
+                            <div class="q-meta">
+                                <div class="q-dots"></div>
+                                <div class="q-lbl" id="q1-counter"></div>
+                            </div>
+                            <div class="q-text" id="q1-text"></div>
+                            <div class="q-options" id="q1-options"></div>
+                            <div id="q1-verify-container" style="display:none;opacity:0;visibility:hidden">
+                                <button class="btn-tf-verify" onclick="verifyAnswer1()">✔ Confirmar Resposta</button>
+                            </div>
+                            <div class="q-feedback" id="q1-feedback"></div>
+                            <button class="btn-next-q" id="btn-next-q1" onclick="nextQuestion1()">Continuar →</button>
+                        </div>
+                        <div id="q1-result-panel" class="quiz-result-panel" style="display:none">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q1-result-icon" aria-hidden="true">🏅</div>
+                                <div class="result-pct" id="q1-pct"></div>
+                                <h3 class="quiz-result-title" id="q1-status">Desafio Concluído!</h3>
+                                <p class="quiz-result-desc" id="q1-sub"></p>
+                                <button type="button" class="quiz-result-btn" onclick="resetQuiz1()">JOGAR NOVAMENTE</button>
+                            </div>
+                            <div class="r-stars" id="q1-stars" style="display:none" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=63"></script>
+</body>
+
+</html>

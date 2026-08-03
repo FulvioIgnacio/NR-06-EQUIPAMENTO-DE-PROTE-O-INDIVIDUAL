@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 3 — Tipos de EPI e Aplicações Práticas</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://player.pandavideo.com.br/api.v2.js"></script>
+    <link rel="stylesheet" href="shared.css?v=62">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-3",
+            prev: "modulo-2.html",
+            next: "modulo-4.html",
+            label: "Módulo 3 — Tipos de EPI e Aplicações Práticas"
+        };
+    </script>
+    
+</head>
+<body>
+
+    <button id="btn-demo" onclick="toggleDemoMode()"
+        style="position: fixed; top: 30px; right: 210px; left: auto; bottom: auto; z-index: 9999; background: #3d1a00; color: #ffffff; border: 1.5px solid #a0522d; border-radius: 50px; padding: 7px 16px 7px 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: var(--font-p); letter-spacing: 0.2px; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;"
+        onmouseover="if(!window.demoMode){this.style.background='#6a6a6a'; this.style.borderColor='#9a9a9a';}"
+        onmouseout="if(!window.demoMode){this.style.background='#5a5a5a'; this.style.borderColor='#888888'; this.style.color='#f0f0f0';}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>Modo Simulação</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 8px; right: 16px; z-index: 9999; background: rgba(26,20,64,0.92); color: #FFF1E0; padding: 4px 12px; font-size: 11px; font-weight: 700; font-family: var(--font-h); border-radius: 99px; border: 1px solid rgba(246,213,12,0.45); box-shadow: 0 0 12px rgba(246,213,12,0.25); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-12px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.12%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="assets/NOVA LOGO TECNOCURSOS BRANCO SEM SLOGAN 1.png" alt="Tecno-Cursos" referrerpolicy="no-referrer">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s-m3-intro">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 3</div>
+                    <div class="mod-intro-title">Tipos de EPI e Aplicações</div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v07">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 7 · Módulo 3</div>
+                    <h2 class="slide-title">Proteção de Cabeça, Olhos, Face e <span>Ouvidos</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-480adb31-7c35-400a-9628-f471a12e18f2"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=480adb31-7c35-400a-9628-f471a12e18f2"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Proteção de Cabeça, Olhos, Face e Ouvidos"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m3-g07">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎮 Atividade · Vídeo 7</div>
+                    <h2 class="slide-title">Combine o <span>EPI Certo</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Relacione cada EPI à proteção oferecida</div>
+                    <div class="mg-board req-item" id="mg-m3-g07">
+                        <div class="mg-status">Toque em um item de cada coluna para formar o par.</div>
+                        <div class="mg-match-grid">
+                            <div class="mg-match-col">
+                                <button type="button" class="mg-match-item" data-side="a" data-key="cabeca" onclick="mgPickMatch(this)">⛑️ Capacete</button>
+                                <button type="button" class="mg-match-item" data-side="a" data-key="olhos" onclick="mgPickMatch(this)">🥽 Óculos</button>
+                                <button type="button" class="mg-match-item" data-side="a" data-key="face" onclick="mgPickMatch(this)">🛡️ Protetor facial</button>
+                                <button type="button" class="mg-match-item" data-side="a" data-key="ouvidos" onclick="mgPickMatch(this)">🎧 Protetor auricular</button>
+                            </div>
+                            <div class="mg-match-col">
+                                <button type="button" class="mg-match-item" data-side="b" data-key="ouvidos" onclick="mgPickMatch(this)">Proteção auditiva</button>
+                                <button type="button" class="mg-match-item" data-side="b" data-key="cabeca" onclick="mgPickMatch(this)">Impactos na cabeça</button>
+                                <button type="button" class="mg-match-item" data-side="b" data-key="face" onclick="mgPickMatch(this)">Respingos químicos na face</button>
+                                <button type="button" class="mg-match-item" data-side="b" data-key="olhos" onclick="mgPickMatch(this)">Partículas nos olhos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m3-i05">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🔍 Na Prática · Vídeo 7</div>
+                    <h2 class="slide-title">Inspeção <span>Antes do Uso</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada etapa da inspeção para ver o que observar</div>
+                    <div class="info-wrap">
+                        <p class="info-lead">Leva menos de um minuto e é o que separa um EPI que protege de um EPI que
+                            só <strong>parece</strong> proteger.</p>
+                        <div class="step-flow">
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">1</div>
+                                <div class="step-body">
+                                    <h4>Confira o C.A. e a validade</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Certificado de Aprovação legível e dentro do prazo. Etiqueta apagada ou vencida
+                                        já reprova o equipamento.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">2</div>
+                                <div class="step-body">
+                                    <h4>Procure trincas, rasgos e furos</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Capacete trincado, lente riscada, luva furada ou costura solta perdem a
+                                        capacidade de absorver o impacto.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">3</div>
+                                <div class="step-body">
+                                    <h4>Teste ajustes e travas</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Jugular, catraca, fivelas e ganchos precisam travar com firmeza. Nada deve
+                                        escorregar ou abrir sozinho.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">4</div>
+                                <div class="step-body">
+                                    <h4>Verifique limpeza e higienização</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>EPI sujo incomoda, embaça e acaba sendo retirado no meio da tarefa — é assim que
+                                        a proteção se perde.</p>
+                                </div>
+                            </div>
+                            <div class="step-item req-item"
+                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
+                                <div class="step-num">5</div>
+                                <div class="step-body">
+                                    <h4>Reprovou? Não use — troque</h4>
+                                    <span class="step-tap">Toque para ver</span>
+                                    <p>Qualquer item reprovado deve ser comunicado e substituído. A empresa é obrigada
+                                        a repor sem custo para você.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v08">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 8 · Módulo 3</div>
+                    <h2 class="slide-title">Proteção Respiratória e do <span>Tronco</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-fef7a524-7253-4b1e-b907-c76f0e06d021"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=fef7a524-7253-4b1e-b907-c76f0e06d021"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Proteção Respiratória e do Tronco"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m3-g08">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🃏 Descubra · Vídeo 8</div>
+                    <h2 class="slide-title">PFF2, PFF3 e <span>Proteção</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada card para revelar a indicação</div>
+                    <div class="reveal-grid">
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">01</span>
+                                <div class="reveal-cover-title">PFF2</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">😷</div>
+                                <h4>PFF2</h4>
+                                <p>Indicado no drive-in e áreas com particulado moderado e poeira.</p>
+                            </div>
+                        </div>
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">02</span>
+                                <div class="reveal-cover-title">PFF3</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">🫁</div>
+                                <h4>PFF3</h4>
+                                <p>Exigido no corte de madeira contra partículas finas e mais agressivas.</p>
+                            </div>
+                        </div>
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">03</span>
+                                <div class="reveal-cover-title">Externo / Drive</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">☀️</div>
+                                <h4>Externo / Drive</h4>
+                                <p>Protetor solar e creme protetor reforçam a proteção da pele.</p>
+                            </div>
+                        </div>
+                        <div class="reveal-card unrevealed req-item" onclick="revealCard(this)">
+                            <div class="reveal-cover">
+                                <span class="reveal-num">04</span>
+                                <div class="reveal-cover-title">Em ambos</div>
+                                <div class="reveal-cover-hint">Toque para revelar</div>
+                            </div>
+                            <div class="reveal-body">
+                                <div class="reveal-ico">✅</div>
+                                <h4>Em ambos</h4>
+                                <p>Óculos e calçado de segurança entram na maioria das missões.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v09">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 9 · Módulo 3</div>
+                    <h2 class="slide-title">Proteção de Mãos, Pés e da <span>Pele</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-92e14597-60e0-44c0-8ad0-58a472c7d9d2"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=92e14597-60e0-44c0-8ad0-58a472c7d9d2"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Proteção de Mãos, Pés e da Pele"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m3-g09">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🃏 Explore · Vídeo 9</div>
+                    <h2 class="slide-title">Proteção <span>Corporal</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque nos cards para ver o que cada EPI protege</div>
+                    <div class="flip-row">
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🧤</div>
+                                    <h4>Luvas</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Luvas</h4>
+                                    <p>Protegem as mãos contra abrasivos, cortes e contato com peças.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🥾</div>
+                                    <h4>Calçado</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Calçado de segurança</h4>
+                                    <p>Protege os pés contra impacto, perfuração e esmagamento.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🧴</div>
+                                    <h4>Creme protetor</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Creme protetor</h4>
+                                    <p>Barreira para a pele dos membros superiores em contato com químicos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">☀️</div>
+                                    <h4>Protetor solar</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Protetor solar</h4>
+                                    <p>Proteção contra radiação solar em tarefas externas e drive-in.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v10">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 10 · Módulo 3</div>
+                    <h2 class="slide-title">Proteção Contra Quedas e <span>Fator de Queda</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-6979da56-2312-489e-bc89-1ae982d2390c"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=6979da56-2312-489e-bc89-1ae982d2390c"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Proteção Contra Quedas e Fator de Queda"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m3-g10">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎮 Atividade · Vídeo 10</div>
+                    <h2 class="slide-title">Kit de <span>Trabalho em Altura</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Selecione só o que faz parte da proteção contra quedas</div>
+                    <div class="mg-board req-item" id="mg-m3-g10">
+                        <div class="mg-status">Selecione as opções corretas e toque em Conferir.</div>
+                        <div class="mg-chips">
+                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Cinturão tipo paraquedista</button>
+                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Talabarte</button>
+                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Absorvedor de energia</button>
+                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Trava-quedas</button>
+                            <button type="button" class="mg-chip" data-ok="1" onclick="mgToggleWord(this)">Ancoragem acima da cintura</button>
+                            <button type="button" class="mg-chip" data-ok="0" onclick="mgToggleWord(this)">Protetor solar</button>
+                            <button type="button" class="mg-chip" data-ok="0" onclick="mgToggleWord(this)">Creme hidratante</button>
+                            <button type="button" class="mg-chip" data-ok="0" onclick="mgToggleWord(this)">Apenas boa vontade</button>
+                        </div>
+                        <div class="mg-actions">
+                            <button type="button" class="mg-btn ghost" onclick="mgResetWords('mg-m3-g10')">Limpar</button>
+                            <button type="button" class="mg-btn" onclick="mgCheckWords('mg-m3-g10')">Conferir</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m3-i06">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">💡 Saiba Mais · Vídeo 10</div>
+                    <h2 class="slide-title">Altura: Mito × <span>Verdade</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada frase para conferir o que é mito e o que é verdade</div>
+                    <div class="info-wrap">
+                        <div class="myth-grid">
+                            <div class="myth-card req-item" data-answer="mito"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">MITO</div>
+                                <div class="myth-quote">“Cinto abdominal serve para trabalho em altura.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">Só o cinto tipo <strong>paraquedista</strong> é aceito. O
+                                    abdominal concentra toda a força na cintura e pode causar lesão grave na retenção.
+                                </div>
+                            </div>
+                            <div class="myth-card req-item" data-answer="verdade"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">VERDADE</div>
+                                <div class="myth-quote">“Ancorar acima da cabeça reduz o fator de queda.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">Quanto mais alto o ponto de ancoragem, menor a queda livre — e
+                                    menor a força que o corpo recebe no impacto.</div>
+                            </div>
+                            <div class="myth-card req-item" data-answer="mito"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">MITO</div>
+                                <div class="myth-quote">“Talabarte em Y é só para dar mais conforto.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">Ele existe para garantir <strong>conexão contínua</strong>: um
+                                    gancho permanece preso enquanto o outro é reposicionado.</div>
+                            </div>
+                            <div class="myth-card req-item" data-answer="verdade"
+                                onclick="this.classList.add('revealed');this.classList.add('req-done');updateNextButton();">
+                                <div class="myth-badge">VERDADE</div>
+                                <div class="myth-quote">“Capacete para altura precisa de jugular.”</div>
+                                <span class="myth-tap">Toque para revelar</span>
+                                <div class="myth-answer">Sem a jugular o capacete sai da cabeça no início da queda,
+                                    justamente quando ele mais precisa estar no lugar.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m3-game">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎯 Conduta · Módulo 3</div>
+                    <h2 class="slide-title">
+                        <div style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(246,213,12,0.18) 0%, transparent 70%); z-index: -1; filter: blur(10px);"></div>
+                        Permitido ou <span>Proibido</span>
+                    </h2>
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+                        <div id="q3-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Permitido ou Proibido — Módulo 3</h3>
+                                <p class="quiz-intro-desc">Classifique <strong>6</strong> condutas com EPI. Acerte mais da metade para avançar. Ao final, veja sua porcentagem.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz3Intro()">INICIAR DESAFIO</button>
+                            </div>
+                        </div>
+                        <div id="q3-question-panel" style="display:none">
+                            <div class="q-meta">
+                                <div class="q-dots"></div>
+                                <div class="q-lbl" id="q3-counter"></div>
+                            </div>
+                            <div class="q-text" id="q3-text"></div>
+                            <div class="q-options" id="q3-options"></div>
+                            <div id="q3-verify-container" style="display:none;opacity:0;visibility:hidden">
+                                <button class="btn-tf-verify" onclick="verifyAnswer3()">✔ Confirmar Resposta</button>
+                            </div>
+                            <div class="q-feedback" id="q3-feedback"></div>
+                            <button class="btn-next-q" id="btn-next-q3" onclick="nextQuestion3()">Continuar →</button>
+                        </div>
+                        <div id="q3-result-panel" class="quiz-result-panel" style="display:none">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q3-result-icon" aria-hidden="true">🏅</div>
+                                <div class="result-pct" id="q3-pct"></div>
+                                <h3 class="quiz-result-title" id="q3-status">Desafio Concluído!</h3>
+                                <p class="quiz-result-desc" id="q3-sub"></p>
+                                <button type="button" class="quiz-result-btn" onclick="resetQuiz3()">JOGAR NOVAMENTE</button>
+                            </div>
+                            <div class="r-stars" id="q3-stars" style="display:none" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=63"></script>
+</body>
+
+</html>

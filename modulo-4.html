@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Módulo 4 — EPI por Missão e Prevenção</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://player.pandavideo.com.br/api.v2.js"></script>
+    <link rel="stylesheet" href="shared.css?v=62">
+    <script>
+        window.MODULE_NAV = {
+            id: "modulo-4",
+            prev: "modulo-3.html",
+            next: null,
+            label: "Módulo 4 — EPI por Missão e Prevenção"
+        };
+    </script>
+    <style>
+        #s-m4-exp .content-area {
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-bottom: 88px;
+        }
+        .m4-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(10px, 1.5vh, 16px);
+            width: 100%;
+            max-width: min(1100px, 94vw);
+            margin: 0 auto;
+            justify-content: center;
+            justify-items: stretch;
+        }
+        .m4-grid .icon-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: clamp(12px, 1.8vh, 20px) clamp(10px, 1.2vw, 16px);
+            margin-bottom: 0;
+            height: 100%;
+            box-sizing: border-box;
+            min-width: 0;
+            gap: 6px;
+        }
+        .m4-grid .icon-card .ic-circle {
+            width: clamp(40px, 5.5vh, 52px);
+            height: clamp(40px, 5.5vh, 52px);
+            font-size: clamp(20px, 3vh, 28px);
+            margin-bottom: 2px;
+        }
+        .m4-grid .icon-card .ic-text h4 {
+            font-size: clamp(14px, 1.8vh, 18px);
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+        .m4-grid .icon-card .ic-text p {
+            font-size: clamp(12px, 1.5vh, 15px);
+            line-height: 1.4;
+        }
+        /* Centraliza a última linha (2 cards) quando há 4 colunas */
+        .m4-grid .icon-card:nth-child(5) {
+            grid-column: 2;
+        }
+        .m4-grid .icon-card:nth-child(6) {
+            grid-column: 3;
+        }
+        @media screen and (max-width: 1024px) {
+            .m4-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                max-width: 900px;
+            }
+            .m4-grid .icon-card:nth-child(5),
+            .m4-grid .icon-card:nth-child(6) {
+                grid-column: auto;
+            }
+        }
+        @media screen and (max-width: 720px) {
+            .m4-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                max-width: 560px;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .m4-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+            }
+        }
+        @media screen and (max-height: 700px) {
+            .m4-grid .icon-card { padding: 10px 10px; }
+            .m4-hint { margin-bottom: 8px; font-size: 13px; }
+        }
+        .m4-hint {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 18px;
+            font-size: 15px;
+            color: rgba(246,213,12,1);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 0 16px rgba(246,213,12,0.6);
+        }
+
+        /* ── s44 — CONCLUSÃO NR-06 (estilo limpo, roxo + amarelo) ── */
+        #s44 {
+            background: radial-gradient(ellipse at center, #2A2058 0%, #1E1840 45%, #120E28 100%) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            overflow: hidden !important;
+            padding: clamp(12px, 2.5vh, 28px) clamp(16px, 3vw, 32px) !important;
+            box-sizing: border-box !important;
+        }
+        #s44 .glow-overlay,
+        #s44 #c-particles,
+        #s44 #c-confetti {
+            position: absolute !important;
+            inset: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            pointer-events: none;
+        }
+        #s44 .glow-overlay {
+            background: radial-gradient(circle at 50% 28%, rgba(246,213,12,0.14) 0%, transparent 42%),
+                        radial-gradient(circle at center, rgba(58,45,115,0.35) 0%, transparent 70%);
+            z-index: 1;
+        }
+        #s44 .content-wrap {
+            position: relative !important;
+            z-index: 10;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+            width: min(860px, 92vw) !important;
+            max-height: 100% !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            overflow: visible !important;
+            animation: hud-enter-epic 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        @keyframes hud-enter-epic { to { opacity: 1; transform: translateY(0); } }
+
+        #s44 .seal-container {
+            position: relative;
+            width: clamp(104px, 18vh, 156px) !important;
+            height: clamp(104px, 18vh, 156px) !important;
+            margin: 0 auto clamp(20px, 3.5vh, 32px) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            animation: seal-pop 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.35s forwards;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        @keyframes seal-pop { to { opacity: 1; transform: scale(1); } }
+        #s44 .seal-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px dashed rgba(246,213,12, 0.55);
+            animation: rotate-ring 18s linear infinite;
+        }
+        #s44 .seal-ring-glow {
+            position: absolute;
+            inset: 8%;
+            border-radius: 50%;
+            border: 2px solid rgba(246,213,12, 0.75);
+            box-shadow: 0 0 22px rgba(246,213,12,0.45), inset 0 0 18px rgba(246,213,12,0.12);
+        }
+        @keyframes rotate-ring { 100% { transform: rotate(360deg); } }
+        #s44 .seal-inner {
+            width: 68%;
+            height: 68%;
+            background: rgba(36, 28, 74, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(38px, 6.5vh, 58px) !important;
+            border: 1px solid rgba(246,213,12,0.35);
+            box-shadow: 0 0 28px rgba(246,213,12,0.35);
+        }
+
+        #s44 .title-epic {
+            font-family: var(--font-h);
+            font-size: clamp(34px, 7vh, 68px) !important;
+            font-weight: 900;
+            color: #FFF4EA;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            line-height: 1.05 !important;
+            margin: 0 0 clamp(14px, 2.5vh, 24px) !important;
+            opacity: 0;
+            animation: fade-up 0.7s ease forwards 0.75s;
+            flex-shrink: 0;
+        }
+        #s44 .title-epic span {
+            color: #F6D50C;
+            text-shadow: 0 0 28px rgba(246,213,12,0.55), 0 0 48px rgba(246,213,12,0.25);
+            display: block;
+        }
+
+        #s44 .subtext {
+            font-size: clamp(16px, 2.5vh, 22px) !important;
+            color: rgba(255, 244, 234, 0.88);
+            margin: 0 0 clamp(24px, 4.5vh, 40px) !important;
+            line-height: 1.5 !important;
+            max-width: 36em;
+            opacity: 0;
+            animation: fade-up 0.7s ease forwards 0.95s;
+            flex-shrink: 0;
+        }
+        #s44 .subtext strong {
+            color: #F6D50C;
+            font-weight: 700;
+        }
+
+        #s44 .msg-box {
+            background: rgba(36, 28, 74, 0.72);
+            border: 1px solid rgba(246,213,12, 0.22);
+            border-left: 4px solid #F6D50C;
+            padding: clamp(18px, 2.8vh, 26px) clamp(20px, 3vw, 30px) !important;
+            margin: 0 auto !important;
+            max-width: min(720px, 100%);
+            width: 100%;
+            font-size: clamp(15px, 2.2vh, 19px) !important;
+            color: rgba(255, 244, 234, 0.92);
+            line-height: 1.55 !important;
+            text-align: left;
+            opacity: 0;
+            animation: fade-up 0.7s ease forwards 1.15s;
+            border-radius: 8px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        }
+
+        #s44 .btn-finish,
+        #s44 .sesmt-box { display: none !important; }
+
+        @media screen and (min-width: 1024px) and (min-height: 650px) {
+            #s44 .content-wrap {
+                width: min(920px, 88vw) !important;
+            }
+            #s44 .seal-container {
+                width: clamp(120px, 20vh, 168px) !important;
+                height: clamp(120px, 20vh, 168px) !important;
+            }
+            #s44 .title-epic {
+                font-size: clamp(44px, 7.5vh, 76px) !important;
+            }
+            #s44 .subtext {
+                font-size: clamp(18px, 2.6vh, 24px) !important;
+            }
+            #s44 .msg-box {
+                max-width: min(780px, 100%);
+                font-size: clamp(16px, 2.3vh, 21px) !important;
+            }
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #s44 .particle-green {
+            position: absolute;
+            background: rgba(246,213,12,0.9);
+            box-shadow: 0 0 12px 2px rgba(246,213,12,0.55);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 5;
+            animation: float-up linear forwards;
+            opacity: 0;
+        }
+        @keyframes float-up {
+            0% { transform: translateY(10vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.5; } 80% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) scale(1.3); opacity: 0; }
+        }
+        #s44 .confetti {
+            position: absolute;
+            width: 7px;
+            height: 14px;
+            background: #F6D50C;
+            opacity: 0;
+            z-index: 4;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+        @media (max-width: 768px) {
+            #s44 { padding: 20px 16px 28px !important; }
+            #s44 .content-wrap { width: 94% !important; }
+            #s44 .msg-box { text-align: left; }
+            #s44 .title-epic { font-size: clamp(26px, 7.5vw, 36px) !important; }
+        }
+        @media (max-height: 640px) {
+            #s44 .seal-container { width: 64px !important; height: 64px !important; margin-bottom: 10px !important; }
+            #s44 .title-epic { font-size: 24px !important; margin-bottom: 8px !important; }
+            #s44 .subtext { font-size: 13px !important; margin-bottom: 14px !important; }
+            #s44 .msg-box { font-size: 12px !important; padding: 10px 12px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn-demo" onclick="toggleDemoMode()"
+        style="position: fixed; top: 30px; right: 210px; left: auto; bottom: auto; z-index: 9999; background: #3d1a00; color: #ffffff; border: 1.5px solid #a0522d; border-radius: 50px; padding: 7px 16px 7px 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: var(--font-p); letter-spacing: 0.2px; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;"
+        onmouseover="if(!window.demoMode){this.style.background='#6a6a6a'; this.style.borderColor='#9a9a9a';}"
+        onmouseout="if(!window.demoMode){this.style.background='#5a5a5a'; this.style.borderColor='#888888'; this.style.color='#f0f0f0';}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>Modo Simulação</button>
+    <div id="demo-indicator"
+        style="position: fixed; top: 8px; right: 16px; z-index: 9999; background: rgba(26,20,64,0.92); color: #FFF1E0; padding: 4px 12px; font-size: 11px; font-weight: 700; font-family: var(--font-h); border-radius: 99px; border: 1px solid rgba(246,213,12,0.45); box-shadow: 0 0 12px rgba(246,213,12,0.25); opacity: 0; pointer-events: none; transition: all 0.3s; transform: translateY(-12px);">
+        Modo Simulação Ativado</div>
+
+    <div id="app">
+
+        <div id="pbar-wrap">
+            <div id="pbar" style="width:2.12%"></div>
+        </div>
+
+        <div id="slide-counter"></div>
+
+        <div id="logo">
+            <img src="assets/NOVA LOGO TECNOCURSOS BRANCO SEM SLOGAN 1.png" alt="Tecno-Cursos" referrerpolicy="no-referrer">
+        </div>
+
+        <div id="slides">
+            <div class="slide active" id="s-m4-intro">
+                <div class="mod-intro">
+                    <div class="mod-intro-pill">INÍCIO</div>
+                    <div class="mod-intro-num">MÓDULO 4</div>
+                    <div class="mod-intro-title">EPI por Missão e Prevenção</div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v11">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 11 · Módulo 4</div>
+                    <h2 class="slide-title">EPI por Missão: Manutenção e <span>Empilhadeira</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-b8471728-55cb-4a35-8a21-f227a78b123b"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=b8471728-55cb-4a35-8a21-f227a78b123b"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="EPI por Missão: Manutenção e Empilhadeira"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m4-g11">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">⚖️ Compare · Vídeo 11</div>
+                    <h2 class="slide-title">Manutenção: Errado × <span>Certo</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque nos dois lados para confirmar a leitura</div>
+                    <div class="compare-container">
+                        <div class="compare-card wrong req-item" onclick="markCompareRead(this)">
+                            <div class="visual-placeholder" aria-hidden="true">❌</div>
+                            <div class="compare-card-title">Incorreto</div>
+                            <p class="compare-card-text">Entrar na manutenção sem capacete com jugular, sem óculos ou
+                                com luvas danificadas — a barreira falha antes da tarefa começar.</p>
+                        </div>
+                        <div class="compare-card right req-item" onclick="markCompareRead(this)">
+                            <div class="visual-placeholder" aria-hidden="true">✅</div>
+                            <div class="compare-card-title">Correto</div>
+                            <p class="compare-card-text">Kit completo: capacete com jugular, óculos, protetor auricular e
+                                luvas íntegras, adequados aos riscos da manutenção.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m4-i07">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">✅ Checklist · Vídeo 11</div>
+                    <h2 class="slide-title">Antes de <span>Iniciar a Tarefa</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque em cada item para marcar o seu checklist</div>
+                    <div class="info-wrap">
+                        <div class="check-grid">
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Sei quais são os riscos da atividade de hoje</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Tenho o EPI certo para a minha missão</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Inspecionei o EPI: íntegro e no prazo</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Sei ajustar e usar cada item corretamente</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>A área está organizada e sinalizada</span>
+                            </div>
+                            <div class="check-item req-item"
+                                onclick="this.classList.add('req-done');updateNextButton();">
+                                <div class="check-dot">✓</div>
+                                <span>Na dúvida, eu paro e chamo a liderança</span>
+                            </div>
+                        </div>
+                        <p class="info-lead">Todo item desmarcado é um risco assumido. <strong>Nenhuma tarefa começa
+                                com o checklist incompleto.</strong></p>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v12">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 12 · Módulo 4</div>
+                    <h2 class="slide-title">Drive-In e <span>Corte de Madeira</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-141bfc69-3476-489e-9f6f-20715cb61133"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=141bfc69-3476-489e-9f6f-20715cb61133"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Drive-In e Corte de Madeira"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m4-g12">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎮 Atividade · Vídeo 12</div>
+                    <h2 class="slide-title">Classifique <span>Drive / Madeira</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Classifique cada EPI no setor correto</div>
+                    <div class="mg-board req-item" id="mg-m4-g12">
+                        <div class="mg-status">Toque em um item e classifique no destino certo.</div>
+                        <div class="mg-pool">
+                            <button type="button" class="mg-chip" data-bin="drive" onclick="mgPickSort(this)">PFF2</button>
+                            <button type="button" class="mg-chip" data-bin="drive" onclick="mgPickSort(this)">Protetor solar</button>
+                            <button type="button" class="mg-chip" data-bin="drive" onclick="mgPickSort(this)">Creme protetor</button>
+                            <button type="button" class="mg-chip" data-bin="madeira" onclick="mgPickSort(this)">PFF3</button>
+                            <button type="button" class="mg-chip" data-bin="madeira" onclick="mgPickSort(this)">Protetor auricular</button>
+                            <button type="button" class="mg-chip" data-bin="ambos" onclick="mgPickSort(this)">Óculos de proteção</button>
+                            <button type="button" class="mg-chip" data-bin="ambos" onclick="mgPickSort(this)">Calçado de segurança</button>
+                        </div>
+                        <div class="mg-sort-grid mg-sort-3">
+                            <div class="mg-bin" data-bin="drive" onclick="mgDropSort(this)">
+                                <div class="mg-bin-title">🏬 Drive-in</div>
+                                <div class="mg-bin-drop"></div>
+                            </div>
+                            <div class="mg-bin" data-bin="madeira" onclick="mgDropSort(this)">
+                                <div class="mg-bin-title">🪵 Madeira</div>
+                                <div class="mg-bin-drop"></div>
+                            </div>
+                            <div class="mg-bin" data-bin="ambos" onclick="mgDropSort(this)">
+                                <div class="mg-bin-title">✅ Ambos</div>
+                                <div class="mg-bin-drop"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v13">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 13 · Módulo 4</div>
+                    <h2 class="slide-title">Logística, Sacarias e <span>Central de Cores</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-1f966d70-c0db-4937-b175-5f77a14df9e4"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=1f966d70-c0db-4937-b175-5f77a14df9e4"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="Logística, Sacarias e Central de Cores"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m4-g13">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🃏 Explore · Vídeo 13</div>
+                    <h2 class="slide-title">Missão e <span>EPI-Chave</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Toque nos cards para ver o EPI-chave de cada missão</div>
+                    <div class="flip-row">
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">📦</div>
+                                    <h4>Logística</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Logística</h4>
+                                    <p>Luvas + cuidado postural no manuseio e movimentação de cargas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🎨</div>
+                                    <h4>Central de Cores</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Central de Cores</h4>
+                                    <p>Luvas nitrílicas e óculos contra respingos de tinta e químicos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🏬</div>
+                                    <h4>Drive sacarias</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Drive sacarias</h4>
+                                    <p>PFF2 + calçado de segurança contra poeira e impacto.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card req-item" onclick="this.classList.toggle('flipped');this.classList.add('req-done');updateNextButton();">
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <div style="font-size:42px">🏗️</div>
+                                    <h4>Empilhadeira</h4>
+                                    <p>Toque para ver</p>
+                                </div>
+                                <div class="flip-back">
+                                    <h4>Empilhadeira</h4>
+                                    <p>Calçado com biqueira e protetor auricular na operação.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m4-i08">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🏗️ Saiba Mais · Vídeo 13</div>
+                    <h2 class="slide-title">O EPI é a <span>Última Barreira</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="info-wrap">
+                        <p class="info-lead">Antes de entregar o equipamento, a segurança tenta resolver o problema na
+                            origem. O EPI entra quando o risco <strong>não pôde ser eliminado</strong>.</p>
+                        <div class="hier-list">
+                            <div class="hier-item">
+                                <div class="hier-lvl">1 · ELIMINAR</div>
+                                <div class="hier-txt">
+                                    <h4>Tirar o perigo da tarefa</h4>
+                                    <p>Deixar de usar o processo, o produto ou o equipamento que gera o risco.</p>
+                                </div>
+                            </div>
+                            <div class="hier-item">
+                                <div class="hier-lvl">2 · SUBSTITUIR</div>
+                                <div class="hier-txt">
+                                    <h4>Trocar por algo menos perigoso</h4>
+                                    <p>Outro material, outra ferramenta ou outro método com menor potencial de dano.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hier-item">
+                                <div class="hier-lvl">3 · ENGENHARIA</div>
+                                <div class="hier-txt">
+                                    <h4>Proteção coletiva</h4>
+                                    <p>Guarda-corpo, proteção de máquina, exaustão, corrimão: protege todos ao mesmo
+                                        tempo.</p>
+                                </div>
+                            </div>
+                            <div class="hier-item">
+                                <div class="hier-lvl">4 · ADMINISTRATIVO</div>
+                                <div class="hier-txt">
+                                    <h4>Procedimento e treinamento</h4>
+                                    <p>Regras de trabalho, sinalização, revezamento e capacitação da equipe.</p>
+                                </div>
+                            </div>
+                            <div class="hier-item hier-last">
+                                <div class="hier-lvl">5 · EPI</div>
+                                <div class="hier-txt">
+                                    <h4>A barreira final, no seu corpo</h4>
+                                    <p>Depende de você usar, ajustar e conservar. Se ele falha, não há mais nada entre
+                                        o risco e a pessoa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide slide-video" id="s-v14">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎥 Vídeo 14 · Módulo 4</div>
+                    <h2 class="slide-title">O Melhor EPI e <span>Encerramento</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="video-wrap video-wrap--std req-item">
+                        <iframe
+                            id="panda-b24b3de2-d9fd-4557-8c4e-24820fec9b4b"
+                            src="https://player-vz-d35edf2a-8e7.tv.pandavideo.com.br/embed/?v=b24b3de2-d9fd-4557-8c4e-24820fec9b4b"
+                            style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+                            allowfullscreen
+                            fetchpriority="high"
+                            title="O Melhor EPI e Encerramento"></iframe>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m4-g14">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎮 Atividade · Vídeo 14</div>
+                    <h2 class="slide-title">Julgue a <span>Mensagem</span></h2>
+                </div>
+                <div class="content-area">
+                    <div class="mg-hint">👆 Escolha CERTO ou ERRADO e confirme a resposta</div>
+                    <div class="mg-board req-item" id="mg-m4-g14" data-mg="decide">
+                        <div class="mg-status">Toque em CERTO ou ERRADO e confirme.</div>
+                        <div class="mg-decide-card">
+                            <div class="mg-decide-prog">Situação 1 de 5</div>
+                            <div class="mg-decide-text"></div>
+                            <div class="mg-decide-actions">
+                                <button type="button" class="mg-decide-btn ok" onclick="mgDecide(this, true)">✓ CERTO</button>
+                                <button type="button" class="mg-decide-btn bad" onclick="mgDecide(this, false)">✕ ERRADO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s-m4-quiz">
+                <div class="top-bar" style="position: relative; z-index: 2;">
+                    <div class="section-tag">🎯 Liberação · Módulo 4</div>
+                    <h2 class="slide-title">
+                        <div style="position: absolute; inset: -20px; background: radial-gradient(circle, rgba(246,213,12,0.18) 0%, transparent 70%); z-index: -1; filter: blur(10px);"></div>
+                        Liberar <span>Uso?</span>
+                    </h2>
+                </div>
+                <div class="content-area">
+                    <div class="quiz-wrap">
+                        <div id="q4-intro-panel" class="quiz-intro-panel">
+                            <div class="quiz-intro-card">
+                                <div class="quiz-intro-icon" aria-hidden="true">📋</div>
+                                <h3 class="quiz-intro-title">Liberar Uso do EPI? — Módulo 4</h3>
+                                <p class="quiz-intro-desc">Em <strong>6</strong> missões, libere ou bloqueie o uso. Acerte mais da metade para avançar. Ao final, veja sua porcentagem.</p>
+                                <button type="button" class="quiz-intro-btn" onclick="startQuiz4Intro()">INICIAR DESAFIO</button>
+                            </div>
+                        </div>
+                        <div id="q4-question-panel" style="display:none">
+                            <div class="q-meta">
+                                <div class="q-dots"></div>
+                                <div class="q-lbl" id="q4-counter"></div>
+                            </div>
+                            <div class="q-text" id="q4-text"></div>
+                            <div class="q-options" id="q4-options"></div>
+                            <div id="q4-verify-container" style="display:none;opacity:0;visibility:hidden">
+                                <button class="btn-tf-verify" onclick="verifyAnswer4()">✔ Confirmar Resposta</button>
+                            </div>
+                            <div class="q-feedback" id="q4-feedback"></div>
+                            <button class="btn-next-q" id="btn-next-q4" onclick="nextQuestion4()">Continuar →</button>
+                        </div>
+                        <div id="q4-result-panel" class="quiz-result-panel" style="display:none">
+                            <div class="quiz-result-card">
+                                <div class="quiz-result-icon" id="q4-result-icon" aria-hidden="true">🏅</div>
+                                <div class="result-pct" id="q4-pct"></div>
+                                <h3 class="quiz-result-title" id="q4-status">Desafio Concluído!</h3>
+                                <p class="quiz-result-desc" id="q4-sub"></p>
+                                <button type="button" class="quiz-result-btn" onclick="resetQuiz4()">JOGAR NOVAMENTE</button>
+                            </div>
+                            <div class="r-stars" id="q4-stars" style="display:none" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                        <path d="M0,50 C480,10 960,85 1440,30 L1440,100 L0,100 Z" fill="rgba(246,213,12,0.07)" />
+                    </svg></div>
+            </div>
+            <div class="slide" id="s44">
+                <style>
+                    #s44 {
+                        background-color: #150F36;
+                        background-image: none;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                    }
+
+                    #s44 .bg-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-image: url('assets/capa-treinamento.png');
+                        background-size: cover;
+                        background-position: center;
+                        opacity: 0.3;
+                        z-index: 0;
+                        animation: bg-zoom 30s infinite alternate linear;
+                        filter: grayscale(20%) brightness(0.8);
+                    }
+
+                    @keyframes bg-zoom {
+                        0% {
+                            transform: scale(1);
+                        }
+
+                        100% {
+                            transform: scale(1.08);
+                        }
+                    }
+
+                    #s44 .glow-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: radial-gradient(circle at center, rgba(246, 213, 12, 0.22) 0%, rgba(21, 15, 54, 0.85) 60%, rgba(10, 6, 28, 1) 100%);
+                        z-index: 1;
+                    }
+
+                    #s44 .content-area {
+                        position: relative;
+                        z-index: 10;
+                        width: 100%;
+                        max-width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        flex: 1;
+                        min-height: 0;
+                        overflow-x: hidden;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+                        padding: 20px 16px 40px;
+                    }
+
+                    #s44 .content-wrap {
+                        position: relative;
+                        z-index: 10;
+                        isolation: isolate;
+                        padding: 52px 48px 48px;
+                        max-width: 780px;
+                        width: 90%;
+                        margin-top: 40px;
+                        margin-bottom: 20px;
+                        background:
+                            radial-gradient(ellipse at 50% 0%, rgba(246, 213, 12, 0.16) 0%, transparent 55%),
+                            linear-gradient(160deg, #3A2D73 0%, #2A2058 55%, #1A1440 100%);
+                        border: 1px solid rgba(246, 213, 12, 0.24);
+                        border-radius: 24px;
+                        box-shadow:
+                            0 24px 60px rgba(0, 0, 0, 0.55),
+                            0 0 48px rgba(246, 213, 12, 0.20),
+                            0 0 90px rgba(246, 213, 12, 0.09),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+                        backdrop-filter: blur(16px);
+                        animation: hud-enter-epic 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                        opacity: 0;
+                        transform: translateY(30px);
+                        overflow: visible;
+                        flex-shrink: 0;
+                    }
+
+                    #s44 .content-wrap::before {
+                        content: '';
+                        position: absolute;
+                        inset: -20px;
+                        border-radius: 36px;
+                        background: radial-gradient(ellipse at 50% 30%,
+                                rgba(246, 213, 12, 0.34) 0%,
+                                rgba(246, 213, 12, 0.12) 40%,
+                                transparent 70%);
+                        filter: blur(24px);
+                        z-index: -1;
+                        pointer-events: none;
+                    }
+
+                    #s44 .content-wrap::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 12%;
+                        right: 12%;
+                        height: 3px;
+                        border-radius: 0 0 4px 4px;
+                        background: linear-gradient(90deg, transparent, #FAE96A 20%, #F6D50C 50%, #FAE96A 80%, transparent);
+                        opacity: 0.95;
+                    }
+
+                    @keyframes hud-enter-epic {
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    #s44 .seal-container {
+                        position: relative;
+                        width: 120px;
+                        height: 120px;
+                        margin: 0 auto 25px auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        animation: seal-pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+                        opacity: 0;
+                        transform: scale(0.5);
+                    }
+
+                    @keyframes seal-pop {
+                        to {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
+
+                    #s44 .seal-ring {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        border: 3px dashed rgba(246, 213, 12, 0.6);
+                        animation: rotate-ring 15s linear infinite;
+                    }
+
+                    @keyframes rotate-ring {
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    #s44 .seal-inner {
+                        width: 90px;
+                        height: 90px;
+                        background:
+                            radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.18), transparent 50%),
+                            linear-gradient(145deg, rgba(246, 213, 12, 0.26) 0%, rgba(201, 168, 0, 0.34) 100%);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 45px;
+                        border: 2px solid rgba(250, 233, 106, 0.85);
+                        box-shadow:
+                            0 0 32px rgba(246, 213, 12, 0.55),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.25);
+                        text-shadow: 0 0 20px rgba(246, 213, 12, 0.8);
+                    }
+
+                    #s44 .title-epic {
+                        font-family: var(--font-h);
+                        font-size: clamp(32px, 5vw, 56px);
+                        color: var(--white);
+                        text-transform: uppercase;
+                        letter-spacing: 0.06em;
+                        margin-bottom: 12px;
+                        opacity: 0;
+                        animation: fade-up 0.8s ease forwards 1s;
+                        line-height: 1.15;
+                    }
+
+                    #s44 .title-epic span {
+                        color: #FAE96A;
+                        text-shadow: 0 0 30px rgba(246, 213, 12, 0.7), 0 0 60px rgba(246, 213, 12, 0.4);
+                        display: block;
+                    }
+
+                    #s44 .subtext {
+                        font-size: clamp(16px, 2.2vw, 20px);
+                        color: rgba(255, 241, 224, 0.82);
+                        margin-bottom: 28px;
+                        line-height: 1.55;
+                        opacity: 0;
+                        animation: fade-up 0.8s ease forwards 1.3s;
+                        max-width: 560px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    #s44 .msg-box {
+                        position: relative;
+                        background:
+                            radial-gradient(circle at 0% 50%, rgba(246, 213, 12, 0.14), transparent 50%),
+                            linear-gradient(145deg, rgba(48, 38, 96, 0.95) 0%, rgba(30, 24, 64, 0.98) 100%);
+                        border: 1px solid rgba(246, 213, 12, 0.38);
+                        border-left: 4px solid #F6D50C;
+                        padding: 22px 26px;
+                        margin: 0 auto;
+                        max-width: 600px;
+                        font-family: var(--font-b);
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: rgba(255, 241, 224, 0.92);
+                        line-height: 1.65;
+                        box-shadow:
+                            0 12px 32px rgba(0, 0, 0, 0.35),
+                            0 0 28px rgba(246, 213, 12, 0.16),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                        opacity: 0;
+                        animation: fade-up 0.8s ease forwards 1.6s;
+                        border-radius: 16px;
+                        text-align: left;
+                    }
+
+                    #s44 .msg-box::before {
+                        content: '✦';
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 28px;
+                        height: 28px;
+                        margin-bottom: 12px;
+                        border-radius: 50%;
+                        background: rgba(246, 213, 12, 0.18);
+                        border: 1px solid rgba(246, 213, 12, 0.45);
+                        color: #FAE96A;
+                        font-size: 13px;
+                        box-shadow: 0 0 14px rgba(246, 213, 12, 0.25);
+                    }
+
+                    #s44 .concl-stats {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                        width: 100%;
+                        max-width: 600px;
+                        margin: 22px auto 0;
+                        opacity: 0;
+                        animation: fade-up 0.8s ease forwards 1.75s;
+                    }
+
+                    #s44 .concl-stat {
+                        display: flex;
+                        align-items: center;
+                        gap: 14px;
+                        padding: 14px 18px;
+                        border-radius: 14px;
+                        background: linear-gradient(145deg, rgba(48, 38, 96, 0.95) 0%, rgba(30, 24, 64, 0.98) 100%);
+                        border: 1px solid rgba(246, 213, 12, 0.18);
+                        box-shadow:
+                            0 8px 22px rgba(0, 0, 0, 0.3),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+                        text-align: left;
+                    }
+
+                    #s44 .concl-stat-icon {
+                        flex-shrink: 0;
+                        width: 42px;
+                        height: 42px;
+                        border-radius: 12px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 22px;
+                        line-height: 1;
+                        background: rgba(246, 213, 12, 0.12);
+                        border: 1px solid rgba(246, 213, 12, 0.28);
+                        box-shadow: 0 0 14px rgba(246, 213, 12, 0.12);
+                    }
+
+                    #s44 .concl-stat-label {
+                        flex: 1;
+                        font-family: var(--font-h);
+                        font-size: 12px;
+                        font-weight: 800;
+                        letter-spacing: 0.12em;
+                        text-transform: uppercase;
+                        color: rgba(255, 241, 224, 0.55);
+                    }
+
+                    #s44 .concl-stat-value {
+                        font-family: var(--font-h);
+                        font-size: 15px;
+                        font-weight: 800;
+                        color: var(--white);
+                        white-space: nowrap;
+                    }
+
+                    #s44 .concl-stat-value.is-ok {
+                        color: #FAE96A;
+                        text-shadow: 0 0 12px rgba(246, 213, 12, 0.35);
+                    }
+
+                    #s44 .concl-stat-arrow {
+                        flex-shrink: 0;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 50%;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: rgba(255, 241, 224, 0.55);
+                        background: rgba(255, 255, 255, 0.06);
+                        border: 1px solid rgba(255, 255, 255, 0.12);
+                        font-size: 18px;
+                        line-height: 1;
+                        margin-left: 4px;
+                    }
+
+                    #s44 .concl-stat-arrow svg {
+                        width: 14px;
+                        height: 14px;
+                        display: block;
+                    }
+
+                    #s44 .btn-finish {
+                        width: 100%;
+                        max-width: 420px;
+                        margin: 22px auto 0;
+                        background:
+                            radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.28), transparent 36%),
+                            linear-gradient(135deg, #FAE96A 0%, #F6D50C 46%, #C9A800 100%);
+                        border: 1px solid rgba(250, 233, 106, 0.75);
+                        color: #1A1440;
+                        font-family: var(--font-h);
+                        font-weight: 900;
+                        font-size: 15px;
+                        padding: 15px 28px;
+                        min-height: 52px;
+                        border-radius: 999px;
+                        cursor: pointer;
+                        text-transform: uppercase;
+                        letter-spacing: 0.08em;
+                        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+                        box-shadow:
+                            0 12px 28px rgba(0, 0, 0, 0.35),
+                            0 0 28px rgba(246, 213, 12, 0.42),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                        opacity: 0;
+                        animation: fade-up 0.8s ease forwards 1.9s;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 10px;
+                    }
+
+                    #s44 .btn-finish svg {
+                        width: 18px;
+                        height: 18px;
+                        flex-shrink: 0;
+                    }
+
+                    #s44 .btn-finish:hover {
+                        filter: brightness(1.05);
+                        box-shadow:
+                            0 16px 34px rgba(0, 0, 0, 0.4),
+                            0 0 40px rgba(246, 213, 12, 0.58),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.58);
+                        transform: translateY(-3px) scale(1.02);
+                    }
+
+                    @keyframes fade-up {
+                        from {
+                            opacity: 0;
+                            transform: translateY(20px);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    /* Partículas */
+                    .particle-green {
+                        position: absolute;
+                        background: #F6D50C;
+                        box-shadow: 0 0 15px 3px #F6D50C;
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 5;
+                        animation: float-up linear forwards;
+                        opacity: 0;
+                    }
+
+                    @keyframes float-up {
+                        0% {
+                            transform: translateY(10vh) scale(0.5);
+                            opacity: 0;
+                        }
+
+                        20% {
+                            opacity: 0.6;
+                        }
+
+                        80% {
+                            opacity: 0.6;
+                        }
+
+                        100% {
+                            transform: translateY(-100vh) scale(1.5);
+                            opacity: 0;
+                        }
+                    }
+
+                    /* Confete */
+                    .confetti {
+                        position: absolute;
+                        width: 8px;
+                        height: 16px;
+                        background: var(--gold);
+                        opacity: 0;
+                        z-index: 4;
+                        animation: fall linear forwards;
+                    }
+
+                    @keyframes fall {
+                        0% {
+                            transform: translateY(-10vh) rotate(0deg);
+                            opacity: 1;
+                        }
+
+                        100% {
+                            transform: translateY(110vh) rotate(720deg);
+                            opacity: 0;
+                        }
+                    }
+
+                    /* Desktop: mesmos valores da referência NR-11 */
+                    @media (min-width: 769px) {
+                        #s44 .content-area {
+                            padding: 12px 24px 28px;
+                            justify-content: safe center;
+                        }
+
+                        #s44 .content-wrap {
+                            max-width: 540px;
+                            width: min(540px, 88%);
+                            padding: 32px 28px 28px;
+                            margin-top: 8px;
+                            margin-bottom: 8px;
+                            border-radius: 20px;
+                        }
+
+                        #s44 .seal-container {
+                            width: 88px;
+                            height: 88px;
+                            margin: 0 auto 14px auto;
+                        }
+
+                        #s44 .seal-inner {
+                            width: 66px;
+                            height: 66px;
+                            font-size: 34px;
+                        }
+
+                        #s44 .title-epic {
+                            font-size: clamp(26px, 3vw, 38px);
+                            margin-bottom: 8px;
+                            letter-spacing: 0.04em;
+                        }
+
+                        #s44 .subtext {
+                            font-size: 15px;
+                            line-height: 1.45;
+                            margin-bottom: 16px;
+                            max-width: 460px;
+                        }
+
+                        #s44 .msg-box {
+                            max-width: 100%;
+                            padding: 14px 16px 16px;
+                            font-size: 14px;
+                            line-height: 1.5;
+                            border-radius: 14px;
+                        }
+
+                        #s44 .msg-box::before {
+                            width: 24px;
+                            height: 24px;
+                            margin-bottom: 8px;
+                            font-size: 12px;
+                        }
+
+                        #s44 .concl-stats {
+                            max-width: 100%;
+                            margin-top: 14px;
+                            gap: 10px;
+                        }
+
+                        #s44 .concl-stat {
+                            padding: 11px 14px;
+                            gap: 12px;
+                            border-radius: 12px;
+                        }
+
+                        #s44 .concl-stat-icon {
+                            width: 36px;
+                            height: 36px;
+                            font-size: 18px;
+                            border-radius: 10px;
+                        }
+
+                        #s44 .concl-stat-label {
+                            font-size: 11px;
+                        }
+
+                        #s44 .concl-stat-value {
+                            font-size: 14px;
+                        }
+
+                        #s44 .btn-finish {
+                            margin-top: 16px;
+                            max-width: 100%;
+                            min-height: 48px;
+                            padding: 12px 22px;
+                            font-size: 14px;
+                        }
+                    }
+
+                    /* Telas baixas: encolhe o card em vez de gerar rolagem,
+                       mesma estratégia dos blocos max-height do projeto. */
+                    @media (min-width: 769px) and (max-height: 820px) {
+                        #s44 .content-wrap {
+                            padding: 22px 26px 22px;
+                            margin-top: 0;
+                            margin-bottom: 0;
+                        }
+
+                        #s44 .seal-container {
+                            width: 72px;
+                            height: 72px;
+                            margin-bottom: 10px;
+                        }
+
+                        #s44 .seal-inner {
+                            width: 54px;
+                            height: 54px;
+                            font-size: 28px;
+                        }
+
+                        #s44 .title-epic {
+                            font-size: clamp(24px, 2.6vw, 32px);
+                            margin-bottom: 6px;
+                        }
+
+                        #s44 .subtext {
+                            font-size: 14px;
+                            margin-bottom: 12px;
+                        }
+
+                        #s44 .msg-box {
+                            padding: 12px 14px 14px;
+                            font-size: 13px;
+                        }
+
+                        #s44 .concl-stats {
+                            margin-top: 11px;
+                            gap: 8px;
+                        }
+
+                        #s44 .concl-stat {
+                            padding: 9px 14px;
+                        }
+
+                        #s44 .concl-stat-icon {
+                            width: 32px;
+                            height: 32px;
+                            font-size: 16px;
+                        }
+
+                        #s44 .btn-finish {
+                            margin-top: 12px;
+                            min-height: 44px;
+                            padding: 10px 22px;
+                        }
+                    }
+
+                    @media (min-width: 769px) and (max-height: 700px) {
+                        #s44 .content-area {
+                            padding: 8px 24px 20px;
+                        }
+
+                        #s44 .content-wrap {
+                            padding: 16px 24px 16px;
+                        }
+
+                        #s44 .seal-container {
+                            width: 58px;
+                            height: 58px;
+                            margin-bottom: 7px;
+                        }
+
+                        #s44 .seal-inner {
+                            width: 44px;
+                            height: 44px;
+                            font-size: 23px;
+                        }
+
+                        #s44 .title-epic {
+                            font-size: 25px;
+                            margin-bottom: 5px;
+                        }
+
+                        #s44 .subtext {
+                            font-size: 12.5px;
+                            margin-bottom: 9px;
+                        }
+
+                        #s44 .msg-box {
+                            padding: 10px 12px 11px;
+                            font-size: 12px;
+                        }
+
+                        #s44 .msg-box::before {
+                            width: 20px;
+                            height: 20px;
+                            margin-bottom: 6px;
+                            font-size: 10px;
+                        }
+
+                        #s44 .concl-stats {
+                            margin-top: 9px;
+                            gap: 6px;
+                        }
+
+                        #s44 .concl-stat {
+                            padding: 7px 12px;
+                        }
+
+                        #s44 .concl-stat-icon {
+                            width: 28px;
+                            height: 28px;
+                            font-size: 14px;
+                        }
+
+                        #s44 .concl-stat-label {
+                            font-size: 10px;
+                        }
+
+                        #s44 .concl-stat-value {
+                            font-size: 12.5px;
+                        }
+
+                        #s44 .btn-finish {
+                            margin-top: 10px;
+                            min-height: 38px;
+                            padding: 9px 20px;
+                            font-size: 12.5px;
+                        }
+                    }
+
+                    /* Ajustes Mobile: posicionamento mais equilibrado */
+                    @media (max-width: 768px) {
+                        #s44 {
+                            justify-content: flex-start !important;
+                            align-items: stretch !important;
+                            padding: 0 !important;
+                            margin-top: 0 !important;
+                            overflow: hidden !important;
+                        }
+
+                        #s44 .content-area {
+                            overflow-y: auto !important;
+                            -webkit-overflow-scrolling: touch !important;
+                            flex: 1 1 auto !important;
+                            min-height: 0 !important;
+                            height: 100% !important;
+                            padding: 48px 14px calc(140px + env(safe-area-inset-bottom, 0px)) !important;
+                            justify-content: flex-start !important;
+                            align-items: center !important;
+                        }
+
+                        #s44 .content-wrap {
+                            margin: 28px auto 12px auto !important;
+                            padding: 18px 14px 16px !important;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center !important;
+                            justify-content: center !important;
+                            text-align: center !important;
+                            width: 94% !important;
+                            max-width: 100% !important;
+                            border-radius: 18px !important;
+                            background:
+                                radial-gradient(ellipse at 50% 0%, rgba(246, 213, 12, 0.16) 0%, transparent 55%),
+                                linear-gradient(160deg, #3A2D73 0%, #2A2058 55%, #1A1440 100%) !important;
+                            border: 1px solid rgba(246, 213, 12, 0.24) !important;
+                            box-shadow:
+                                0 24px 60px rgba(0, 0, 0, 0.55),
+                                0 0 48px rgba(246, 213, 12, 0.20),
+                                inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+                        }
+
+                        #s44 .seal-container {
+                            width: 72px !important;
+                            height: 72px !important;
+                            margin: 0 auto 10px auto !important;
+                            transform: none !important;
+                        }
+
+                        #s44 .seal-inner {
+                            width: 54px !important;
+                            height: 54px !important;
+                            font-size: 28px !important;
+                        }
+
+                        #s44 .title-epic {
+                            font-size: clamp(22px, 6.2vw, 26px) !important;
+                            margin: 0 auto 8px auto !important;
+                            text-align: center !important;
+                            letter-spacing: 0.03em !important;
+                        }
+
+                        #s44 .subtext {
+                            font-size: 13px !important;
+                            line-height: 1.4 !important;
+                            margin: 0 auto 12px auto !important;
+                            text-align: center !important;
+                        }
+
+                        #s44 .msg-box {
+                            padding: 12px 12px 14px !important;
+                            font-size: 12.5px !important;
+                            line-height: 1.45 !important;
+                            margin: 0 auto !important;
+                            text-align: left !important;
+                            border-radius: 12px !important;
+                            width: 100%;
+                            max-width: 100% !important;
+                        }
+
+                        #s44 .msg-box::before {
+                            width: 22px !important;
+                            height: 22px !important;
+                            margin-bottom: 8px !important;
+                            font-size: 11px !important;
+                        }
+
+                        #s44 .concl-stats {
+                            margin-top: 12px !important;
+                            gap: 8px !important;
+                        }
+
+                        #s44 .concl-stat {
+                            padding: 10px 12px !important;
+                            border-radius: 12px !important;
+                            gap: 10px !important;
+                        }
+
+                        #s44 .concl-stat-icon {
+                            width: 32px !important;
+                            height: 32px !important;
+                            font-size: 16px !important;
+                            border-radius: 9px !important;
+                        }
+
+                        #s44 .concl-stat-label {
+                            font-size: 10px !important;
+                        }
+
+                        #s44 .concl-stat-value {
+                            font-size: 12px !important;
+                        }
+
+                        #s44 .concl-stat-arrow {
+                            width: 22px !important;
+                            height: 22px !important;
+                        }
+
+                        #s44 .concl-stat-arrow svg {
+                            width: 11px !important;
+                            height: 11px !important;
+                        }
+
+                        #s44 .btn-finish {
+                            margin-top: 14px !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            min-height: 46px !important;
+                            padding: 12px 18px !important;
+                            font-size: 13px !important;
+                            letter-spacing: 0.06em !important;
+                            gap: 8px !important;
+                            display: inline-flex !important;
+                        }
+
+                        #s44 .btn-finish svg {
+                            width: 16px !important;
+                            height: 16px !important;
+                        }
+                    }
+                </style>
+
+                <div class="bg-overlay"></div>
+                <div class="glow-overlay"></div>
+                <div id="c-particles"></div>
+                <div id="c-confetti"></div>
+
+                <div class="content-area">
+                    <div class="content-wrap">
+
+                        <div class="seal-container">
+                            <div class="seal-ring"></div>
+                            <div class="seal-inner">🏆</div>
+                        </div>
+
+                        <h1 class="title-epic">
+                            TREINAMENTO <span>CONCLUÍDO</span>
+                        </h1>
+
+                        <p class="subtext">Você concluiu com sucesso a parte teórica do treinamento NR-06 — Equipamento
+                            de Proteção Individual.</p>
+
+                        <div class="msg-box">
+                            Sua atenção ao uso correto do EPI é o que faz a diferença. O melhor equipamento de proteção
+                            é a prevenção praticada todos os dias, por todo o time.
+                        </div>
+
+                        <div class="concl-stats" aria-label="Resumo do treinamento">
+                            <div class="concl-stat">
+                                <span class="concl-stat-icon" aria-hidden="true">📚</span>
+                                <span class="concl-stat-label">Módulos</span>
+                                <span class="concl-stat-value">4 Concluídos</span>
+                                <span class="concl-stat-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                                </span>
+                            </div>
+                            <div class="concl-stat">
+                                <span class="concl-stat-icon" aria-hidden="true">⭐</span>
+                                <span class="concl-stat-label">Avaliação</span>
+                                <span class="concl-stat-value is-ok">Aprovado</span>
+                                <span class="concl-stat-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-finish" id="btn-restart-course" onclick="restartCourse()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 12a9 9 0 1 0 3-6.7" />
+                                <polyline points="3 4 3 9 8 9" />
+                            </svg>
+                            Reiniciar Curso
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="nav">
+            <button class="nav-btn" id="btn-back" onclick="modulePrev()" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                ANTERIOR
+            </button>
+            <button class="nav-btn" id="btn-fwd" onclick="moduleNext()">
+                PRÓXIMO
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="img-modal-overlay" id="imgModal" onclick="closeImageModal(event)">
+            <div class="img-modal-content" onclick="event.stopPropagation()">
+                <button class="img-modal-close" onclick="closeImageModal()">×</button>
+                <img id="modalImg" alt="Imagem Ampliada">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="audio-data.js"></script>
+    <script src="shared.js?v=63"></script>
+</body>
+
+</html>
