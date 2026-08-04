@@ -13,7 +13,7 @@
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=78">
+    <link rel="stylesheet" href="shared.css?v=102">
     <script>
         window.MODULE_NAV = {
             id: "modulo-2",
@@ -87,8 +87,8 @@
                     <div class="mg-hint">👆 Toque nos dois lados para confirmar a leitura</div>
                     <div class="compare-container">
                         <div class="compare-card wrong req-item" onclick="markCompareRead(this)">
-                            <div class="photo-slot photo-slot--card" data-slot="m2-g04-wrong" aria-label="Espaço reservado para imagem">
-                                <img class="photo-slot-img" alt="Exemplo incorreto" data-src="" hidden>
+                            <div class="photo-slot photo-slot--card" data-slot="m2-g04-wrong" aria-label="Exemplo de EPI incorreto">
+                                <img class="photo-slot-img" alt="Exemplo incorreto" data-src="assets/epi-errado-exemplo.png" hidden>
                                 <span class="photo-slot-ph">📷 Adicionar imagem<br><small>Incorreto</small></span>
                             </div>
                             <div class="compare-card-title">Incorreto</div>
@@ -96,8 +96,8 @@
                                 ou sem adequação ao risco — isso não é EPI pela NR-06.</p>
                         </div>
                         <div class="compare-card right req-item" onclick="markCompareRead(this)">
-                            <div class="photo-slot photo-slot--card" data-slot="m2-g04-right" aria-label="Espaço reservado para imagem">
-                                <img class="photo-slot-img" alt="Exemplo correto" data-src="" hidden>
+                            <div class="photo-slot photo-slot--card" data-slot="m2-g04-right" aria-label="Exemplo de EPI correto">
+                                <img class="photo-slot-img" alt="Exemplo correto" data-src="assets/epi-certo-exemplo.png" hidden>
                                 <span class="photo-slot-ph">📷 Adicionar imagem<br><small>Correto</small></span>
                             </div>
                             <div class="compare-card-title">Correto</div>
@@ -119,10 +119,10 @@
                     <div class="pic-car" data-pic-carousel>
                         <script type="application/json" class="pic-car-data">
                         [
-                            {"icon":"📋","title":"NR-06","desc":"A norma regulamentadora que define o que é EPI e como ele deve ser fornecido no Brasil.","photo":""},
-                            {"icon":"⚖️","title":"Art. 166","desc":"Da CLT: obriga a empresa a fornecer o EPI adequado ao risco da atividade.","photo":""},
-                            {"icon":"✅","title":"C.A.","desc":"Certificado de Aprovação: sem ele, o equipamento não pode ser comercializado nem usado.","photo":""},
-                            {"icon":"🆓","title":"R$ 0,00","desc":"É o que o EPI custa para você: o fornecimento é sempre gratuito. Adequado ao risco, íntegro e com C.A. válido.","photo":""}
+                            {"icon":"📋","title":"NR-06","desc":"A norma regulamentadora que define o que é EPI e como ele deve ser fornecido no Brasil.","photo":"assets/nr06-numeros-01.png"},
+                            {"icon":"⚖️","title":"Art. 166","desc":"Da CLT: obriga a empresa a fornecer o EPI adequado ao risco da atividade.","photo":"assets/nr06-numeros-02.png"},
+                            {"icon":"✅","title":"C.A.","desc":"Certificado de Aprovação: sem ele, o equipamento não pode ser comercializado nem usado.","photo":"assets/nr06-numeros-03.png"},
+                            {"icon":"🆓","title":"R$ 0,00","desc":"É o que o EPI custa para você: o fornecimento é sempre gratuito. Adequado ao risco, íntegro e com C.A. válido.","photo":"assets/nr06-numeros-04.png"}
                         ]
                         </script>
                         <div class="pic-car-layout">
@@ -177,45 +177,35 @@
                     <h2 class="slide-title">Deveres da <span>Empresa</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Toque em cada dever para revisar o detalhe</div>
-                    <div class="info-wrap">
-                        <div class="step-flow">
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">1</div>
-                                <div class="step-body">
-                                    <h4>Adquirir EPI aprovado</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Só equipamentos com aprovação do órgão nacional competente e C.A. válido.</p>
+                    <div class="pic-car" data-pic-carousel>
+                        <script type="application/json" class="pic-car-data">
+                        [
+                            {"icon":"🛡️","title":"Adquirir EPI aprovado","desc":"Só equipamentos com aprovação do órgão nacional competente e C.A. válido.","photo":"assets/deveres-empresa-01.png","status":"DEVER 01"},
+                            {"icon":"📚","title":"Orientar e treinar","desc":"Ensinar o uso, a guarda, a conservação e a higienização do EPI.","photo":"assets/deveres-empresa-02.png","status":"DEVER 02"},
+                            {"icon":"📝","title":"Registrar entregas","desc":"Documentar cada fornecimento e manter o histórico atualizado.","photo":"assets/deveres-empresa-03.png","status":"DEVER 03"},
+                            {"icon":"🔄","title":"Substituir o danificado","desc":"Trocar imediatamente EPI danificado, extraviado ou fora de uso — sem custo para o colaborador.","photo":"assets/deveres-empresa-04.png","status":"DEVER 04"}
+                        ]
+                        </script>
+                        <div class="pic-car-layout">
+                            <div class="pic-car-stage">
+                                <div class="pic-car-card is-active">
+                                    <div class="pic-car-photo">
+                                        <span class="pic-car-photo-ph" aria-hidden="true">📷</span>
+                                        <button type="button" class="pic-car-expand" aria-label="Ampliar imagem" title="Ampliar imagem">🔍</button>
+                                    </div>
+                                    <div class="pic-car-icon">🛡️</div>
+                                    <h3 class="pic-car-title">Adquirir EPI aprovado</h3>
+                                    <p class="pic-car-desc">Só equipamentos com aprovação do órgão nacional competente e C.A. válido.</p>
+                                    <div class="pic-car-status">DEVER 01</div>
+                                </div>
+                                <div class="pic-car-progress" aria-hidden="true"></div>
+                                <div class="pic-car-nav">
+                                    <button type="button" class="pic-car-btn pic-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="pic-car-counter">1/4</span>
+                                    <button type="button" class="pic-car-btn pic-car-next" aria-label="Próximo">›</button>
                                 </div>
                             </div>
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">2</div>
-                                <div class="step-body">
-                                    <h4>Orientar e treinar</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Ensinar o uso, a guarda, a conservação e a higienização do EPI.</p>
-                                </div>
-                            </div>
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">3</div>
-                                <div class="step-body">
-                                    <h4>Registrar entregas</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Documentar cada fornecimento e manter o histórico atualizado.</p>
-                                </div>
-                            </div>
-                            <div class="step-item req-item"
-                                onclick="this.classList.add('open');this.classList.add('req-done');updateNextButton();">
-                                <div class="step-num">4</div>
-                                <div class="step-body">
-                                    <h4>Substituir o danificado</h4>
-                                    <span class="step-tap">Toque para ver</span>
-                                    <p>Trocar imediatamente EPI danificado, extraviado ou fora de uso — sem custo para o colaborador.</p>
-                                </div>
-                            </div>
+                            <span class="pic-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
@@ -316,42 +306,38 @@
                     <h2 class="slide-title">Recebi meu EPI. <span>E agora?</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Toque em cada item para confirmar que você assume esse compromisso</div>
-                    <div class="info-wrap">
-                        <div class="check-grid">
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Confiro o C.A. e a validade antes do primeiro uso</span>
+                    <div class="step-car" data-step-carousel data-label="CHECK">
+                        <script type="application/json" class="step-car-data">
+                        [
+                            {"step":1,"icon":"🔎","title":"Conferir o C.A.","desc":"Validade e aprovação antes do primeiro uso."},
+                            {"step":2,"icon":"🧤","title":"Testar o ajuste","desc":"Folgado ou apertado demais não protege."},
+                            {"step":3,"icon":"✍️","title":"Assinar a entrega","desc":"Registre o recebimento do equipamento."},
+                            {"step":4,"icon":"⏱️","title":"Usar sem pausa","desc":"Durante toda a exposição ao risco."},
+                            {"step":5,"icon":"🧼","title":"Higienizar e guardar","desc":"No local indicado ao fim do turno."},
+                            {"step":6,"icon":"📣","title":"Comunicar no mesmo dia","desc":"Dano, extravio ou desgaste — avise na hora."}
+                        ]
+                        </script>
+                        <div class="step-car-layout">
+                            <div class="step-car-stage">
+                                <div class="step-car-card is-active">
+                                    <div class="step-car-accent" aria-hidden="true"></div>
+                                    <div class="step-car-inner">
+                                        <span class="step-car-label">CHECK</span>
+                                        <div class="step-car-num has-icon">🔎</div>
+                                        <h3 class="step-car-title">Conferir o C.A.</h3>
+                                        <div class="step-car-divider" aria-hidden="true"></div>
+                                        <p class="step-car-desc">Validade e aprovação antes do primeiro uso.</p>
+                                    </div>
+                                </div>
+                                <div class="step-car-progress" aria-hidden="true"></div>
+                                <div class="step-car-nav">
+                                    <button type="button" class="step-car-btn step-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="step-car-counter">1/6</span>
+                                    <button type="button" class="step-car-btn step-car-next" aria-label="Próximo">›</button>
+                                </div>
                             </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Testo o ajuste: EPI folgado ou apertado não protege</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Assino o registro de entrega do equipamento</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Uso durante toda a exposição ao risco, sem intervalos</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Higienizo e guardo no local indicado ao fim do turno</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Comunico dano, extravio ou desgaste no mesmo dia</span>
-                            </div>
+                            <span class="step-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
-                        <p class="info-lead">Cumprir esses seis pontos é exatamente o que a NR-06 chama de
-                            <strong>responsabilidade do empregado</strong>.</p>
                     </div>
                 </div>
                 <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -435,7 +421,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=78"></script>
+    <script src="shared.js?v=102"></script>
 </body>
 
 </html>

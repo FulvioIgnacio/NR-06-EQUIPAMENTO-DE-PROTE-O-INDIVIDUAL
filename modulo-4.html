@@ -13,7 +13,7 @@
         rel="stylesheet">
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="https://player.pandavideo.com.br/api.v2.js"></script>
-    <link rel="stylesheet" href="shared.css?v=78">
+    <link rel="stylesheet" href="shared.css?v=102">
     <script>
         window.MODULE_NAV = {
             id: "modulo-4",
@@ -145,14 +145,19 @@
             justify-content: center !important;
             box-sizing: border-box !important;
             width: min(860px, 92vw) !important;
-            max-height: 100% !important;
+            max-height: none !important;
             margin: 0 auto !important;
-            padding: 0 !important;
-            background: transparent !important;
-            border: none !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
+            padding: 40px 36px 36px !important;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(246, 213, 12, 0.16) 0%, transparent 55%),
+                linear-gradient(160deg, #3A2D73 0%, #2A2058 55%, #1A1440 100%) !important;
+            border: 1px solid rgba(246, 213, 12, 0.28) !important;
+            border-radius: 24px !important;
+            box-shadow:
+                0 24px 60px rgba(0, 0, 0, 0.55),
+                0 0 48px rgba(246, 213, 12, 0.20),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+            backdrop-filter: blur(16px) !important;
             overflow: visible !important;
             animation: hud-enter-epic 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
@@ -256,7 +261,12 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.35);
         }
 
-        #s44 .btn-finish,
+        #s44 .btn-finish {
+            display: inline-flex !important;
+            width: 100%;
+            max-width: 420px;
+            margin: 22px auto 0;
+        }
         #s44 .sesmt-box { display: none !important; }
 
         @media screen and (min-width: 1024px) and (min-height: 650px) {
@@ -388,13 +398,19 @@
                     <div class="mg-hint">👆 Toque nos dois lados para confirmar a leitura</div>
                     <div class="compare-container">
                         <div class="compare-card wrong req-item" onclick="markCompareRead(this)">
-                            <div class="visual-placeholder" aria-hidden="true">❌</div>
+                            <div class="photo-slot photo-slot--card" data-slot="m4-g11-wrong" aria-label="Exemplo incorreto de manutenção">
+                                <img class="photo-slot-img" alt="Exemplo incorreto" data-src="assets/manutencao-errado.png" hidden>
+                                <span class="photo-slot-ph">📷 Adicionar imagem<br><small>Incorreto</small></span>
+                            </div>
                             <div class="compare-card-title">Incorreto</div>
                             <p class="compare-card-text">Entrar na manutenção sem capacete com jugular, sem óculos ou
                                 com luvas danificadas — a barreira falha antes da tarefa começar.</p>
                         </div>
                         <div class="compare-card right req-item" onclick="markCompareRead(this)">
-                            <div class="visual-placeholder" aria-hidden="true">✅</div>
+                            <div class="photo-slot photo-slot--card" data-slot="m4-g11-right" aria-label="Exemplo correto de manutenção">
+                                <img class="photo-slot-img" alt="Exemplo correto" data-src="assets/manutencao-certo.png" hidden>
+                                <span class="photo-slot-ph">📷 Adicionar imagem<br><small>Correto</small></span>
+                            </div>
                             <div class="compare-card-title">Correto</div>
                             <p class="compare-card-text">Kit completo: capacete com jugular, óculos, protetor auricular e
                                 luvas íntegras, adequados aos riscos da manutenção.</p>
@@ -411,42 +427,38 @@
                     <h2 class="slide-title">Antes de <span>Iniciar a Tarefa</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="mg-hint">👆 Toque em cada item para marcar o seu checklist</div>
-                    <div class="info-wrap">
-                        <div class="check-grid">
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Sei quais são os riscos da atividade de hoje</span>
+                    <div class="step-car" data-step-carousel data-label="CHECK">
+                        <script type="application/json" class="step-car-data">
+                        [
+                            {"step":1,"icon":"⚠️","label":"CHECK 01","title":"Riscos da atividade","desc":"Sei quais são os riscos da tarefa de hoje."},
+                            {"step":2,"icon":"🦺","label":"CHECK 02","title":"EPI da missão","desc":"Tenho o EPI certo para a minha missão."},
+                            {"step":3,"icon":"🔍","label":"CHECK 03","title":"Inspeção do EPI","desc":"Inspecionei: íntegro e com C.A. no prazo."},
+                            {"step":4,"icon":"🧤","label":"CHECK 04","title":"Ajuste e uso","desc":"Sei ajustar e usar cada item corretamente."},
+                            {"step":5,"icon":"🚧","label":"CHECK 05","title":"Área segura","desc":"A área está organizada e sinalizada."},
+                            {"step":6,"icon":"🛑","label":"CHECK 06","title":"Na dúvida, paro","desc":"Se algo não estiver certo, chamo a liderança."}
+                        ]
+                        </script>
+                        <div class="step-car-layout">
+                            <div class="step-car-stage">
+                                <div class="step-car-card is-active">
+                                    <div class="step-car-accent" aria-hidden="true"></div>
+                                    <div class="step-car-inner">
+                                        <span class="step-car-label">CHECK 01</span>
+                                        <div class="step-car-num has-icon">⚠️</div>
+                                        <h3 class="step-car-title">Riscos da atividade</h3>
+                                        <div class="step-car-divider" aria-hidden="true"></div>
+                                        <p class="step-car-desc">Sei quais são os riscos da tarefa de hoje.</p>
+                                    </div>
+                                </div>
+                                <div class="step-car-progress" aria-hidden="true"></div>
+                                <div class="step-car-nav">
+                                    <button type="button" class="step-car-btn step-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="step-car-counter">1/6</span>
+                                    <button type="button" class="step-car-btn step-car-next" aria-label="Próximo">›</button>
+                                </div>
                             </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Tenho o EPI certo para a minha missão</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Inspecionei o EPI: íntegro e no prazo</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Sei ajustar e usar cada item corretamente</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>A área está organizada e sinalizada</span>
-                            </div>
-                            <div class="check-item req-item"
-                                onclick="this.classList.add('req-done');updateNextButton();">
-                                <div class="check-dot">✓</div>
-                                <span>Na dúvida, eu paro e chamo a liderança</span>
-                            </div>
+                            <span class="step-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
-                        <p class="info-lead">Todo item desmarcado é um risco assumido. <strong>Nenhuma tarefa começa
-                                com o checklist incompleto.</strong></p>
                     </div>
                 </div>
                 <div class="wave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -495,8 +507,8 @@
                             <ul><li>Óculos de proteção</li><li>Calçado de segurança</li></ul>
                         </div>
                     </div>
-                    <div class="mix-banner mix-banner--bottom"><div class="photo-slot photo-slot--compact" data-slot="m4-g12" aria-label="Espaço reservado para imagem">
-                            <img class="photo-slot-img" alt="" data-src="" hidden>
+                    <div class="mix-banner mix-banner--bottom"><div class="photo-slot photo-slot--compact" data-slot="m4-g12" aria-label="EPI por setor">
+                            <img class="photo-slot-img" alt="EPIs por setor" data-src="assets/epi-por-setor.png" hidden>
                             <span class="photo-slot-ph">Espaço para imagem</span>
                         </div></div>
                 </div>
@@ -573,48 +585,36 @@
                     <h2 class="slide-title">O EPI é a <span>Última Barreira</span></h2>
                 </div>
                 <div class="content-area">
-                    <div class="info-wrap">
-                        <p class="info-lead">Antes de entregar o equipamento, a segurança tenta resolver o problema na
-                            origem. O EPI entra quando o risco <strong>não pôde ser eliminado</strong>.</p>
-                        <div class="hier-list">
-                            <div class="hier-item">
-                                <div class="hier-lvl">1 · ELIMINAR</div>
-                                <div class="hier-txt">
-                                    <h4>Tirar o perigo da tarefa</h4>
-                                    <p>Deixar de usar o processo, o produto ou o equipamento que gera o risco.</p>
+                    <div class="step-car" data-step-carousel data-label="NÍVEL">
+                        <script type="application/json" class="step-car-data">
+                        [
+                            {"step":1,"icon":"🚫","label":"NÍVEL 1","title":"Eliminar","desc":"Tirar o perigo da tarefa: processo, produto ou equipamento que gera o risco."},
+                            {"step":2,"icon":"🔄","label":"NÍVEL 2","title":"Substituir","desc":"Trocar por material, ferramenta ou método menos perigoso."},
+                            {"step":3,"icon":"🛠️","label":"NÍVEL 3","title":"Engenharia","desc":"Proteção coletiva: guarda-corpo, exaustão, corrimão — protege todos."},
+                            {"step":4,"icon":"📋","label":"NÍVEL 4","title":"Administrativo","desc":"Procedimento, sinalização, revezamento e treinamento da equipe."},
+                            {"step":5,"icon":"🦺","label":"NÍVEL 5","title":"EPI — última barreira","desc":"No seu corpo. Se falhar, não há mais nada entre o risco e a pessoa."}
+                        ]
+                        </script>
+                        <div class="step-car-layout">
+                            <div class="step-car-stage">
+                                <div class="step-car-card is-active">
+                                    <div class="step-car-accent" aria-hidden="true"></div>
+                                    <div class="step-car-inner">
+                                        <span class="step-car-label">NÍVEL 1</span>
+                                        <div class="step-car-num has-icon">🚫</div>
+                                        <h3 class="step-car-title">Eliminar</h3>
+                                        <div class="step-car-divider" aria-hidden="true"></div>
+                                        <p class="step-car-desc">Tirar o perigo da tarefa: processo, produto ou equipamento que gera o risco.</p>
+                                    </div>
+                                </div>
+                                <div class="step-car-progress" aria-hidden="true"></div>
+                                <div class="step-car-nav">
+                                    <button type="button" class="step-car-btn step-car-prev" aria-label="Anterior">‹</button>
+                                    <span class="step-car-counter">1/5</span>
+                                    <button type="button" class="step-car-btn step-car-next" aria-label="Próximo">›</button>
                                 </div>
                             </div>
-                            <div class="hier-item">
-                                <div class="hier-lvl">2 · SUBSTITUIR</div>
-                                <div class="hier-txt">
-                                    <h4>Trocar por algo menos perigoso</h4>
-                                    <p>Outro material, outra ferramenta ou outro método com menor potencial de dano.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="hier-item">
-                                <div class="hier-lvl">3 · ENGENHARIA</div>
-                                <div class="hier-txt">
-                                    <h4>Proteção coletiva</h4>
-                                    <p>Guarda-corpo, proteção de máquina, exaustão, corrimão: protege todos ao mesmo
-                                        tempo.</p>
-                                </div>
-                            </div>
-                            <div class="hier-item">
-                                <div class="hier-lvl">4 · ADMINISTRATIVO</div>
-                                <div class="hier-txt">
-                                    <h4>Procedimento e treinamento</h4>
-                                    <p>Regras de trabalho, sinalização, revezamento e capacitação da equipe.</p>
-                                </div>
-                            </div>
-                            <div class="hier-item hier-last">
-                                <div class="hier-lvl">5 · EPI</div>
-                                <div class="hier-txt">
-                                    <h4>A barreira final, no seu corpo</h4>
-                                    <p>Depende de você usar, ajustar e conservar. Se ele falha, não há mais nada entre
-                                        o risco e a pessoa.</p>
-                                </div>
-                            </div>
+                            <span class="step-car-tracker req-item" style="display:none" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
@@ -701,19 +701,6 @@
                                     <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
                                     <span class="tf-flip-result">FALSO</span>
                                     <p class="tf-flip-explain">O time da loja também fortalece a prevenção.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tf-flip req-item" data-answer="true" onclick="flipTfCard(this)">
-                            <div class="tf-flip-inner">
-                                <div class="tf-flip-front">
-                                    <span class="tf-flip-hint">Toque para revelar</span>
-                                    <p class="tf-flip-q">Cada colaborador fortalece a prevenção no dia a dia.</p>
-                                </div>
-                                <div class="tf-flip-back is-true">
-                                    <span class="tf-flip-selected" aria-hidden="true">✓ Selecionado</span>
-                                    <span class="tf-flip-result">VERDADEIRO</span>
-                                    <p class="tf-flip-explain">Cada um conta na cultura de segurança.</p>
                                 </div>
                             </div>
                         </div>
@@ -1438,7 +1425,7 @@
                         }
                     }
 
-                    /* Ajustes Mobile: posicionamento mais equilibrado */
+                    /* Ajustes Mobile: moldura roxa envolve troféu + Reiniciar */
                     @media (max-width: 768px) {
                         #s44 {
                             justify-content: flex-start !important;
@@ -1454,26 +1441,29 @@
                             flex: 1 1 auto !important;
                             min-height: 0 !important;
                             height: 100% !important;
-                            padding: 48px 14px calc(140px + env(safe-area-inset-bottom, 0px)) !important;
+                            padding: 56px 12px calc(120px + env(safe-area-inset-bottom, 0px)) !important;
                             justify-content: flex-start !important;
                             align-items: center !important;
                         }
 
                         #s44 .content-wrap {
-                            margin: 28px auto 12px auto !important;
-                            padding: 18px 14px 16px !important;
-                            display: flex;
-                            flex-direction: column;
+                            margin: 12px auto 16px auto !important;
+                            padding: 36px 16px 28px !important;
+                            display: flex !important;
+                            flex-direction: column !important;
                             align-items: center !important;
-                            justify-content: center !important;
+                            justify-content: flex-start !important;
                             text-align: center !important;
                             width: 94% !important;
                             max-width: 100% !important;
-                            border-radius: 18px !important;
+                            max-height: none !important;
+                            height: auto !important;
+                            border-radius: 20px !important;
+                            overflow: visible !important;
                             background:
                                 radial-gradient(ellipse at 50% 0%, rgba(246, 213, 12, 0.16) 0%, transparent 55%),
                                 linear-gradient(160deg, #3A2D73 0%, #2A2058 55%, #1A1440 100%) !important;
-                            border: 1px solid rgba(246, 213, 12, 0.24) !important;
+                            border: 1px solid rgba(246, 213, 12, 0.28) !important;
                             box-shadow:
                                 0 24px 60px rgba(0, 0, 0, 0.55),
                                 0 0 48px rgba(246, 213, 12, 0.20),
@@ -1481,16 +1471,19 @@
                         }
 
                         #s44 .seal-container {
-                            width: 72px !important;
-                            height: 72px !important;
-                            margin: 0 auto 10px auto !important;
+                            width: 68px !important;
+                            height: 68px !important;
+                            margin: 0 auto 14px auto !important;
                             transform: none !important;
+                            position: relative !important;
+                            top: auto !important;
+                            flex-shrink: 0 !important;
                         }
 
                         #s44 .seal-inner {
-                            width: 54px !important;
-                            height: 54px !important;
-                            font-size: 28px !important;
+                            width: 50px !important;
+                            height: 50px !important;
+                            font-size: 26px !important;
                         }
 
                         #s44 .title-epic {
@@ -1528,6 +1521,7 @@
                         #s44 .concl-stats {
                             margin-top: 12px !important;
                             gap: 8px !important;
+                            width: 100% !important;
                         }
 
                         #s44 .concl-stat {
@@ -1562,7 +1556,8 @@
                         }
 
                         #s44 .btn-finish {
-                            margin-top: 14px !important;
+                            display: inline-flex !important;
+                            margin: 20px auto 4px auto !important;
                             width: 100% !important;
                             max-width: 100% !important;
                             min-height: 46px !important;
@@ -1570,7 +1565,9 @@
                             font-size: 13px !important;
                             letter-spacing: 0.06em !important;
                             gap: 8px !important;
-                            display: inline-flex !important;
+                            flex-shrink: 0 !important;
+                            position: relative !important;
+                            bottom: auto !important;
                         }
 
                         #s44 .btn-finish svg {
@@ -1665,7 +1662,7 @@
     </div>
 
     <script src="audio-data.js"></script>
-    <script src="shared.js?v=78"></script>
+    <script src="shared.js?v=102"></script>
 </body>
 
 </html>

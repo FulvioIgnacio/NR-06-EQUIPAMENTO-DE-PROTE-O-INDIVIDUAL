@@ -161,7 +161,7 @@ img {
     }
 
     .content-area {
-        padding: 14px 14px 70px;
+        padding: 8px 12px calc(118px + env(safe-area-inset-bottom, 0px));
         overflow-y: auto;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
@@ -174,19 +174,19 @@ img {
     li,
     .sum-text,
     .check-item span {
-        font-size: 18px !important;
-        line-height: 1.45 !important;
-        font-weight: 700 !important;
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+        font-weight: 600 !important;
     }
 
     h1,
     h2,
     h3 {
-        font-size: 24px !important;
+        font-size: 20px !important;
     }
 
     h4 {
-        font-size: 16px !important;
+        font-size: 15px !important;
     }
 
     .card {
@@ -5668,10 +5668,12 @@ body {
 /* Mobile portrait ? acessibilidade abaixo da logo */
 @media screen and (max-width: 768px) and (orientation: portrait) {
     #a11y-bar {
-        top: 52px;
+        top: calc(40px + env(safe-area-inset-top, 0px));
+        bottom: auto;
         right: 10px;
         gap: 6px;
         align-items: flex-end;
+        flex-direction: column;
     }
 
     #a11y-launcher {
@@ -6100,9 +6102,31 @@ body {
 
 #s-sumario .content-area {
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding-bottom: 88px;
+}
+
+@media screen and (max-width: 768px) {
+    #s-sumario .content-area {
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        padding-top: 12px !important;
+        padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    #s-sumario .sum-grid {
+        margin-top: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #s-sumario .sum-item:first-child {
+        margin-top: 4px !important;
+    }
 }
 
 .mod-intro {
@@ -6698,11 +6722,35 @@ body {
     margin-top: 56px !important;
 }
 
-/* Atividades/minigames ? encaixe centralizado como NR-11 */
-.slide:not(.slide-video):not(#s1):not(#s44) .content-area {
+/* Atividades/minigames ? encaixe centralizado como NR-11 (DESKTOP)
+   No mobile N?O usar center: center + overflow corta o 1? card/topo */
+.slide:not(.slide-video):not(#s1):not(#s44):not(:has(.pic-car)):not(:has(.step-car)) .content-area {
     justify-content: center !important;
     padding-top: 8px !important;
     padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+@media screen and (max-width: 768px) {
+    .slide:not(.slide-video):not(#s1):not(#s44):not(:has(.pic-car)):not(:has(.step-car)) .content-area,
+    .slide:has(.pic-car) .content-area,
+    .slide:has(.step-car) .content-area,
+    .slide:has(.sum-grid) .content-area,
+    .slide:has(.tf-flip-grid) .content-area,
+    .slide:has(.reveal-grid) .content-area,
+    .slide:has(.sector-grid) .content-area,
+    .slide:has(.kit-cols) .content-area,
+    .slide:has(.compare-container) .content-area,
+    .slide:has(.flip-row) .content-area,
+    .slide:has(.glow-cards) .content-area,
+    .slide:has(.myth-grid) .content-area,
+    #s-sumario .content-area {
+        justify-content: flex-start !important;
+        align-items: center !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        padding-top: 12px !important;
+        padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+    }
 }
 
 /* Minigames / quiz ? tipografia alinhada */
@@ -6822,13 +6870,16 @@ body {
     }
 
     #a11y-bar {
-        top: calc(8px + env(safe-area-inset-top, 0px)) !important;
-        right: 100px !important;
+        top: calc(40px + env(safe-area-inset-top, 0px)) !important;
+        bottom: auto !important;
+        right: 10px !important;
+        left: auto !important;
+        flex-direction: column !important;
     }
 
     #a11y-launcher {
-        width: 32px !important;
-        height: 32px !important;
+        width: 34px !important;
+        height: 34px !important;
     }
 }
 
@@ -7279,40 +7330,42 @@ div#logo {
     .slide[id$="-quiz"] > .top-bar,
     .slide[id$="-game"] > .top-bar,
     .slide[id$="-intro"] > .top-bar {
-        padding: calc(50px + env(safe-area-inset-top, 0px)) 12px 0 14px !important;
+        padding: calc(48px + env(safe-area-inset-top, 0px)) 12px 0 12px !important;
         max-width: min(78vw, 420px) !important;
     }
 
     .slide[id$="-quiz"] .slide-title,
     .slide[id$="-game"] .slide-title,
     .slide[id$="-intro"] .slide-title {
-        font-size: clamp(24px, 6vw, 34px) !important;
+        font-size: clamp(18px, 5vw, 22px) !important;
+        line-height: 1.15 !important;
     }
 
     .slide[id$="-quiz"] > .content-area,
     .slide[id$="-game"] > .content-area,
     .slide[id$="-intro"] > .content-area {
-        padding: 96px 14px calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+        padding: 12px 12px calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+        justify-content: center !important;
     }
 
     .quiz-intro-card,
     .mod-intro-card {
-        padding: 32px 22px 28px;
-        border-radius: 22px;
+        padding: 18px 16px 16px !important;
+        border-radius: 18px !important;
         max-width: 100% !important;
     }
 
     .quiz-intro-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-        margin-bottom: 16px;
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 22px !important;
+        margin-bottom: 10px !important;
     }
 
     .quiz-intro-btn {
         width: 100%;
-        padding: 14px 24px;
-        font-size: 15px;
+        padding: 12px 18px !important;
+        font-size: 14px !important;
     }
 }
 
@@ -8389,7 +8442,7 @@ html body #demo-indicator.demo-shortcut-visible {
    800px de altura. No NR-06 as regras equivalentes precisam de
    !important porque os blocos acima usam seletores mais espec?ficos.
    ??????????????????????????????????????????????????????????????? */
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 800px) and (min-width: 769px) {
     .slide > .top-bar {
         padding: 10px 120px 0 20px !important;
     }
@@ -8408,9 +8461,44 @@ html body #demo-indicator.demo-shortcut-visible {
         padding: 5px 20px 60px !important;
     }
 
-    .slide:not(.slide-video):not(#s1):not(#s44) .content-area {
+    .slide:not(.slide-video):not(#s1):not(#s44):not(:has(.pic-car)):not(:has(.step-car)) .content-area {
         padding-top: 5px !important;
         padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .slide:has(.pic-car) > .content-area,
+    .slide:has(.step-car) > .content-area {
+        justify-content: flex-start !important;
+        padding-top: 6px !important;
+        overflow-y: auto !important;
+    }
+
+    .pic-car-photo {
+        min-height: 160px !important;
+        max-height: 240px !important;
+        aspect-ratio: 16 / 9 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .pic-car-photo img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
+
+    .pic-car-card {
+        padding: 14px 16px 16px !important;
+    }
+
+    .pic-car-icon {
+        width: 42px !important;
+        height: 42px !important;
+        margin-bottom: 8px !important;
     }
 
     /* Teto de 65vh da refer?ncia: ? ele que mant?m o player proporcional
@@ -8912,9 +9000,33 @@ html body #demo-indicator.demo-shortcut-visible {
         repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(246, 213, 12, 0.03) 10px, rgba(246, 213, 12, 0.03) 20px);
     overflow: hidden;
 }
-.photo-slot--compact { min-height: clamp(100px, 18vh, 160px); }
-.photo-slot.has-image { border-style: solid; border-color: rgba(246, 213, 12, 0.35); background: #0f0a28; }
-.photo-slot-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-slot--compact {
+    min-height: clamp(120px, 22vh, 200px);
+    width: 100%;
+}
+.photo-slot--compact.has-image {
+    aspect-ratio: 21 / 9;
+    max-height: 220px;
+}
+.photo-slot.has-image {
+    border-style: solid;
+    border-color: rgba(246, 213, 12, 0.35);
+    background: #0f0a28;
+    display: block;
+}
+.photo-slot-img {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+}
+.photo-slot.has-image .photo-slot-img {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+}
 .photo-slot-ph {
     font-size: clamp(13px, 1.8vh, 15px);
     letter-spacing: 0.04em;
@@ -9149,7 +9261,8 @@ html body #demo-indicator.demo-shortcut-visible {
 .cc-btn {
     width: 42px; height: 42px; border-radius: 50%;
     border: 1px solid rgba(246, 213, 12, 0.45); background: rgba(246, 213, 12, 0.12);
-    color: #F6D50C; font-size: 26px; line-height: 1; cursor: pointer;
+    color: #F6D50C; font-size: 0; line-height: 0; padding: 0; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
 }
 .cc-counter { min-width: 64px; text-align: center; font-size: 13px; font-weight: 600; color: var(--cream-dk); }
 
@@ -9514,12 +9627,27 @@ html body #demo-indicator.demo-shortcut-visible {
    STEP CAROUSEL ? estilo NR-11 p.26 (PASSO + n?mero)
    ???????????????????????????????????????? */
 .slide:has(.step-car) > .content-area {
-    justify-content: center !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     min-height: 0 !important;
     padding-top: 12px !important;
     padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+@media screen and (max-width: 768px) {
+    .slide:has(.step-car) > .content-area {
+        justify-content: flex-start !important;
+        padding-top: 6px !important;
+    }
+}
+
+.step-car {
+    width: 100%;
+    max-width: 720px;
+    margin-block: auto;
+    flex-shrink: 0;
 }
 
 .step-car-layout {
@@ -9542,6 +9670,8 @@ html body #demo-indicator.demo-shortcut-visible {
     gap: 18px;
     position: relative;
     z-index: 3;
+    padding: 14px 10px 4px;
+    box-sizing: border-box;
 }
 
 .step-car-card {
@@ -9592,7 +9722,7 @@ html body #demo-indicator.demo-shortcut-visible {
         0 30px 70px rgba(0, 0, 0, 0.58),
         0 0 52px rgba(246, 213, 12, 0.18),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: translateY(-3px);
+    transform: none;
 }
 
 .step-car-accent {
@@ -9622,6 +9752,47 @@ html body #demo-indicator.demo-shortcut-visible {
     border: 1px solid rgba(246, 213, 12, 0.3);
     border-radius: 999px;
     margin-bottom: 15px;
+    transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.step-car-card.is-myth .step-car-label {
+    color: #fff;
+    background: rgba(231, 76, 60, 0.92);
+    border-color: rgba(231, 76, 60, 0.95);
+    box-shadow: 0 0 16px rgba(231, 76, 60, 0.35);
+}
+
+.step-car-card.is-truth .step-car-label {
+    color: #0b2416;
+    background: rgba(46, 204, 113, 0.95);
+    border-color: rgba(46, 204, 113, 0.95);
+    box-shadow: 0 0 16px rgba(46, 204, 113, 0.35);
+}
+
+.step-car-card.is-myth {
+    border-color: rgba(231, 76, 60, 0.45);
+    box-shadow:
+        0 28px 65px rgba(0, 0, 0, 0.52),
+        0 0 36px rgba(231, 76, 60, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.step-car-card.is-truth {
+    border-color: rgba(46, 204, 113, 0.45);
+    box-shadow:
+        0 28px 65px rgba(0, 0, 0, 0.52),
+        0 0 36px rgba(46, 204, 113, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.step-car-card.is-myth .step-car-accent {
+    background: linear-gradient(90deg, #c0392b 0%, #e74c3c 50%, #ff7675 100%);
+    box-shadow: 0 0 22px rgba(231, 76, 60, 0.42);
+}
+
+.step-car-card.is-truth .step-car-accent {
+    background: linear-gradient(90deg, #1e8449 0%, #2ecc71 50%, #58d68d 100%);
+    box-shadow: 0 0 22px rgba(46, 204, 113, 0.42);
 }
 
 .step-car-num {
@@ -9719,12 +9890,12 @@ html body #demo-indicator.demo-shortcut-visible {
     border: 1px solid rgba(255, 255, 255, 0.22);
     background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.9);
-    font-size: 28px;
+    font-size: 0;
     font-weight: 900;
-    line-height: 1;
+    line-height: 0;
     padding: 0;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
@@ -9752,25 +9923,32 @@ html body #demo-indicator.demo-shortcut-visible {
 }
 
 @media (max-width: 768px) {
-    .slide:has(.step-car) > .content-area {
+    .slide:has(.step-car) > .content-area,
+    .slide:has(.pic-car) > .content-area {
         justify-content: flex-start !important;
-        padding-top: 14px !important;
+        align-items: center !important;
+        padding-top: 6px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
     }
-    .step-car-layout { gap: 11px; padding: 10px 14px 6px; }
-    .step-car-stage { gap: 11px; }
-    .step-car-card { border-radius: 20px; }
-    .step-car-inner { padding: 20px 18px 22px; }
+    .step-car-layout { gap: 8px; padding: 4px 10px 4px; }
+    .step-car-stage { gap: 8px; padding: 4px 4px 0; }
+    .step-car-card { border-radius: 18px; }
+    .step-car-inner { padding: 14px 14px 16px; }
     .step-car-num {
-        width: 62px;
-        height: 62px;
-        margin-bottom: 14px;
-        font-size: 27px;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 8px;
+        font-size: 22px;
     }
+    .step-car-label { margin-bottom: 8px; font-size: 9px; min-height: 22px; padding: 3px 10px; }
     .step-car-title {
-        font-size: clamp(19px, 5.5vw, 23px);
-        margin-bottom: 10px;
+        font-size: clamp(16px, 4.5vw, 20px);
+        margin-bottom: 6px;
     }
-    .step-car-desc { font-size: 14px; line-height: 1.45; }
+    .step-car-desc { font-size: 13px; line-height: 1.35; }
+    .step-car-btn { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+    .step-car-nav { gap: 14px; padding: 2px 0 4px; }
 }
 
 .step-car-num.has-icon {
@@ -9988,9 +10166,17 @@ html body #demo-indicator.demo-shortcut-visible {
     justify-content: flex-start !important;
     align-items: center !important;
     min-height: 0 !important;
-    padding-top: 8px !important;
+    padding-top: 12px !important;
     padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+.pic-car {
+    width: 100%;
+    max-width: 680px;
+    margin-block: auto;
+    flex-shrink: 0;
 }
 
 .pic-car-layout {
@@ -10013,6 +10199,8 @@ html body #demo-indicator.demo-shortcut-visible {
     gap: 16px;
     position: relative;
     z-index: 3;
+    padding: 14px 10px 4px;
+    box-sizing: border-box;
 }
 
 .pic-car-card {
@@ -10050,15 +10238,15 @@ html body #demo-indicator.demo-shortcut-visible {
 .pic-car-card::after {
     content: '';
     position: absolute;
-    inset: -14px -8px;
-    border-radius: 26px;
+    inset: 0;
+    border-radius: inherit;
     background: radial-gradient(ellipse at 30% 25%,
-            rgba(246, 213, 12, 0.26) 0%,
-            rgba(120, 90, 255, 0.1) 45%,
+            rgba(246, 213, 12, 0.18) 0%,
+            rgba(120, 90, 255, 0.08) 45%,
             transparent 72%);
     z-index: -1;
     pointer-events: none;
-    filter: blur(2px);
+    filter: none;
 }
 
 .pic-car-card.is-active {
@@ -10073,17 +10261,17 @@ html body #demo-indicator.demo-shortcut-visible {
 
 .pic-car-photo {
     width: 100%;
-    min-height: 190px;
-    max-height: 230px;
+    aspect-ratio: 16 / 9;
+    min-height: 220px;
+    max-height: 320px;
+    height: auto;
     margin-bottom: 18px;
     border-radius: 14px;
     background:
         radial-gradient(circle at 50% 30%, rgba(246, 213, 12, 0.1), transparent 55%),
         #0f0a28;
     border: 1.5px dashed rgba(246, 213, 12, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     overflow: hidden;
     position: relative;
     box-shadow:
@@ -10097,15 +10285,23 @@ html body #demo-indicator.demo-shortcut-visible {
 }
 
 .pic-car-photo img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    min-height: 190px;
-    max-height: 230px;
+    min-height: 0;
+    max-height: none;
     object-fit: cover;
+    object-position: center center;
     display: block;
 }
 
 .pic-car-photo-ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 32px;
     opacity: 0.3;
     line-height: 1;
@@ -10113,34 +10309,48 @@ html body #demo-indicator.demo-shortcut-visible {
 
 .pic-car-photo.has-image .pic-car-photo-ph { display: none; }
 
-.pic-car-expand {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    z-index: 3;
+.pic-car-expand,
+.img-expand-btn {
+    position: absolute !important;
+    top: auto !important;
+    left: auto !important;
+    bottom: 8px !important;
+    right: 8px !important;
+    z-index: 5 !important;
     display: none;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     padding: 0;
+    margin: 0 !important;
     border-radius: 50%;
     border: 1px solid rgba(246, 213, 12, 0.85);
     background: #F6D50C;
     box-shadow: 0 4px 14px rgba(246, 213, 12, 0.45);
     color: #1A1440;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.pic-car-photo.has-image .pic-car-expand { display: inline-flex; }
+.pic-car-photo.has-image .pic-car-expand,
+.pic-car-photo.has-image .img-expand-btn,
+.photo-slot.has-image .img-expand-btn,
+.photo-slot.has-image .pic-car-expand {
+    display: inline-flex !important;
+}
 
-.pic-car-expand:hover {
+.pic-car-expand:hover,
+.img-expand-btn:hover {
     background: #ffe566;
     box-shadow: 0 6px 18px rgba(246, 213, 12, 0.6);
-    transform: translateY(-1px);
+    transform: scale(1.06);
+}
+
+.photo-slot.has-image {
+    position: relative !important;
 }
 
 .pic-car-icon {
@@ -10188,6 +10398,51 @@ html body #demo-indicator.demo-shortcut-visible {
     background: linear-gradient(90deg, transparent, rgba(246, 213, 12, 0.75), transparent);
 }
 
+.pic-car-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 14px auto 0;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-family: var(--font-h);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1A1440;
+    background: #F6D50C;
+    box-shadow: 0 0 14px rgba(246, 213, 12, 0.35);
+}
+
+.pic-car-status:empty { display: none; }
+
+.pic-car-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pic-car-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+    transition: width 0.25s ease, background 0.25s ease, border-radius 0.25s ease;
+}
+
+.pic-car-dot.is-active {
+    width: 28px;
+    border-radius: 999px;
+    background: #F6D50C;
+    box-shadow: 0 0 12px rgba(246, 213, 12, 0.45);
+}
+
+.pic-car-dot.is-done {
+    background: rgba(246, 213, 12, 0.55);
+}
+
 .pic-car-nav {
     display: flex;
     align-items: center;
@@ -10217,12 +10472,12 @@ html body #demo-indicator.demo-shortcut-visible {
     border: 1px solid rgba(255, 255, 255, 0.22);
     background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.9);
-    font-size: 28px;
+    font-size: 0;
     font-weight: 900;
-    line-height: 1;
+    line-height: 0;
     padding: 0;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
@@ -10258,20 +10513,1302 @@ html body #demo-indicator.demo-shortcut-visible {
     50% { box-shadow: 0 8px 24px rgba(246, 213, 12, 0.65), 0 0 36px rgba(246, 213, 12, 0.5); }
 }
 
+/* Setas centralizadas ? ? ? de fonte ficam tortos; usa chevron geom?trico */
+.step-car-btn::before,
+.pic-car-btn::before,
+.cc-btn::before {
+    content: "";
+    display: block;
+    width: 11px;
+    height: 11px;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: currentColor;
+    border-width: 0 0 2.5px 2.5px;
+    flex-shrink: 0;
+}
+
+.step-car-prev::before,
+.pic-car-prev::before,
+.cc-prev::before {
+    transform: translateX(1.5px) rotate(45deg);
+}
+
+.step-car-next::before,
+.pic-car-next::before,
+.cc-next::before {
+    transform: translateX(-1.5px) rotate(-135deg);
+}
+
+.cc-btn::before {
+    width: 9px;
+    height: 9px;
+    border-width: 0 0 2px 2px;
+}
+
 @media (max-width: 768px) {
     .pic-car-card { padding: 14px 16px 16px; border-radius: 16px; }
     .pic-car-photo {
-        min-height: 132px;
-        max-height: 155px;
+        min-height: 170px;
+        max-height: 260px;
+        aspect-ratio: 16 / 9;
         margin-bottom: 12px;
         border-radius: 12px;
     }
     .pic-car-photo img {
-        min-height: 132px;
-        max-height: 155px;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        max-height: none;
+        object-fit: cover;
+        object-position: center center;
     }
+    .pic-car-stage { padding: 10px 6px 2px; }
     .pic-car-icon { width: 44px; height: 44px; font-size: 22px; margin-bottom: 8px; }
     .pic-car-title { font-size: 18px; margin-bottom: 6px; }
     .pic-car-desc { font-size: 13.5px; line-height: 1.4; }
     .pic-car-desc::before { margin-bottom: 8px; width: 36px; }
+}
+
+@media (max-height: 720px) {
+    .pic-car-photo {
+        min-height: 140px !important;
+        max-height: 200px !important;
+        aspect-ratio: 16 / 9 !important;
+        margin-bottom: 10px !important;
+    }
+    .pic-car-photo img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
+    .pic-car-icon {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 20px !important;
+        margin-bottom: 6px !important;
+    }
+    .step-car-num {
+        width: 56px !important;
+        height: 56px !important;
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+    .step-car-inner {
+        padding: 16px 14px 18px !important;
+    }
+}
+
+/* ????????????????????????????????????????
+   MOBILE: tipografia maior + respiro + seta de scroll
+   ???????????????????????????????????????? */
+.slide-scroll-btn {
+    display: none;
+}
+
+@keyframes slide-scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+}
+
+@media screen and (max-width: 768px) {
+    .slide > .slide-scroll-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        bottom: calc(108px + env(safe-area-inset-bottom, 0px));
+        transform: translateX(-50%);
+        z-index: 40;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        border: 2px solid rgba(246, 213, 12, 0.9);
+        border-radius: 999px;
+        background: rgba(26, 20, 64, 0.94);
+        color: #F6D50C;
+        box-shadow:
+            0 0 20px rgba(246, 213, 12, 0.4),
+            0 6px 16px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        animation: slide-scroll-bounce 1.8s ease-in-out infinite;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .slide > .slide-scroll-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .slide > .slide-scroll-btn.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+        animation: none;
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    .slide:has([class*="-carousel-nav"]) > .slide-scroll-btn,
+    .slide:has(.step-car-nav) > .slide-scroll-btn,
+    .slide:has(.pic-car-nav) > .slide-scroll-btn,
+    .slide:has(.step-car) > .slide-scroll-btn,
+    .slide:has(.pic-car) > .slide-scroll-btn {
+        display: none !important;
+    }
+
+    .top-bar {
+        padding: calc(78px + env(safe-area-inset-top, 0px)) 56px 8px 12px !important;
+        gap: 6px !important;
+    }
+
+    .section-tag {
+        font-size: 11px !important;
+        padding: 4px 10px !important;
+        margin-bottom: 2px !important;
+    }
+
+    .slide-title {
+        font-size: clamp(16px, 4.6vw, 20px) !important;
+        line-height: 1.15 !important;
+        margin: 2px 0 4px !important;
+        gap: 2px !important;
+    }
+
+    .content-area {
+        gap: 10px !important;
+        padding: 6px 12px calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+    }
+
+    .mg-hint {
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+        margin: 0 0 14px !important;
+        padding: 0 4px !important;
+    }
+
+    .info-lead,
+    .info-wrap > .info-lead {
+        font-size: clamp(16px, 4.2vw, 19px) !important;
+        line-height: 1.45 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .flip-row,
+    .reveal-grid,
+    .tf-flip-grid,
+    .compare-container,
+    .stat-grid,
+    .check-grid,
+    .myth-grid {
+        gap: 16px !important;
+        row-gap: 16px !important;
+    }
+
+    .tf-flip-grid {
+        grid-template-columns: 1fr !important;
+        width: min(100%, 420px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        gap: 18px !important;
+    }
+
+    .tf-flip {
+        height: clamp(140px, 22vh, 180px) !important;
+    }
+
+    .tf-flip-front,
+    .tf-flip-back {
+        padding: 18px 16px !important;
+        gap: 12px !important;
+    }
+
+    .tf-flip-q,
+    .tf-flip-explain {
+        font-size: clamp(15px, 4vw, 18px) !important;
+        line-height: 1.4 !important;
+    }
+
+    .tf-flip-hint,
+    .tf-flip-result {
+        font-size: 12px !important;
+    }
+
+    .flip-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 16px !important;
+    }
+
+    .flip-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: clamp(180px, 30vh, 230px) !important;
+        margin: 0 !important;
+    }
+
+    .flip-front,
+    .flip-back {
+        padding: 20px 16px !important;
+        gap: 12px !important;
+    }
+
+    .flip-front h4,
+    .flip-back h4,
+    .reveal-body h4,
+    .compare-card-title {
+        font-size: clamp(17px, 4.5vw, 20px) !important;
+        line-height: 1.25 !important;
+    }
+
+    .flip-front p,
+    .flip-back p,
+    .reveal-body p,
+    .compare-card-text {
+        font-size: clamp(14px, 3.8vw, 17px) !important;
+        line-height: 1.4 !important;
+    }
+
+    .compare-container {
+        flex-direction: column !important;
+        gap: 18px !important;
+    }
+
+    .compare-card {
+        min-width: 0 !important;
+        width: 100% !important;
+        padding: 18px 16px !important;
+    }
+
+    .compare-card .photo-slot--card {
+        min-height: 140px !important;
+        height: 140px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .check-item {
+        padding: 14px 16px !important;
+        margin-bottom: 10px !important;
+        gap: 12px !important;
+    }
+
+    .check-item span {
+        font-size: clamp(15px, 4vw, 18px) !important;
+        line-height: 1.35 !important;
+    }
+
+    .step-car-layout,
+    .pic-car-layout {
+        padding: 8px 10px 12px !important;
+        gap: 14px !important;
+    }
+
+    .step-car-card,
+    .pic-car-card {
+        padding: 16px 14px 18px !important;
+    }
+
+    .step-car-inner {
+        padding: 18px 14px 20px !important;
+    }
+
+    .step-car-title,
+    .pic-car-title {
+        font-size: clamp(18px, 5vw, 24px) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .step-car-desc,
+    .pic-car-desc {
+        font-size: clamp(14px, 3.8vw, 17px) !important;
+        line-height: 1.4 !important;
+    }
+
+    .step-car-num {
+        width: 68px !important;
+        height: 68px !important;
+        font-size: 28px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .step-car-nav,
+    .pic-car-nav {
+        gap: 20px !important;
+        padding: 6px 0 10px !important;
+    }
+
+    .q-text {
+        font-size: clamp(17px, 4.5vw, 21px) !important;
+        line-height: 1.4 !important;
+        margin: 12px 0 18px !important;
+    }
+
+    .q-options {
+        gap: 12px !important;
+    }
+
+    .q-opt {
+        font-size: clamp(15px, 4vw, 18px) !important;
+        padding: 14px 16px !important;
+        line-height: 1.35 !important;
+    }
+
+    .btn-tf-verify,
+    .btn-next-q {
+        margin-top: 18px !important;
+        font-size: 15px !important;
+    }
+
+    .quiz-intro-title,
+    .quiz-result-title {
+        font-size: clamp(20px, 5.5vw, 26px) !important;
+    }
+
+    .quiz-intro-desc,
+    .quiz-result-desc {
+        font-size: clamp(15px, 4vw, 18px) !important;
+        line-height: 1.45 !important;
+        margin: 12px 0 20px !important;
+    }
+
+    .glow-cards {
+        gap: 16px !important;
+    }
+
+    #s-m1-i01 .glow-card {
+        height: auto !important;
+        min-height: 240px !important;
+    }
+
+    .sector-grid,
+    .kit-cols {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .kit-col,
+    .sector-col,
+    .pair-row {
+        padding: 16px !important;
+    }
+
+    .kit-col h3,
+    .sector-col h3 {
+        font-size: clamp(16px, 4.2vw, 19px) !important;
+        margin-bottom: 10px !important;
+    }
+
+    .kit-col li,
+    .sector-col li,
+    .pair-a,
+    .pair-b {
+        font-size: clamp(14px, 3.8vw, 16px) !important;
+        line-height: 1.4 !important;
+    }
+
+    .nav-btn {
+        font-size: 15px !important;
+        padding: 11px 18px !important;
+        min-height: 44px !important;
+    }
+}
+
+/* FIX FINAL: carross?is ? sempre do topo (center corta o PASSO/CHECK) */
+.slide:has(.pic-car) > .content-area,
+.slide:has(.step-car) > .content-area,
+#s-m2-g05 > .content-area,
+#s-m2-i03 > .content-area,
+#s-m2-i04 > .content-area,
+#s-m1-i02 > .content-area,
+#s-m1-g02 > .content-area,
+#s-m3-i05 > .content-area,
+#s-m3-i06 > .content-area,
+#s-m4-i07 > .content-area,
+#s-m4-i08 > .content-area,
+#s-m4-g13 > .content-area {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding-top: 8px !important;
+}
+
+.slide:has(.pic-car) .pic-car,
+.slide:has(.step-car) .step-car {
+    margin-block: 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.slide:has(.pic-car) .pic-car-card,
+.slide:has(.step-car) .step-car-card {
+    transform: none !important;
+}
+
+/* ??????????????????????????????????????????????????????????????
+   MOBILE SHELL ? espelha NR-11 (sem sobreposi??o / sem corte)
+   Deve ficar por ?LTIMO para vencer regras conflitantes.
+   ?????????????????????????????????????????????????????????????? */
+@media screen and (max-width: 768px) {
+    /* Chrome fixo: demo | contador | a11y + logo */
+    #btn-demo {
+        top: calc(8px + env(safe-area-inset-top, 0px)) !important;
+        left: 8px !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 920 !important;
+        max-width: calc(42vw - 12px) !important;
+        font-size: 10px !important;
+        padding: 7px 10px !important;
+    }
+
+    #slide-counter {
+        top: calc(10px + env(safe-area-inset-top, 0px)) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 910 !important;
+        font-size: 12px !important;
+        padding: 4px 12px !important;
+        pointer-events: none !important;
+    }
+
+    #logo {
+        top: calc(10px + env(safe-area-inset-top, 0px)) !important;
+        right: 10px !important;
+        z-index: 910 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    #logo img {
+        height: 22px !important;
+        max-height: 22px !important;
+    }
+
+    /* Som: logo abaixo da TecnoCursos (canto superior direito) */
+    #a11y-bar {
+        top: calc(40px + env(safe-area-inset-top, 0px)) !important;
+        bottom: auto !important;
+        right: 10px !important;
+        left: auto !important;
+        z-index: 915 !important;
+        gap: 6px !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+    }
+
+    #a11y-launcher {
+        width: 34px !important;
+        height: 34px !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+    }
+
+    #a11y-bar.open #a11y-tools {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    #demo-indicator {
+        top: calc(46px + env(safe-area-inset-top, 0px)) !important;
+        left: 8px !important;
+        right: auto !important;
+        max-width: calc(48vw - 8px) !important;
+        font-size: 9px !important;
+        padding: 4px 8px !important;
+        z-index: 920 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* T?tulo ABAIXO do chrome ? nunca sob o contador / logo */
+    .slide > .top-bar {
+        position: relative !important;
+        flex-shrink: 0 !important;
+        z-index: 2 !important;
+        padding: calc(78px + env(safe-area-inset-top, 0px)) 56px 8px 12px !important;
+        gap: 6px !important;
+        box-sizing: border-box !important;
+    }
+
+    .slide > .top-bar .section-tag {
+        margin: 0 !important;
+        font-size: 11px !important;
+        padding: 4px 10px !important;
+        max-width: min(100%, 58vw) !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .slide > .top-bar .slide-title {
+        margin: 4px 0 0 !important;
+        font-size: clamp(16px, 4.6vw, 20px) !important;
+        line-height: 1.15 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Conte?do: scroll?vel do topo, espa?o pro nav */
+    .slide > .content-area {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 6px 12px calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .slide.slide-video > .content-area {
+        justify-content: center !important;
+        padding-top: 6px !important;
+    }
+
+    /* Cards / grids com respiro */
+    .compare-container,
+    .flip-row,
+    .reveal-grid,
+    .tf-flip-grid,
+    .glow-cards,
+    .check-grid,
+    .stat-grid,
+    .myth-grid,
+    .sector-grid,
+    .kit-cols {
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .sector-col,
+    .kit-col {
+        padding: 10px 12px !important;
+    }
+
+    .sector-col h3,
+    .kit-col h3 {
+        font-size: 14px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .sector-col li,
+    .kit-col li {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+    }
+
+    .photo-slot,
+    .photo-slot--compact,
+    .mix-banner .photo-slot {
+        min-height: 72px !important;
+        max-height: 96px !important;
+    }
+
+    .quiz-intro-card,
+    .quiz-wrap [id$="-intro-panel"] > div {
+        padding: 16px 14px !important;
+        gap: 10px !important;
+        max-width: min(100%, 420px) !important;
+    }
+
+    .quiz-intro-title,
+    .quiz-result-title {
+        font-size: clamp(16px, 4.5vw, 20px) !important;
+        line-height: 1.2 !important;
+        margin: 0 0 8px !important;
+    }
+
+    .quiz-intro-desc,
+    .quiz-result-desc {
+        font-size: 13px !important;
+        line-height: 1.35 !important;
+        margin: 0 0 12px !important;
+    }
+
+    .compare-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .compare-card {
+        min-width: 0 !important;
+        width: 100% !important;
+        padding: 16px 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    .compare-card .photo-slot--card,
+    .photo-slot.photo-slot--card {
+        width: 100% !important;
+        min-height: 130px !important;
+        height: 130px !important;
+        margin-bottom: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    .mg-hint {
+        margin: 0 0 12px !important;
+        padding: 0 4px !important;
+        font-size: 14px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* Carross?is: compactos, do topo, sem corte ? cabem com o nav */
+    .slide:has(.step-car) > .content-area,
+    .slide:has(.pic-car) > .content-area {
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding-top: 4px !important;
+        padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+        gap: 8px !important;
+    }
+
+    .pic-car,
+    .step-car {
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex-shrink: 0 !important;
+    }
+
+    .pic-car-layout,
+    .step-car-layout {
+        padding: 2px 6px 4px !important;
+        gap: 8px !important;
+        max-width: 100% !important;
+        margin-inline: auto !important;
+    }
+
+    .pic-car-stage,
+    .step-car-stage {
+        padding: 2px 2px 0 !important;
+        gap: 8px !important;
+        max-width: 100% !important;
+        margin-inline: auto !important;
+    }
+
+    .pic-car-card,
+    .step-car-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        transform: none !important;
+        margin-inline: auto !important;
+        border-radius: 16px !important;
+    }
+
+    .step-car-inner {
+        padding: 12px 12px 14px !important;
+    }
+
+    .step-car-label {
+        margin-bottom: 6px !important;
+        font-size: 9px !important;
+        min-height: 20px !important;
+        padding: 2px 10px !important;
+    }
+
+    .step-car-num {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 20px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .step-car-num.has-icon {
+        font-size: 24px !important;
+    }
+
+    .step-car-title,
+    .pic-car-title {
+        font-size: clamp(15px, 4.2vw, 18px) !important;
+        line-height: 1.2 !important;
+        margin-bottom: 6px !important;
+    }
+
+    .step-car-desc,
+    .pic-car-desc {
+        font-size: 13px !important;
+        line-height: 1.35 !important;
+    }
+
+    .step-car-divider {
+        margin: 6px auto 8px !important;
+    }
+
+    .step-car-progress,
+    .pic-car-progress {
+        gap: 6px !important;
+        margin: 0 !important;
+    }
+
+    .step-car-dot,
+    .pic-car-dot {
+        width: 6px !important;
+        height: 6px !important;
+    }
+
+    .step-car-dot.is-active,
+    .pic-car-dot.is-active {
+        width: 18px !important;
+    }
+
+    .pic-car-photo {
+        min-height: 160px !important;
+        max-height: 240px !important;
+        aspect-ratio: 16 / 9 !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+    }
+
+    .pic-car-photo img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
+
+    .pic-car-nav,
+    .step-car-nav {
+        padding: 2px 0 4px !important;
+        gap: 12px !important;
+    }
+
+    .step-car-btn,
+    .pic-car-btn {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+    }
+
+    .step-car-counter,
+    .pic-car-counter {
+        font-size: 13px !important;
+    }
+
+    /* Seta de scroll: acima do nav, sem cobrir o miolo */
+    .slide > .slide-scroll-btn {
+        bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+        z-index: 40 !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .slide:has([class*="-carousel-nav"]) > .slide-scroll-btn,
+    .slide:has(.step-car-nav) > .slide-scroll-btn,
+    .slide:has(.pic-car-nav) > .slide-scroll-btn,
+    .slide:has(.step-car) > .slide-scroll-btn,
+    .slide:has(.pic-car) > .slide-scroll-btn {
+        display: none !important;
+    }
+
+    /* Nav inferior ? sempre inteiro na tela */
+    #nav {
+        z-index: 950 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+        gap: 8px !important;
+        box-sizing: border-box !important;
+        background: linear-gradient(to top, rgba(26, 20, 64, 0.98) 55%, transparent) !important;
+    }
+
+    .nav-btn {
+        font-size: 12px !important;
+        padding: 9px 12px !important;
+        min-height: 40px !important;
+        flex: 1 1 0 !important;
+        max-width: none !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* --------------------------------------------------------------
+   MOBILE FIT v96 ? ?ltima palavra: caber sem cortar / sem sobrepor
+   -------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    html, body, #app {
+        height: 100% !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        overflow: hidden !important;
+    }
+
+    #slides,
+    .slide.active {
+        height: 100% !important;
+        max-height: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* Nunca center em conte?do alto ? corta o topo */
+    .slide:has(.step-car) > .content-area,
+    .slide:has(.pic-car) > .content-area,
+    .slide:has(.sector-grid) > .content-area,
+    .slide:has(.kit-cols) > .content-area,
+    .slide:has(.compare-container) > .content-area {
+        justify-content: flex-start !important;
+        padding-top: 4px !important;
+        padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .slide > .top-bar .slide-title,
+    .slide-title {
+        font-size: clamp(15px, 4.4vw, 19px) !important;
+        line-height: 1.15 !important;
+        margin-top: 2px !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* T?tulo/tag ABAIXO do chrome (demo + logo + som) */
+    .slide > .top-bar {
+        position: relative !important;
+        z-index: 2 !important;
+        flex-shrink: 0 !important;
+        padding-top: calc(78px + env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: 8px !important;
+        padding-left: 12px !important;
+        padding-right: 56px !important;
+        gap: 6px !important;
+    }
+
+    .slide > .content-area {
+        padding-top: 10px !important;
+        justify-content: flex-start !important;
+    }
+
+    .slide:has(.tf-flip-grid) > .content-area,
+    .slide:has(.reveal-grid) > .content-area,
+    .slide:has(.flip-row) > .content-area,
+    .slide:has(.glow-cards) > .content-area,
+    .slide:has(.myth-grid) > .content-area,
+    .slide:has(.sector-grid) > .content-area,
+    .slide:has(.step-car) > .content-area,
+    .slide:has(.pic-car) > .content-area {
+        justify-content: flex-start !important;
+        padding-top: 8px !important;
+        padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    /* Indicador demo a esquerda ? nao tapa logo/som */
+    #demo-indicator {
+        left: 8px !important;
+        right: auto !important;
+        top: calc(44px + env(safe-area-inset-top, 0px)) !important;
+        max-width: 46vw !important;
+    }
+
+    #logo {
+        right: 8px !important;
+        max-width: 36vw !important;
+    }
+
+    #logo img {
+        height: 20px !important;
+        max-width: 100% !important;
+        width: auto !important;
+        object-fit: contain !important;
+    }
+
+    /* Som abaixo da logo */
+    #a11y-bar {
+        top: calc(36px + env(safe-area-inset-top, 0px)) !important;
+        right: 8px !important;
+    }
+
+    #a11y-launcher {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .wave {
+        display: none !important;
+    }
+
+    .nav-btn {
+        white-space: nowrap !important;
+    }
+}
+
+/* Telas baixas ? ainda compacto, mas SEM voltar o titulo pra baixo do chrome */
+@media screen and (max-width: 768px) and (max-height: 720px) {
+    .slide > .top-bar {
+        padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: 6px !important;
+    }
+
+    .slide > .top-bar .slide-title,
+    .slide-title {
+        font-size: clamp(14px, 4vw, 17px) !important;
+    }
+
+    .step-car-inner {
+        padding: 10px 10px 12px !important;
+    }
+
+    .step-car-num {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 18px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .step-car-title,
+    .pic-car-title {
+        font-size: 15px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .step-car-desc,
+    .pic-car-desc {
+        font-size: 12px !important;
+    }
+
+    .sector-col,
+    .kit-col {
+        padding: 8px 10px !important;
+    }
+
+    .photo-slot,
+    .photo-slot--compact,
+    .mix-banner .photo-slot {
+        min-height: 56px !important;
+        max-height: 72px !important;
+    }
+
+    .quiz-intro-card,
+    .mod-intro-card {
+        padding: 14px 12px !important;
+    }
+
+    .quiz-intro-icon {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 18px !important;
+        margin-bottom: 6px !important;
+    }
+}
+
+/* --------------------------------------------------------------
+   MOBILE v98 ? sem center em listas/carross?is (corta o 1? card)
+   -------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .slide:not(.slide-video):not(#s1):not(#s44):not(:has(.pic-car)):not(:has(.step-car)):not([id$="-quiz"]):not([id$="-game"]):not([id$="-intro"]) .content-area,
+    .slide:not(.slide-video):not(#s44):not([id$="-quiz"]):not([id$="-game"]):not([id$="-intro"]) .content-area,
+    .slide:not([id$="-quiz"]):not([id$="-game"]):not([id$="-intro"]) > .content-area,
+    #s-sumario > .content-area,
+    #s-sumario .content-area {
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        padding-top: 16px !important;
+        padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .slide.slide-video > .content-area {
+        justify-content: center !important;
+    }
+
+    .slide:not([id$="-quiz"]):not([id$="-game"]):not([id$="-intro"]) > .top-bar {
+        padding-top: calc(78px + env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: 10px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .sum-grid,
+    .tf-flip-grid,
+    .reveal-grid,
+    .sector-grid,
+    .kit-cols,
+    .compare-container,
+    .flip-row,
+    .glow-cards,
+    .myth-grid,
+    .step-car,
+    .pic-car {
+        margin-top: 8px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .sum-item {
+        overflow: visible !important;
+    }
+
+    .sum-item .sum-num-big,
+    .sum-item .sum-top {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* --------------------------------------------------------------
+   MOBILE v99 ? intros de desafio/m?dulo CENTRALIZADAS no meio
+   -------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    .slide[id$="-quiz"] > .top-bar,
+    .slide[id$="-game"] > .top-bar,
+    .slide[id$="-intro"] > .top-bar {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: auto !important;
+        width: auto !important;
+        max-width: min(70vw, 280px) !important;
+        padding: calc(52px + env(safe-area-inset-top, 0px)) 12px 0 12px !important;
+        z-index: 6 !important;
+        pointer-events: none !important;
+        background: transparent !important;
+    }
+
+    .slide[id$="-quiz"] .slide-title,
+    .slide[id$="-game"] .slide-title,
+    .slide[id$="-intro"] .slide-title {
+        font-size: clamp(16px, 4.5vw, 20px) !important;
+        margin-top: 4px !important;
+        line-height: 1.15 !important;
+    }
+
+    .slide[id$="-quiz"] .section-tag,
+    .slide[id$="-game"] .section-tag,
+    .slide[id$="-intro"] .section-tag {
+        font-size: 10px !important;
+        padding: 4px 10px !important;
+    }
+
+    /* Card do desafio bem no meio da tela */
+    .slide[id$="-quiz"] > .content-area,
+    .slide[id$="-game"] > .content-area,
+    .slide[id$="-intro"] > .content-area,
+    .slide:not(.slide-video):not(#s44)[id$="-quiz"] > .content-area,
+    .slide:not(.slide-video):not(#s44)[id$="-game"] > .content-area,
+    .slide:not(.slide-video):not(#s44)[id$="-intro"] > .content-area {
+        position: absolute !important;
+        inset: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        overflow: hidden !important;
+        padding: calc(96px + env(safe-area-inset-top, 0px)) 16px calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+        z-index: 2 !important;
+        box-sizing: border-box !important;
+    }
+
+    .slide[id$="-quiz"] .quiz-intro-card,
+    .slide[id$="-game"] .quiz-intro-card,
+    .slide[id$="-intro"] .quiz-intro-card,
+    .slide[id$="-intro"] .mod-intro-card,
+    .slide[id$="-quiz"] .quiz-result-card,
+    .slide[id$="-game"] .quiz-result-card {
+        margin: 0 auto !important;
+        max-width: min(100%, 400px) !important;
+        width: 100% !important;
+        flex-shrink: 0 !important;
+    }
+
+    .slide[id$="-quiz"] .quiz-wrap,
+    .slide[id$="-game"] .quiz-wrap {
+        width: 100% !important;
+        max-width: min(100%, 420px) !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+/* Quiz/desafio: indicador demo nao tapa o titulo */
+@media screen and (max-width: 768px) {
+    body:has(.slide[id$='-quiz'].active) #demo-indicator,
+    body:has(.slide[id$='-game'].active) #demo-indicator,
+    body:has(.slide[id$='-intro'].active) #demo-indicator {
+        top: calc(40px + env(safe-area-inset-top, 0px)) !important;
+        left: 8px !important;
+        max-width: 42vw !important;
+        font-size: 8px !important;
+        padding: 3px 6px !important;
+        z-index: 5 !important;
+    }
+}
+
+/* ================================================================
+   MOBILE v100 ? CENTRALIZA desafio + video (vence tudo)
+   ================================================================ */
+@media screen and (max-width: 768px) {
+    /* --- QUIZ / DESAFIO --- */
+    html body .slide[id$='-quiz'],
+    html body .slide[id$='-game'] {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    html body .slide[id$='-quiz'] > .top-bar,
+    html body .slide[id$='-game'] > .top-bar {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: auto !important;
+        max-width: 55vw !important;
+        padding: calc(48px + env(safe-area-inset-top, 0px)) 10px 0 10px !important;
+        margin: 0 !important;
+        z-index: 5 !important;
+        pointer-events: none !important;
+    }
+
+    /* Titulo grande da intro some no mobile ? o card ja tem o nome */
+    html body .slide[id$='-quiz']:not(.quiz-playing) > .top-bar .slide-title,
+    html body .slide[id$='-game']:not(.quiz-playing) > .top-bar .slide-title {
+        display: none !important;
+    }
+
+    html body .slide[id$='-quiz'] > .content-area,
+    html body .slide[id$='-game'] > .content-area {
+        position: relative !important;
+        inset: auto !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        padding: 56px 14px calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+        margin: 0 !important;
+        gap: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    html body .slide[id$='-quiz'] .quiz-wrap,
+    html body .slide[id$='-game'] .quiz-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    html body .slide[id$='-quiz'] .quiz-intro-card,
+    html body .slide[id$='-game'] .quiz-intro-card,
+    html body .slide[id$='-quiz'] .quiz-result-card,
+    html body .slide[id$='-game'] .quiz-result-card {
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-width: 400px !important;
+    }
+
+    /* --- VIDEO --- */
+    html body .slide.slide-video {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    html body .slide.slide-video > .top-bar {
+        position: relative !important;
+        flex-shrink: 0 !important;
+        padding: calc(52px + env(safe-area-inset-top, 0px)) 56px 6px 12px !important;
+    }
+
+    html body .slide.slide-video > .content-area {
+        position: relative !important;
+        inset: auto !important;
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        overflow: hidden !important;
+        padding: 8px 12px calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+        margin: 0 !important;
+    }
+
+    html body .slide.slide-video .video-wrap,
+    html body .slide.slide-video .video-wrap.video-wrap--std,
+    html body .slide.slide-video .content-area > .video-wrap {
+        margin: 0 auto !important;
+        width: min(100%, 520px) !important;
+        max-width: 100% !important;
+        flex-shrink: 0 !important;
+        align-self: center !important;
+    }
+
+    /* Intro de modulo (M?DULO X) */
+    html body .slide[id$='-intro'] .mod-intro {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        min-height: calc(100dvh - 120px) !important;
+        padding: 60px 16px 100px !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* Pic-car: imagem preenche 100% ? sem faixa escura */
+.pic-car-photo.has-image {
+    display: block !important;
+    position: relative !important;
+}
+.pic-car-photo.has-image img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+}
+.pic-car-photo.has-image .pic-car-expand,
+.pic-car-photo.has-image .img-expand-btn,
+.photo-slot.has-image .img-expand-btn,
+.photo-slot.has-image .pic-car-expand {
+    position: absolute !important;
+    top: auto !important;
+    left: auto !important;
+    bottom: 8px !important;
+    right: 8px !important;
+    z-index: 5 !important;
+    display: inline-flex !important;
+}
+@media screen and (max-width: 900px) {
+    .pic-car-photo {
+        min-height: 180px !important;
+        max-height: 280px !important;
+        aspect-ratio: 16 / 9 !important;
+    }
 }

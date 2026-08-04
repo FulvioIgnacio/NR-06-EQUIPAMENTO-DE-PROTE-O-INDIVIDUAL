@@ -14,6 +14,94 @@ function closeImageModal(e) {
     modal.classList.remove('active');
 }
 
+/* Seta “tem mais conteúdo” no mobile */
+const _slideScrollBtns = {};
+const _SCROLL_BTN_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>';
+
+window.scrollSlideDown = function (slideId) {
+    const cfg = _slideScrollBtns[slideId];
+    const area = cfg ? cfg.area : document.querySelector('#' + slideId + ' .content-area');
+    if (!area) return;
+    area.scrollBy({ top: Math.max(160, area.clientHeight * 0.55), behavior: 'smooth' });
+};
+
+function updateSlideScrollBtn(slideId) {
+    const cfg = _slideScrollBtns[slideId];
+    if (!cfg) return;
+    if (!window.matchMedia('(max-width: 768px)').matches) {
+        cfg.btn.classList.add('is-hidden');
+        return;
+    }
+    const slide = document.getElementById(slideId);
+    // Carrosséis (step-car / pic-car): sem seta de scroll — conteúdo já cabe na tela
+    if (slide && slide.querySelector('.step-car-nav, .pic-car-nav, .step-car, .pic-car, [data-step-carousel], [data-pic-carousel]')) {
+        cfg.btn.classList.add('is-hidden');
+        return;
+    }
+    const needsScroll = cfg.area.scrollHeight > cfg.area.clientHeight + 12;
+    const atBottom = cfg.area.scrollTop + cfg.area.clientHeight >= cfg.area.scrollHeight - 12;
+    cfg.btn.classList.toggle('is-hidden', !needsScroll || atBottom);
+}
+
+window.updateSlideScrollBtn = updateSlideScrollBtn;
+
+function refreshActiveSlideScrollBtn() {
+    const active = document.querySelector('.slide.active');
+    if (active && active.id) updateSlideScrollBtn(active.id);
+}
+
+function scheduleScrollBtnRefresh() {
+    requestAnimationFrame(refreshActiveSlideScrollBtn);
+    setTimeout(refreshActiveSlideScrollBtn, 80);
+    setTimeout(refreshActiveSlideScrollBtn, 320);
+    setTimeout(refreshActiveSlideScrollBtn, 700);
+}
+
+window.refreshActiveSlideScrollBtn = refreshActiveSlideScrollBtn;
+window.scheduleScrollBtnRefresh = scheduleScrollBtnRefresh;
+
+function registerSlideScrollBtn(slideId, btn, area) {
+    if (_slideScrollBtns[slideId]) return;
+    _slideScrollBtns[slideId] = { btn: btn, area: area };
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollSlideDown(slideId);
+    });
+    area.addEventListener('scroll', function () { updateSlideScrollBtn(slideId); }, { passive: true });
+    if (typeof ResizeObserver !== 'undefined') {
+        const ro = new ResizeObserver(function () { updateSlideScrollBtn(slideId); });
+        ro.observe(area);
+    }
+    updateSlideScrollBtn(slideId);
+}
+
+function ensureSlideScrollBtn(slide) {
+    if (!slide || !slide.id) return;
+    const area = slide.querySelector('.content-area');
+    if (!area) return;
+    let btn = slide.querySelector(':scope > .slide-scroll-btn');
+    if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slide-scroll-btn is-hidden';
+        btn.setAttribute('aria-label', 'Rolar para baixo');
+        btn.innerHTML = _SCROLL_BTN_SVG;
+        slide.appendChild(btn);
+    }
+    registerSlideScrollBtn(slide.id, btn, area);
+}
+
+function initAllSlideScrollBtns() {
+    document.querySelectorAll('.slide').forEach(ensureSlideScrollBtn);
+    scheduleScrollBtnRefresh();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllSlideScrollBtns);
+} else {
+    initAllSlideScrollBtns();
+}
+
 
 /* ════════════════════════════════════════
    NAVIGATION CORE
@@ -939,6 +1027,10 @@ function goTo(idx, force = false, skipHistory = false) {
     const newSlide = slides[currentSlide];
     newSlide.classList.add('active');
     newSlide.classList.remove('exit-left');
+    try {
+        const ca = newSlide.querySelector('.content-area');
+        if (ca) ca.scrollTop = 0;
+    } catch (e) { }
 
     const nav = document.getElementById('nav');
     if (nav) nav.style.display = 'flex';
@@ -965,8 +1057,57 @@ function goTo(idx, force = false, skipHistory = false) {
     if (typeof window.positionA11yBar === 'function') window.positionA11yBar();
     updateNextButton();
     try { window.updateQuizAudioHelper(); } catch (e) { }
+    try { if (typeof scheduleScrollBtnRefresh === 'function') scheduleScrollBtnRefresh(); } catch (e) { }
+    try { if (typeof forceMobileCenterSlide === 'function') forceMobileCenterSlide(newSlide); } catch (e) { }
     // Slide index not persisted
 }
+
+/** Mobile: força card de desafio / player de vídeo no meio da tela */
+function forceMobileCenterSlide(slide) {
+    if (!slide || !window.matchMedia('(max-width: 768px)').matches) return;
+    const area = slide.querySelector(':scope > .content-area');
+    const isQuiz = /(-quiz|-game)$/.test(slide.id || '');
+    const isVideo = slide.classList.contains('slide-video');
+    const isIntro = /(-intro)$/.test(slide.id || '') && slide.querySelector('.mod-intro');
+
+    if (area && (isQuiz || isVideo)) {
+        area.style.setProperty('display', 'flex', 'important');
+        area.style.setProperty('flex-direction', 'column', 'important');
+        area.style.setProperty('justify-content', 'center', 'important');
+        area.style.setProperty('align-items', 'center', 'important');
+        area.style.setProperty('position', 'relative', 'important');
+        area.style.setProperty('flex', '1 1 auto', 'important');
+        area.style.setProperty('min-height', '0', 'important');
+        area.style.setProperty('overflow-x', 'hidden', 'important');
+        area.style.setProperty('padding-top', isVideo ? '8px' : '56px', 'important');
+        area.style.setProperty('padding-bottom', 'calc(96px + env(safe-area-inset-bottom, 0px))', 'important');
+        const wrap = area.querySelector('.quiz-wrap, .video-wrap');
+        if (wrap) {
+            wrap.style.setProperty('margin-top', 'auto', 'important');
+            wrap.style.setProperty('margin-bottom', 'auto', 'important');
+            wrap.style.setProperty('align-self', 'center', 'important');
+        }
+    }
+
+    if (isIntro) {
+        const mi = slide.querySelector('.mod-intro');
+        if (mi) {
+            mi.style.setProperty('display', 'flex', 'important');
+            mi.style.setProperty('flex-direction', 'column', 'important');
+            mi.style.setProperty('justify-content', 'center', 'important');
+            mi.style.setProperty('align-items', 'center', 'important');
+            mi.style.setProperty('min-height', 'calc(100dvh - 120px)', 'important');
+        }
+    }
+
+    if (isQuiz) {
+        const title = slide.querySelector(':scope > .top-bar .slide-title');
+        if (title && !slide.classList.contains('quiz-playing')) {
+            title.style.setProperty('display', 'none', 'important');
+        }
+    }
+}
+window.forceMobileCenterSlide = forceMobileCenterSlide;
 
 document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') moduleNext(true);
@@ -2023,6 +2164,10 @@ if (document.getElementById('q3-question-panel')) quiz3.render();
 try { syncSlideVideos(currentSlide); } catch (e) { }
 updateNextButton();
 try { window.updateQuizAudioHelper(); } catch (e) { }
+try {
+    var _bootSlide = document.querySelectorAll('.slide')[currentSlide];
+    if (typeof forceMobileCenterSlide === 'function') forceMobileCenterSlide(_bootSlide);
+} catch (e) { }
 
 window.addEventListener('pagehide', pauseAllSlideVideos);
 
@@ -3273,6 +3418,33 @@ window.q6Select = function(i, el) {
             const launcher = document.getElementById('a11y-launcher');
             const demoBtn = document.getElementById('btn-demo');
             const demoInd = document.getElementById('demo-indicator');
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+            if (isMobile) {
+                // Mobile: som logo abaixo da logo (canto superior direito)
+                if (!logo) {
+                    bar.style.top = 'calc(40px + env(safe-area-inset-top, 0px))';
+                    bar.style.bottom = 'auto';
+                    bar.style.right = '10px';
+                    bar.style.left = 'auto';
+                } else {
+                    const r = logo.getBoundingClientRect();
+                    const gap = 6;
+                    bar.style.top = Math.round(r.bottom + gap) + 'px';
+                    bar.style.bottom = 'auto';
+                    bar.style.right = Math.max(8, Math.round(window.innerWidth - r.right)) + 'px';
+                    bar.style.left = 'auto';
+                }
+                if (demoBtn) {
+                    demoBtn.style.removeProperty('top');
+                    demoBtn.style.removeProperty('right');
+                    demoBtn.style.removeProperty('left');
+                    demoBtn.style.removeProperty('bottom');
+                    demoBtn.style.removeProperty('z-index');
+                }
+                return;
+            }
+
             if (!logo) return;
             const r = logo.getBoundingClientRect();
             const gap = 10;
@@ -3282,6 +3454,7 @@ window.q6Select = function(i, el) {
             const topPx = Math.max(8, r.top + (r.height - launcherSize) / 2);
             const rightPx = Math.max(8, window.innerWidth - r.left + gap);
             bar.style.top = topPx + 'px';
+            bar.style.bottom = 'auto';
             bar.style.right = rightPx + 'px';
             bar.style.left = 'auto';
 
@@ -4569,15 +4742,38 @@ window.q6Select = function(i, el) {
         var img = slot.querySelector('.photo-slot-img');
         if (!img) return;
         var src = (img.getAttribute('data-src') || '').trim();
+        var expandBtn = slot.querySelector('.img-expand-btn, .pic-car-expand');
+
         if (!src) {
             img.hidden = true;
             img.removeAttribute('src');
             slot.classList.remove('has-image');
+            if (expandBtn) {
+                expandBtn.hidden = true;
+                expandBtn.onclick = null;
+            }
             return;
         }
+
         img.src = src;
         img.hidden = false;
         slot.classList.add('has-image');
+
+        if (!expandBtn) {
+            expandBtn = document.createElement('button');
+            expandBtn.type = 'button';
+            expandBtn.className = 'img-expand-btn';
+            expandBtn.setAttribute('aria-label', 'Ampliar imagem');
+            expandBtn.title = 'Ampliar imagem';
+            expandBtn.textContent = '🔍';
+            slot.appendChild(expandBtn);
+        }
+        expandBtn.hidden = false;
+        expandBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof openImageModal === 'function') openImageModal(src);
+        };
     }
 
     function showCard(root, index) {
@@ -4687,6 +4883,7 @@ window.q6Select = function(i, el) {
 
         function render() {
             var c = cards[idx] || {};
+            if (labelEl) labelEl.textContent = String(c.label || labelText).toUpperCase();
             if (numEl) {
                 if (c.icon) {
                     numEl.textContent = c.icon;
@@ -4699,7 +4896,12 @@ window.q6Select = function(i, el) {
             if (titleEl) titleEl.textContent = c.title || '';
             if (descEl) descEl.textContent = c.desc || '';
             if (counterEl) counterEl.textContent = (idx + 1) + '/' + cards.length;
-            if (cardEl) cardEl.classList.add('is-active');
+            if (cardEl) {
+                cardEl.classList.add('is-active');
+                cardEl.classList.remove('is-myth', 'is-truth');
+                if (c.tone === 'myth') cardEl.classList.add('is-myth');
+                if (c.tone === 'truth') cardEl.classList.add('is-truth');
+            }
             updateDots();
             markDone();
             if (prevBtn) prevBtn.disabled = idx === 0;
@@ -4759,13 +4961,33 @@ window.q6Select = function(i, el) {
         var iconEl = root.querySelector('.pic-car-icon');
         var titleEl = root.querySelector('.pic-car-title');
         var descEl = root.querySelector('.pic-car-desc');
+        var statusEl = root.querySelector('.pic-car-status');
         var counterEl = root.querySelector('.pic-car-counter');
+        var progressEl = root.querySelector('.pic-car-progress');
         var trackerEl = root.querySelector('.pic-car-tracker');
         var prevBtn = root.querySelector('.pic-car-prev');
         var nextBtn = root.querySelector('.pic-car-next');
 
+        if (progressEl) {
+            progressEl.innerHTML = '';
+            cards.forEach(function (_, i) {
+                var dot = document.createElement('span');
+                dot.className = 'pic-car-dot' + (i === 0 ? ' is-active' : '');
+                progressEl.appendChild(dot);
+            });
+        }
+
+        function updateDots() {
+            if (!progressEl) return;
+            progressEl.querySelectorAll('.pic-car-dot').forEach(function (dot, i) {
+                dot.classList.toggle('is-active', i === idx);
+                dot.classList.toggle('is-done', !!viewed[i] && i !== idx);
+            });
+        }
+
         function markDone() {
             viewed[idx] = true;
+            updateDots();
             if (Object.keys(viewed).length >= cards.length && trackerEl && !trackerEl.classList.contains('req-done')) {
                 trackerEl.classList.add('req-done');
                 try { if (typeof playBeep === 'function') playBeep('click'); } catch (e) { }
@@ -4778,6 +5000,11 @@ window.q6Select = function(i, el) {
             if (iconEl) iconEl.textContent = c.icon || '';
             if (titleEl) titleEl.textContent = c.title || '';
             if (descEl) descEl.textContent = c.desc || '';
+            if (statusEl) {
+                var st = (c.status || '').trim();
+                statusEl.textContent = st;
+                statusEl.style.display = st ? '' : 'none';
+            }
             if (counterEl) counterEl.textContent = (idx + 1) + '/' + cards.length;
             if (cardEl) cardEl.classList.add('is-active');
 
@@ -4793,6 +5020,7 @@ window.q6Select = function(i, el) {
                     img.referrerPolicy = 'no-referrer';
                     photoEl.insertBefore(img, expandBtn || null);
                     if (expandBtn) {
+                        expandBtn.classList.add('img-expand-btn');
                         expandBtn.onclick = function (e) {
                             e.stopPropagation();
                             if (typeof openImageModal === 'function') openImageModal(photo);
