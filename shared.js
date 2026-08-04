@@ -396,56 +396,6 @@ function applyDemoModeUI() {
     });
 })();
 
-/* Mobile: 5 toques na logo (em ~2.5s) liga/desliga Modo Simulação */
-(function initLogoTapDemoShortcut() {
-    var taps = 0;
-    var resetTimer = null;
-    var lastTouchAt = 0;
-    var WINDOW_MS = 2500;
-    var NEED = 5;
-
-    function onLogoActivate() {
-        taps += 1;
-        if (resetTimer) clearTimeout(resetTimer);
-        resetTimer = setTimeout(function () {
-            taps = 0;
-            resetTimer = null;
-        }, WINDOW_MS);
-        if (taps < NEED) return;
-        taps = 0;
-        if (resetTimer) {
-            clearTimeout(resetTimer);
-            resetTimer = null;
-        }
-        toggleDemoMode();
-        try { playBeep && playBeep('click'); } catch (err) { }
-    }
-
-    function bind() {
-        var logo = document.getElementById('logo');
-        if (!logo || logo._nr06LogoTapBound) return;
-        logo._nr06LogoTapBound = true;
-        logo.style.cursor = 'pointer';
-        logo.setAttribute('role', 'button');
-        logo.setAttribute('aria-label', 'Logo');
-        logo.addEventListener('touchend', function () {
-            lastTouchAt = Date.now();
-            onLogoActivate();
-        }, { passive: true });
-        logo.addEventListener('click', function () {
-            /* Ignora o click fantasma depois do touchend no mobile */
-            if (Date.now() - lastTouchAt < 500) return;
-            onLogoActivate();
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bind);
-    } else {
-        bind();
-    }
-})();
-
 /* Atalho oculto: digite go + número da página (ex.: go22) para ir direto. */
 (function initGoPageShortcut() {
     var buf = '';
