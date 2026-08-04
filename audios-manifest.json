@@ -1,0 +1,634 @@
+[
+  {
+    "file": "pagina-1.mp3",
+    "text": "Módulo de Treinamento . Segurança Ocupacional NR 06 . Equipamento de Proteção Individual Entenda por que o EPI é a última barreira de proteção contra os riscos do trabalho e como usá-lo corretamente em cada função na Leroy Merlin. INICIAR O TREINAMENTO",
+    "slideId": "s1",
+    "globalN": 1,
+    "state": "main",
+    "sourceFile": "index.html"
+  },
+  {
+    "file": "pagina-2.mp3",
+    "text": "Sumário Conteúdo Programático Módulo 1 Fundamentos e Cultura de Segurança Módulo 2 Conceito de EPI e Responsabilidades Módulo 3 Tipos de EPI e Aplicações Módulo 4 EPI por Missão e Prevenção",
+    "slideId": "s-sumario",
+    "globalN": 2,
+    "state": "main",
+    "sourceFile": "index.html"
+  },
+  {
+    "file": "pagina-3.mp3",
+    "text": "INÍCIO MÓDULO 1 Fundamentos e Cultura de Segurança",
+    "slideId": "s-m1-intro",
+    "globalN": 3,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-4.mp3",
+    "text": "Vídeo 1 . Módulo 1 Compromisso da Liderança e Legislação",
+    "slideId": "s-v01",
+    "globalN": 4,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-5-q1.mp3",
+    "text": "Afirmação 1 de 4. Segurança é assunto do time de SSO, não meu. Verdade ou mito?",
+    "slideId": "s-m1-g01",
+    "globalN": 5,
+    "state": "q1",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-5-q2.mp3",
+    "text": "Afirmação 2 de 4. A empresa é obrigada a fornecer o EPI de graça. Verdade ou mito?",
+    "slideId": "s-m1-g01",
+    "globalN": 5,
+    "state": "q2",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-5-q3.mp3",
+    "text": "Afirmação 3 de 4. Tenho experiência, faço rápido e sem o EPI dá certo. Verdade ou mito?",
+    "slideId": "s-m1-g01",
+    "globalN": 5,
+    "state": "q3",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-5-q4.mp3",
+    "text": "Afirmação 4 de 4. Recusar o uso do EPI tem consequência. Verdade ou mito?",
+    "slideId": "s-m1-g01",
+    "globalN": 5,
+    "state": "q4",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-6.mp3",
+    "text": "Saiba Mais . Vídeo 1 Cultura de Prevenção Toque nos cards para avançar 01 Prevenir antes de corrigir Toque para ver Prevenir antes de corrigir A cultura forte age no risco antes do acidente . não só depois da ocorrência. 02 Sem atalho sob pressão Toque para ver Sem atalho sob pressão Improviso e “só dessa vez” enfraquecem a barreira de todo o time. 03 Norma na prática Toque para ver Norma na prática Seguir a legislação e os procedimentos no chão de loja é parte do trabalho seguro. 04 EPI só protege em uso Toque para ver EPI só protege em uso É a última barreira: só funciona quando está no corpo e em bom estado.",
+    "slideId": "s-m1-i01",
+    "globalN": 6,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-7.mp3",
+    "text": "Vídeo 2 . Módulo 1 Responsabilidade Individual e Gestão SSO",
+    "slideId": "s-v02",
+    "globalN": 7,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-8.mp3",
+    "text": "Descubra . Vídeo 2 Quem Cuida de Quê? PAPEL Alta Administração Define a política de SSO e garante recursos para a prevenção. ‹ 1/4 ›",
+    "slideId": "s-m1-g02",
+    "globalN": 8,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-9.mp3",
+    "text": "Vídeo 3 . Módulo 1 Participação, Consulta e Melhoria Contínua",
+    "slideId": "s-v03",
+    "globalN": 9,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-10.mp3",
+    "text": "Explore . Vídeo 3 Pilares da Participação Toque nos cards para descobrir cada pilar CIPAA Toque para ver CIPAA Comissão interna de prevenção: canal formal para melhorar a segurança no dia a dia. Treinamentos Toque para ver Treinamentos Capacitação contínua para que todos saibam usar o EPI e agir com segurança. Consulta ao Time Toque para ver Consulta ao Time Ouvir quem opera: quem está na ponta conhece os riscos reais da tarefa. Melhoria Contínua Toque para ver Melhoria Contínua Revisão periódica do SSO para corrigir falhas e fortalecer a prevenção.",
+    "slideId": "s-m1-g03",
+    "globalN": 10,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-11.mp3",
+    "text": "Na Prática . Vídeo 3 Como Reportar um Risco PASSO 1 Pare a tarefa Se o risco é iminente, interrompa. Nenhuma meta de loja vale mais que a sua integridade ou a do colega. ‹ 1/5 ›",
+    "slideId": "s-m1-i02",
+    "globalN": 11,
+    "state": "main",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-12-intro.mp3",
+    "text": "Cenários de Cultura SSO do Módulo 1. Cinco situações de campo. Acerte no mínimo três. Toque em Iniciar Desafio para começar.",
+    "slideId": "s-m1-quiz",
+    "globalN": 12,
+    "state": "intro",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-12-q1.mp3",
+    "text": "Cenário 1 de 5. Um líder vê um colaborador iniciando a tarefa sem o EPI indicado. Qual é a decisão correta?",
+    "slideId": "s-m1-quiz",
+    "globalN": 12,
+    "state": "q1",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-12-q2.mp3",
+    "text": "Cenário 2 de 5. Para organizar objetivos de saúde e segurança no dia a dia, a Leroy Merlin conta com o quê?",
+    "slideId": "s-m1-quiz",
+    "globalN": 12,
+    "state": "q2",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-12-q3.mp3",
+    "text": "Cenário 3 de 5. Na prática, a gestão de segurança envolve quem?",
+    "slideId": "s-m1-quiz",
+    "globalN": 12,
+    "state": "q3",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-12-q4.mp3",
+    "text": "Cenário 4 de 5. Por que ouvir quem está na operação é fundamental nas decisões de SSO?",
+    "slideId": "s-m1-quiz",
+    "globalN": 12,
+    "state": "q4",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-12-q5.mp3",
+    "text": "Cenário 5 de 5. O sistema de SSO deve ser revisado periodicamente com foco em quê?",
+    "slideId": "s-m1-quiz",
+    "globalN": 12,
+    "state": "q5",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-12-result.mp3",
+    "text": "Resultado dos cenários do Módulo 1. Veja sua pontuação na tela. Toque em Jogar Novamente para refazer ou avance.",
+    "slideId": "s-m1-quiz",
+    "globalN": 12,
+    "state": "result",
+    "sourceFile": "modulo-1.html"
+  },
+  {
+    "file": "pagina-13.mp3",
+    "text": "INÍCIO MÓDULO 2 Conceito de EPI e Responsabilidades",
+    "slideId": "s-m2-intro",
+    "globalN": 13,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-14.mp3",
+    "text": "Vídeo 4 . Módulo 2 O Conceito de EPI e Fornecimento",
+    "slideId": "s-v04",
+    "globalN": 14,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-15.mp3",
+    "text": "Compare . Vídeo 4 EPI: Errado × Certo Toque nos dois lados para confirmar a leitura Adicionar imagem Incorreto Incorreto Usar qualquer equipamento improvisado, cobrado do colaborador ou sem adequação ao risco . isso não é EPI pela NR-06. Adicionar imagem Correto Correto EPI de uso individual, gratuito, aprovado, adequado ao risco da atividade e em perfeito estado de conservação.",
+    "slideId": "s-m2-g04",
+    "globalN": 15,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-16.mp3",
+    "text": "Base Legal . Vídeo 4 A NR-06 em Números NR-06 A norma regulamentadora que define o que é EPI e como ele deve ser fornecido no Brasil. ‹ 1/4 ›",
+    "slideId": "s-m2-i03",
+    "globalN": 16,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-17.mp3",
+    "text": "Vídeo 5 . Módulo 2 Responsabilidades da Organização",
+    "slideId": "s-v05",
+    "globalN": 17,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-18.mp3",
+    "text": "Na Prática . Vídeo 5 Deveres da Empresa Adquirir EPI aprovado Só equipamentos com aprovação do órgão nacional competente e C.A. válido. DEVER 01 ‹ 1/4 ›",
+    "slideId": "s-m2-g05",
+    "globalN": 18,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-19.mp3",
+    "text": "Vídeo 6 . Módulo 2 Responsabilidades do Empregado",
+    "slideId": "s-v06",
+    "globalN": 19,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-20.mp3",
+    "text": "Explore . Vídeo 6 Seus Deveres com o EPI Toque nos cards para revisar seus deveres Usar o EPI fornecido Toque para ver Usar o EPI fornecido Utilize apenas o EPI entregue pela empresa, adequado ao risco da sua função. Conservar e higienizar Toque para ver Conservar e higienizar Guarde, limpe e conserve o EPI conforme as orientações recebidas no treinamento. Comunicar danos Toque para ver Comunicar danos Avise imediatamente se o EPI estiver danificado, extraviado ou inadequado. Nunca alterar o EPI Toque para ver Nunca alterar o EPI Não empreste, não modifique e não use EPI de outro setor sem critério.",
+    "slideId": "s-m2-g06",
+    "globalN": 20,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-21.mp3",
+    "text": "Checklist . Vídeo 6 Recebi meu EPI. E agora? CHECK Conferir o C.A. Validade e aprovação antes do primeiro uso. ‹ 1/6 ›",
+    "slideId": "s-m2-i04",
+    "globalN": 21,
+    "state": "main",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-intro.mp3",
+    "text": "Verdadeiro ou Falso do Módulo 2. Oito afirmações sobre EPI e responsabilidades. Acerte no mínimo cinco. Toque em Iniciar Desafio para começar.",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "intro",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q1.mp3",
+    "text": "Afirmação 1 de 8. Segundo a NR-06, EPI é qualquer equipamento coletivo instalado na loja. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q1",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q2.mp3",
+    "text": "Afirmação 2 de 8. A Leroy Merlin deve fornecer o EPI gratuitamente, adequado ao risco e em bom estado. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q2",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q3.mp3",
+    "text": "Afirmação 3 de 8. O colaborador pode usar qualquer EPI trazido de casa, sem aprovação da empresa. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q3",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q4.mp3",
+    "text": "Afirmação 4 de 8. O EPI entra quando a proteção coletiva não é viável ou não oferece proteção completa. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q4",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q5.mp3",
+    "text": "Afirmação 5 de 8. Basta usar o EPI só quando o fiscal estiver presente. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q5",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q6.mp3",
+    "text": "Afirmação 6 de 8. Danificar, extraviar ou alterar o EPI exige comunicação imediata para substituição. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q6",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q7.mp3",
+    "text": "Afirmação 7 de 8. A organização deve adquirir apenas EPIs aprovados pelo órgão nacional competente. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q7",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-q8.mp3",
+    "text": "Afirmação 8 de 8. Emprestar o EPI do colega de outro setor, sem critério, é uma boa prática. Verdadeiro ou falso?",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "q8",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-22-result.mp3",
+    "text": "Resultado do Verdadeiro ou Falso do Módulo 2. Veja sua pontuação na tela.",
+    "slideId": "s-m2-quiz",
+    "globalN": 22,
+    "state": "result",
+    "sourceFile": "modulo-2.html"
+  },
+  {
+    "file": "pagina-23.mp3",
+    "text": "INÍCIO MÓDULO 3 Tipos de EPI e Aplicações",
+    "slideId": "s-m3-intro",
+    "globalN": 23,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-24.mp3",
+    "text": "Vídeo 7 . Módulo 3 Proteção de Cabeça, Olhos, Face e Ouvidos",
+    "slideId": "s-v07",
+    "globalN": 24,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-25.mp3",
+    "text": "Combine . Vídeo 7 EPI e sua Proteção Espaço para imagem Capacete→Impactos na cabeça Óculos→Partículas nos olhos Protetor facial→Respingos químicos na face Protetor auricular→Proteção auditiva",
+    "slideId": "s-m3-g07",
+    "globalN": 25,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-26.mp3",
+    "text": "Na Prática . Vídeo 7 Inspeção Antes do Uso PASSO C.A. e validade Etiqueta legível e no prazo. Apagada ou vencida = reprovado. ‹ 1/5 ›",
+    "slideId": "s-m3-i05",
+    "globalN": 26,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-27.mp3",
+    "text": "Vídeo 8 . Módulo 3 Proteção Respiratória e do Tronco",
+    "slideId": "s-v08",
+    "globalN": 27,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-28.mp3",
+    "text": "Descubra . Vídeo 8 PFF2, PFF3 e Proteção Toque em cada card para revelar a indicação 01 PFF2 Toque para revelar PFF2 Indicado no drive-in e áreas com particulado moderado e poeira. 02 PFF3 Toque para revelar PFF3 Exigido no corte de madeira contra partículas finas e mais agressivas. 03 Externo / Drive Toque para revelar Externo / Drive Protetor solar e creme protetor reforçam a proteção da pele. 04 Em ambos Toque para revelar Em ambos Óculos e calçado de segurança entram na maioria das missões.",
+    "slideId": "s-m3-g08",
+    "globalN": 28,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-29.mp3",
+    "text": "Vídeo 9 . Módulo 3 Proteção de Mãos, Pés e da Pele",
+    "slideId": "s-v09",
+    "globalN": 29,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-30.mp3",
+    "text": "Explore . Vídeo 9 Proteção Corporal Toque nos cards para ver o que cada EPI protege Luvas Toque para ver Luvas Protegem as mãos contra abrasivos, cortes e contato com peças. Calçado Toque para ver Calçado de segurança Protege os pés contra impacto, perfuração e esmagamento. Creme protetor Toque para ver Creme protetor Barreira para a pele dos membros superiores em contato com químicos. Protetor solar Toque para ver Protetor solar Proteção contra radiação solar em tarefas externas e drive-in.",
+    "slideId": "s-m3-g09",
+    "globalN": 30,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-31.mp3",
+    "text": "Vídeo 10 . Módulo 3 Proteção Contra Quedas e Fator de Queda",
+    "slideId": "s-v10",
+    "globalN": 31,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-32.mp3",
+    "text": "Kit . Vídeo 10 Kit de Trabalho em Altura Espaço para imagem Faz parte do kit Cinturão tipo paraquedista Talabarte Absorvedor de energia Trava-quedas Ancoragem acima da cintura Não substitui o kit Protetor solar Creme hidratante Apenas boa vontade",
+    "slideId": "s-m3-g10",
+    "globalN": 32,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-33.mp3",
+    "text": "Saiba Mais . Vídeo 10 Altura: Mito × Verdade MITO Cinto abdominal serve para altura Só o cinto tipo paraquedista é aceito. ‹ 1/4 ›",
+    "slideId": "s-m3-i06",
+    "globalN": 33,
+    "state": "main",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-intro.mp3",
+    "text": "Permitido ou Proibido do Módulo 3. Seis condutas com EPI para classificar. Acerte no mínimo quatro. Toque em Iniciar Desafio para começar.",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "intro",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-q1.mp3",
+    "text": "Ação 1 de 6. Usar capacete de segurança com carneira ajustada e cinta jugular na manutenção. É permitido ou proibido?",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "q1",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-q2.mp3",
+    "text": "Ação 2 de 6. Entrar no depósito com chinelo aberto, sem calçado de segurança. É permitido ou proibido?",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "q2",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-q3.mp3",
+    "text": "Ação 3 de 6. No corte de madeira, utilizar respirador PFF3 contra partículas finas. É permitido ou proibido?",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "q3",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-q4.mp3",
+    "text": "Ação 4 de 6. Fixar talabarte ou trava-quedas abaixo do nível dos pés em trabalho em altura. É permitido ou proibido?",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "q4",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-q5.mp3",
+    "text": "Ação 5 de 6. Continuar a tarefa com luvas rasgadas porque já está no meio do serviço. É permitido ou proibido?",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "q5",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-q6.mp3",
+    "text": "Ação 6 de 6. Usar óculos de proteção e protetor facial contra partículas e respingos. É permitido ou proibido?",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "q6",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-34-result.mp3",
+    "text": "Resultado do Permitido ou Proibido do Módulo 3. Veja sua pontuação na tela.",
+    "slideId": "s-m3-game",
+    "globalN": 34,
+    "state": "result",
+    "sourceFile": "modulo-3.html"
+  },
+  {
+    "file": "pagina-35.mp3",
+    "text": "INÍCIO MÓDULO 4 EPI por Missão e Prevenção",
+    "slideId": "s-m4-intro",
+    "globalN": 35,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-36.mp3",
+    "text": "Vídeo 11 . Módulo 4 EPI por Missão: Manutenção e Empilhadeira",
+    "slideId": "s-v11",
+    "globalN": 36,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-37.mp3",
+    "text": "Compare . Vídeo 11 Manutenção: Errado × Certo Toque nos dois lados para confirmar a leitura Adicionar imagem Incorreto Incorreto Entrar na manutenção sem capacete com jugular, sem óculos ou com luvas danificadas . a barreira falha antes da tarefa começar. Adicionar imagem Correto Correto Kit completo: capacete com jugular, óculos, protetor auricular e luvas íntegras, adequados aos riscos da manutenção.",
+    "slideId": "s-m4-g11",
+    "globalN": 37,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-38.mp3",
+    "text": "Checklist . Vídeo 11 Antes de Iniciar a Tarefa CHECK 01 Riscos da atividade Sei quais são os riscos da tarefa de hoje. ‹ 1/6 ›",
+    "slideId": "s-m4-i07",
+    "globalN": 38,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-39.mp3",
+    "text": "Vídeo 12 . Módulo 4 Drive-In e Corte de Madeira",
+    "slideId": "s-v12",
+    "globalN": 39,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-40.mp3",
+    "text": "Setores . Vídeo 12 EPI por Setor Drive-in PFF2 Protetor solar Creme protetor Madeira PFF3 Protetor auricular Nos dois Óculos de proteção Calçado de segurança Espaço para imagem",
+    "slideId": "s-m4-g12",
+    "globalN": 40,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-41.mp3",
+    "text": "Vídeo 13 . Módulo 4 Logística, Sacarias e Central de Cores",
+    "slideId": "s-v13",
+    "globalN": 41,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-42.mp3",
+    "text": "Missões . Vídeo 13 Missão e EPI-Chave PASSO 1 Logística . Luvas + postura Luvas e cuidado postural no manuseio e movimentação de cargas. ‹ 1/4 ›",
+    "slideId": "s-m4-g13",
+    "globalN": 42,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-43.mp3",
+    "text": "Saiba Mais . Vídeo 13 O EPI é a Última Barreira NÍVEL 1 Eliminar Tirar o perigo da tarefa: processo, produto ou equipamento que gera o risco. ‹ 1/5 ›",
+    "slideId": "s-m4-i08",
+    "globalN": 43,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-44.mp3",
+    "text": "Vídeo 14 . Módulo 4 O Melhor EPI e Encerramento",
+    "slideId": "s-v14",
+    "globalN": 44,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-45.mp3",
+    "text": "Mensagens . Vídeo 14 Mensagem Final de Prevenção Toque no card para virar e ver se a mensagem é verdadeira ou falsa Toque para revelar O melhor EPI do mundo é a prevenção. VERDADEIRO Prevenção vem antes do equipamento. Toque para revelar Usar EPI só quando for conveniente já garante a segurança. FALSO O EPI precisa ser usado em toda a exposição ao risco. Toque para revelar Escolher o EPI certo para cada missão reduz acidentes. VERDADEIRO EPI adequado à missão é barreira efetiva. Toque para revelar Cultura de segurança depende só do SESMT, sem o time da loja. FALSO O time da loja também fortalece a prevenção.",
+    "slideId": "s-m4-g14",
+    "globalN": 45,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-intro.mp3",
+    "text": "Liberar uso do EPI, Módulo 4. Seis missões para liberar ou bloquear o uso. Acerte no mínimo quatro. Toque em Iniciar Desafio para começar.",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "intro",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-q1.mp3",
+    "text": "Missão 1 de 6. Técnico de manutenção com kit completo. Liberar ou não liberar?",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "q1",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-q2.mp3",
+    "text": "Missão 2 de 6. Operador de empilhadeira sem protetor auricular. Liberar ou não liberar?",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "q2",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-q3.mp3",
+    "text": "Missão 3 de 6. Assessor do drive-in com óculos, calçado, PFF2, creme e protetor solar. Liberar ou não liberar?",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "q3",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-q4.mp3",
+    "text": "Missão 4 de 6. No corte, colaborador com máscara cirúrgica no lugar do respirador. Liberar ou não liberar?",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "q4",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-q5.mp3",
+    "text": "Missão 5 de 6. Central de cores com luvas nitrílicas e óculos contra respingos. Liberar ou não liberar?",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "q5",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-q6.mp3",
+    "text": "Missão 6 de 6. Colaborador insiste em começar com EPI rasgado. Liberar ou não liberar?",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "q6",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-46-result.mp3",
+    "text": "Resultado da liberação de uso do Módulo 4. Veja sua pontuação na tela.",
+    "slideId": "s-m4-quiz",
+    "globalN": 46,
+    "state": "result",
+    "sourceFile": "modulo-4.html"
+  },
+  {
+    "file": "pagina-47.mp3",
+    "text": "TREINAMENTO CONCLUÍDO Você concluiu com sucesso a parte teórica do treinamento NR-06 . Equipamento de Proteção Individual. Sua atenção ao uso correto do EPI é o que faz a diferença. O melhor equipamento de proteção é a prevenção praticada todos os dias, por todo o time. Módulos 4 Concluídos Avaliação Aprovado Reiniciar Curso",
+    "slideId": "s44",
+    "globalN": 47,
+    "state": "main",
+    "sourceFile": "modulo-4.html"
+  }
+]

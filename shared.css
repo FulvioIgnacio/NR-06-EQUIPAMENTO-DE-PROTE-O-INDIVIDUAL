@@ -11812,3 +11812,94 @@ html body #demo-indicator.demo-shortcut-visible {
         aspect-ratio: 16 / 9 !important;
     }
 }
+
+/* ?? Dica de interação + Próximo destacado ?? */
+#nav-interact-hint {
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    z-index: 940;
+    max-width: min(92vw, 520px);
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: rgba(26, 20, 64, 0.94);
+    border: 1.5px solid rgba(246, 213, 12, 0.85);
+    color: #FFE566;
+    font-family: var(--font-h, 'Segoe UI', sans-serif);
+    font-size: clamp(13px, 2.1vw, 15px);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-align: center;
+    line-height: 1.35;
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.45),
+        0 0 24px rgba(246, 213, 12, 0.28);
+    pointer-events: none;
+}
+#nav-interact-hint.is-visible {
+    display: block;
+    animation: navHintPulse 1.8s ease-in-out infinite;
+}
+@keyframes navHintPulse {
+    0%, 100% { box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 0 18px rgba(246,213,12,0.25); }
+    50% { box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 0 32px rgba(246,213,12,0.55); }
+}
+
+/* Próximo bloqueado por cards: permanece dourado e chamativo */
+body.has-pending-cards #btn-fwd.is-locked,
+#btn-fwd.is-locked.needs-interaction {
+    background: #F6D50C !important;
+    color: #1A1440 !important;
+    opacity: 0.92 !important;
+    filter: none !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    box-shadow:
+        0 0 0 2px rgba(246, 213, 12, 0.55),
+        0 6px 22px rgba(246, 213, 12, 0.45),
+        0 0 36px rgba(246, 213, 12, 0.3) !important;
+    animation: fwdNeedsPulse 1.6s ease-in-out infinite;
+}
+@keyframes fwdNeedsPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+.mg-hint,
+.glow-hint {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 0 clamp(12px, 1.8vh, 18px) !important;
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+    background: rgba(246, 213, 12, 0.12) !important;
+    border: 1px solid rgba(246, 213, 12, 0.45) !important;
+    color: #FFE566 !important;
+    font-family: var(--font-h, 'Segoe UI', sans-serif) !important;
+    font-size: clamp(14px, 2vh, 17px) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.35 !important;
+    text-shadow: 0 0 14px rgba(246, 213, 12, 0.4) !important;
+    box-sizing: border-box !important;
+}
+
+/* Páginas 25/32 só visuais ? sem cursor de clique */
+#s-m3-g07 .pair-row,
+#s-m3-g10 .kit-col {
+    cursor: default !important;
+}
+
+@media screen and (max-width: 768px) {
+    #nav-interact-hint {
+        bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+        font-size: 13px;
+        padding: 8px 12px;
+        max-width: 94vw;
+    }
+}

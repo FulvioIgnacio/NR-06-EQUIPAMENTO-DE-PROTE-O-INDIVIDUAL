@@ -539,12 +539,59 @@ function isSlideCompleted(idx) {
         const status = resultPanel.querySelector('.r-status');
         if (status && status.classList.contains('ref')) return false;
     }
-    const reqs = slide.querySelectorAll('.req-item, .tf-flip, .flip-card, .reveal-card, .myth-card, .pair-row, .kit-col, .sector-col');
+    const reqs = slide.querySelectorAll('.req-item, .tf-flip, .flip-card, .reveal-card, .myth-card, .pair-row.req-item, .kit-col.req-item, .sector-col.req-item');
     if (slideHasVimeoVideo(slide) && !reqs.length) return false;
     for (let i = 0; i < reqs.length; i++) {
         if (!reqs[i].classList.contains('req-done')) return false;
     }
     return true;
+}
+
+function slideHasPendingCardInteraction(slide) {
+    if (!slide || isVideoSlidePending(slide)) return false;
+    const reqs = slide.querySelectorAll(
+        '.req-item.flip-card, .req-item.reveal-card, .req-item.myth-card, .req-item.compare-card, ' +
+        '.req-item.tf-flip, .tf-flip.req-item, .glow-card.req-item, .sector-col.req-item, ' +
+        '.step-car-tracker.req-item, .pic-car-tracker.req-item, .pair-row.req-item, .kit-col.req-item'
+    );
+    if (!reqs.length) {
+        /* fallback: qualquer req-item pendente que não seja vídeo */
+        const all = slide.querySelectorAll('.req-item');
+        for (let i = 0; i < all.length; i++) {
+            if (all[i].closest('.video-wrap')) continue;
+            if (!all[i].classList.contains('req-done')) return true;
+        }
+        return false;
+    }
+    for (let i = 0; i < reqs.length; i++) {
+        if (!reqs[i].classList.contains('req-done')) return true;
+    }
+    return false;
+}
+
+function updateInteractionHint(completed) {
+    var nav = document.getElementById('nav');
+    if (!nav) return;
+    var hint = document.getElementById('nav-interact-hint');
+    if (!hint) {
+        hint = document.createElement('div');
+        hint.id = 'nav-interact-hint';
+        hint.setAttribute('role', 'status');
+        hint.setAttribute('aria-live', 'polite');
+        nav.parentNode.insertBefore(hint, nav);
+    }
+    var slide = document.querySelectorAll('.slide')[currentSlide];
+    var show = !completed && slideHasPendingCardInteraction(slide);
+    var isCarousel = !!(slide && slide.querySelector('[data-step-carousel], [data-pic-carousel], .step-car, .pic-car'));
+    hint.textContent = show
+        ? (isCarousel
+            ? '👆 Percorra todos os cards com as setas para liberar o botão Próximo e avançar'
+            : '👆 Toque nos cards mostrados para liberar o botão Próximo e avançar')
+        : '';
+    hint.classList.toggle('is-visible', show);
+    document.body.classList.toggle('has-pending-cards', show);
+    var btnFwd = document.getElementById('btn-fwd');
+    if (btnFwd) btnFwd.classList.toggle('needs-interaction', show);
 }
 
 function updateNextButton() {
@@ -554,13 +601,14 @@ function updateNextButton() {
     if (currentSlide === TOTAL - 1 && !window.MODULE_NAV.next) {
         btnFwd.disabled = true;
         btnFwd.style.display = 'none';
-        btnFwd.classList.remove('is-locked');
+        btnFwd.classList.remove('is-locked', 'needs-interaction');
     } else {
         btnFwd.disabled = !completed;
         btnFwd.style.display = 'flex';
         btnFwd.classList.toggle('is-locked', !completed);
     }
     btnFwd.setAttribute('aria-disabled', btnFwd.disabled ? 'true' : 'false');
+    updateInteractionHint(completed);
 }
 
 /* ── Slide video lazy load (Vimeo iframes + video preload) ── */
@@ -3316,25 +3364,21 @@ window.q6Select = function(i, el) {
 
 
 /* ════════════════════════════════════════
-   ACESSIBILIDADE — Ouvir (narração TTS cloud)
+   ACESSIBILIDADE — Ouvir (MP3s em audios-novos/)
    Injetado automaticamente em todas as páginas
 
-   - Endpoint: NR06_TTS.url + Bearer token (mesmo de generate-audios.js)
-   - Ouvir: narra o estado atual; clique de novo para parar
-   - Com modo ativo, troca de slide/pergunta/card reinicia a narração
+   - Toca arquivos pré-gerados (generate-audios.js → audios-novos/)
+   - NÃO chama a API TTS no clique
+   - Ouvir: toca o áudio do estado atual; clique de novo para parar
+   - Com modo ativo, troca de slide/pergunta reinicia o MP3 correspondente
    ════════════════════════════════════════ */
 (function () {
     if (window.__a11yInjected) return;
     window.__a11yInjected = true;
 
-    /* ── Config TTS cloud (mesmo endpoint/token de generate-audios.js) ──
-       Ouvir ao vivo usa a API (voz ElevenLabs). A geração leva alguns segundos. */
     var NR06_TTS = window.NR06_TTS || {
-        url: 'https://texttospeech.escolatecnocursos.cloud/api/tts',
-        token: 'Bearer eyJzdWIiOiJ0ZWNub2N1cnNvcy10ZXh0dG9zcGVlY2gifQ.w4-wYfGzQXcHMV9Gynkj5JdQc3De7WFIMTskxFYXsII',
-        preferCloud: true, /* true = voz da API; false = voz robotizada do navegador */
-        cloudFallbackMs: 0, /* 0 = espera a API; não inicia voz do navegador no meio */
-        debounceMs: 80
+        debounceMs: 80,
+        audioDir: 'audios-novos'
     };
     window.NR06_TTS = NR06_TTS;
 
@@ -3511,333 +3555,79 @@ window.q6Select = function(i, el) {
         }
         var stopSpeak = function () { stopSpeech({ disableListening: true }); };
 
-        /** "Página X de Y" a partir do contador global do curso. */
-        function getPageLabel() {
-            var n = (typeof nr11GlobalSlide === 'function') ? nr11GlobalSlide() : 1;
-            var total = (typeof NR11_TOTAL_SLIDES === 'number') ? NR11_TOTAL_SLIDES : 47;
-            return 'Página ' + n + ' de ' + total + '.';
-        }
+        const AUDIO_DIR = NR06_TTS.audioDir || 'audios-novos';
 
-        function cleanSpeakText(s) {
-            return (s || '')
-                .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{FE0F}]/gu, ' ')
-                .replace(/[·•●▪►▶←→✓✕✖❌✅🏅📚🔊🎥📑🛡️📋🥽🎯]+/g, ' ')
-                .replace(/[–—]+/g, '. ')
-                .replace(/\s+/g, ' ')
-                .trim();
-        }
-
-        function isElVisible(el) {
-            if (!el) return false;
-            const cs = window.getComputedStyle(el);
-            if (cs.display === 'none' || cs.visibility === 'hidden' || Number(cs.opacity) === 0) return false;
-            return el.getClientRects().length > 0;
-        }
-
-        function isUiNoiseText(t) {
-            t = cleanSpeakText(t);
-            if (!t || t.length < 2) return true;
-            if (/^(anterior|pr[oó]ximo|pr[oó]ximo m[oó]dulo|iniciar( o treinamento)?|iniciar desafio|confirmar( resposta)?|ouvir|lendo\.\.\.|simula[cç][aã]o|jogar novamente|revisar desafio|continuar|assista at[eé] o final|toque para ver|toque para revelar|ver tutorial)$/i.test(t)) return true;
-            if (/^(pr[oó]xim[oa] (cen[aá]rio|a[cç][aã]o|miss[aã]o)|confirmar resposta)/i.test(t)) return true;
-            return false;
-        }
-
-        function pushText(parts, elOrText) {
-            var t = '';
-            if (typeof elOrText === 'string') t = cleanSpeakText(elOrText);
-            else if (elOrText && isElVisible(elOrText)) t = cleanSpeakText(elOrText.innerText || elOrText.textContent || '');
-            if (!t || isUiNoiseText(t)) return;
-            if (parts.indexOf(t) !== -1) return;
-            parts.push(t);
-        }
-
-        function textFromCloneWithoutUi(root) {
-            if (!root || !isElVisible(root)) return '';
-            var clone = root.cloneNode(true);
-            clone.querySelectorAll(
-                'button, .nav-btn, .btn-start, .btn-next-q, .btn-verify, .quiz-result-btn, .mg-result-btn, ' +
-                '.video-warn, .video-wrap, .wave, script, style, svg, iframe, img, audio, ' +
-                '.a11y-bar, #nav, #logo, .q-dots, .mg-decide-actions, .opt-l'
-            ).forEach(function (el) { el.remove(); });
-            return cleanSpeakText(clone.innerText || clone.textContent || '');
-        }
-
-        /** Quiz/desafio: só o painel/estado visível (intro, pergunta atual ou resultado). */
-        function getQuizNarration(slide) {
-            if (!slide) return '';
-            var parts = [];
-            var result = slide.querySelector('[id$="-result-panel"]');
-            if (result && isElVisible(result)) {
-                pushText(parts, result.querySelector('.result-pct, [id$="-pct"]'));
-                pushText(parts, result.querySelector('.quiz-result-title, [id$="-status"], .r-status'));
-                pushText(parts, result.querySelector('.quiz-result-desc, [id$="-sub"]'));
-                return parts.join(' ');
-            }
-            var intro = slide.querySelector('[id$="-intro-panel"], .quiz-intro-panel');
-            if (intro && isElVisible(intro)) {
-                pushText(parts, textFromCloneWithoutUi(intro));
-                return parts.join(' ');
-            }
-            var qPanel = slide.querySelector('[id$="-question-panel"]');
-            if (qPanel && isElVisible(qPanel)) {
-                pushText(parts, qPanel.querySelector('[id$="-counter"]'));
-                pushText(parts, qPanel.querySelector('[id$="-text"]'));
-                var opts = qPanel.querySelector('[id$="-options"]');
-                if (opts && isElVisible(opts)) {
-                    Array.prototype.forEach.call(opts.children, function (opt) {
-                        if (!isElVisible(opt)) return;
-                        var label = cleanSpeakText(opt.innerText || opt.textContent || '');
-                        if (label && !isUiNoiseText(label)) parts.push(label);
-                    });
-                }
-                var fb = qPanel.querySelector('[id$="-feedback"], .q-feedback');
-                if (fb && isElVisible(fb) && (fb.classList.contains('ok') || fb.classList.contains('nok') || fb.classList.contains('show'))) {
-                    pushText(parts, fb);
-                }
-                return parts.join(' ');
-            }
-            return '';
-        }
-
-        /** Carrossel: só o card ativo + "Card i de n". */
-        function getCarouselNarration(slide) {
-            if (!slide) return '';
-            var root = slide.querySelector('[class*="carousel"], .card-carousel, .carousel');
-            if (!root || !isElVisible(root)) return '';
-            var cards = root.querySelectorAll(
-                '.carousel-card, .carousel-slide, .carousel-item, [data-carousel-item], .card-slide'
-            );
-            if (!cards.length) return '';
-            var active = null;
-            var activeIdx = 0;
-            for (var i = 0; i < cards.length; i++) {
-                var c = cards[i];
-                if (c.classList.contains('active') || c.classList.contains('is-active') || c.classList.contains('is-current')) {
-                    active = c;
-                    activeIdx = i;
-                    break;
-                }
-            }
-            if (!active) {
-                for (var j = 0; j < cards.length; j++) {
-                    if (isElVisible(cards[j])) { active = cards[j]; activeIdx = j; break; }
-                }
-            }
-            if (!active) return '';
-            var parts = ['Card ' + (activeIdx + 1) + ' de ' + cards.length + '.'];
-            pushText(parts, textFromCloneWithoutUi(active));
-            return parts.join(' ');
-        }
-
-        /** Atividade Certo/Errado: situação atual. */
-        function getDecideNarration(slide) {
-            var board = slide.querySelector('.mg-board[data-mg="decide"]');
-            if (!board || !isElVisible(board)) return '';
-            if (board.querySelector('.mg-result.is-visible')) {
-                return textFromCloneWithoutUi(board.querySelector('.mg-result'));
-            }
-            var parts = [];
-            pushText(parts, board.querySelector('.mg-decide-prog'));
-            pushText(parts, board.querySelector('.mg-decide-text'));
-            pushText(parts, board.querySelector('.mg-hint'));
-            pushText(parts, board.querySelector('.mg-status'));
-            return parts.join(' ');
-        }
-
-        function getS1NarrationBody(slide) {
-            var parts = [];
-            pushText(parts, slide.querySelector('.s1-tag'));
-            pushText(parts, slide.querySelector('h1'));
-            pushText(parts, slide.querySelector('.s1-inner > p'));
-            return parts.join(' ');
-        }
-
-        function getGenericSlideNarration(slide) {
-            var parts = [];
-            pushText(parts, slide.querySelector('.section-tag'));
-            pushText(parts, slide.querySelector('.slide-title'));
-            pushText(parts, slide.querySelector('.slide-subtitle'));
-            pushText(parts, slide.querySelector('.mod-intro-card'));
-            pushText(parts, slide.querySelector('.quiz-intro-card'));
-
-            if (slide.classList.contains('slide-video') || slide.querySelector('.video-wrap')) {
-                return parts.join(' ');
-            }
-
-            var area = slide.querySelector('.content-area') || slide;
-            var boards = area.querySelectorAll('.mg-board, .info-wrap, .sum-grid, .reveal-grid, .compare-container, .flip-grid, .myth-grid, .step-flow, .content-wrap, .m4-check-list');
-            if (boards.length) {
-                Array.prototype.forEach.call(boards, function (b) {
-                    if (!isElVisible(b)) return;
-                    var t = textFromCloneWithoutUi(b);
-                    if (t && !isUiNoiseText(t)) parts.push(t);
-                });
-            } else {
-                Array.prototype.forEach.call(area.children, function (child) {
-                    if (!child.classList) return;
-                    if (child.classList.contains('wave') || child.classList.contains('bg-layer') || child.classList.contains('video-wrap')) return;
-                    var t = textFromCloneWithoutUi(child);
-                    if (t && !isUiNoiseText(t)) parts.push(t);
-                });
-            }
-            return parts.join(' ');
-        }
-
-        function getCurrentNarrationText() {
-            var slide = document.querySelector('.slide.active');
-            if (!slide) return '';
-            var parts = [getPageLabel()];
-            var body = '';
-
-            if (slide.id === 's1') {
-                body = getS1NarrationBody(slide);
-            } else {
-                body = getQuizNarration(slide);
-                if (!body) body = getCarouselNarration(slide);
-                if (!body) body = getDecideNarration(slide);
-                if (!body) body = getGenericSlideNarration(slide);
-            }
-
-            if (body) parts.push(body);
-            return cleanSpeakText(parts.join(' '));
-        }
-
-        function narrationFingerprint(text) {
-            return (text || '').slice(0, 240);
-        }
-
-        function pickPtBrVoice() {
+        /** Resolve o MP3 do estado visível (slide simples ou quiz multi-estado). */
+        function resolveAudioFile(pageNum) {
+            const fallback = AUDIO_DIR + '/pagina-' + pageNum + '.mp3';
             try {
-                const voices = window.speechSynthesis.getVoices() || [];
-                return voices.find(function (v) { return /pt-BR/i.test(v.lang); })
-                    || voices.find(function (v) { return /^pt/i.test(v.lang); })
-                    || null;
+                if (typeof AUDIO_DATA === 'undefined' || !AUDIO_DATA.MULTI_STATE) return fallback;
+
+                const activeSlide = document.querySelector('.slide.active');
+                if (!activeSlide || !activeSlide.id) return fallback;
+
+                const cfg = AUDIO_DATA.MULTI_STATE[activeSlide.id];
+                if (!cfg) return fallback;
+
+                const isVisible = function (sel) {
+                    if (!sel) return false;
+                    const el = activeSlide.querySelector(sel) || document.querySelector(sel);
+                    if (!el) return false;
+                    const cs = window.getComputedStyle(el);
+                    if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+                    return el.offsetParent !== null || el.getClientRects().length > 0;
+                };
+
+                if (cfg.panels && cfg.panels.result && isVisible(cfg.panels.result)) {
+                    return AUDIO_DIR + '/pagina-' + pageNum + '-result.mp3';
+                }
+                if (cfg.panels && cfg.panels.intro && isVisible(cfg.panels.intro)) {
+                    return AUDIO_DIR + '/pagina-' + pageNum + '-intro.mp3';
+                }
+                if (cfg.panels && cfg.panels.question && isVisible(cfg.panels.question)) {
+                    const counter = activeSlide.querySelector(cfg.counterSelector) ||
+                        document.querySelector(cfg.counterSelector);
+                    let qNum = 1;
+                    if (counter) {
+                        const pat = cfg.counterPattern || /(\d+)/;
+                        const m = (counter.textContent || '').match(pat);
+                        if (m && m[1]) qNum = parseInt(m[1], 10) || 1;
+                    }
+                    return AUDIO_DIR + '/pagina-' + pageNum + '-q' + qNum + '.mp3';
+                }
             } catch (e) {
-                return null;
+                console.warn('resolveAudioFile falhou, usando fallback:', e);
             }
+            return fallback;
         }
 
-        function speakWithTTS(text) {
-            if (!window.speechSynthesis || !text) {
+        function narrationFingerprint(src) {
+            return src || '';
+        }
+
+        async function playLocalAudio(audioSrc) {
+            if (!audioSrc) {
                 stopSpeech();
                 return;
             }
-            usingTTS = true;
-            setListeningUI(true);
-
-            function doSpeak() {
-                try { window.speechSynthesis.cancel(); } catch (e) { }
-                const utt = new SpeechSynthesisUtterance(text);
-                utt.lang = 'pt-BR';
-                utt.rate = 1.05;
-                const voice = pickPtBrVoice();
-                if (voice) utt.voice = voice;
-                utt.onend = function () { stopSpeech(); };
-                utt.onerror = function () { stopSpeech(); };
-                window.speechSynthesis.speak(utt);
-            }
-
-            /* Não espera vozes carregarem — fala na hora */
-            try { window.speechSynthesis.getVoices(); } catch (e) { }
-            doSpeak();
-        }
-
-        /** Baixa áudio da API cloud (pode demorar vários segundos). */
-        async function fetchCloudAudioBlob(text, signal) {
-            var res = await fetch(NR06_TTS.url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': NR06_TTS.token
-                },
-                body: JSON.stringify({ text: text }),
-                signal: signal
-            });
-            if (!res.ok) {
-                var errBody = await res.text().catch(function () { return ''; });
-                throw new Error('HTTP ' + res.status + ' ' + (errBody || '').slice(0, 200));
-            }
-            var ct = (res.headers.get('content-type') || '').toLowerCase();
-            var blob;
-            if (ct.indexOf('application/json') !== -1) {
-                var j = await res.json();
-                var audioUrl = j.audioUrl || j.url || j.audio_url ||
-                    (j.data && (j.data.url || j.data.audioUrl));
-                if (!audioUrl) throw new Error('JSON sem URL de áudio');
-                var r2 = await fetch(audioUrl, { signal: signal });
-                if (!r2.ok) throw new Error('HTTP ' + r2.status + ' ao baixar áudio');
-                blob = await r2.blob();
-            } else {
-                blob = await res.blob();
-            }
-            if (!blob || blob.size < 64) throw new Error('Áudio vazio da API');
-            return blob;
-        }
-
-        function playCloudBlob(blob, text) {
-            currentObjectUrl = URL.createObjectURL(blob);
-            currentAudio = new Audio(currentObjectUrl);
-            usingTTS = false;
-            setListeningUI(true);
-            currentAudio.onended = function () { stopSpeech(); };
-            currentAudio.onerror = function () {
-                console.warn('[TTS] Falha ao reproduzir áudio da API, usando voz do navegador.');
-                speakWithTTS(text);
-            };
-            return currentAudio.play().catch(function (playErr) {
-                console.warn('[TTS] play() bloqueado, usando voz do navegador:', playErr && playErr.message ? playErr.message : playErr);
-                speakWithTTS(text);
-            });
-        }
-
-        /**
-         * Narração ao vivo via API (voz ElevenLabs).
-         * Só usa a voz do navegador se a API falhar de verdade.
-         */
-        async function speakWithElevenLabs(text) {
-            if (!text) {
-                stopSpeech();
-                return;
-            }
-            setListeningUI(true, 'Gerando...');
-
-            if (!NR06_TTS.preferCloud) {
-                speakWithTTS(text);
-                return;
-            }
-
-            var ctrl = new AbortController();
-            currentAbort = ctrl;
-            var usedBrowser = false;
-            var fallbackMs = NR06_TTS.cloudFallbackMs != null ? NR06_TTS.cloudFallbackMs : 0;
-            var fallbackTimer = null;
-            if (fallbackMs > 0) {
-                fallbackTimer = setTimeout(function () {
-                    if (ctrl.signal.aborted) return;
-                    usedBrowser = true;
-                    speakWithTTS(text);
-                }, fallbackMs);
-            }
-
+            setListeningUI(true, 'Lendo...');
             try {
-                var blob = await fetchCloudAudioBlob(text, ctrl.signal);
-                if (fallbackTimer) clearTimeout(fallbackTimer);
-                if (ctrl.signal.aborted) return;
-                /* Se já caiu no navegador por timeout, não reinicia no meio. */
-                if (usedBrowser) return;
-                if (usingTTS && window.speechSynthesis) {
-                    try { window.speechSynthesis.cancel(); } catch (e) { }
-                    usingTTS = false;
-                }
-                setListeningUI(true, 'Lendo...');
-                await playCloudBlob(blob, text);
-            } catch (e) {
-                if (fallbackTimer) clearTimeout(fallbackTimer);
-                if (e && e.name === 'AbortError') return;
-                console.warn('[TTS] Falha na API / rede:', e && e.message ? e.message : e);
-                if (!usedBrowser) speakWithTTS(text);
-            } finally {
-                if (currentAbort === ctrl) currentAbort = null;
+                currentAudio = new Audio(audioSrc);
+                const wasPlayingMusic = window.bgMusic && !window.bgMusic.paused;
+                if (wasPlayingMusic) window.bgMusic.pause();
+
+                currentAudio.onended = function () {
+                    stopSpeech();
+                    if (wasPlayingMusic && window.bgMusic) window.bgMusic.play().catch(function () { });
+                };
+                currentAudio.onerror = function () {
+                    console.error('Áudio local não encontrado: ' + audioSrc);
+                    stopSpeech();
+                };
+                await currentAudio.play();
+            } catch (err) {
+                console.error('Erro ao iniciar áudio:', err);
+                stopSpeech();
             }
         }
 
@@ -3865,26 +3655,17 @@ window.q6Select = function(i, el) {
             usingTTS = false;
 
             if (opts.enableListening) listeningMode = true;
-            var liveText = '';
-            try {
-                liveText = getCurrentNarrationText();
-            } catch (err) {
-                console.warn('[TTS] Erro ao montar texto:', err);
-            }
-            if (!liveText) {
-                console.warn('[TTS] Nenhum texto visível para narrar.');
-                setListeningUI(false);
-                return;
-            }
-            lastNarrationFingerprint = narrationFingerprint(liveText);
+            var pageNum = (typeof nr11GlobalSlide === 'function') ? nr11GlobalSlide() : 1;
+            var audioSrc = resolveAudioFile(pageNum);
+            lastNarrationFingerprint = narrationFingerprint(audioSrc);
             setListeningUI(true);
-            await speakWithElevenLabs(liveText);
+            await playLocalAudio(audioSrc);
         }
 
         function startSpeak(opts) {
             opts = opts || {};
             if (opts.enableListening !== false) listeningMode = true;
-            var delay = opts.immediate ? 0 : (NR06_TTS.debounceMs || 320);
+            var delay = opts.immediate ? 0 : (NR06_TTS.debounceMs || 80);
             if (speakDebounceTimer) clearTimeout(speakDebounceTimer);
             if (delay <= 0) {
                 speakDebounceTimer = null;
@@ -3908,9 +3689,9 @@ window.q6Select = function(i, el) {
         /** Chamado em goTo / quiz / carrossel — só renarra se o modo Ouvir estiver ativo. */
         function notifyNarrationChange(reason) {
             if (!listeningMode) return;
-            var text = '';
-            try { text = getCurrentNarrationText(); } catch (e) { return; }
-            var fp = narrationFingerprint(text);
+            var pageNum = (typeof nr11GlobalSlide === 'function') ? nr11GlobalSlide() : 1;
+            var src = resolveAudioFile(pageNum);
+            var fp = narrationFingerprint(src);
             if (fp && fp === lastNarrationFingerprint && reason !== 'force') return;
             startSpeak({ enableListening: true, immediate: false });
         }
@@ -3918,7 +3699,6 @@ window.q6Select = function(i, el) {
         function bindNarrationEvents() {
             window.notifyNarrationChange = notifyNarrationChange;
 
-            /* Carrossel: setas / dots */
             document.addEventListener('click', function (e) {
                 var t = e.target;
                 if (!t || !t.closest) return;
@@ -3927,7 +3707,6 @@ window.q6Select = function(i, el) {
                 }
             }, true);
 
-            /* Observa troca de card ativo */
             document.querySelectorAll('[class*="carousel"], .card-carousel').forEach(function (root) {
                 try {
                     new MutationObserver(function () {
@@ -3969,11 +3748,6 @@ window.q6Select = function(i, el) {
             });
         }
 
-        if (window.speechSynthesis) {
-            try { window.speechSynthesis.getVoices(); } catch (e) { }
-            window.speechSynthesis.onvoiceschanged = function () { };
-        }
-
         document.addEventListener('visibilitychange', function () {
             if (document.hidden) stopSpeech();
         });
@@ -3992,14 +3766,12 @@ window.q6Select = function(i, el) {
         }
 
         bindNarrationEvents();
-        window.getPageLabel = getPageLabel;
-        window.getCurrentNarrationText = getCurrentNarrationText;
-        window.speakWithElevenLabs = speakWithElevenLabs;
+        window.resolveAudioFile = resolveAudioFile;
         window.stopSpeech = function () { stopSpeech({ disableListening: true }); };
         window.toggleSpeak = toggleSpeak;
 
         window.updateQuizAudioHelper();
-        ['q1-question-panel', 'q2-question-panel', 'q3-question-panel', 'q4-question-panel'].forEach(function (id) {
+        ['q1-question-panel', 'q2-question-panel', 'q3-question-panel', 'q4-question-panel', 'mito-question-panel'].forEach(function (id) {
             const panel = document.getElementById(id);
             if (panel) {
                 new MutationObserver(window.updateQuizAudioHelper).observe(panel, {

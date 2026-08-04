@@ -36,6 +36,18 @@
          intro / result:   texto narrado para esses estados
          questions[]:      texto narrado para cada pergunta (i+1 = Q1, Q2 …)                */
     const MULTI_STATE = {
+        // ─── MITO × VERDADE (modulo-1.html, s-m1-g01) — página 5 ─────────────────────
+        's-m1-g01': {
+            panels: { question: '#mito-question-panel' },
+            counterSelector: '#mito-counter',
+            questions: [
+                'Afirmação 1 de 4. Segurança é assunto do time de SSO, não meu. Verdade ou mito?',
+                'Afirmação 2 de 4. A empresa é obrigada a fornecer o EPI de graça. Verdade ou mito?',
+                'Afirmação 3 de 4. Tenho experiência, faço rápido e sem o EPI dá certo. Verdade ou mito?',
+                'Afirmação 4 de 4. Recusar o uso do EPI tem consequência. Verdade ou mito?'
+            ]
+        },
+
         // ─── QUIZ 1 (modulo-1.html, s-m1-quiz) — Fundamentos e Cultura de Segurança ───
         's-m1-quiz': {
             panels: { intro: '#q1-intro-panel', question: '#q1-question-panel', result: '#q1-result-panel' },
