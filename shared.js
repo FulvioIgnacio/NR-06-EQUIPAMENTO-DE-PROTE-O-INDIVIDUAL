@@ -231,7 +231,7 @@ function moduleNext(force) {
     if (currentSlide === total - 1) {
         if (!window.MODULE_NAV.next) return;
         if (!force && !isSlideCompleted(currentSlide)) {
-            alert('Você precisa concluir o quiz deste módulo para avançar.');
+            alert(getAdvanceBlockedMessage(currentSlide));
             return;
         }
         pauseAllSlideVideos();
@@ -489,17 +489,71 @@ function applyDemoModeUI() {
 
 document.addEventListener('DOMContentLoaded', function () {
     applyDemoModeUI();
+    lockAllPandaSeekBars();
 });
+/* Aplica disableForward cedo (enquanto o HTML ainda carrega os iframes). */
+lockAllPandaSeekBars();
 
 function isPandaIframe(iframe) {
     if (!iframe) return false;
-    var src = iframe.getAttribute('src') || '';
+    var src = iframe.getAttribute('src') || iframe.dataset.videoSrc || '';
     return src.indexOf('pandavideo.com') !== -1;
 }
 
 function getPandaVideoIdFromSrc(src) {
     var m = (src || '').match(/[?&]v=([0-9a-f-]+)/i);
     return m ? m[1] : null;
+}
+
+/** Bloqueia avanço/retrocesso pela barra do player Panda (query + reforço JS). */
+function ensurePandaSeekLocked(iframe) {
+    if (!iframe) return;
+    var raw = iframe.getAttribute('src') || iframe.dataset.videoSrc || '';
+    if (!raw || raw.indexOf('pandavideo.com') === -1 || raw === 'about:blank') return;
+    try {
+        var u = new URL(raw, window.location.href);
+        u.searchParams.set('disableForward', 'true');
+        u.searchParams.set('saveProgress', 'false');
+        var controls = u.searchParams.get('controls');
+        if (controls) {
+            controls = controls.split(',').map(function (c) { return c.trim(); }).filter(function (c) {
+                return c && c !== 'rewind' && c !== 'fast-forward';
+            }).join(',');
+            if (controls) u.searchParams.set('controls', controls);
+            else u.searchParams.delete('controls');
+        }
+        var next = u.toString();
+        if (iframe.getAttribute('src') && iframe.getAttribute('src') !== next) {
+            iframe.setAttribute('src', next);
+        }
+        if (iframe.dataset.videoSrc) iframe.dataset.videoSrc = next;
+    } catch (e) {
+        if (raw.indexOf('disableForward=') === -1) {
+            var sep = raw.indexOf('?') >= 0 ? '&' : '?';
+            var next2 = raw + sep + 'disableForward=true&saveProgress=false';
+            if (iframe.getAttribute('src')) iframe.setAttribute('src', next2);
+            if (iframe.dataset.videoSrc) iframe.dataset.videoSrc = next2;
+        }
+    }
+}
+
+function lockAllPandaSeekBars() {
+    document.querySelectorAll('iframe').forEach(ensurePandaSeekLocked);
+}
+
+function pandaSetCurrentTime(iframe, pandaPlayer, seconds) {
+    if (!(typeof seconds === 'number') || seconds < 0) return;
+    try {
+        if (pandaPlayer && typeof pandaPlayer.setCurrentTime === 'function') {
+            pandaPlayer.setCurrentTime(seconds);
+            return;
+        }
+    } catch (e) { }
+    try {
+        if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'currentTime', parameter: seconds }, '*');
+        }
+    } catch (e2) { }
 }
 
 function slideHasVimeoVideo(slide) {
@@ -517,6 +571,14 @@ function isVideoSlidePending(slide) {
     if (!slide || !slideHasVimeoVideo(slide)) return false;
     var wrap = slide.querySelector('.video-wrap');
     return wrap && !wrap.classList.contains('req-done');
+}
+
+function getAdvanceBlockedMessage(idx) {
+    var slide = document.querySelectorAll('.slide')[idx];
+    if (slide && isVideoSlidePending(slide)) {
+        return 'Assista ao vídeo até faltar 3 segundos para o fim. Se pausar ou não assistir, o botão Próximo permanece bloqueado.';
+    }
+    return 'Por favor, interaja com todos os itens e responda o quiz para avançar.';
 }
 
 function ensureVideoSlideReqItems() {
@@ -581,17 +643,20 @@ function updateInteractionHint(completed) {
         nav.parentNode.insertBefore(hint, nav);
     }
     var slide = document.querySelectorAll('.slide')[currentSlide];
-    var show = !completed && slideHasPendingCardInteraction(slide);
+    var videoPending = !!(slide && isVideoSlidePending(slide));
+    /* Em slides de vídeo não mostra faixa de texto — só bloqueia o botão. */
+    var showCards = !completed && !videoPending && slideHasPendingCardInteraction(slide);
     var isCarousel = !!(slide && slide.querySelector('[data-step-carousel], [data-pic-carousel], .step-car, .pic-car'));
-    hint.textContent = show
+    hint.textContent = showCards
         ? (isCarousel
             ? '👆 Percorra todos os cards com as setas para liberar o botão Próximo e avançar'
             : '👆 Toque nos cards mostrados para liberar o botão Próximo e avançar')
         : '';
-    hint.classList.toggle('is-visible', show);
-    document.body.classList.toggle('has-pending-cards', show);
+    hint.classList.toggle('is-visible', showCards);
+    document.body.classList.toggle('has-pending-cards', showCards);
+    document.body.classList.toggle('has-pending-video', videoPending);
     var btnFwd = document.getElementById('btn-fwd');
-    if (btnFwd) btnFwd.classList.toggle('needs-interaction', show);
+    if (btnFwd) btnFwd.classList.toggle('needs-interaction', showCards || videoPending);
 }
 
 function updateNextButton() {
@@ -613,7 +678,7 @@ function updateNextButton() {
 
 /* ── Slide video lazy load (Vimeo iframes + video preload) ── */
 var SLIDE_VIDEO_BLANK = 'about:blank';
-var VIDEO_UNLOCK_BEFORE_END = 4; /* libera avanço faltando N segundos para o fim */
+var VIDEO_UNLOCK_BEFORE_END = 3; /* libera avanço só faltando N segundos para o fim */
 var _videoWrapInited = new Set();
 
 function getVimeoIdFromSrc(src) {
@@ -729,12 +794,16 @@ function markVideoWrapComplete(wrap, warn) {
     if (!wrap || wrap.classList.contains('req-done')) return;
     wrap.classList.add('req-done');
     if (warn) {
-        warn.style.display = 'none';
-        warn.style.opacity = '0';
-        warn.style.pointerEvents = 'none';
+        warn.remove();
     }
+    wrap.querySelectorAll('.video-warn').forEach(function (el) { el.remove(); });
     updateNextButton();
     try { playBeep('end'); } catch (e) { }
+}
+
+function hideVideoWarn(wrap) {
+    if (!wrap) return;
+    wrap.querySelectorAll('.video-warn').forEach(function (el) { el.remove(); });
 }
 
 function videoUnlockThreshold(duration) {
@@ -756,14 +825,7 @@ function initVideoWrapPlayer(wrap) {
 
     _videoWrapInited.add(wrap);
     wrap.style.cursor = 'default';
-
-    var warn = wrap.querySelector('.video-warn');
-    if (!warn) {
-        warn = document.createElement('div');
-        warn.className = 'video-warn';
-        warn.textContent = 'ASSISTA ATÉ O FINAL';
-        wrap.appendChild(warn);
-    }
+    hideVideoWarn(wrap);
 
     var player = new Vimeo.Player(iframe);
     var maxWatched = 0;
@@ -773,7 +835,7 @@ function initVideoWrapPlayer(wrap) {
     function complete() {
         if (completed) return;
         completed = true;
-        markVideoWrapComplete(wrap, warn);
+        markVideoWrapComplete(wrap, null);
     }
 
     player.getDuration().then(function (d) {
@@ -805,18 +867,14 @@ function initVideoWrapPlayer(wrap) {
     player.on('seeked', enforceTime);
 
     player.on('play', function () {
-        warn.style.opacity = '0';
-        warn.style.pointerEvents = 'none';
         player.getCurrentTime().then(function (seconds) {
             if (!completed && seconds > maxWatched + 1) player.setCurrentTime(maxWatched);
         });
+        try { updateNextButton(); } catch (e) { }
     });
 
     player.on('pause', function () {
-        if (!wrap.classList.contains('req-done')) {
-            warn.style.opacity = '1';
-            warn.style.pointerEvents = 'auto';
-        }
+        try { updateNextButton(); } catch (e) { }
     });
 
     player.on('ended', function () {
@@ -845,6 +903,8 @@ function initPandaVideoWrap(wrap) {
     var iframe = wrap.querySelector('iframe');
     if (!iframe || !isPandaIframe(iframe)) return;
 
+    ensurePandaSeekLocked(iframe);
+
     wrap.classList.add('req-item');
     if (_videoWrapInited.has(wrap)) return;
 
@@ -854,13 +914,7 @@ function initPandaVideoWrap(wrap) {
     var expectedId = getPandaVideoIdFromSrc(iframe.getAttribute('src') || '');
     if (expectedId && !iframe.id) iframe.id = 'panda-' + expectedId;
 
-    var warn = wrap.querySelector('.video-warn');
-    if (!warn) {
-        warn = document.createElement('div');
-        warn.className = 'video-warn';
-        warn.textContent = 'ASSISTA ATÉ O FINAL';
-        wrap.appendChild(warn);
-    }
+    hideVideoWarn(wrap);
 
     if (wrap._pandaHandler) {
         window.removeEventListener('message', wrap._pandaHandler);
@@ -868,28 +922,49 @@ function initPandaVideoWrap(wrap) {
 
     var maxWatched = 0;
     var duration = 0;
-    var completed = false;
+    var completed = !!wrap.classList.contains('req-done');
     var pandaPlayer = null;
+
+    if (!completed) {
+        wrap.classList.remove('req-done');
+        try { updateNextButton(); } catch (e) { }
+    }
 
     function complete() {
         if (completed || wrap.classList.contains('req-done')) return;
         completed = true;
-        markVideoWrapComplete(wrap, warn);
+        markVideoWrapComplete(wrap, null);
     }
 
     function noteDuration(d) {
         if (typeof d === 'number' && d > 0) duration = d;
     }
 
+    function enforceNoSeek(t) {
+        if (completed || typeof t !== 'number') return false;
+        if (t > maxWatched + 1.25) {
+            pandaSetCurrentTime(iframe, pandaPlayer, maxWatched);
+            return true;
+        }
+        return false;
+    }
+
     function onProgress(t) {
         if (completed || typeof t !== 'number') return;
-        if (t > maxWatched + 2.5) return;
-        if (t > maxWatched) maxWatched = t;
+        if (enforceNoSeek(t)) return;
+        /* Só conta progresso contínuo (assistindo de verdade), não saltos. */
+        if (t >= maxWatched && (t - maxWatched) <= 1.5) {
+            maxWatched = t;
+        } else if (t > maxWatched + 1.5) {
+            pandaSetCurrentTime(iframe, pandaPlayer, maxWatched);
+            return;
+        }
         if (pandaPlayer && typeof pandaPlayer.getDuration === 'function') {
             try { noteDuration(pandaPlayer.getDuration()); } catch (e) { }
         }
         var unlockAt = videoUnlockThreshold(duration);
         if (unlockAt !== null && maxWatched >= unlockAt) complete();
+        try { updateNextButton(); } catch (e) { }
     }
 
     wrap._pandaHandler = function (event) {
@@ -898,13 +973,8 @@ function initPandaVideoWrap(wrap) {
         if (expectedId && data.video && String(data.video) !== String(expectedId)) return;
         if (completed || wrap.classList.contains('req-done')) return;
 
-        if (data.message === 'panda_play') {
-            warn.style.opacity = '0';
-            warn.style.pointerEvents = 'none';
-        }
-        if (data.message === 'panda_pause' && !wrap.classList.contains('req-done')) {
-            warn.style.opacity = '1';
-            warn.style.pointerEvents = 'auto';
+        if (data.message === 'panda_play' || data.message === 'panda_pause') {
+            try { updateNextButton(); } catch (e) { }
         }
         if (data.message === 'panda_ended') {
             complete();
@@ -913,6 +983,9 @@ function initPandaVideoWrap(wrap) {
         if (data.message === 'panda_timeupdate') {
             noteDuration(data.duration);
             onProgress(typeof data.currentTime === 'number' ? data.currentTime : null);
+        }
+        if (data.message === 'panda_seeking' || data.message === 'panda_seeked') {
+            enforceNoSeek(typeof data.currentTime === 'number' ? data.currentTime : null);
         }
     };
 
@@ -925,18 +998,31 @@ function initPandaVideoWrap(wrap) {
             try {
                 pandaPlayer = new PandaPlayer(iframe.id, {
                     onReady: function () {
-                        try { noteDuration(pandaPlayer.getDuration && pandaPlayer.getDuration()); } catch (e) { }
+                        try {
+                            noteDuration(pandaPlayer.getDuration && pandaPlayer.getDuration());
+                            if (pandaPlayer.setCurrentTime) pandaPlayer.setCurrentTime(0);
+                        } catch (e) { }
                         if (pandaPlayer && typeof pandaPlayer.onEvent === 'function') {
                             pandaPlayer.onEvent(function (e) {
                                 if (!e || completed) return;
+                                if (e.message === 'panda_play' || e.message === 'panda_pause') {
+                                    try { updateNextButton(); } catch (err) { }
+                                }
                                 if (e.message === 'panda_ended') {
                                     complete();
+                                    try {
+                                        if (pandaPlayer.pause) pandaPlayer.pause();
+                                        if (pandaPlayer.setCurrentTime) pandaPlayer.setCurrentTime(0);
+                                    } catch (err) { }
                                     return;
                                 }
                                 if (e.message === 'panda_timeupdate') {
                                     noteDuration(e.duration);
                                     try { noteDuration(pandaPlayer.getDuration && pandaPlayer.getDuration()); } catch (err) { }
                                     onProgress(typeof e.currentTime === 'number' ? e.currentTime : null);
+                                }
+                                if (e.message === 'panda_seeking' || e.message === 'panda_seeked') {
+                                    enforceNoSeek(typeof e.currentTime === 'number' ? e.currentTime : null);
                                 }
                             });
                         }
@@ -1002,7 +1088,7 @@ function goTo(idx, force = false, skipHistory = false) {
 
     if (idx < 0 || idx >= TOTAL) return;
     if (idx > currentSlide && !force && !isSlideCompleted(currentSlide)) {
-        alert('Por favor, interaja com todos os itens e responda o quiz para avançar.');
+        alert(getAdvanceBlockedMessage(currentSlide));
         return;
     }
     const slides = document.querySelectorAll('.slide');

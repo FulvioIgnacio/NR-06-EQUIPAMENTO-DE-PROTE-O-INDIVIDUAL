@@ -2332,28 +2332,13 @@ img {
         0 0 30px rgba(246, 213, 12, 0.28) !important;
 }
 
-/* ?? VIDEO WARNING ?? */
-.video-warn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(5, 10, 15, 0.7);
-    color: rgba(255, 255, 255, 0.95);
-    font-family: var(--font-h);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 8px 16px;
-    border: 1px solid rgba(246, 213, 12, 0.4);
-    border-radius: 99px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    z-index: 10;
-    letter-spacing: 1px;
-    box-shadow: 0 0 20px rgba(246, 213, 12, 0.4);
-    text-transform: uppercase;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+/* VIDEO WARNING â€” oculto (bloqueio do PrÃ³ximo continua no JS, sem faixa no player) */
+.video-warn,
+.slide.slide-video .video-warn {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 
@@ -5879,13 +5864,7 @@ body {
 }
 
 .slide.slide-video .video-warn {
-    top: 14px !important;
-    right: 14px !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    letter-spacing: 1.2px !important;
-    border-color: rgba(246, 213, 12, 0.55) !important;
-    box-shadow: 0 0 18px rgba(246, 213, 12, 0.45) !important;
+    display: none !important;
 }
 
 @media screen and (max-width: 900px) {
@@ -11813,7 +11792,7 @@ html body #demo-indicator.demo-shortcut-visible {
     }
 }
 
-/* ?? Dica de interação + Próximo destacado ?? */
+/* ?? Dica de interaï¿½ï¿½o + Prï¿½ximo destacado ?? */
 #nav-interact-hint {
     display: none;
     position: fixed;
@@ -11847,24 +11826,21 @@ html body #demo-indicator.demo-shortcut-visible {
     50% { box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 0 32px rgba(246,213,12,0.55); }
 }
 
-/* Próximo bloqueado por cards: permanece dourado e chamativo */
+/* PrÃ³ximo bloqueado: bem apagado (nÃ£o chama atenÃ§Ã£o atÃ© poder avanÃ§ar) */
 body.has-pending-cards #btn-fwd.is-locked,
-#btn-fwd.is-locked.needs-interaction {
-    background: #F6D50C !important;
-    color: #1A1440 !important;
-    opacity: 0.92 !important;
-    filter: none !important;
+body.has-pending-video #btn-fwd.is-locked,
+#btn-fwd.is-locked.needs-interaction,
+#btn-fwd.is-locked,
+.nav-btn:disabled {
+    background: rgba(48, 42, 90, 0.75) !important;
+    color: rgba(255, 244, 232, 0.32) !important;
+    opacity: 0.38 !important;
+    filter: grayscale(0.45) !important;
     cursor: not-allowed !important;
     pointer-events: none !important;
-    box-shadow:
-        0 0 0 2px rgba(246, 213, 12, 0.55),
-        0 6px 22px rgba(246, 213, 12, 0.45),
-        0 0 36px rgba(246, 213, 12, 0.3) !important;
-    animation: fwdNeedsPulse 1.6s ease-in-out infinite;
-}
-@keyframes fwdNeedsPulse {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-2px); }
+    box-shadow: none !important;
+    animation: none !important;
+    transform: none !important;
 }
 
 .mg-hint,
@@ -11889,7 +11865,7 @@ body.has-pending-cards #btn-fwd.is-locked,
     box-sizing: border-box !important;
 }
 
-/* Páginas 25/32 só visuais ? sem cursor de clique */
+/* Pï¿½ginas 25/32 sï¿½ visuais ? sem cursor de clique */
 #s-m3-g07 .pair-row,
 #s-m3-g10 .kit-col {
     cursor: default !important;
